@@ -3,8 +3,6 @@
   "project_name": "wooden_skateboard",
   "saved_at": "20260724T183756Z",
   "save_id": "20260724T183756Z_wooden_skateboard_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/wooden_skateboard/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/wooden_skateboard/prompt.txt",
   "prompt": "a simple skateboard with a wooden deck and two pairs of wheels",
   "textPrompt": "a simple skateboard with a wooden deck and two pairs of wheels",
   "texture": {
@@ -48,9 +46,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/wooden_skateboard_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/wooden_skateboard_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/wooden_skateboard_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -74,5 +72,37 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "wooden_skateboard_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "wooden_skateboard",
+    "textPrompt": "a simple skateboard with a wooden deck and two pairs of wheels",
+    "outputName": "wooden_skateboard_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "black rubber",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a simple skateboard with a wooden deck and two pairs of wheels. Overall appearance and texture: black rubber. Local texture overrides: part 1 (wooden skateboard deck): light wood. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "wooden skateboard deck",
+      "front axle and wheel pair",
+      "rear axle and wheel pair"
+    ],
+    "localTextureTexts": [
+      "light wood",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

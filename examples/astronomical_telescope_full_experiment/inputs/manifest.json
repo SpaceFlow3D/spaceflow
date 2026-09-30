@@ -3,8 +3,6 @@
   "project_name": "astronomical_telescope",
   "saved_at": "20260706T124000Z",
   "save_id": "20260706T124000Z_astronomical_telescope_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/astronomical_telescope/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/astronomical_telescope/prompt.txt",
   "prompt": "an astronomical telescope on a tripod mount",
   "textPrompt": "an astronomical telescope on a tripod mount",
   "texture": {
@@ -54,9 +52,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/astronomical_telescope_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/astronomical_telescope_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/astronomical_telescope_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -122,5 +120,55 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "astronomical_telescope_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "astronomical_telescope",
+    "textPrompt": "an astronomical telescope on a tripod mount",
+    "outputName": "astronomical_telescope_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "matte black metal with polished brass rings",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an astronomical telescope on a tripod mount. Overall appearance and texture: matte black metal with polished brass rings. Local texture overrides: part 2 (objective lens ring): clear blue glass objective lens in a brass ring; part 6 (left tripod leg): warm varnished wooden tripod leg; part 7 (right tripod leg): warm varnished wooden tripod leg; part 8 (rear tripod leg): warm varnished wooden tripod leg. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "main telescope tube",
+      "objective lens ring",
+      "eyepiece",
+      "pivot mount",
+      "central tripod column",
+      "left tripod leg",
+      "right tripod leg",
+      "rear tripod leg",
+      "finder scope"
+    ],
+    "localTextureTexts": [
+      "",
+      "clear blue glass objective lens in a brass ring",
+      "",
+      "",
+      "",
+      "warm varnished wooden tripod leg",
+      "warm varnished wooden tripod leg",
+      "warm varnished wooden tripod leg",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

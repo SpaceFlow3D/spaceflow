@@ -3,8 +3,6 @@
   "project_name": "medieval_catapult",
   "saved_at": "20260707T092200Z",
   "save_id": "20260707T092200Z_medieval_catapult_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/medieval_catapult/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/medieval_catapult/prompt.txt",
   "prompt": "a small medieval wooden catapult with a stone projectile",
   "textPrompt": "a small medieval wooden catapult with a stone projectile",
   "texture": {
@@ -53,9 +51,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/medieval_catapult_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/medieval_catapult_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/medieval_catapult_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -114,5 +112,52 @@
       "visible": true,
       "localTextureText": "rough grey stone projectile"
     }
-  ]
+  ],
+  "recovered_example": "medieval_catapult_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "medieval_catapult",
+    "textPrompt": "a small medieval wooden catapult with a stone projectile",
+    "outputName": "medieval_catapult_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "rough weathered oak wood with tan rope lashings",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a small medieval wooden catapult with a stone projectile. Overall appearance and texture: rough weathered oak wood with tan rope lashings. Local texture overrides: part 2 (left wheel): dark iron-rimmed wooden wheel; part 3 (right wheel): dark iron-rimmed wooden wheel; part 8 (stone projectile): rough grey stone projectile. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "wooden base frame",
+      "left wheel",
+      "right wheel",
+      "left support strut",
+      "right support strut",
+      "throwing arm",
+      "throwing cup",
+      "stone projectile"
+    ],
+    "localTextureTexts": [
+      "",
+      "dark iron-rimmed wooden wheel",
+      "dark iron-rimmed wooden wheel",
+      "",
+      "",
+      "",
+      "",
+      "rough grey stone projectile"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

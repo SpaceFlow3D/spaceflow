@@ -3,8 +3,6 @@
   "project_name": "tabletop_world_globe",
   "saved_at": "20260723T160033Z",
   "save_id": "20260723T160033Z_tabletop_world_globe_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/tabletop_world_globe/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/tabletop_world_globe/prompt.txt",
   "prompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base",
   "textPrompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base",
   "texture": {
@@ -49,9 +47,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/tabletop_world_globe_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/tabletop_world_globe_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/tabletop_world_globe_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -82,5 +80,40 @@
       "visible": true,
       "localTextureText": "dark walnut wood with a satin finish"
     }
-  ]
+  ],
+  "recovered_example": "tabletop_world_globe_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "tabletop_world_globe",
+    "textPrompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base",
+    "outputName": "tabletop_world_globe_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "warm antique brass and dark polished wood",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base. Overall appearance and texture: warm antique brass and dark polished wood. Local texture overrides: part 1 (world globe): muted blue oceans with softly colored vintage map continents; part 4 (round base): dark walnut wood with a satin finish. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "world globe",
+      "tilted exposed axle",
+      "pedestal support",
+      "round base"
+    ],
+    "localTextureTexts": [
+      "muted blue oceans with softly colored vintage map continents",
+      "",
+      "",
+      "dark walnut wood with a satin finish"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

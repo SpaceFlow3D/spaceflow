@@ -2,7 +2,6 @@
   "spaceflow_schema": "spatial_control_texture_study_v1",
   "project_name": "22_20260605T223506Z_chair_full_experiment",
   "saved_at": "20260810T093902Z",
-  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/22_20260605T223506Z_chair_experiment",
   "prompt": "chair",
   "textPrompt": "chair",
   "texture": {
@@ -23,9 +22,9 @@
     "low": 2
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/22_20260605T223506Z_chair_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/22_20260605T223506Z_chair_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/22_20260605T223506Z_chair_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/22_20260605T223506Z_chair_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/22_20260605T223506Z_chair_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/22_20260605T223506Z_chair_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -52,5 +51,37 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "22_20260605T223506Z_chair_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "22_20260605T223506Z_chair_full_experiment",
+    "textPrompt": "chair",
+    "outputName": "22_20260605T223506Z_chair_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "white plastic",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "A white plastic chair with a blue plastic seat",
+    "primitiveNames": [
+      "seat",
+      "SQ 2",
+      "SQ 3"
+    ],
+    "localTextureTexts": [
+      "blue plastic",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

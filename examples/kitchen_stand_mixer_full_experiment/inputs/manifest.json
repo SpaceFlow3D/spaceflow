@@ -3,8 +3,6 @@
   "project_name": "kitchen_stand_mixer",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_kitchen_stand_mixer_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/kitchen_stand_mixer/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/kitchen_stand_mixer/prompt.txt",
   "prompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater",
   "textPrompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/kitchen_stand_mixer_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/kitchen_stand_mixer_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/kitchen_stand_mixer_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "kitchen_stand_mixer_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "kitchen_stand_mixer",
+    "textPrompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater",
+    "outputName": "kitchen_stand_mixer_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "cream enamel appliance housing with brushed metal fittings",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater. Overall appearance and texture: cream enamel appliance housing with brushed metal fittings. Local texture overrides: part 4 (mixing bowl): reflective brushed stainless steel. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "weighted base",
+      "upright column",
+      "tilting motor head",
+      "mixing bowl",
+      "beater shaft",
+      "front attachment hub"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "reflective brushed stainless steel",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

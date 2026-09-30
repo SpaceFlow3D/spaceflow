@@ -3,8 +3,6 @@
   "project_name": "umbrella_wrong_canopy",
   "saved_at": "20260707T145329Z",
   "save_id": "20260707T145329Z_umbrella_wrong_canopy_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/umbrella_wrong_canopy/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/umbrella_wrong_canopy/prompt.txt",
   "prompt": "an open umbrella with a curved fabric canopy",
   "textPrompt": "an open umbrella with a curved fabric canopy",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/umbrella_wrong_canopy_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/umbrella_wrong_canopy_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/umbrella_wrong_canopy_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "umbrella_wrong_canopy_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "umbrella_wrong_canopy",
+    "textPrompt": "an open umbrella with a curved fabric canopy",
+    "outputName": "umbrella_wrong_canopy_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "black metal ribs with deep red waterproof fabric",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an open umbrella with a curved fabric canopy. Overall appearance and texture: black metal ribs with deep red waterproof fabric. Local texture overrides: part 3 (wrong flat canopy disk): deep red waterproof umbrella fabric. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "center pole",
+      "curved handle block",
+      "wrong flat canopy disk",
+      "front rib",
+      "back rib",
+      "left rib",
+      "right rib"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "deep red waterproof umbrella fabric",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

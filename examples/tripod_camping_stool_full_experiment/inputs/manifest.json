@@ -3,8 +3,6 @@
   "project_name": "tripod_camping_stool",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_tripod_camping_stool_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/tripod_camping_stool/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/tripod_camping_stool/prompt.txt",
   "prompt": "a compact tripod camping stool with a round fabric seat and three splayed legs",
   "textPrompt": "a compact tripod camping stool with a round fabric seat and three splayed legs",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/tripod_camping_stool_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/tripod_camping_stool_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/tripod_camping_stool_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "tripod_camping_stool_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "tripod_camping_stool",
+    "textPrompt": "a compact tripod camping stool with a round fabric seat and three splayed legs",
+    "outputName": "tripod_camping_stool_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "lightweight brushed aluminum frame with durable outdoor fabric",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a compact tripod camping stool with a round fabric seat and three splayed legs. Overall appearance and texture: lightweight brushed aluminum frame with durable outdoor fabric. Local texture overrides: part 1 (fabric seat): dark forest green canvas with reinforced stitching. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "fabric seat",
+      "left front leg",
+      "right front leg",
+      "rear leg",
+      "front folding brace",
+      "rear folding brace"
+    ],
+    "localTextureTexts": [
+      "dark forest green canvas with reinforced stitching",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

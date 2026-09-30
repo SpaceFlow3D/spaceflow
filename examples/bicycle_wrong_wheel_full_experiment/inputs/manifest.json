@@ -3,8 +3,6 @@
   "project_name": "bicycle_wrong_wheel",
   "saved_at": "20260706T124000Z",
   "save_id": "20260706T124000Z_bicycle_wrong_wheel_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bicycle_wrong_wheel/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bicycle_wrong_wheel/prompt.txt",
   "prompt": "a classic bicycle with two round spoked wheels",
   "textPrompt": "a classic bicycle with two round spoked wheels",
   "texture": {
@@ -53,9 +51,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/bicycle_wrong_wheel_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/bicycle_wrong_wheel_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/bicycle_wrong_wheel_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -114,5 +112,52 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "bicycle_wrong_wheel_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "bicycle_wrong_wheel",
+    "textPrompt": "a classic bicycle with two round spoked wheels",
+    "outputName": "bicycle_wrong_wheel_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "dark green painted metal frame with black rubber tires",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic bicycle with two round spoked wheels. Overall appearance and texture: dark green painted metal frame with black rubber tires. Local texture overrides: part 5 (seat): black leather bicycle saddle; part 6 (handlebar): chrome metal handlebar with black rubber grips. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "top frame tube",
+      "down frame tube",
+      "seat tube",
+      "front fork",
+      "seat",
+      "handlebar",
+      "wrong rear wheel block",
+      "wrong front wheel blob"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "black leather bicycle saddle",
+      "chrome metal handlebar with black rubber grips",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

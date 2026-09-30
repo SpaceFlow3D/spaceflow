@@ -3,8 +3,6 @@
   "project_name": "articulated_desk_lamp",
   "saved_at": "20260723T160033Z",
   "save_id": "20260723T160033Z_articulated_desk_lamp_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/articulated_desk_lamp/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/articulated_desk_lamp/prompt.txt",
   "prompt": "an articulated metal desk lamp with a weighted base, two angled arms, and a broad adjustable shade",
   "textPrompt": "an articulated metal desk lamp with a weighted base, two angled arms, and a broad adjustable shade",
   "texture": {
@@ -49,9 +47,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/articulated_desk_lamp_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/articulated_desk_lamp_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/articulated_desk_lamp_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/articulated_desk_lamp_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/articulated_desk_lamp_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/articulated_desk_lamp_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -82,5 +80,40 @@
       "visible": true,
       "localTextureText": "moss-green enamel with a pale reflective inner surface"
     }
-  ]
+  ],
+  "recovered_example": "articulated_desk_lamp_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "articulated_desk_lamp",
+    "textPrompt": "an articulated metal desk lamp with a weighted base, two angled arms, and a broad adjustable shade",
+    "outputName": "articulated_desk_lamp_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "matte moss-green painted metal with dark joints",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an articulated metal desk lamp with a weighted base, two angled arms, and a broad adjustable shade. Overall appearance and texture: matte moss-green painted metal with dark joints. Local texture overrides: part 1 (weighted base): heavy dark charcoal cast metal; part 4 (adjustable lamp shade): moss-green enamel with a pale reflective inner surface. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "weighted base",
+      "lower support arm",
+      "upper adjustable arm",
+      "adjustable lamp shade"
+    ],
+    "localTextureTexts": [
+      "heavy dark charcoal cast metal",
+      "",
+      "",
+      "moss-green enamel with a pale reflective inner surface"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

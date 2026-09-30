@@ -2,7 +2,6 @@
   "spaceflow_schema": "spatial_control_texture_study_v1",
   "project_name": "21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment",
   "saved_at": "20260810T093902Z",
-  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_experiment",
   "prompt": "wood chair with straight legs and a cushioned seat",
   "textPrompt": "wood chair with straight legs and a cushioned seat",
   "texture": {
@@ -30,9 +29,9 @@
     "low": 9
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -115,5 +114,58 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment",
+    "textPrompt": "wood chair with straight legs and a cushioned seat",
+    "outputName": "21_20260605T221847Z_wood_chair_with_straight_legs_and_a_cushioned_seat_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "light wood",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "A light wood chair with a blue fabric seat cushion",
+    "primitiveNames": [
+      "SQ 1",
+      "SQ 2",
+      "SQ 3",
+      "SQ 4",
+      "SQ 5",
+      "SQ 6",
+      "SQ 7",
+      "SQ 8",
+      "seat cushion",
+      "SQ 10"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "blue fabric",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

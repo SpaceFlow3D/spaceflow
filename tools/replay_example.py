@@ -46,6 +46,8 @@ def prepare(example: Path, destination: Path, only: list[str]) -> Path:
             return {key: relocate(item) for key,item in value.items()}
         return value
     config = relocate(config)
+    for metadata_file in (destination / 'inputs').rglob('*.json'):
+        metadata_file.write_text(json.dumps(relocate(json.loads(metadata_file.read_text())), indent=2)+'\n')
     config['spaceflow_config'] = str(REPO / 'config/default.yaml')
     if selected:
         config['variants']=[v for v in config['variants'] if v['name'] in selected]

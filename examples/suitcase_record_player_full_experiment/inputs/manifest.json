@@ -3,8 +3,6 @@
   "project_name": "suitcase_record_player",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_suitcase_record_player_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/suitcase_record_player/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/suitcase_record_player/prompt.txt",
   "prompt": "a vintage suitcase record player with an open lid, round platter, and tonearm",
   "textPrompt": "a vintage suitcase record player with an open lid, round platter, and tonearm",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/suitcase_record_player_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/suitcase_record_player_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/suitcase_record_player_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": "tan woven speaker cloth"
     }
-  ]
+  ],
+  "recovered_example": "suitcase_record_player_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "suitcase_record_player",
+    "textPrompt": "a vintage suitcase record player with an open lid, round platter, and tonearm",
+    "outputName": "suitcase_record_player_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "warm cream suitcase casing with dark metal hardware",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a vintage suitcase record player with an open lid, round platter, and tonearm. Overall appearance and texture: warm cream suitcase casing with dark metal hardware. Local texture overrides: part 2 (round platter): matte black vinyl turntable surface; part 6 (lid speaker panel): tan woven speaker cloth. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "suitcase base",
+      "round platter",
+      "tonearm",
+      "open lid",
+      "front control strip",
+      "lid speaker panel"
+    ],
+    "localTextureTexts": [
+      "",
+      "matte black vinyl turntable surface",
+      "",
+      "",
+      "",
+      "tan woven speaker cloth"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

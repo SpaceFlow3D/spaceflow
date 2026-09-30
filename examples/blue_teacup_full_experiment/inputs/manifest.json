@@ -3,8 +3,6 @@
   "project_name": "blue_teacup",
   "saved_at": "20260809T192354Z",
   "save_id": "20260809T192354Z_blue_teacup_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/blue_teacup/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/blue_teacup/prompt.txt",
   "prompt": "a teacup",
   "textPrompt": "a teacup",
   "texture": {
@@ -48,9 +46,9 @@
     ]
   },
   "paths": {
-    "all": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/all.npz",
-    "high_control": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/blue_teacup_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/blue_teacup_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/blue_teacup_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -74,5 +72,37 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "blue_teacup_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "blue_teacup",
+    "textPrompt": "a teacup",
+    "outputName": "blue_teacup_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "white ceramic",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a teacup. Overall appearance and texture: white ceramic. Local texture overrides: part 1 (cup body): blue ceramic. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "cup body",
+      "upper handle segment",
+      "lower handle segment"
+    ],
+    "localTextureTexts": [
+      "blue ceramic",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

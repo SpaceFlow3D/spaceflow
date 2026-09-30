@@ -3,8 +3,6 @@
   "project_name": "leather_hiking_boot",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_leather_hiking_boot_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/leather_hiking_boot/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/leather_hiking_boot/prompt.txt",
   "prompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe",
   "textPrompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/leather_hiking_boot_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/leather_hiking_boot_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/leather_hiking_boot_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": "soft cream shearling lining"
     }
-  ]
+  ],
+  "recovered_example": "leather_hiking_boot_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "leather_hiking_boot",
+    "textPrompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe",
+    "outputName": "leather_hiking_boot_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "worn dark brown leather with rugged black rubber",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe. Overall appearance and texture: worn dark brown leather with rugged black rubber. Local texture overrides: part 3 (thick outsole): deeply treaded matte black rubber; part 6 (padded ankle cuff): soft cream shearling lining. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "main leather foot",
+      "high ankle shaft",
+      "thick outsole",
+      "reinforced toe cap",
+      "rear heel block",
+      "padded ankle cuff"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "deeply treaded matte black rubber",
+      "",
+      "",
+      "soft cream shearling lining"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

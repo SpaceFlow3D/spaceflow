@@ -3,8 +3,6 @@
   "project_name": "red_metal_toolbox",
   "saved_at": "20260724T183756Z",
   "save_id": "20260724T183756Z_red_metal_toolbox_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/red_metal_toolbox/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/red_metal_toolbox/prompt.txt",
   "prompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches",
   "textPrompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches",
   "texture": {
@@ -49,9 +47,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/red_metal_toolbox_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/red_metal_toolbox_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/red_metal_toolbox_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -82,5 +80,40 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "red_metal_toolbox_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "red_metal_toolbox",
+    "textPrompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches",
+    "outputName": "red_metal_toolbox_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "red painted steel",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches. Overall appearance and texture: red painted steel. Apply the overall appearance and texture consistently to every part.",
+    "primitiveNames": [
+      "rectangular toolbox body",
+      "fitted toolbox lid",
+      "top carrying handle",
+      "grouped front latches"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

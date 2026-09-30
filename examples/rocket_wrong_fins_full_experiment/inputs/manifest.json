@@ -3,8 +3,6 @@
   "project_name": "rocket_wrong_fins",
   "saved_at": "20260707T120056Z",
   "save_id": "20260707T120056Z_rocket_wrong_fins_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/rocket_wrong_fins/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/rocket_wrong_fins/prompt.txt",
   "prompt": "a small retro rocket with three tail fins and a round window",
   "textPrompt": "a small retro rocket with three tail fins and a round window",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": "glossy blue circular porthole window"
     }
-  ]
+  ],
+  "recovered_example": "rocket_wrong_fins_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "rocket_wrong_fins",
+    "textPrompt": "a small retro rocket with three tail fins and a round window",
+    "outputName": "rocket_wrong_fins_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "white painted rocket body with red accents and scorched dark engine metal",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "rocket body",
+      "nose cone",
+      "engine nozzle",
+      "wrong single fin slab",
+      "round window"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "bright red painted rocket fins",
+      "glossy blue circular porthole window"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

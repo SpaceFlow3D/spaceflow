@@ -3,8 +3,6 @@
   "project_name": "silver_trophy_cup",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_silver_trophy_cup_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/silver_trophy_cup/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/silver_trophy_cup/prompt.txt",
   "prompt": "a classic silver trophy cup with two side handles on a dark pedestal base",
   "textPrompt": "a classic silver trophy cup with two side handles on a dark pedestal base",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/silver_trophy_cup_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/silver_trophy_cup_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/silver_trophy_cup_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "silver_trophy_cup_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "silver_trophy_cup",
+    "textPrompt": "a classic silver trophy cup with two side handles on a dark pedestal base",
+    "outputName": "silver_trophy_cup_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "polished silver metal with subtle reflections",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic silver trophy cup with two side handles on a dark pedestal base. Overall appearance and texture: polished silver metal with subtle reflections. Local texture overrides: part 4 (pedestal base): dark charcoal stone with a satin finish. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "cup bowl",
+      "wide cup rim",
+      "slender stem",
+      "pedestal base",
+      "left side handle",
+      "right side handle"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "dark charcoal stone with a satin finish",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

@@ -3,8 +3,6 @@
   "project_name": "piano",
   "saved_at": "20260708T125223Z",
   "save_id": "20260708T125223Z_piano_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/piano/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/piano/prompt.txt",
   "prompt": "an upright piano",
   "textPrompt": "an upright piano",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/piano_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/piano_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/piano_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "piano_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "piano",
+    "textPrompt": "an upright piano",
+    "outputName": "piano_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "glossy black upright piano with ivory keys and polished dark wood details",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an upright piano. Overall appearance and texture: glossy black upright piano with ivory keys and polished dark wood details. Local texture overrides: part 1 (tall piano cabinet): glossy black lacquer piano cabinet; part 2 (keyboard slab): ivory and black piano keys. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "tall piano cabinet",
+      "keyboard slab",
+      "top lid slab",
+      "lower front panel",
+      "raised music stand",
+      "left front leg",
+      "right front leg"
+    ],
+    "localTextureTexts": [
+      "glossy black lacquer piano cabinet",
+      "ivory and black piano keys",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

@@ -3,8 +3,6 @@
   "project_name": "retro_robot_toy",
   "saved_at": "20260707T120056Z",
   "save_id": "20260707T120056Z_retro_robot_toy_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/retro_robot_toy/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/retro_robot_toy/prompt.txt",
   "prompt": "a retro tin robot toy",
   "textPrompt": "a retro tin robot toy",
   "texture": {
@@ -54,9 +52,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/retro_robot_toy_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/retro_robot_toy_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/retro_robot_toy_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -122,5 +120,55 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "retro_robot_toy_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "retro_robot_toy",
+    "textPrompt": "a retro tin robot toy",
+    "outputName": "retro_robot_toy_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "brushed silver tin with small scratches and worn edges",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a retro tin robot toy. Overall appearance and texture: brushed silver tin with small scratches and worn edges. Local texture overrides: part 3 (face screen): glowing cyan glass display; part 8 (chest buttons): red and yellow glossy plastic buttons. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "tin torso",
+      "square head",
+      "face screen",
+      "left arm",
+      "right arm",
+      "left leg",
+      "right leg",
+      "chest buttons",
+      "antenna"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "glowing cyan glass display",
+      "",
+      "",
+      "",
+      "",
+      "red and yellow glossy plastic buttons",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

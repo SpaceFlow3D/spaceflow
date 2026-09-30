@@ -3,8 +3,6 @@
   "project_name": "brass_hand_bell",
   "saved_at": "20260802T093107Z",
   "save_id": "20260802T093107Z_brass_hand_bell_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/brass_hand_bell/brass_hand_bell/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/brass_hand_bell/brass_hand_bell/prompt.txt",
   "prompt": "a hand bell",
   "textPrompt": "a hand bell",
   "texture": {
@@ -48,9 +46,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/brass_hand_bell/brass_hand_bell_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/brass_hand_bell/brass_hand_bell_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/brass_hand_bell/brass_hand_bell_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/brass_hand_bell_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/brass_hand_bell_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/brass_hand_bell_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -74,5 +72,37 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "brass_hand_bell_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "brass_hand_bell",
+    "textPrompt": "a hand bell",
+    "outputName": "brass_hand_bell_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "brass",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a hand bell. Overall appearance and texture: brass. Apply the overall appearance and texture consistently to every part.",
+    "primitiveNames": [
+      "bell body",
+      "bell handle",
+      "visible clapper"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

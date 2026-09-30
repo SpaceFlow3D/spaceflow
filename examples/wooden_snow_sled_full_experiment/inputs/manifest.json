@@ -3,8 +3,6 @@
   "project_name": "wooden_snow_sled",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_wooden_snow_sled_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/wooden_snow_sled/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/wooden_snow_sled/prompt.txt",
   "prompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope",
   "textPrompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/wooden_snow_sled_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/wooden_snow_sled_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/wooden_snow_sled_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "wooden_snow_sled_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "wooden_snow_sled",
+    "textPrompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope",
+    "outputName": "wooden_snow_sled_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "varnished honey-colored wood with simple metal fittings",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope. Overall appearance and texture: varnished honey-colored wood with simple metal fittings. Local texture overrides: part 1 (left runner): smooth dark steel runner; part 2 (right runner): smooth dark steel runner; part 3 (seat platform): warm varnished ash wood. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "left runner",
+      "right runner",
+      "seat platform",
+      "front crossbar",
+      "raised backrest",
+      "pull rope"
+    ],
+    "localTextureTexts": [
+      "smooth dark steel runner",
+      "smooth dark steel runner",
+      "warm varnished ash wood",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

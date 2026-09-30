@@ -3,8 +3,6 @@
   "project_name": "desk_lamp",
   "saved_at": "20260708T125223Z",
   "save_id": "20260708T125223Z_desk_lamp_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/desk_lamp/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/desk_lamp/prompt.txt",
   "prompt": "an adjustable desk lamp",
   "textPrompt": "an adjustable desk lamp",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/desk_lamp_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/desk_lamp_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/desk_lamp_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "desk_lamp_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "desk_lamp",
+    "textPrompt": "an adjustable desk lamp",
+    "outputName": "desk_lamp_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "brushed black metal desk lamp with a warm matte white shade interior",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an adjustable desk lamp. Overall appearance and texture: brushed black metal desk lamp with a warm matte white shade interior. Local texture overrides: part 4 (shade head): matte white lamp shade with warm glowing interior. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "round weighted base",
+      "lower angled arm",
+      "upper angled arm",
+      "shade head",
+      "elbow hinge joint",
+      "short neck connector"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "matte white lamp shade with warm glowing interior",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

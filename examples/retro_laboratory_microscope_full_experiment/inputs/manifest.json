@@ -3,8 +3,6 @@
   "project_name": "retro_laboratory_microscope",
   "saved_at": "20260723T160033Z",
   "save_id": "20260723T160033Z_retro_laboratory_microscope_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/retro_laboratory_microscope/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/retro_laboratory_microscope/prompt.txt",
   "prompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing",
   "textPrompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/retro_laboratory_microscope_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/retro_laboratory_microscope_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/retro_laboratory_microscope_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "retro_laboratory_microscope_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "retro_laboratory_microscope",
+    "textPrompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing",
+    "outputName": "retro_laboratory_microscope_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "black enamel laboratory metal with brushed silver optical parts",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing. Overall appearance and texture: black enamel laboratory metal with brushed silver optical parts. Local texture overrides: part 1 (heavy microscope base): deep bottle-green enamel over cast metal. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "heavy microscope base",
+      "angled main support",
+      "specimen stage",
+      "upper eyepiece",
+      "objective housing"
+    ],
+    "localTextureTexts": [
+      "deep bottle-green enamel over cast metal",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

@@ -3,8 +3,6 @@
   "project_name": "floor_tom_drum",
   "saved_at": "20260720T172903Z",
   "save_id": "20260720T172903Z_floor_tom_drum_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/floor_tom_drum/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/floor_tom_drum/prompt.txt",
   "prompt": "floor tom drum",
   "textPrompt": "floor tom drum",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/floor_tom_drum_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/floor_tom_drum_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/floor_tom_drum_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": "chrome lugs"
     }
-  ]
+  ],
+  "recovered_example": "floor_tom_drum_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "floor_tom_drum",
+    "textPrompt": "floor tom drum",
+    "outputName": "floor_tom_drum_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "burgundy lacquer",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "floor tom drum. Overall appearance and texture: burgundy lacquer. Local texture overrides: part 1 (drum shell): burgundy shell; part 2 (top drumhead): white drumhead; part 7 (lug group): chrome lugs. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "drum shell",
+      "top drumhead",
+      "bottom rim",
+      "left chrome leg",
+      "right chrome leg",
+      "rear chrome leg",
+      "lug group"
+    ],
+    "localTextureTexts": [
+      "burgundy shell",
+      "white drumhead",
+      "",
+      "",
+      "",
+      "",
+      "chrome lugs"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

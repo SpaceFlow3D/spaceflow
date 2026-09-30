@@ -3,8 +3,6 @@
   "project_name": "closed_umbrella",
   "saved_at": "20260724T183756Z",
   "save_id": "20260724T183756Z_closed_umbrella_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/closed_umbrella/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/closed_umbrella/prompt.txt",
   "prompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle",
   "textPrompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/closed_umbrella_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/closed_umbrella_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/closed_umbrella_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "closed_umbrella_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "closed_umbrella",
+    "textPrompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle",
+    "outputName": "closed_umbrella_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "black metal",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle. Overall appearance and texture: black metal. Local texture overrides: part 2 (folded umbrella canopy): dark blue fabric. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "straight umbrella shaft",
+      "folded umbrella canopy",
+      "upper handle segment",
+      "lower hooked handle segment",
+      "pointed top tip"
+    ],
+    "localTextureTexts": [
+      "",
+      "dark blue fabric",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

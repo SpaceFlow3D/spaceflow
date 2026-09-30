@@ -2,7 +2,6 @@
   "spaceflow_schema": "spatial_control_texture_study_v1",
   "project_name": "19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts",
   "saved_at": "20260810T093902Z",
-  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/19_monitor_with_an_attached_keyboard_experiment_only_t10_and_tbyparts",
   "prompt": "Monitor with an attached keyboard",
   "textPrompt": "Monitor with an attached keyboard",
   "texture": {
@@ -24,9 +23,9 @@
     "low": 1
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/all.npz",
+    "high_control": "/spaceflow-example/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -61,5 +60,40 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts",
+  "spaceflow_metadata": {
+    "projectName": "19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts",
+    "textPrompt": "Monitor with an attached keyboard",
+    "outputName": "19_monitor_with_an_attached_keyboard_full_experiment_only_t10_and_tbyparts",
+    "textureMode": "text",
+    "globalTextureText": "black plastic",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "A black plastic monitor with an attached keyboard and a blue glass screen",
+    "primitiveNames": [
+      "SQ 1",
+      "SQ 2",
+      "screen",
+      "SQ 4"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "blue glass",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 150,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

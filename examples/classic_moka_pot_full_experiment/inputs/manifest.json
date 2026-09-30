@@ -3,8 +3,6 @@
   "project_name": "classic_moka_pot",
   "saved_at": "20260724T113047Z",
   "save_id": "20260724T113047Z_classic_moka_pot_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_moka_pot/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_moka_pot/prompt.txt",
   "prompt": "a classic stovetop moka pot with a faceted lower boiler, upper coffee chamber, fitted lid, pouring spout, and side handle",
   "textPrompt": "a classic stovetop moka pot with a faceted lower boiler, upper coffee chamber, fitted lid, pouring spout, and side handle",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_moka_pot_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_moka_pot_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_moka_pot_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/classic_moka_pot_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/classic_moka_pot_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/classic_moka_pot_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": "matte black Bakelite"
     }
-  ]
+  ],
+  "recovered_example": "classic_moka_pot_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "classic_moka_pot",
+    "textPrompt": "a classic stovetop moka pot with a faceted lower boiler, upper coffee chamber, fitted lid, pouring spout, and side handle",
+    "outputName": "classic_moka_pot_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "softly brushed silver aluminum with dark heat-resistant fittings",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic stovetop moka pot with a faceted lower boiler, upper coffee chamber, fitted lid, pouring spout, and side handle. Overall appearance and texture: softly brushed silver aluminum with dark heat-resistant fittings. Local texture overrides: part 5 (side handle): matte black Bakelite. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "faceted lower boiler",
+      "upper coffee chamber",
+      "fitted top lid",
+      "pouring spout",
+      "side handle"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "matte black Bakelite"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

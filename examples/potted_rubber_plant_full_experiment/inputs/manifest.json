@@ -3,8 +3,6 @@
   "project_name": "potted_rubber_plant",
   "saved_at": "20260723T160033Z",
   "save_id": "20260723T160033Z_potted_rubber_plant_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/potted_rubber_plant/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/potted_rubber_plant/prompt.txt",
   "prompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves",
   "textPrompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/potted_rubber_plant_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/potted_rubber_plant_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/potted_rubber_plant_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": "dense glossy deep-green rubber plant leaves"
     }
-  ]
+  ],
+  "recovered_example": "potted_rubber_plant_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "potted_rubber_plant",
+    "textPrompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves",
+    "outputName": "potted_rubber_plant_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "natural indoor plant materials with deep green foliage and warm earthy details",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves. Overall appearance and texture: natural indoor plant materials with deep green foliage and warm earthy details. Local texture overrides: part 1 (tapered plant pot): matte cream ceramic with a subtle speckled glaze; part 3 (left foliage cluster): dense glossy deep-green rubber plant leaves; part 4 (right foliage cluster): dense glossy deep-green rubber plant leaves; part 5 (top foliage cluster): dense glossy deep-green rubber plant leaves. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "tapered plant pot",
+      "central plant trunk",
+      "left foliage cluster",
+      "right foliage cluster",
+      "top foliage cluster"
+    ],
+    "localTextureTexts": [
+      "matte cream ceramic with a subtle speckled glaze",
+      "",
+      "dense glossy deep-green rubber plant leaves",
+      "dense glossy deep-green rubber plant leaves",
+      "dense glossy deep-green rubber plant leaves"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

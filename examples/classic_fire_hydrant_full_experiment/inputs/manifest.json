@@ -3,8 +3,6 @@
   "project_name": "classic_fire_hydrant",
   "saved_at": "20260724T113047Z",
   "save_id": "20260724T113047Z_classic_fire_hydrant_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_fire_hydrant/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_fire_hydrant/prompt.txt",
   "prompt": "a classic street fire hydrant with a stout central barrel, broad ground flange, domed top cap, and two opposing side outlets",
   "textPrompt": "a classic street fire hydrant with a stout central barrel, broad ground flange, domed top cap, and two opposing side outlets",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_fire_hydrant_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_fire_hydrant_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_fire_hydrant_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/classic_fire_hydrant_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/classic_fire_hydrant_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/classic_fire_hydrant_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "classic_fire_hydrant_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "classic_fire_hydrant",
+    "textPrompt": "a classic street fire hydrant with a stout central barrel, broad ground flange, domed top cap, and two opposing side outlets",
+    "outputName": "classic_fire_hydrant_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "weathered red painted cast iron with subtle edge wear",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic street fire hydrant with a stout central barrel, broad ground flange, domed top cap, and two opposing side outlets. Overall appearance and texture: weathered red painted cast iron with subtle edge wear. Apply the overall appearance and texture consistently to every part.",
+    "primitiveNames": [
+      "stout central barrel",
+      "broad ground flange",
+      "domed top cap",
+      "left side outlet cap",
+      "right side outlet cap"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

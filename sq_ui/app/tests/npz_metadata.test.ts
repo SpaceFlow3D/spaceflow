@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import JSZip from 'jszip';
 import { exportNpz, type PrimitiveExport } from '../src/mesh/npzExport';
 import { importNpzWithMetadata, type NpzSpaceflowMetadata } from '../src/mesh/npzImport';
 
@@ -43,4 +44,23 @@ test('empty prompts and output names survive a round trip', async () => {
   const metadata = { globalTextureText: '', globalTextureImagePath: '', outputName: '' };
   const restored = await importNpzWithMetadata(await exportNpz([primitive], { metadata }), 'empty');
   assert.deepEqual(restored.metadata, metadata);
+});
+
+test('legacy np.savez byte-string metadata restores saved prompts', async () => {
+  const metadata = { textPrompt: 'a teacup', globalTextureText: 'white ceramic',
+    primitiveNames: ['cup body'], localTextureTexts: ['blue ceramic'] };
+  const json = new TextEncoder().encode(JSON.stringify(metadata));
+  let header = `{'descr': '|S${json.length}', 'fortran_order': False, 'shape': (), }`;
+  const length = Math.ceil((10 + header.length + 1) / 64) * 64 - 10;
+  header = header.padEnd(length - 1, ' ') + '\n';
+  const encoded = new Uint8Array(10 + length + json.length);
+  encoded.set([0x93, 0x4e, 0x55, 0x4d, 0x50, 0x59, 1, 0, length & 0xff, length >> 8]);
+  encoded.set(new TextEncoder().encode(header), 10);
+  encoded.set(json, 10 + length);
+  const zip = await JSZip.loadAsync(await (await exportNpz([primitive])).arrayBuffer());
+  zip.file('spaceflow_metadata.json.npy', encoded);
+  const restored = await importNpzWithMetadata(await zip.generateAsync({ type: 'blob' }), 'legacy');
+  assert.deepEqual(restored.metadata, metadata);
+  assert.equal(restored.primitives[0].name, 'cup body');
+  assert.equal(restored.primitives[0].localTextureText, 'blue ceramic');
 });

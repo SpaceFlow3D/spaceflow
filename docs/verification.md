@@ -23,7 +23,7 @@ The repository's older Git history remains available; use the documented shallow
 | Check | Result and scope |
 | --- | --- |
 | Backend CPU workflow | Four Python tests passed, including real HTTP save/history/reopen and replay path preservation. |
-| UI regression tests | Three tests passed for NPZ geometry, prompt/name/settings preservation, zero values, empty prompts, and compatibility with geometry-only inputs. |
+| UI regression tests | Four tests passed for NPZ geometry, prompt/name/settings preservation, zero values, empty prompts, geometry-only inputs, and legacy NumPy-wrapped byte-string metadata. |
 | UI installation/build | Clean `npm ci --include=optional`, TypeScript check, and production Vite build passed with Node.js 24.19.0. Vite reports a large JavaScript chunk warning. |
 | Browser workflow | Imported real teacup primitives, edited a local text condition, saved inputs, started a fresh browser session, and reopened the geometry, names, control levels, global/local prompts, and non-default run settings. No browser console errors were observed. |
 | Input bundles | All 249 NPZ inputs have finite numeric values and expected primitive array shapes. |

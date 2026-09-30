@@ -3,8 +3,6 @@
   "project_name": "red_toy_rocket",
   "saved_at": "20260809T194715Z",
   "save_id": "20260809T194715Z_red_toy_rocket_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/red_toy_rocket/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/red_toy_rocket/prompt.txt",
   "prompt": "a toy rocket",
   "textPrompt": "a toy rocket",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/all.npz",
-    "high_control": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "red_toy_rocket_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "red_toy_rocket",
+    "textPrompt": "a toy rocket",
+    "outputName": "red_toy_rocket_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "white metal",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "rocket body",
+      "nose cone",
+      "left fin",
+      "right fin",
+      "engine base"
+    ],
+    "localTextureTexts": [
+      "",
+      "red metal",
+      "red metal",
+      "red metal",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

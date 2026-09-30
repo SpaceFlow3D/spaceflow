@@ -2,7 +2,6 @@
   "spaceflow_schema": "spatial_control_texture_study_v1",
   "project_name": "04_a_wooden_toy_of_a_person_full_experiment",
   "saved_at": "20260810T093902Z",
-  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/04_a_wooden_toy_of_a_person_experiment",
   "prompt": "A wooden toy of a person",
   "textPrompt": "A wooden toy of a person",
   "texture": {
@@ -27,9 +26,9 @@
     "low": 5
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/04_a_wooden_toy_of_a_person_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/04_a_wooden_toy_of_a_person_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/04_a_wooden_toy_of_a_person_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/04_a_wooden_toy_of_a_person_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/04_a_wooden_toy_of_a_person_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/04_a_wooden_toy_of_a_person_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -88,5 +87,49 @@
       "visible": true,
       "localTextureText": "peach paint"
     }
-  ]
+  ],
+  "recovered_example": "04_a_wooden_toy_of_a_person_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "04_a_wooden_toy_of_a_person_full_experiment",
+    "textPrompt": "A wooden toy of a person",
+    "outputName": "04_a_wooden_toy_of_a_person_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "light wood",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "A light wood toy person with a red painted torso and a peach painted head",
+    "primitiveNames": [
+      "SQ 1",
+      "SQ 2",
+      "SQ 3",
+      "SQ 4",
+      "SQ 5",
+      "torso",
+      "head"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "red paint",
+      "peach paint"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 150,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

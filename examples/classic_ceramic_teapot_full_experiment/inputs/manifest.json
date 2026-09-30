@@ -3,8 +3,6 @@
   "project_name": "classic_ceramic_teapot",
   "saved_at": "20260724T113047Z",
   "save_id": "20260724T113047Z_classic_ceramic_teapot_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_ceramic_teapot/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_ceramic_teapot/prompt.txt",
   "prompt": "a classic ceramic teapot with a rounded body, fitted lid, long pouring spout, and curved side handle",
   "textPrompt": "a classic ceramic teapot with a rounded body, fitted lid, long pouring spout, and curved side handle",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_ceramic_teapot_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_ceramic_teapot_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_ceramic_teapot_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/classic_ceramic_teapot_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/classic_ceramic_teapot_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/classic_ceramic_teapot_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "classic_ceramic_teapot_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "classic_ceramic_teapot",
+    "textPrompt": "a classic ceramic teapot with a rounded body, fitted lid, long pouring spout, and curved side handle",
+    "outputName": "classic_ceramic_teapot_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "glossy ivory porcelain with restrained cobalt-blue floral decoration",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic ceramic teapot with a rounded body, fitted lid, long pouring spout, and curved side handle. Overall appearance and texture: glossy ivory porcelain with restrained cobalt-blue floral decoration. Local texture overrides: part 1 (rounded teapot body): glossy ivory porcelain with broad cobalt-blue floral motifs. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "rounded teapot body",
+      "long pouring spout",
+      "fitted lid",
+      "upper handle segment",
+      "lower handle segment"
+    ],
+    "localTextureTexts": [
+      "glossy ivory porcelain with broad cobalt-blue floral motifs",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

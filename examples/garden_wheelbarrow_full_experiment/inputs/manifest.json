@@ -3,8 +3,6 @@
   "project_name": "garden_wheelbarrow",
   "saved_at": "20260723T112215Z",
   "save_id": "20260723T112215Z_garden_wheelbarrow_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/garden_wheelbarrow/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/garden_wheelbarrow/prompt.txt",
   "prompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles",
   "textPrompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/garden_wheelbarrow_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/garden_wheelbarrow_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/garden_wheelbarrow_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": "loose dark brown garden soil"
     }
-  ]
+  ],
+  "recovered_example": "garden_wheelbarrow_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "garden_wheelbarrow",
+    "textPrompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles",
+    "outputName": "garden_wheelbarrow_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "practical weathered garden materials in muted green, natural wood, and black rubber",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles. Overall appearance and texture: practical weathered garden materials in muted green, natural wood, and black rubber. Local texture overrides: part 1 (open metal tray): worn green painted steel; part 2 (front wheel): black rubber tire with a dark metal hub; part 7 (visible soil load): loose dark brown garden soil. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "open metal tray",
+      "front wheel",
+      "left wooden handle",
+      "right wooden handle",
+      "left support leg",
+      "right support leg",
+      "visible soil load"
+    ],
+    "localTextureTexts": [
+      "worn green painted steel",
+      "black rubber tire with a dark metal hub",
+      "",
+      "",
+      "",
+      "",
+      "loose dark brown garden soil"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

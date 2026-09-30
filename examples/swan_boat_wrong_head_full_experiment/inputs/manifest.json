@@ -3,8 +3,6 @@
   "project_name": "swan_boat_wrong_head",
   "saved_at": "20260707T133059Z",
   "save_id": "20260707T133059Z_swan_boat_wrong_head_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/swan_boat_wrong_head/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/swan_boat_wrong_head/prompt.txt",
   "prompt": "a white swan paddle boat with a graceful curved neck",
   "textPrompt": "a white swan paddle boat with a graceful curved neck",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/swan_boat_wrong_head_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/swan_boat_wrong_head_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/swan_boat_wrong_head_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": "red plastic paddle wheel"
     }
-  ]
+  ],
+  "recovered_example": "swan_boat_wrong_head_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "swan_boat_wrong_head",
+    "textPrompt": "a white swan paddle boat with a graceful curved neck",
+    "outputName": "swan_boat_wrong_head_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "glossy white fiberglass boat with soft grey shadows",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a white swan paddle boat with a graceful curved neck. Overall appearance and texture: glossy white fiberglass boat with soft grey shadows. Local texture overrides: part 5 (wrong stiff neck column): white swan neck feathers; part 6 (wrong square swan head): white swan head with orange beak and black eye markings; part 7 (rear paddle wheel): red plastic paddle wheel. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "boat hull",
+      "seat bench",
+      "left side wing",
+      "right side wing",
+      "wrong stiff neck column",
+      "wrong square swan head",
+      "rear paddle wheel"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "white swan neck feathers",
+      "white swan head with orange beak and black eye markings",
+      "red plastic paddle wheel"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

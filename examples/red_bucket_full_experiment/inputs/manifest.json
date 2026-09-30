@@ -3,8 +3,6 @@
   "project_name": "red_bucket",
   "saved_at": "20260802T082250Z",
   "save_id": "20260802T082250Z_red_bucket_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_bucket/red_bucket/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_bucket/red_bucket/prompt.txt",
   "prompt": "a bucket",
   "textPrompt": "a bucket",
   "texture": {
@@ -48,9 +46,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/red_bucket_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/red_bucket_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/red_bucket_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -74,5 +72,37 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "red_bucket_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "red_bucket",
+    "textPrompt": "a bucket",
+    "outputName": "red_bucket_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "red plastic",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a bucket. Overall appearance and texture: red plastic. Apply the overall appearance and texture consistently to every part.",
+    "primitiveNames": [
+      "bucket body",
+      "left handle segment",
+      "right handle segment"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

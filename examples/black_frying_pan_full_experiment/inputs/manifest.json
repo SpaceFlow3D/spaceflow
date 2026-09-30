@@ -3,8 +3,6 @@
   "project_name": "black_frying_pan",
   "saved_at": "20260802T082409Z",
   "save_id": "20260802T082409Z_black_frying_pan_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/black_frying_pan/black_frying_pan/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/black_frying_pan/black_frying_pan/prompt.txt",
   "prompt": "a frying pan",
   "textPrompt": "a frying pan",
   "texture": {
@@ -47,9 +45,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/black_frying_pan_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/black_frying_pan_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/black_frying_pan_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -66,5 +64,34 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "black_frying_pan_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "black_frying_pan",
+    "textPrompt": "a frying pan",
+    "outputName": "black_frying_pan_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "black metal",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a frying pan. Overall appearance and texture: black metal. Apply the overall appearance and texture consistently to every part.",
+    "primitiveNames": [
+      "pan body",
+      "pan handle"
+    ],
+    "localTextureTexts": [
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

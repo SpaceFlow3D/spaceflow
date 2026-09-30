@@ -3,8 +3,6 @@
   "project_name": "classic_sewing_machine",
   "saved_at": "20260724T113047Z",
   "save_id": "20260724T113047Z_classic_sewing_machine_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_sewing_machine/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_classic10/classic_sewing_machine/prompt.txt",
   "prompt": "a classic domestic sewing machine with a broad base, upright pillar, horizontal arm, descending needle head, and large side handwheel",
   "textPrompt": "a classic domestic sewing machine with a broad base, upright pillar, horizontal arm, descending needle head, and large side handwheel",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_sewing_machine_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_sewing_machine_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_classic10_full/classic_sewing_machine_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/classic_sewing_machine_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/classic_sewing_machine_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/classic_sewing_machine_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "classic_sewing_machine_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "classic_sewing_machine",
+    "textPrompt": "a classic domestic sewing machine with a broad base, upright pillar, horizontal arm, descending needle head, and large side handwheel",
+    "outputName": "classic_sewing_machine_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "glossy black cast iron with restrained antique-gold floral decals",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a classic domestic sewing machine with a broad base, upright pillar, horizontal arm, descending needle head, and large side handwheel. Overall appearance and texture: glossy black cast iron with restrained antique-gold floral decals. Local texture overrides: part 1 (broad machine base): glossy black cast iron with sparse antique-gold border decoration. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "broad machine base",
+      "upright right pillar",
+      "horizontal upper arm",
+      "descending needle head",
+      "large side handwheel"
+    ],
+    "localTextureTexts": [
+      "glossy black cast iron with sparse antique-gold border decoration",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

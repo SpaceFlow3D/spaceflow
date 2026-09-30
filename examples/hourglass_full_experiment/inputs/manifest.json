@@ -3,8 +3,6 @@
   "project_name": "hourglass",
   "saved_at": "20260707T080941Z",
   "save_id": "20260707T080941Z_hourglass_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hourglass/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hourglass/prompt.txt",
   "prompt": "an antique hourglass with wooden caps",
   "textPrompt": "an antique hourglass with wooden caps",
   "texture": {
@@ -54,9 +52,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/hourglass_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/hourglass_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/hourglass_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -122,5 +120,55 @@
       "visible": true,
       "localTextureText": "fine golden sand inside the lower bulb"
     }
-  ]
+  ],
+  "recovered_example": "hourglass_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "hourglass",
+    "textPrompt": "an antique hourglass with wooden caps",
+    "outputName": "hourglass_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "clear glass and polished dark mahogany wood",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "an antique hourglass with wooden caps. Overall appearance and texture: clear glass and polished dark mahogany wood. Local texture overrides: part 9 (sand pile): fine golden sand inside the lower bulb. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "top wooden cap",
+      "bottom wooden cap",
+      "upper glass bulb",
+      "lower glass bulb",
+      "front left column",
+      "front right column",
+      "rear left column",
+      "rear right column",
+      "sand pile"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "fine golden sand inside the lower bulb"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

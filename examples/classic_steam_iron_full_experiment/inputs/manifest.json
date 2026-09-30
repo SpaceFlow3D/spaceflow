@@ -3,8 +3,6 @@
   "project_name": "classic_steam_iron",
   "saved_at": "20260724T183756Z",
   "save_id": "20260724T183756Z_classic_steam_iron_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/classic_steam_iron/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/classic_steam_iron/prompt.txt",
   "prompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle",
   "textPrompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/classic_steam_iron_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/classic_steam_iron_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/classic_steam_iron_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "classic_steam_iron_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "classic_steam_iron",
+    "textPrompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle",
+    "outputName": "classic_steam_iron_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "blue painted metal",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle. Overall appearance and texture: blue painted metal. Local texture overrides: part 1 (pointed metal soleplate): silver metal. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "pointed metal soleplate",
+      "solid iron body",
+      "front handle support",
+      "rear handle support",
+      "top handle grip"
+    ],
+    "localTextureTexts": [
+      "silver metal",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

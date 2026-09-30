@@ -3,8 +3,6 @@
   "project_name": "vintage_radio",
   "saved_at": "20260707T145329Z",
   "save_id": "20260707T145329Z_vintage_radio_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/vintage_radio/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/vintage_radio/prompt.txt",
   "prompt": "a vintage tabletop radio with dials and antenna",
   "textPrompt": "a vintage tabletop radio with dials and antenna",
   "texture": {
@@ -52,9 +50,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/vintage_radio_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/vintage_radio_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/vintage_radio_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -106,5 +104,49 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "vintage_radio_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "vintage_radio",
+    "textPrompt": "a vintage tabletop radio with dials and antenna",
+    "outputName": "vintage_radio_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "warm walnut veneer with cream bakelite trim",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a vintage tabletop radio with dials and antenna. Overall appearance and texture: warm walnut veneer with cream bakelite trim. Local texture overrides: part 2 (speaker grille): woven tan speaker cloth grille; part 3 (tuning dial): cream glass tuning dial with golden station marks. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "radio cabinet",
+      "speaker grille",
+      "tuning dial",
+      "left knob",
+      "right knob",
+      "antenna",
+      "carry handle"
+    ],
+    "localTextureTexts": [
+      "",
+      "woven tan speaker cloth grille",
+      "cream glass tuning dial with golden station marks",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

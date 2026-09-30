@@ -3,8 +3,6 @@
   "project_name": "orbiting_satellite",
   "saved_at": "20260707T104207Z",
   "save_id": "20260707T104207Z_orbiting_satellite_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/orbiting_satellite/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/orbiting_satellite/prompt.txt",
   "prompt": "a small satellite with solar panels and a dish antenna",
   "textPrompt": "a small satellite with solar panels and a dish antenna",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/orbiting_satellite_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/orbiting_satellite_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/orbiting_satellite_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "orbiting_satellite_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "orbiting_satellite",
+    "textPrompt": "a small satellite with solar panels and a dish antenna",
+    "outputName": "orbiting_satellite_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "white thermal blanket foil with dark graphite hardware",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a small satellite with solar panels and a dish antenna. Overall appearance and texture: white thermal blanket foil with dark graphite hardware. Local texture overrides: part 2 (left solar panel): dark blue reflective solar cells with silver grid lines; part 3 (right solar panel): dark blue reflective solar cells with silver grid lines. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "central satellite bus",
+      "left solar panel",
+      "right solar panel",
+      "dish antenna",
+      "antenna mast",
+      "side sensor boom"
+    ],
+    "localTextureTexts": [
+      "",
+      "dark blue reflective solar cells with silver grid lines",
+      "dark blue reflective solar cells with silver grid lines",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

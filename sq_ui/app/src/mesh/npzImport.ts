@@ -469,9 +469,32 @@ function normalizeSpaceflowMetadata(raw: unknown): NpzSpaceflowMetadata | null {
 }
 
 async function readSpaceflowMetadata(zip: JSZip): Promise<NpzSpaceflowMetadata | null> {
-  const file = findZipEntry(zip, 'spaceflow_metadata.json') ?? findZipEntry(zip, 'spaceflow/metadata.json');
+  const file = findZipEntry(zip, 'spaceflow_metadata.json')
+    ?? findZipEntry(zip, 'spaceflow/metadata.json')
+    ?? findZipEntry(zip, 'spaceflow_metadata.json.npy');
   if (!file) return null;
-  const text = await file.async('string');
+  let text: string;
+  if (file.name.endsWith('.npy')) {
+    // np.savez stores byte-string metadata as a scalar NPY array.
+    const bytes = await file.async('uint8array');
+    if (bytes.length < 10 || bytes[0] !== 0x93
+      || new TextDecoder().decode(bytes.slice(1, 6)) !== 'NUMPY'
+      || bytes[6] !== 1 || bytes[7] !== 0) {
+      throw new Error('Unsupported NumPy metadata format');
+    }
+    const headerLength = bytes[8] | (bytes[9] << 8);
+    const header = parseNpyHeader(new TextDecoder('latin1').decode(bytes.slice(10, 10 + headerLength)));
+    const length = /^\|S(\d+)$/.exec(header.descr);
+    if (!length || header.fortran || header.shape.reduce((n, value) => n * value, 1) !== 1) {
+      throw new Error('SpaceFlow NumPy metadata must be a scalar byte string');
+    }
+    const offset = 10 + headerLength;
+    const count = Number(length[1]);
+    if (offset + count > bytes.length) throw new Error('Truncated SpaceFlow NumPy metadata');
+    text = new TextDecoder().decode(bytes.slice(offset, offset + count)).replace(/\0+$/, '');
+  } else {
+    text = await file.async('string');
+  }
   return normalizeSpaceflowMetadata(JSON.parse(text));
 }
 

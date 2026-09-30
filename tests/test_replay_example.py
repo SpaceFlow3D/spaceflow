@@ -17,6 +17,8 @@ class ReplayTests(unittest.TestCase):
         self.example=self.root/'example'
         (self.example/'inputs').mkdir(parents=True)
         (self.example/'inputs/all.npz').write_bytes(b'input bytes')
+        (self.example/'inputs/manifest.json').write_text(json.dumps({
+            'paths': {'all': '/old/case/inputs/all.npz'}, 'prompt': 'a teacup'}))
         self.original={'run_dir':'/old/case','spaceflow_config':'/old/config.yaml','variants':[
             {'name':'spaceflow','argv':['--shape_superquadric_path','/old/case/inputs/all.npz',
                                       '--texture_optim_steps','300'],'seed':1,'low_tau':3.0},
@@ -33,6 +35,9 @@ class ReplayTests(unittest.TestCase):
         self.assertEqual(config['variants'][0]['low_tau'],3.0)
         self.assertEqual(config['variants'][0]['argv'][1],str(destination/'inputs/all.npz'))
         self.assertEqual((destination/'inputs/all.npz').read_bytes(),b'input bytes')
+        manifest=json.loads((destination/'inputs/manifest.json').read_text())
+        self.assertEqual(manifest['paths']['all'],str(destination/'inputs/all.npz'))
+        self.assertEqual(manifest['prompt'],'a teacup')
         self.assertEqual(json.loads((self.example/'experiment_runner_config.json').read_text()),self.original)
     def test_unknown_variant_leaves_no_output(self):
         destination=self.root/'unknown'

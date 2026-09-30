@@ -2,7 +2,6 @@
   "spaceflow_schema": "spatial_control_texture_study_v1",
   "project_name": "16_lamp_with_rectangular_base_full_experiment",
   "saved_at": "20260810T093902Z",
-  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/16_lamp_with_rectangular_base_experiment",
   "prompt": "Lamp with Rectangular base",
   "textPrompt": "Lamp with Rectangular base",
   "texture": {
@@ -28,9 +27,9 @@
     "low": 1
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/16_lamp_with_rectangular_base_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/16_lamp_with_rectangular_base_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/16_lamp_with_rectangular_base_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/16_lamp_with_rectangular_base_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/16_lamp_with_rectangular_base_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/16_lamp_with_rectangular_base_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -97,5 +96,52 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "16_lamp_with_rectangular_base_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "16_lamp_with_rectangular_base_full_experiment",
+    "textPrompt": "Lamp with Rectangular base",
+    "outputName": "16_lamp_with_rectangular_base_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "brass",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "A brass lamp with white fabric shade panels",
+    "primitiveNames": [
+      "shade panel",
+      "shade panel",
+      "shade panel",
+      "shade panel",
+      "SQ 5",
+      "SQ 6",
+      "SQ 7",
+      "SQ 8"
+    ],
+    "localTextureTexts": [
+      "white fabric",
+      "white fabric",
+      "white fabric",
+      "white fabric",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 150,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

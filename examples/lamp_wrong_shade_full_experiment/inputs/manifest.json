@@ -3,8 +3,6 @@
   "project_name": "lamp_wrong_shade",
   "saved_at": "20260707T080941Z",
   "save_id": "20260707T080941Z_lamp_wrong_shade_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/lamp_wrong_shade/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/lamp_wrong_shade/prompt.txt",
   "prompt": "a table lamp with a conical fabric lampshade",
   "textPrompt": "a table lamp with a conical fabric lampshade",
   "texture": {
@@ -50,9 +48,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/lamp_wrong_shade_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/lamp_wrong_shade_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/lamp_wrong_shade_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -90,5 +88,43 @@
       "visible": true,
       "localTextureText": "soft warm glowing frosted bulb"
     }
-  ]
+  ],
+  "recovered_example": "lamp_wrong_shade_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "lamp_wrong_shade",
+    "textPrompt": "a table lamp with a conical fabric lampshade",
+    "outputName": "lamp_wrong_shade_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "brushed brass metal with warm cream fabric",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a table lamp with a conical fabric lampshade. Overall appearance and texture: brushed brass metal with warm cream fabric. Local texture overrides: part 4 (wrong flat shade slab): warm cream woven fabric lampshade material; part 5 (bulb placeholder): soft warm glowing frosted bulb. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "round base",
+      "straight stem",
+      "neck joint",
+      "wrong flat shade slab",
+      "bulb placeholder"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "warm cream woven fabric lampshade material",
+      "soft warm glowing frosted bulb"
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }

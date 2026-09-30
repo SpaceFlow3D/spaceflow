@@ -3,8 +3,6 @@
   "project_name": "crystal_chandelier",
   "saved_at": "20260708T062043Z",
   "save_id": "20260708T062043Z_crystal_chandelier_full_experiment",
-  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v2_examples_spaceflow/crystal_chandelier/input_superquadrics_all.npz",
-  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v2_examples_spaceflow/crystal_chandelier/prompt.txt",
   "prompt": "a small crystal chandelier with a central tier and hanging prisms",
   "textPrompt": "a small crystal chandelier with a central tier and hanging prisms",
   "texture": {
@@ -51,9 +49,9 @@
     ]
   },
   "paths": {
-    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/all.npz",
-    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/high_control.npz",
-    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/low_control_bbox.npz"
+    "all": "/spaceflow-example/crystal_chandelier_full_experiment/inputs/all.npz",
+    "high_control": "/spaceflow-example/crystal_chandelier_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/spaceflow-example/crystal_chandelier_full_experiment/inputs/low_control_bbox.npz"
   },
   "primitives": [
     {
@@ -98,5 +96,46 @@
       "visible": true,
       "localTextureText": ""
     }
-  ]
+  ],
+  "recovered_example": "crystal_chandelier_full_experiment",
+  "spaceflow_metadata": {
+    "projectName": "crystal_chandelier",
+    "textPrompt": "a small crystal chandelier with a central tier and hanging prisms",
+    "outputName": "crystal_chandelier_full_experiment",
+    "textureMode": "text",
+    "globalTextureText": "polished gold chandelier frame with clear faceted crystal prisms",
+    "globalTextureImagePath": "",
+    "textureExperimentPrompt": "a small crystal chandelier with a central tier and hanging prisms. Overall appearance and texture: polished gold chandelier frame with clear faceted crystal prisms. Local texture overrides: part 4 (clear crystal skirt): clear faceted hanging crystal prism skirt. All unspecified parts should use the overall appearance and texture.",
+    "primitiveNames": [
+      "ceiling cap",
+      "central gold stem",
+      "gold chandelier ring",
+      "clear crystal skirt",
+      "left right candle arm pair",
+      "front back candle arm pair"
+    ],
+    "localTextureTexts": [
+      "",
+      "",
+      "",
+      "clear faceted hanging crystal prism skirt",
+      "",
+      ""
+    ],
+    "localTextureImagePaths": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "lowTau": 3.0,
+    "highTau": 10.0,
+    "polyakTau": 0.18,
+    "repaintSteps": 10,
+    "textureOptimSteps": 300,
+    "convertYupToZup": true,
+    "lowControlBBoxMargin": 0.07
+  }
 }
