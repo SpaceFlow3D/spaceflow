@@ -1,0 +1,8 @@
+Shape prompt: an astronomical telescope on a tripod mount
+Global texture: matte black metal with polished brass rings
+Local texture prompts:
+- objective lens ring: clear blue glass objective lens in a brass ring
+- left tripod leg: warm varnished wooden tripod leg
+- right tripod leg: warm varnished wooden tripod leg
+- rear tripod leg: warm varnished wooden tripod leg
+Unspecified superquadrics inherit the global texture.

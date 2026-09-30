@@ -1,0 +1,8 @@
+Shape prompt: a toy rocket
+Global texture: white metal
+Local texture prompts:
+- nose cone: red metal
+- left fin: red metal
+- right fin: red metal
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The separate nose and fin group share one simple color prompt.

@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "vintage_radio",
+  "saved_at": "20260707T145329Z",
+  "save_id": "20260707T145329Z_vintage_radio_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/vintage_radio/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/vintage_radio/prompt.txt",
+  "prompt": "a vintage tabletop radio with dials and antenna",
+  "textPrompt": "a vintage tabletop radio with dials and antenna",
+  "texture": {
+    "mode": "text",
+    "global_text": "warm walnut veneer with cream bakelite trim",
+    "local_text_prompts": [
+      "",
+      "woven tan speaker cloth grille",
+      "cream glass tuning dial with golden station marks",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a vintage tabletop radio with dials and antenna. Overall appearance and texture: warm walnut veneer with cream bakelite trim. Local texture overrides: part 2 (speaker grille): woven tan speaker cloth grille; part 3 (tuning dial): cream glass tuning dial with golden station marks. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 5,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.18760658638583935,
+      -0.16961506276060975,
+      -0.12261968541197077
+    ],
+    "max": [
+      0.18733187648503422,
+      -0.09038493723939026,
+      0.16261968541197078
+    ],
+    "center": [
+      -0.0001373549504025684,
+      -0.13,
+      0.020000000000000004
+    ],
+    "halfExtents": [
+      0.18746923143543678,
+      0.03961506276060975,
+      0.1426196854119708
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/vintage_radio_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "radio cabinet",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "speaker grille",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "woven tan speaker cloth grille"
+    },
+    {
+      "index": 2,
+      "name": "tuning dial",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "cream glass tuning dial with golden station marks"
+    },
+    {
+      "index": 3,
+      "name": "left knob",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right knob",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "antenna",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "carry handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

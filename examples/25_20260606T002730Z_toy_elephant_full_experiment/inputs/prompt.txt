@@ -1,0 +1,6 @@
+Shape prompt: toy elephant
+Global texture prompt: blue painted wood
+Local texture prompts:
+SQ 6 (ear): pink painted wood
+SQ 9 (ear): pink painted wood
+Baseline texture prompt: A blue painted wood toy elephant with pink painted wood ears

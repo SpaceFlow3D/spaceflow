@@ -1,0 +1,6 @@
+Shape prompt: A wooden toy of a person
+Global texture prompt: light wood
+Local texture prompts:
+SQ 6 (torso): red paint
+SQ 7 (head): peach paint
+Baseline texture prompt: A light wood toy person with a red painted torso and a peach painted head

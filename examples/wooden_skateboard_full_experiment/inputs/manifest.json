@@ -1,0 +1,78 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "wooden_skateboard",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_wooden_skateboard_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/wooden_skateboard/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/wooden_skateboard/prompt.txt",
+  "prompt": "a simple skateboard with a wooden deck and two pairs of wheels",
+  "textPrompt": "a simple skateboard with a wooden deck and two pairs of wheels",
+  "texture": {
+    "mode": "text",
+    "global_text": "black rubber",
+    "local_text_prompts": [
+      "light wood",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a simple skateboard with a wooden deck and two pairs of wheels. Overall appearance and texture: black rubber. Local texture overrides: part 1 (wooden skateboard deck): light wood. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 3,
+    "high": 1,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.21744516913421813,
+      -0.11933132338094242,
+      -0.044465302365433834
+    ],
+    "max": [
+      0.21735894713526605,
+      0.11933132338094243,
+      0.07446530169488158
+    ],
+    "center": [
+      -4.311099947604258e-05,
+      6.938893903907228e-18,
+      0.014999999664723873
+    ],
+    "halfExtents": [
+      0.2174020581347421,
+      0.11933132338094243,
+      0.05946530203015771
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/wooden_skateboard_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "wooden skateboard deck",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "light wood"
+    },
+    {
+      "index": 1,
+      "name": "front axle and wheel pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "rear axle and wheel pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

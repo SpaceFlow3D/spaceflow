@@ -1,0 +1,6 @@
+Shape prompt: an ornate candle lantern with glass panels
+Global texture: matte black wrought iron with slightly smoky glass
+Local texture prompts:
+- glass chamber: transparent warm amber glass
+- candle: warm ivory wax with a small orange glow
+Unspecified superquadrics inherit the global texture.

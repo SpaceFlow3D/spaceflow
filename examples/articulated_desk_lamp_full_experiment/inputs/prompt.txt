@@ -1,0 +1,7 @@
+Shape prompt: an articulated metal desk lamp with a weighted base, two angled arms, and a broad adjustable shade
+Global texture: matte moss-green painted metal with dark joints
+Local texture prompts:
+- weighted base: heavy dark charcoal cast metal
+- adjustable lamp shade: moss-green enamel with a pale reflective inner surface
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures are limited to the broad base and shade; both arm segments inherit the global finish.

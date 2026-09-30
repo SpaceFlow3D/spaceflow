@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "closed_umbrella",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_closed_umbrella_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/closed_umbrella/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/closed_umbrella/prompt.txt",
+  "prompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle",
+  "textPrompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle",
+  "texture": {
+    "mode": "text",
+    "global_text": "black metal",
+    "local_text_prompts": [
+      "",
+      "dark blue fabric",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle. Overall appearance and texture: black metal. Local texture overrides: part 2 (folded umbrella canopy): dark blue fabric. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.07245151416896486,
+      -0.07943272789153273,
+      -0.426394055963452
+    ],
+    "max": [
+      0.20946353333079987,
+      0.07943272789153273,
+      0.4394635412284153
+    ],
+    "center": [
+      0.0685060095809175,
+      0.0,
+      0.00653474263248166
+    ],
+    "halfExtents": [
+      0.14095752374988235,
+      0.07943272789153273,
+      0.43292879859593364
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/closed_umbrella_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "straight umbrella shaft",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "folded umbrella canopy",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark blue fabric"
+    },
+    {
+      "index": 2,
+      "name": "upper handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "lower hooked handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "pointed top tip",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

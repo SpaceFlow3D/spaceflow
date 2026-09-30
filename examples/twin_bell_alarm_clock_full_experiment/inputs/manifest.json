@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "twin_bell_alarm_clock",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_twin_bell_alarm_clock_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/twin_bell_alarm_clock/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/twin_bell_alarm_clock/prompt.txt",
+  "prompt": "a classic twin-bell alarm clock with a round body, front clock face, two top bells, and a small top handle",
+  "textPrompt": "a classic twin-bell alarm clock with a round body, front clock face, two top bells, and a small top handle",
+  "texture": {
+    "mode": "text",
+    "global_text": "red painted metal",
+    "local_text_prompts": [
+      "",
+      "white enamel",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a classic twin-bell alarm clock with a round body, front clock face, two top bells, and a small top handle. Overall appearance and texture: red painted metal. Local texture overrides: part 2 (front clock face): white enamel. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.1679313648891459,
+      -0.0729018721926614,
+      0.08201471430476524
+    ],
+    "max": [
+      0.16774663669058026,
+      0.07290187219266141,
+      0.24598527985397955
+    ],
+    "center": [
+      -9.236409928281564e-05,
+      6.938893903907228e-18,
+      0.1639999970793724
+    ],
+    "halfExtents": [
+      0.16783900078986308,
+      0.0729018721926614,
+      0.08198528277460715
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/twin_bell_alarm_clock_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/twin_bell_alarm_clock_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/twin_bell_alarm_clock_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "round clock body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "front clock face",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "white enamel"
+    },
+    {
+      "index": 2,
+      "name": "left top bell",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "right top bell",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "small top handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "tabletop_world_globe",
+  "saved_at": "20260723T160033Z",
+  "save_id": "20260723T160033Z_tabletop_world_globe_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/tabletop_world_globe/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/tabletop_world_globe/prompt.txt",
+  "prompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base",
+  "textPrompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base",
+  "texture": {
+    "mode": "text",
+    "global_text": "warm antique brass and dark polished wood",
+    "local_text_prompts": [
+      "muted blue oceans with softly colored vintage map continents",
+      "",
+      "",
+      "dark walnut wood with a satin finish"
+    ],
+    "flattened_text_prompt": "a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base. Overall appearance and texture: warm antique brass and dark polished wood. Local texture overrides: part 1 (world globe): muted blue oceans with softly colored vintage map continents; part 4 (round base): dark walnut wood with a satin finish. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 4,
+    "high": 2,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2391671181802219,
+      -0.23892356754300806,
+      -0.17925099612298426
+    ],
+    "max": [
+      0.23819354082235925,
+      0.2389235675430081,
+      0.3792475300104487
+    ],
+    "center": [
+      -0.0004867886789313297,
+      1.3877787807814457e-17,
+      0.09999826694373222
+    ],
+    "halfExtents": [
+      0.2386803295012906,
+      0.2389235675430081,
+      0.2792492630667165
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/tabletop_world_globe_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "world globe",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "muted blue oceans with softly colored vintage map continents"
+    },
+    {
+      "index": 1,
+      "name": "tilted exposed axle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "pedestal support",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "round base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark walnut wood with a satin finish"
+    }
+  ]
+}

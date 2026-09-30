@@ -3,11 +3,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-    # Match the course runtime used by run.sh when it is available.
-    # shellcheck disable=SC1091
-    source "$HOME/miniconda3/etc/profile.d/conda.sh"
-    conda activate "${SQ_PUBLIC_CONDA_ENV:-/work/courses/3dv/team3/guideflow3d/envs/guideflow3d}"
+if [ -n "${SQ_PUBLIC_CONDA_ENV:-}" ]; then
+    eval "$(conda shell.bash hook)"
+    conda activate "$SQ_PUBLIC_CONDA_ENV"
 fi
 
 if [ -f ".env.public-demo" ]; then
@@ -28,12 +26,10 @@ fi
 export CUDA_HOME="${CUDA_HOME:-$(dirname "$(dirname "$(command -v nvcc || echo /usr/local/cuda/bin/nvcc)")")}"
 export PATH="$CUDA_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:${LD_LIBRARY_PATH:-}"
-export TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-6.1;7.5;8.0;8.6;9.0;12.0}"
-export BLENDER_HOME="${BLENDER_HOME:-/work/courses/3dv/team3/spaceflow-minimal/blender-3.0.1-linux-x64/blender}"
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
-export SQ_SPACEFLOW_PYTHON="${SQ_SPACEFLOW_PYTHON:-/work/courses/3dv/team3/guideflow3d/envs/guideflow3d/bin/python}"
-export SQ_SPACEFLOW_STORAGE_ROOT="${SQ_SPACEFLOW_STORAGE_ROOT:-/work/courses/3dv/team3/spaceflow_runtime}"
+export SQ_SPACEFLOW_PYTHON="${SQ_SPACEFLOW_PYTHON:-$(command -v python)}"
+export SQ_SPACEFLOW_STORAGE_ROOT="${SQ_SPACEFLOW_STORAGE_ROOT:-$PWD/spaceflow_runtime}"
 export SQ_SPACEFLOW_ASSET_ROOT="${SQ_SPACEFLOW_ASSET_ROOT:-$SQ_SPACEFLOW_STORAGE_ROOT/sq_ui_assets}"
 export SQ_SPACEFLOW_RUN_ROOT="${SQ_SPACEFLOW_RUN_ROOT:-$SQ_SPACEFLOW_STORAGE_ROOT/sq_ui_runs}"
 export SQ_SPACEFLOW_HOST="${SQ_SPACEFLOW_HOST:-127.0.0.1}"

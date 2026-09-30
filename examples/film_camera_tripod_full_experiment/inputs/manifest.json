@@ -1,0 +1,126 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "film_camera_tripod",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_film_camera_tripod_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/film_camera_tripod/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/film_camera_tripod/prompt.txt",
+  "prompt": "a vintage film camera on a tripod",
+  "textPrompt": "a vintage film camera on a tripod",
+  "texture": {
+    "mode": "text",
+    "global_text": "matte black metal and pebbled black leather",
+    "local_text_prompts": [
+      "",
+      "",
+      "deep blue reflective glass camera lens",
+      "brushed silver metal film reel",
+      "brushed silver metal film reel",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a vintage film camera on a tripod. Overall appearance and texture: matte black metal and pebbled black leather. Local texture overrides: part 3 (glass lens face): deep blue reflective glass camera lens; part 4 (left film reel): brushed silver metal film reel; part 5 (right film reel): brushed silver metal film reel. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 9,
+    "high": 6,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2246260181002495,
+      -0.31661760409541345,
+      0.06236576269184799
+    ],
+    "max": [
+      0.22421560614169883,
+      0.11952334922322813,
+      0.37963423730815204
+    ],
+    "center": [
+      -0.00020520597927534134,
+      -0.09854712743609266,
+      0.22100000000000003
+    ],
+    "halfExtents": [
+      0.22442081212097417,
+      0.21807047665932078,
+      0.15863423730815202
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/film_camera_tripod_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/film_camera_tripod_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/film_camera_tripod_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "camera body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "front lens barrel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "glass lens face",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "deep blue reflective glass camera lens"
+    },
+    {
+      "index": 3,
+      "name": "left film reel",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "brushed silver metal film reel"
+    },
+    {
+      "index": 4,
+      "name": "right film reel",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "brushed silver metal film reel"
+    },
+    {
+      "index": 5,
+      "name": "center tripod column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "left tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "right tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 8,
+      "name": "rear tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

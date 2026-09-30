@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "wooden_snow_sled",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_wooden_snow_sled_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/wooden_snow_sled/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/wooden_snow_sled/prompt.txt",
+  "prompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope",
+  "textPrompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope",
+  "texture": {
+    "mode": "text",
+    "global_text": "varnished honey-colored wood with simple metal fittings",
+    "local_text_prompts": [
+      "smooth dark steel runner",
+      "smooth dark steel runner",
+      "warm varnished ash wood",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a traditional wooden snow sled with two runners, a raised back, and a pull rope. Overall appearance and texture: varnished honey-colored wood with simple metal fittings. Local texture overrides: part 1 (left runner): smooth dark steel runner; part 2 (right runner): smooth dark steel runner; part 3 (seat platform): warm varnished ash wood. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2964604465997821,
+      -0.2513341185256669,
+      -0.1414681513155532
+    ],
+    "max": [
+      0.7467980246406877,
+      0.2513341185256669,
+      0.3214681513155532
+    ],
+    "center": [
+      0.2251687890204528,
+      0.0,
+      0.08999999999999998
+    ],
+    "halfExtents": [
+      0.5216292356202349,
+      0.2513341185256669,
+      0.2314681513155532
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/wooden_snow_sled_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "left runner",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "smooth dark steel runner"
+    },
+    {
+      "index": 1,
+      "name": "right runner",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "smooth dark steel runner"
+    },
+    {
+      "index": 2,
+      "name": "seat platform",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "warm varnished ash wood"
+    },
+    {
+      "index": 3,
+      "name": "front crossbar",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "raised backrest",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "pull rope",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

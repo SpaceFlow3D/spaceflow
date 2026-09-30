@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "japanese_stone_lantern",
+  "saved_at": "20260707T080941Z",
+  "save_id": "20260707T080941Z_japanese_stone_lantern_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/japanese_stone_lantern/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/japanese_stone_lantern/prompt.txt",
+  "prompt": "a Japanese stone garden lantern",
+  "textPrompt": "a Japanese stone garden lantern",
+  "texture": {
+    "mode": "text",
+    "global_text": "weathered grey stone with moss in cracks and edges",
+    "local_text_prompts": [
+      "",
+      "",
+      "warm amber inner glow behind stone openings",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a Japanese stone garden lantern. Overall appearance and texture: weathered grey stone with moss in cracks and edges. Local texture overrides: part 3 (light chamber): warm amber inner glow behind stone openings. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 4,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.18686155982519145,
+      -0.1668360097976031,
+      -0.056885767183723644
+    ],
+    "max": [
+      0.1867273889974997,
+      0.1668360097976031,
+      0.4868857671837237
+    ],
+    "center": [
+      -6.708541384588262e-05,
+      0.0,
+      0.21500000000000002
+    ],
+    "halfExtents": [
+      0.18679447441134556,
+      0.1668360097976031,
+      0.27188576718372365
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/japanese_stone_lantern_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/japanese_stone_lantern_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/japanese_stone_lantern_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "stone base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "pedestal column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "light chamber",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "warm amber inner glow behind stone openings"
+    },
+    {
+      "index": 3,
+      "name": "wide roof",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "top cap",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "finial",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

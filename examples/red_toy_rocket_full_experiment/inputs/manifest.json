@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "red_toy_rocket",
+  "saved_at": "20260809T194715Z",
+  "save_id": "20260809T194715Z_red_toy_rocket_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/red_toy_rocket/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/red_toy_rocket/prompt.txt",
+  "prompt": "a toy rocket",
+  "textPrompt": "a toy rocket",
+  "texture": {
+    "mode": "text",
+    "global_text": "white metal",
+    "local_text_prompts": [
+      "",
+      "red metal",
+      "red metal",
+      "red metal",
+      ""
+    ],
+    "flattened_text_prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.28645193692534077,
+      -0.2471715465570139,
+      -0.36647043763009646
+    ],
+    "max": [
+      0.28635944693389515,
+      0.2471715465570139,
+      0.5264704340538178
+    ],
+    "center": [
+      -4.62449957228106e-05,
+      0.0,
+      0.07999999821186066
+    ],
+    "halfExtents": [
+      0.28640569192961796,
+      0.2471715465570139,
+      0.4464704358419571
+    ]
+  },
+  "paths": {
+    "all": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/all.npz",
+    "high_control": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/red_toy_rocket_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "rocket body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "nose cone",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red metal"
+    },
+    {
+      "index": 2,
+      "name": "left fin",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red metal"
+    },
+    {
+      "index": 3,
+      "name": "right fin",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red metal"
+    },
+    {
+      "index": 4,
+      "name": "engine base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

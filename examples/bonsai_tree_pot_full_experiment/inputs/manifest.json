@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "bonsai_tree_pot",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_bonsai_tree_pot_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bonsai_tree_pot/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bonsai_tree_pot/prompt.txt",
+  "prompt": "a small bonsai tree in a ceramic pot",
+  "textPrompt": "a small bonsai tree in a ceramic pot",
+  "texture": {
+    "mode": "text",
+    "global_text": "dark blue glazed ceramic pot with natural bark and leaves",
+    "local_text_prompts": [
+      "",
+      "",
+      "rough twisted brown bark",
+      "dense deep green bonsai leaves",
+      "dense deep green bonsai leaves",
+      "dense deep green bonsai leaves"
+    ],
+    "flattened_text_prompt": "a small bonsai tree in a ceramic pot. Overall appearance and texture: dark blue glazed ceramic pot with natural bark and leaves. Local texture overrides: part 3 (curved trunk): rough twisted brown bark; part 4 (left foliage cloud): dense deep green bonsai leaves; part 5 (right foliage cloud): dense deep green bonsai leaves; part 6 (top foliage cloud): dense deep green bonsai leaves. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 2,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.40514541566453743,
+      -0.1951676270405674,
+      -0.323299459527543
+    ],
+    "max": [
+      0.35450125997263593,
+      0.1951676270405674,
+      0.445299459527543
+    ],
+    "center": [
+      -0.025322077845950752,
+      0.0,
+      0.061
+    ],
+    "halfExtents": [
+      0.3798233378185867,
+      0.1951676270405674,
+      0.384299459527543
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bonsai_tree_pot_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bonsai_tree_pot_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bonsai_tree_pot_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "ceramic pot",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "soil surface",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "curved trunk",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "rough twisted brown bark"
+    },
+    {
+      "index": 3,
+      "name": "left foliage cloud",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense deep green bonsai leaves"
+    },
+    {
+      "index": 4,
+      "name": "right foliage cloud",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense deep green bonsai leaves"
+    },
+    {
+      "index": 5,
+      "name": "top foliage cloud",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense deep green bonsai leaves"
+    }
+  ]
+}

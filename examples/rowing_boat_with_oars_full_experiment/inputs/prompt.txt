@@ -1,0 +1,8 @@
+Shape prompt: a small wooden rowing boat with two bench seats and a pair of oars
+Global texture: weathered painted wood with natural timber fittings
+Local texture prompts:
+- open boat hull: faded navy blue painted wood
+- front bench seat: smooth honey-colored timber
+- rear bench seat: smooth honey-colored timber
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures target the broad hull and two clearly separated bench seats; the thin oars inherit the global material.

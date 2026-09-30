@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "tripod_camping_stool",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_tripod_camping_stool_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/tripod_camping_stool/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/tripod_camping_stool/prompt.txt",
+  "prompt": "a compact tripod camping stool with a round fabric seat and three splayed legs",
+  "textPrompt": "a compact tripod camping stool with a round fabric seat and three splayed legs",
+  "texture": {
+    "mode": "text",
+    "global_text": "lightweight brushed aluminum frame with durable outdoor fabric",
+    "local_text_prompts": [
+      "dark forest green canvas with reinforced stitching",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a compact tripod camping stool with a round fabric seat and three splayed legs. Overall appearance and texture: lightweight brushed aluminum frame with durable outdoor fabric. Local texture overrides: part 1 (fabric seat): dark forest green canvas with reinforced stitching. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2210494906500144,
+      -0.2008734679604495,
+      -0.10912807370475266
+    ],
+    "max": [
+      0.2202184703732476,
+      0.20087346796044953,
+      0.3111280737047527
+    ],
+    "center": [
+      -0.0004155101383833959,
+      1.3877787807814457e-17,
+      0.10100000000000002
+    ],
+    "halfExtents": [
+      0.220633980511631,
+      0.20087346796044953,
+      0.21012807370475267
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/tripod_camping_stool_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "fabric seat",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dark forest green canvas with reinforced stitching"
+    },
+    {
+      "index": 1,
+      "name": "left front leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "right front leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "rear leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "front folding brace",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "rear folding brace",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

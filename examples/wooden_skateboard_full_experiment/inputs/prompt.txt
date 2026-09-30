@@ -1,0 +1,6 @@
+Shape prompt: a simple skateboard with a wooden deck and two pairs of wheels
+Global texture: black rubber
+Local texture prompts:
+- wooden deck: light wood
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The broad deck uses one simple local material prompt.

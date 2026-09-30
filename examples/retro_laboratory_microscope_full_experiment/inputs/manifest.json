@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "retro_laboratory_microscope",
+  "saved_at": "20260723T160033Z",
+  "save_id": "20260723T160033Z_retro_laboratory_microscope_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/retro_laboratory_microscope/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/retro_laboratory_microscope/prompt.txt",
+  "prompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing",
+  "textPrompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing",
+  "texture": {
+    "mode": "text",
+    "global_text": "black enamel laboratory metal with brushed silver optical parts",
+    "local_text_prompts": [
+      "deep bottle-green enamel over cast metal",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing. Overall appearance and texture: black enamel laboratory metal with brushed silver optical parts. Local texture overrides: part 1 (heavy microscope base): deep bottle-green enamel over cast metal. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.21431478891062278,
+      -0.139286936320867,
+      -0.09436512591408941
+    ],
+    "max": [
+      0.13409899179943613,
+      0.139286936320867,
+      0.31897417658807004
+    ],
+    "center": [
+      -0.040107898555593324,
+      0.0,
+      0.11230452533699031
+    ],
+    "halfExtents": [
+      0.17420689035502945,
+      0.139286936320867,
+      0.20666965125107972
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/retro_laboratory_microscope_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "heavy microscope base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "deep bottle-green enamel over cast metal"
+    },
+    {
+      "index": 1,
+      "name": "angled main support",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "specimen stage",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "upper eyepiece",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "objective housing",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

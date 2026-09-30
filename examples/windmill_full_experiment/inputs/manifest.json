@@ -1,0 +1,142 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "windmill",
+  "saved_at": "20260707T161908Z",
+  "save_id": "20260707T161908Z_windmill_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/windmill/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/windmill/prompt.txt",
+  "prompt": "a rustic windmill with four wooden blades",
+  "textPrompt": "a rustic windmill with four wooden blades",
+  "texture": {
+    "mode": "text",
+    "global_text": "weathered white plaster walls with dark wooden beams",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "red clay tile roof",
+      "",
+      "aged pale wooden windmill blade",
+      "aged pale wooden windmill blade",
+      "aged pale wooden windmill blade",
+      "aged pale wooden windmill blade",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a rustic windmill with four wooden blades. Overall appearance and texture: weathered white plaster walls with dark wooden beams. Local texture overrides: part 4 (roof): red clay tile roof; part 6 (upper right blade): aged pale wooden windmill blade; part 7 (upper left blade): aged pale wooden windmill blade; part 8 (lower left blade): aged pale wooden windmill blade; part 9 (lower right blade): aged pale wooden windmill blade. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 11,
+    "high": 7,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.25965659770909577,
+      -0.23548182162376613,
+      -0.0852946629181742
+    ],
+    "max": [
+      0.25938930413839495,
+      0.2054818216237661,
+      0.7146637776604079
+    ],
+    "center": [
+      -0.00013364678535041086,
+      -0.015000000000000013,
+      0.31468455737111684
+    ],
+    "halfExtents": [
+      0.25952295092374533,
+      0.22048182162376612,
+      0.39997922028929106
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/windmill_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/windmill_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/windmill_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "stone base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "tapered tower",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "mill cap",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "roof",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red clay tile roof"
+    },
+    {
+      "index": 4,
+      "name": "blade hub",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "upper right blade",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "aged pale wooden windmill blade"
+    },
+    {
+      "index": 6,
+      "name": "upper left blade",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "aged pale wooden windmill blade"
+    },
+    {
+      "index": 7,
+      "name": "lower left blade",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "aged pale wooden windmill blade"
+    },
+    {
+      "index": 8,
+      "name": "lower right blade",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "aged pale wooden windmill blade"
+    },
+    {
+      "index": 9,
+      "name": "left window",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 10,
+      "name": "right window",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

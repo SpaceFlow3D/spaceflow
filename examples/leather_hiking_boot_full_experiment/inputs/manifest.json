@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "leather_hiking_boot",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_leather_hiking_boot_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/leather_hiking_boot/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/leather_hiking_boot/prompt.txt",
+  "prompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe",
+  "textPrompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe",
+  "texture": {
+    "mode": "text",
+    "global_text": "worn dark brown leather with rugged black rubber",
+    "local_text_prompts": [
+      "",
+      "",
+      "deeply treaded matte black rubber",
+      "",
+      "",
+      "soft cream shearling lining"
+    ],
+    "flattened_text_prompt": "a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe. Overall appearance and texture: worn dark brown leather with rugged black rubber. Local texture overrides: part 3 (thick outsole): deeply treaded matte black rubber; part 6 (padded ankle cuff): soft cream shearling lining. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.3075762751966502,
+      -0.16944240617990597,
+      -0.19763174487587232
+    ],
+    "max": [
+      0.4055449867693435,
+      0.169442406179906,
+      0.4376317448758723
+    ],
+    "center": [
+      0.048984355786346634,
+      1.3877787807814457e-17,
+      0.12
+    ],
+    "halfExtents": [
+      0.35656063098299684,
+      0.16944240617990597,
+      0.3176317448758723
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/leather_hiking_boot_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "main leather foot",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "high ankle shaft",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "thick outsole",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "deeply treaded matte black rubber"
+    },
+    {
+      "index": 3,
+      "name": "reinforced toe cap",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "rear heel block",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "padded ankle cuff",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "soft cream shearling lining"
+    }
+  ]
+}

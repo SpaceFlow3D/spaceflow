@@ -1,0 +1,8 @@
+Shape prompt: Lamp with Rectangular base
+Global texture prompt: brass
+Local texture prompts:
+SQ 1 (shade panel): white fabric
+SQ 2 (shade panel): white fabric
+SQ 3 (shade panel): white fabric
+SQ 4 (shade panel): white fabric
+Baseline texture prompt: A brass lamp with white fabric shade panels

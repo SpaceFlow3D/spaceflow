@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "kitchen_stand_mixer",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_kitchen_stand_mixer_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/kitchen_stand_mixer/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/kitchen_stand_mixer/prompt.txt",
+  "prompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater",
+  "textPrompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater",
+  "texture": {
+    "mode": "text",
+    "global_text": "cream enamel appliance housing with brushed metal fittings",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "reflective brushed stainless steel",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater. Overall appearance and texture: cream enamel appliance housing with brushed metal fittings. Local texture overrides: part 4 (mixing bowl): reflective brushed stainless steel. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.14426144140330083,
+      -0.2230808821659313,
+      -0.24846022348964272
+    ],
+    "max": [
+      0.31821849237701166,
+      0.18308088216593132,
+      0.34846022348964273
+    ],
+    "center": [
+      0.08697852548685542,
+      -0.01999999999999999,
+      0.05
+    ],
+    "halfExtents": [
+      0.23123996689015625,
+      0.20308088216593131,
+      0.29846022348964274
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/kitchen_stand_mixer_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "weighted base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "upright column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "tilting motor head",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "mixing bowl",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "reflective brushed stainless steel"
+    },
+    {
+      "index": 4,
+      "name": "beater shaft",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "front attachment hub",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

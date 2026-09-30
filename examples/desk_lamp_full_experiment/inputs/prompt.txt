@@ -1,0 +1,9 @@
+Shape prompt: an adjustable desk lamp
+Global texture: brushed black metal desk lamp with a warm matte white shade interior
+Local texture prompts:
+- shade head: matte white lamp shade with warm glowing interior
+Unspecified superquadrics inherit the global texture.
+Control assignment note: The base and two articulated arms are high control to preserve lamp balance and pose; the shade, hinge, and neck are low control so SpaceFlow can refine the recognizable lamp head and joint details.
+Coordinate convention note: X is object width, Y is front-back length, and Z is height.
+All primitives are exposed or visibly protruding; partial contact overlap is used only for attached parts, and no primitive is intended to be fully contained inside another.
+Texture segmentation note: Only the large shade gets a local texture prompt; slender metal arms and small joints inherit the global black metal material.

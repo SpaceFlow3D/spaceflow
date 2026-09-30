@@ -1,0 +1,8 @@
+Shape prompt: a small bonsai tree in a ceramic pot
+Global texture: dark blue glazed ceramic pot with natural bark and leaves
+Local texture prompts:
+- curved trunk: rough twisted brown bark
+- left foliage cloud: dense deep green bonsai leaves
+- right foliage cloud: dense deep green bonsai leaves
+- top foliage cloud: dense deep green bonsai leaves
+Unspecified superquadrics inherit the global texture.

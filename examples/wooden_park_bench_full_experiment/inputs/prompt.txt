@@ -1,0 +1,7 @@
+Shape prompt: a classic wooden park bench with a broad seat, tall backrest, and two sturdy side support frames
+Global texture: warm outdoor oak paired with black painted metal supports
+Local texture prompts:
+- broad bench seat: honey-brown weathered oak slats
+- tall backrest: honey-brown weathered oak slats
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The two broad wooden surfaces use local texture prompts; the grouped side support frames inherit the global black-metal component.

@@ -1,0 +1,7 @@
+Shape prompt: an antique gramophone with a large brass horn
+Global texture: polished dark walnut wood with aged brass accents
+Local texture prompts:
+- turntable platter: black felt turntable surface
+- flared horn body: aged golden brass horn with soft patina
+- horn rim: polished aged brass rim
+Unspecified superquadrics inherit the global texture.

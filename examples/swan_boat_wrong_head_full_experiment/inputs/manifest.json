@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "swan_boat_wrong_head",
+  "saved_at": "20260707T133059Z",
+  "save_id": "20260707T133059Z_swan_boat_wrong_head_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/swan_boat_wrong_head/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/swan_boat_wrong_head/prompt.txt",
+  "prompt": "a white swan paddle boat with a graceful curved neck",
+  "textPrompt": "a white swan paddle boat with a graceful curved neck",
+  "texture": {
+    "mode": "text",
+    "global_text": "glossy white fiberglass boat with soft grey shadows",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "white swan neck feathers",
+      "white swan head with orange beak and black eye markings",
+      "red plastic paddle wheel"
+    ],
+    "flattened_text_prompt": "a white swan paddle boat with a graceful curved neck. Overall appearance and texture: glossy white fiberglass boat with soft grey shadows. Local texture overrides: part 5 (wrong stiff neck column): white swan neck feathers; part 6 (wrong square swan head): white swan head with orange beak and black eye markings; part 7 (rear paddle wheel): red plastic paddle wheel. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 5,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.35704191344334374,
+      -0.09203703459814508,
+      -0.12763411947349984
+    ],
+    "max": [
+      -0.14300847199874903,
+      0.08202779131380686,
+      0.44705090308653306
+    ],
+    "center": [
+      -0.2500251927210464,
+      -0.00500462164216911,
+      0.1597083918065166
+    ],
+    "halfExtents": [
+      0.10701672072229736,
+      0.08703241295597597,
+      0.2873425112800164
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/swan_boat_wrong_head_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "boat hull",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "seat bench",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "left side wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "right side wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "wrong stiff neck column",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "white swan neck feathers"
+    },
+    {
+      "index": 5,
+      "name": "wrong square swan head",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "white swan head with orange beak and black eye markings"
+    },
+    {
+      "index": 6,
+      "name": "rear paddle wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "red plastic paddle wheel"
+    }
+  ]
+}

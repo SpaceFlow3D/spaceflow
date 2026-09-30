@@ -1,0 +1,134 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "ornate_candle_lantern",
+  "saved_at": "20260707T104207Z",
+  "save_id": "20260707T104207Z_ornate_candle_lantern_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/ornate_candle_lantern/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/ornate_candle_lantern/prompt.txt",
+  "prompt": "an ornate candle lantern with glass panels",
+  "textPrompt": "an ornate candle lantern with glass panels",
+  "texture": {
+    "mode": "text",
+    "global_text": "matte black wrought iron with slightly smoky glass",
+    "local_text_prompts": [
+      "",
+      "transparent warm amber glass",
+      "",
+      "",
+      "",
+      "warm ivory wax with a small orange glow",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an ornate candle lantern with glass panels. Overall appearance and texture: matte black wrought iron with slightly smoky glass. Local texture overrides: part 2 (glass chamber): transparent warm amber glass; part 6 (candle): warm ivory wax with a small orange glow. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 10,
+    "high": 7,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.21085695075211458,
+      -0.2108142776391831,
+      -0.4398069627679984
+    ],
+    "max": [
+      0.2106861110496978,
+      0.2108142776391831,
+      0.4198069627679984
+    ],
+    "center": [
+      -8.54198512083848e-05,
+      0.0,
+      -0.010000000000000009
+    ],
+    "halfExtents": [
+      0.2107715309009062,
+      0.2108142776391831,
+      0.4298069627679984
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/ornate_candle_lantern_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/ornate_candle_lantern_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/ornate_candle_lantern_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "iron base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "glass chamber",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "transparent warm amber glass"
+    },
+    {
+      "index": 2,
+      "name": "top cap",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "tapered roof",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "arched handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "candle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "warm ivory wax with a small orange glow"
+    },
+    {
+      "index": 6,
+      "name": "front left iron post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "front right iron post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 8,
+      "name": "rear left iron post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 9,
+      "name": "rear right iron post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

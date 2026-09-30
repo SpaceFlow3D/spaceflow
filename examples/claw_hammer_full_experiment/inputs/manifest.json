@@ -1,0 +1,70 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "claw_hammer",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_claw_hammer_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/claw_hammer/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/claw_hammer/prompt.txt",
+  "prompt": "a simple claw hammer with a long handle and a steel hammer head",
+  "textPrompt": "a simple claw hammer with a long handle and a steel hammer head",
+  "texture": {
+    "mode": "text",
+    "global_text": "brown wood",
+    "local_text_prompts": [
+      "",
+      "dark steel"
+    ],
+    "flattened_text_prompt": "a simple claw hammer with a long handle and a steel hammer head. Overall appearance and texture: brown wood. Local texture overrides: part 2 (steel hammer head): dark steel. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 2,
+    "high": 1,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.18443279952574457,
+      -0.06945387040438294,
+      0.11051377613832038
+    ],
+    "max": [
+      0.18418616588375306,
+      0.06945387040438294,
+      0.26948621909330805
+    ],
+    "center": [
+      -0.0001233168209957558,
+      0.0,
+      0.1899999976158142
+    ],
+    "halfExtents": [
+      0.1843094827047488,
+      0.06945387040438294,
+      0.07948622147749385
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/claw_hammer_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/claw_hammer_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/claw_hammer_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "long wooden handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "steel hammer head",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dark steel"
+    }
+  ]
+}

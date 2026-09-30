@@ -1,0 +1,7 @@
+Shape prompt: floor tom drum
+Global texture: burgundy lacquer
+Local texture prompts:
+- drum shell: burgundy shell
+- top drumhead: white drumhead
+- lug group: chrome lugs
+Unspecified superquadrics inherit the global texture.

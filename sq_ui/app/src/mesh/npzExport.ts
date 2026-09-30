@@ -3,6 +3,7 @@
  * A .npz is a ZIP of .npy files. Each .npy has a small header + raw data.
  */
 import JSZip from 'jszip';
+import type { NpzSpaceflowMetadata } from './npzImport';
 
 function createNpyArray(data: Float64Array, shape: number[]): Uint8Array {
   // NumPy .npy format v1.0
@@ -58,7 +59,7 @@ export interface PrimitiveExport {
 
 export async function exportNpz(
   primitives: PrimitiveExport[],
-  options?: { allowEmpty?: boolean },
+  options?: { allowEmpty?: boolean; metadata?: NpzSpaceflowMetadata },
 ): Promise<Blob> {
   const N = primitives.length;
   if (N === 0 && !options?.allowEmpty) throw new Error('No primitives to export');
@@ -117,6 +118,9 @@ export async function exportNpz(
   if (tapering) zip.file('tapering.npy', createNpyArray(tapering, [N, 2]));
   if (bending) zip.file('bending.npy', createNpyArray(bending, [N, 6]));
   if (controlLevels) zip.file('control_levels.npy', createNpyArray(controlLevels, [N]));
+  if (options?.metadata) {
+    zip.file('spaceflow_metadata.json', JSON.stringify(options.metadata));
+  }
 
   return zip.generateAsync({ type: 'blob' });
 }

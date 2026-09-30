@@ -1,0 +1,86 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "red_metal_toolbox",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_red_metal_toolbox_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/red_metal_toolbox/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/red_metal_toolbox/prompt.txt",
+  "prompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches",
+  "textPrompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches",
+  "texture": {
+    "mode": "text",
+    "global_text": "red painted steel",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches. Overall appearance and texture: red painted steel. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 4,
+    "high": 2,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.123118830325068,
+      -0.0481432325851054,
+      -0.07817018803340632
+    ],
+    "max": [
+      0.12289287148528746,
+      0.1761554036659344,
+      0.16317019079012113
+    ],
+    "center": [
+      -0.00011297941989026755,
+      0.06400608554041451,
+      0.042500001378357403
+    ],
+    "halfExtents": [
+      0.12300585090517774,
+      0.1121493181255199,
+      0.12067018941176372
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/red_metal_toolbox_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "rectangular toolbox body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "fitted toolbox lid",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "top carrying handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "grouped front latches",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

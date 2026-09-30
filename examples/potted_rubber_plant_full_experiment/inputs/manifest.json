@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "potted_rubber_plant",
+  "saved_at": "20260723T160033Z",
+  "save_id": "20260723T160033Z_potted_rubber_plant_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/potted_rubber_plant/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/potted_rubber_plant/prompt.txt",
+  "prompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves",
+  "textPrompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves",
+  "texture": {
+    "mode": "text",
+    "global_text": "natural indoor plant materials with deep green foliage and warm earthy details",
+    "local_text_prompts": [
+      "matte cream ceramic with a subtle speckled glaze",
+      "",
+      "dense glossy deep-green rubber plant leaves",
+      "dense glossy deep-green rubber plant leaves",
+      "dense glossy deep-green rubber plant leaves"
+    ],
+    "flattened_text_prompt": "a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves. Overall appearance and texture: natural indoor plant materials with deep green foliage and warm earthy details. Local texture overrides: part 1 (tapered plant pot): matte cream ceramic with a subtle speckled glaze; part 3 (left foliage cluster): dense glossy deep-green rubber plant leaves; part 4 (right foliage cluster): dense glossy deep-green rubber plant leaves; part 5 (top foliage cluster): dense glossy deep-green rubber plant leaves. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.29493289622212837,
+      -0.1368510800707614,
+      0.0401748285651164
+    ],
+    "max": [
+      0.2939581097531727,
+      0.13685108007076144,
+      0.5520427443288639
+    ],
+    "center": [
+      -0.0004873932344778287,
+      1.3877787807814457e-17,
+      0.2961087864469902
+    ],
+    "halfExtents": [
+      0.29444550298765054,
+      0.1368510800707614,
+      0.25593395788187373
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/potted_rubber_plant_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "tapered plant pot",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "matte cream ceramic with a subtle speckled glaze"
+    },
+    {
+      "index": 1,
+      "name": "central plant trunk",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "left foliage cluster",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense glossy deep-green rubber plant leaves"
+    },
+    {
+      "index": 3,
+      "name": "right foliage cluster",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense glossy deep-green rubber plant leaves"
+    },
+    {
+      "index": 4,
+      "name": "top foliage cluster",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dense glossy deep-green rubber plant leaves"
+    }
+  ]
+}

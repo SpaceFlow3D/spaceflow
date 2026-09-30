@@ -1,0 +1,6 @@
+Shape prompt: A comfy chair with cushions
+Global texture prompt: dark wood
+Local texture prompts:
+SQ 1 (cushion): orange fabric
+SQ 2 (cushion): orange fabric
+Baseline texture prompt: A dark wood comfy chair with orange fabric cushions

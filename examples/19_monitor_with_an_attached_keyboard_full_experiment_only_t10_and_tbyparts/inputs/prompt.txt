@@ -1,0 +1,5 @@
+Shape prompt: Monitor with an attached keyboard
+Global texture prompt: black plastic
+Local texture prompts:
+SQ 3 (screen): blue glass
+Baseline texture prompt: A black plastic monitor with an attached keyboard and a blue glass screen

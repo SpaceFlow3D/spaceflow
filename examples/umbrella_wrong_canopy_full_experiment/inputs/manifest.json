@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "umbrella_wrong_canopy",
+  "saved_at": "20260707T145329Z",
+  "save_id": "20260707T145329Z_umbrella_wrong_canopy_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/umbrella_wrong_canopy/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/umbrella_wrong_canopy/prompt.txt",
+  "prompt": "an open umbrella with a curved fabric canopy",
+  "textPrompt": "an open umbrella with a curved fabric canopy",
+  "texture": {
+    "mode": "text",
+    "global_text": "black metal ribs with deep red waterproof fabric",
+    "local_text_prompts": [
+      "",
+      "",
+      "deep red waterproof umbrella fabric",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an open umbrella with a curved fabric canopy. Overall appearance and texture: black metal ribs with deep red waterproof fabric. Local texture overrides: part 3 (wrong flat canopy disk): deep red waterproof umbrella fabric. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 6,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.4073021717710522,
+      -0.4069530527627404,
+      0.10266289659536215
+    ],
+    "max": [
+      0.4059060537035758,
+      0.4069530527627404,
+      0.29733710340463787
+    ],
+    "center": [
+      -0.0006980590337382075,
+      0.0,
+      0.2
+    ],
+    "halfExtents": [
+      0.406604112737314,
+      0.4069530527627404,
+      0.09733710340463786
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/umbrella_wrong_canopy_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "center pole",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "curved handle block",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "wrong flat canopy disk",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "deep red waterproof umbrella fabric"
+    },
+    {
+      "index": 3,
+      "name": "front rib",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "back rib",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "left rib",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "right rib",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

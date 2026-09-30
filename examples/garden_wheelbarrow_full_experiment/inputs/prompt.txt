@@ -1,0 +1,8 @@
+Shape prompt: a sturdy garden wheelbarrow with a single front wheel and two wooden handles
+Global texture: practical weathered garden materials in muted green, natural wood, and black rubber
+Local texture prompts:
+- open metal tray: worn green painted steel
+- front wheel: black rubber tire with a dark metal hub
+- visible soil load: loose dark brown garden soil
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures are limited to the large tray, wheel, and visibly protruding soil load.

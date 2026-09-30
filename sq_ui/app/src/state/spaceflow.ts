@@ -1,4 +1,4 @@
-import { importNpzToPrimitives } from '../mesh/npzImport';
+import { importNpzWithMetadata, type ImportedNpz, type NpzSpaceflowMetadata } from '../mesh/npzImport';
 import {
   buildSpaceflowSqBundleBlobs,
   buildSpaceflowSqBundleData,
@@ -135,7 +135,7 @@ function manifestFor(
   projectName: string,
   primitives: Primitive[],
   bundle: SpaceflowSqBundleData,
-  options: { lowTau: number; highTau: number; lowControlBBoxMargin: number },
+  options: { lowTau: number; highTau: number; lowControlBBoxMargin: number; metadata?: NpzSpaceflowMetadata },
 ) {
   return {
     project_name: projectName,
@@ -144,6 +144,7 @@ function manifestFor(
     high_tau: options.highTau,
     bbox_margin_fraction: options.lowControlBBoxMargin,
     bbox: bundle.bbox,
+    spaceflow_metadata: options.metadata,
     primitives: primitives.map((p, index) => ({
       index,
       name: p.name,
@@ -156,20 +157,31 @@ function manifestFor(
 async function buildBundleForm(
   projectName: string,
   primitives: Primitive[],
-  options: { lowTau: number; highTau: number; lowControlBBoxMargin?: number },
+  options: { lowTau: number; highTau: number; lowControlBBoxMargin?: number; metadata?: NpzSpaceflowMetadata },
 ): Promise<{ form: FormData; bundle: SpaceflowSqBundleData }> {
   const visiblePrimitives = primitives.filter(p => p.visible);
   const lowControlBBoxMargin = clampLowControlBBoxMargin(
     options.lowControlBBoxMargin ?? DEFAULT_LOW_CONTROL_BBOX_MARGIN,
   );
   const bundle = buildSpaceflowSqBundleData(visiblePrimitives, { lowControlBBoxMargin });
-  const blobs = await buildSpaceflowSqBundleBlobs(bundle);
+  const metadata: NpzSpaceflowMetadata = {
+    ...options.metadata,
+    projectName,
+    lowTau: options.lowTau,
+    highTau: options.highTau,
+    lowControlBBoxMargin,
+    primitiveNames: visiblePrimitives.map(p => p.name),
+    localTextureTexts: visiblePrimitives.map(p => p.localTextureText ?? ''),
+    localTextureImagePaths: visiblePrimitives.map(p => p.localTextureImagePath ?? ''),
+  };
+  const blobs = await buildSpaceflowSqBundleBlobs(bundle, metadata);
   const form = new FormData();
   form.append('projectName', projectName);
   form.append('manifest', JSON.stringify(manifestFor(projectName, visiblePrimitives, bundle, {
     lowTau: options.lowTau,
     highTau: options.highTau,
     lowControlBBoxMargin,
+    metadata,
   })));
   form.append('all', blobs.all, 'all.npz');
   form.append('high_control', blobs.highControl, 'high_control.npz');
@@ -183,11 +195,13 @@ export async function saveSpaceflowAsset(options: {
   lowTau?: number;
   highTau?: number;
   lowControlBBoxMargin?: number;
+  metadata?: NpzSpaceflowMetadata;
 }): Promise<{ entry: SpaceflowHistoryEntry; bundle: SpaceflowSqBundleData }> {
   const { form, bundle } = await buildBundleForm(options.projectName, options.primitives, {
     lowTau: options.lowTau ?? 3,
     highTau: options.highTau ?? 10,
     lowControlBBoxMargin: options.lowControlBBoxMargin,
+    metadata: options.metadata,
   });
   const res = await fetch(resolveUrl('/spaceflow/assets/save'), {
     method: 'POST',
@@ -203,14 +217,14 @@ export async function fetchSpaceflowHistory(limit = 50): Promise<SpaceflowHistor
   return payload.entries;
 }
 
-export async function openSpaceflowAsset(entry: SpaceflowHistoryEntry): Promise<Primitive[]> {
+export async function openSpaceflowAsset(entry: SpaceflowHistoryEntry): Promise<ImportedNpz> {
   const res = await fetch(resolveUrl(`/spaceflow/assets/open?path=${encodeURIComponent(entry.paths.all)}`));
   if (!res.ok) {
     const text = await res.text().catch(() => '');
     throw new Error(`Could not open saved NPZ: ${res.status} ${text.slice(0, 200)}`);
   }
   const blob = await res.blob();
-  return importNpzToPrimitives(blob, entry.project_name || 'spaceflow_asset', {
+  return importNpzWithMetadata(blob, entry.project_name || 'spaceflow_asset', {
     basisZUpToYUp: false,
   });
 }
@@ -227,6 +241,7 @@ export async function startSpaceflowRun(options: {
     lowTau: options.runConfig.lowTau,
     highTau: options.runConfig.highTau,
     lowControlBBoxMargin: options.runConfig.lowControlBBoxMargin,
+    metadata: options.runConfig,
   });
   if (bundle.counts.high === 0) {
     throw new Error('Mark at least one primitive as high control before running SpaceFlow.');

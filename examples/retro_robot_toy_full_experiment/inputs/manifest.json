@@ -1,0 +1,126 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "retro_robot_toy",
+  "saved_at": "20260707T120056Z",
+  "save_id": "20260707T120056Z_retro_robot_toy_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/retro_robot_toy/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/retro_robot_toy/prompt.txt",
+  "prompt": "a retro tin robot toy",
+  "textPrompt": "a retro tin robot toy",
+  "texture": {
+    "mode": "text",
+    "global_text": "brushed silver tin with small scratches and worn edges",
+    "local_text_prompts": [
+      "",
+      "",
+      "glowing cyan glass display",
+      "",
+      "",
+      "",
+      "",
+      "red and yellow glossy plastic buttons",
+      ""
+    ],
+    "flattened_text_prompt": "a retro tin robot toy. Overall appearance and texture: brushed silver tin with small scratches and worn edges. Local texture overrides: part 3 (face screen): glowing cyan glass display; part 8 (chest buttons): red and yellow glossy plastic buttons. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 9,
+    "high": 7,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.12206064806637737,
+      -0.1590669673087335,
+      -0.05207220617904937
+    ],
+    "max": [
+      0.12199586678368662,
+      -0.06093149208452076,
+      0.43207220617904935
+    ],
+    "center": [
+      -3.239064134537284e-05,
+      -0.10999922969662712,
+      0.19
+    ],
+    "halfExtents": [
+      0.122028257425032,
+      0.049067737612106366,
+      0.24207220617904934
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/retro_robot_toy_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "tin torso",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "square head",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "face screen",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "glowing cyan glass display"
+    },
+    {
+      "index": 3,
+      "name": "left arm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right arm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "left leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "right leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "chest buttons",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red and yellow glossy plastic buttons"
+    },
+    {
+      "index": 8,
+      "name": "antenna",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

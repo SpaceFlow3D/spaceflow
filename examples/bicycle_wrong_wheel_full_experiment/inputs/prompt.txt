@@ -1,0 +1,9 @@
+Shape prompt: a classic bicycle with two round spoked wheels
+Global texture: dark green painted metal frame with black rubber tires
+Local texture prompts:
+- seat: black leather bicycle saddle
+- handlebar: chrome metal handlebar with black rubber grips
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- wrong rear wheel block is a rectangular low-control block instead of a round wheel.
+- wrong front wheel blob is an oversized lumpy low-control blob; SpaceFlow should infer a proper round wheel.

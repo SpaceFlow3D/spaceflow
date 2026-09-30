@@ -1,0 +1,6 @@
+Shape prompt: a vintage hot air balloon with a wicker basket
+Global texture: warm vintage canvas, leather trim, and soft sunlit shading
+Local texture prompts:
+- envelope: red and cream vertical striped balloon fabric
+- basket: woven brown wicker basket
+Unspecified superquadrics inherit the global texture.

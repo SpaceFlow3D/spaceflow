@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "rocket_wrong_fins",
+  "saved_at": "20260707T120056Z",
+  "save_id": "20260707T120056Z_rocket_wrong_fins_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/rocket_wrong_fins/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/rocket_wrong_fins/prompt.txt",
+  "prompt": "a small retro rocket with three tail fins and a round window",
+  "textPrompt": "a small retro rocket with three tail fins and a round window",
+  "texture": {
+    "mode": "text",
+    "global_text": "white painted rocket body with red accents and scorched dark engine metal",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "bright red painted rocket fins",
+      "glossy blue circular porthole window"
+    ],
+    "flattened_text_prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 3,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.22515633423791084,
+      -0.1903674994829222,
+      -0.37332708464108055
+    ],
+    "max": [
+      0.22500827035006832,
+      -0.009632500517077813,
+      0.24517945046325484
+    ],
+    "center": [
+      -7.403194392126278e-05,
+      -0.1,
+      -0.06407381708891285
+    ],
+    "halfExtents": [
+      0.22508230229398957,
+      0.09036749948292219,
+      0.3092532675521677
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/rocket_wrong_fins_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "rocket body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "nose cone",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "engine nozzle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "wrong single fin slab",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "bright red painted rocket fins"
+    },
+    {
+      "index": 4,
+      "name": "round window",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "glossy blue circular porthole window"
+    }
+  ]
+}

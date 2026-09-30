@@ -1,0 +1,5 @@
+Shape prompt: office chair
+Global texture prompt: black plastic
+Local texture prompts:
+SQ 1 (seat): blue fabric
+Baseline texture prompt: A black plastic office chair with a blue fabric seat

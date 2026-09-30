@@ -1,0 +1,9 @@
+Shape prompt: a small crystal chandelier with a central tier and hanging prisms
+Global texture: polished gold chandelier frame with clear faceted crystal prisms
+Local texture prompts:
+- clear crystal skirt: clear faceted hanging crystal prism skirt
+Unspecified superquadrics inherit the global texture.
+Control assignment note: Ceiling cap, stem, and ring are high-control anchors; crystal skirt and arms are low-control ornate regions.
+Coordinate convention note: X is object width, Y is front-back length, and Z is height.
+Visibility note: The crystal skirt hangs below the ring and is exposed; arms protrude outside the central ring.
+Texture segmentation note: Only the hanging crystal skirt receives a local texture; gold frame elements inherit the global material.

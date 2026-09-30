@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "crystal_chandelier",
+  "saved_at": "20260708T062043Z",
+  "save_id": "20260708T062043Z_crystal_chandelier_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v2_examples_spaceflow/crystal_chandelier/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v2_examples_spaceflow/crystal_chandelier/prompt.txt",
+  "prompt": "a small crystal chandelier with a central tier and hanging prisms",
+  "textPrompt": "a small crystal chandelier with a central tier and hanging prisms",
+  "texture": {
+    "mode": "text",
+    "global_text": "polished gold chandelier frame with clear faceted crystal prisms",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "clear faceted hanging crystal prism skirt",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a small crystal chandelier with a central tier and hanging prisms. Overall appearance and texture: polished gold chandelier frame with clear faceted crystal prisms. Local texture overrides: part 4 (clear crystal skirt): clear faceted hanging crystal prism skirt. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.32047055219175463,
+      -0.3204161111276134,
+      -0.2355113903320467
+    ],
+    "max": [
+      0.32025257484487735,
+      0.3204161111276134,
+      0.13551139033204673
+    ],
+    "center": [
+      -0.00010898867343864249,
+      0.0,
+      -0.04999999999999999
+    ],
+    "halfExtents": [
+      0.320361563518316,
+      0.3204161111276134,
+      0.18551139033204672
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v2_examples_spaceflow/crystal_chandelier_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "ceiling cap",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "central gold stem",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "gold chandelier ring",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "clear crystal skirt",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "clear faceted hanging crystal prism skirt"
+    },
+    {
+      "index": 4,
+      "name": "left right candle arm pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "front back candle arm pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

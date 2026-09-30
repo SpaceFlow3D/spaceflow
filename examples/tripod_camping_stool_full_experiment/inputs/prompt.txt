@@ -1,0 +1,6 @@
+Shape prompt: a compact tripod camping stool with a round fabric seat and three splayed legs
+Global texture: lightweight brushed aluminum frame with durable outdoor fabric
+Local texture prompts:
+- fabric seat: dark forest green canvas with reinforced stitching
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad fabric seat receives a local texture; the thin legs and braces inherit the global frame material.

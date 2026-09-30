@@ -1,0 +1,70 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "black_frying_pan",
+  "saved_at": "20260802T082409Z",
+  "save_id": "20260802T082409Z_black_frying_pan_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/black_frying_pan/black_frying_pan/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/black_frying_pan/black_frying_pan/prompt.txt",
+  "prompt": "a frying pan",
+  "textPrompt": "a frying pan",
+  "texture": {
+    "mode": "text",
+    "global_text": "black metal",
+    "local_text_prompts": [
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a frying pan. Overall appearance and texture: black metal. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 2,
+    "high": 1,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      0.036691825173775304,
+      -0.05326967175699726,
+      -0.04819317173616769
+    ],
+    "max": [
+      0.4033081724420389,
+      0.05326967175699726,
+      0.0682866072564438
+    ],
+    "center": [
+      0.2199999988079071,
+      0.0,
+      0.010046717760138053
+    ],
+    "halfExtents": [
+      0.18330817363413182,
+      0.05326967175699726,
+      0.05823988949630574
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/black_frying_pan/black_frying_pan_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "pan body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "pan handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

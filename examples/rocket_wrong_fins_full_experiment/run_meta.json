@@ -1,0 +1,121 @@
+{
+  "asset_entry": {
+    "id": "20260707T120056Z_rocket_wrong_fins_full_experiment",
+    "project_name": "rocket_wrong_fins",
+    "counts": {
+      "all": 5,
+      "high": 3,
+      "low": 2
+    },
+    "paths": {
+      "all": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/all.npz",
+      "high_control": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/high_control.npz",
+      "low_control_bbox": "/spaceflow-example/rocket_wrong_fins_full_experiment/inputs/low_control_bbox.npz"
+    }
+  },
+  "experiment_type": "full",
+  "experiment_variants": [
+    {
+      "name": "01_local_tau3_tau10_polyak0p18",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_local_tau3_tau10_polyak0p18",
+      "mode": "local_tau",
+      "low_tau": 3.0,
+      "high_tau": 10.0,
+      "polyak_tau": 0.18,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "rocket_wrong_fins",
+      "prompt": "a small retro rocket with three tail fins and a round window"
+    },
+    {
+      "name": "02_global_tau3_polyak0",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/02_global_tau3_polyak0",
+      "mode": "global_tau",
+      "low_tau": 3.0,
+      "high_tau": null,
+      "polyak_tau": 0.0,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "rocket_wrong_fins",
+      "prompt": "a small retro rocket with three tail fins and a round window"
+    },
+    {
+      "name": "03_global_tau10_polyak0",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/03_global_tau10_polyak0",
+      "mode": "global_tau",
+      "low_tau": 10.0,
+      "high_tau": null,
+      "polyak_tau": 0.0,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "rocket_wrong_fins",
+      "prompt": "a small retro rocket with three tail fins and a round window"
+    },
+    {
+      "name": "01_spaceflow_local_texture_routing",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing",
+      "runner": "copy_variant",
+      "mode": "spaceflow_local_texture_routing",
+      "source_variant": "01_local_tau3_tau10_polyak0p18",
+      "source_output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_local_tau3_tau10_polyak0p18",
+      "low_tau": 3.0,
+      "high_tau": 10.0,
+      "polyak_tau": 0.18,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "rocket_wrong_fins"
+    },
+    {
+      "name": "02_trellis_raw_flat_prompt",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/02_trellis_raw_flat_prompt",
+      "runner": "trellis_raw_text",
+      "mode": "trellis_raw_text",
+      "prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "rocket_wrong_fins"
+    },
+    {
+      "name": "03_fixed_structure_appearance_fm",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/03_fixed_structure_appearance_fm",
+      "runner": "fixed_structure_appearance_fm",
+      "mode": "fixed_structure_appearance_fm",
+      "prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "structure_voxels_path": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing/voxels/struct_voxels.ply",
+      "source_variant": "01_spaceflow_local_texture_routing",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "rocket_wrong_fins"
+    },
+    {
+      "name": "04_fixed_structure_guideflow_appearance_fm",
+      "output_dir": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/04_fixed_structure_guideflow_appearance_fm",
+      "runner": "fixed_structure_guideflow_appearance_fm",
+      "mode": "fixed_structure_guideflow_appearance_fm",
+      "prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a small retro rocket with three tail fins and a round window. Overall appearance and texture: white painted rocket body with red accents and scorched dark engine metal. Local texture overrides: part 4 (wrong single fin slab): bright red painted rocket fins; part 5 (round window): glossy blue circular porthole window. All unspecified parts should use the overall appearance and texture.",
+      "structure_voxels_path": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing/voxels/struct_voxels.ply",
+      "source_variant": "01_spaceflow_local_texture_routing",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/rocket_wrong_fins_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "rocket_wrong_fins"
+    }
+  ]
+}

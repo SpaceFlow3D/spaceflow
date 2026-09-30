@@ -1,0 +1,5 @@
+Shape prompt: a classic street fire hydrant with a stout central barrel, broad ground flange, domed top cap, and two opposing side outlets
+Global texture: weathered red painted cast iron with subtle edge wear
+Local texture prompts:
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: No local prompts are used because all five structural parts share the same painted cast-iron finish.

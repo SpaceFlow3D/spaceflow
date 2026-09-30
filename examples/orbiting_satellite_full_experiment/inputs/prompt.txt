@@ -1,0 +1,6 @@
+Shape prompt: a small satellite with solar panels and a dish antenna
+Global texture: white thermal blanket foil with dark graphite hardware
+Local texture prompts:
+- left solar panel: dark blue reflective solar cells with silver grid lines
+- right solar panel: dark blue reflective solar cells with silver grid lines
+Unspecified superquadrics inherit the global texture.

@@ -1,0 +1,126 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "astronomical_telescope",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_astronomical_telescope_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/astronomical_telescope/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/astronomical_telescope/prompt.txt",
+  "prompt": "an astronomical telescope on a tripod mount",
+  "textPrompt": "an astronomical telescope on a tripod mount",
+  "texture": {
+    "mode": "text",
+    "global_text": "matte black metal with polished brass rings",
+    "local_text_prompts": [
+      "",
+      "clear blue glass objective lens in a brass ring",
+      "",
+      "",
+      "",
+      "warm varnished wooden tripod leg",
+      "warm varnished wooden tripod leg",
+      "warm varnished wooden tripod leg",
+      ""
+    ],
+    "flattened_text_prompt": "an astronomical telescope on a tripod mount. Overall appearance and texture: matte black metal with polished brass rings. Local texture overrides: part 2 (objective lens ring): clear blue glass objective lens in a brass ring; part 6 (left tripod leg): warm varnished wooden tripod leg; part 7 (right tripod leg): warm varnished wooden tripod leg; part 8 (rear tripod leg): warm varnished wooden tripod leg. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 9,
+    "high": 7,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      0.02689841812969698,
+      -0.08113822483499675,
+      0.08557317698270395
+    ],
+    "max": [
+      0.49884908873349687,
+      0.08113822483499675,
+      0.29282192109169447
+    ],
+    "center": [
+      0.2628737534315969,
+      0.0,
+      0.1891975490371992
+    ],
+    "halfExtents": [
+      0.23597533530189996,
+      0.08113822483499675,
+      0.10362437205449526
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/astronomical_telescope_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "main telescope tube",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "objective lens ring",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "clear blue glass objective lens in a brass ring"
+    },
+    {
+      "index": 2,
+      "name": "eyepiece",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "pivot mount",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "central tripod column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "left tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "warm varnished wooden tripod leg"
+    },
+    {
+      "index": 6,
+      "name": "right tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "warm varnished wooden tripod leg"
+    },
+    {
+      "index": 7,
+      "name": "rear tripod leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "warm varnished wooden tripod leg"
+    },
+    {
+      "index": 8,
+      "name": "finder scope",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

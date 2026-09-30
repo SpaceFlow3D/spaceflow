@@ -1,0 +1,7 @@
+Shape prompt: a vintage film camera on a tripod
+Global texture: matte black metal and pebbled black leather
+Local texture prompts:
+- glass lens face: deep blue reflective glass camera lens
+- left film reel: brushed silver metal film reel
+- right film reel: brushed silver metal film reel
+Unspecified superquadrics inherit the global texture.

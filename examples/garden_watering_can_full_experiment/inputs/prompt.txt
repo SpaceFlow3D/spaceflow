@@ -1,0 +1,7 @@
+Shape prompt: a traditional garden watering can with a round body, long rising spout, top handle, and sprinkler rose
+Global texture: weathered galvanized steel with soft gray reflections
+Local texture prompts:
+- can body: pale sage-green painted galvanized steel with light wear
+- sprinkler rose: dull perforated brass
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures are limited to the large can body and the broad sprinkler rose.

@@ -1,0 +1,5 @@
+Shape prompt: a spoon
+Global texture: silver metal
+Local texture prompts:
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: No local texture prompts are used.

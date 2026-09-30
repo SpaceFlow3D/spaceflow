@@ -1,0 +1,7 @@
+Shape prompt: a sturdy leather hiking boot with a high ankle, thick sole, and reinforced toe
+Global texture: worn dark brown leather with rugged black rubber
+Local texture prompts:
+- thick outsole: deeply treaded matte black rubber
+- padded ankle cuff: soft cream shearling lining
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures target the broad outsole and visible ankle cuff; the connected leather volumes inherit the global material.

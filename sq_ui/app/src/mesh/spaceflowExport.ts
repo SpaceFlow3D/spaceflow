@@ -6,6 +6,7 @@ import {
 } from '../state/spaceflowConfig';
 import { createSuperquadricMesh } from './superquadric';
 import { exportNpz, type PrimitiveExport } from './npzExport';
+import type { NpzSpaceflowMetadata } from './npzImport';
 
 const BBOX_MIN_HALF_EXTENT = 1e-4;
 const BBOX_RESOLUTION = 32;
@@ -174,9 +175,10 @@ export function buildSpaceflowSqBundleData(
 
 export async function buildSpaceflowSqBundleBlobs(
   data: SpaceflowSqBundleData,
+  metadata?: NpzSpaceflowMetadata,
 ): Promise<SpaceflowSqBundleBlobs> {
   const [all, highControl, lowControlBbox] = await Promise.all([
-    exportNpz(data.all),
+    exportNpz(data.all, { metadata }),
     exportNpz(data.highControl, { allowEmpty: true }),
     exportNpz([data.lowControlBbox]),
   ]);

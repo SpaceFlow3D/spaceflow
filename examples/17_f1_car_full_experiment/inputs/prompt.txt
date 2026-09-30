@@ -1,0 +1,5 @@
+Shape prompt: F1 Car
+Global texture prompt: black
+Local texture prompts:
+SQ 1 (body): red metal
+Baseline texture prompt: A black F1 car with a red metal body

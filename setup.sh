@@ -1,56 +1,51 @@
 #!/usr/bin/env bash
+# Linux/CUDA installation. Build CUDA extensions on an allocated compute node.
 set -euo pipefail
+REPO_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$REPO_ROOT"
+STAGE="${SPACEFLOW_SETUP_STAGE:-all}"
+VENV="${SPACEFLOW_VENV:-$REPO_ROOT/.venv}"
+PYTHON="${SPACEFLOW_SETUP_PYTHON:-python3}"
+export MAX_JOBS="${MAX_JOBS:-4}"
 
-ENV_NAME="${SPACEFLOW_ENV_NAME:-spaceflow}"
+case "$STAGE" in deps|extensions|all) ;; *) echo 'SPACEFLOW_SETUP_STAGE must be deps, extensions, or all.' >&2; exit 2;; esac
+if [ ! -x "$VENV/bin/python" ]; then
+  "$PYTHON" -c 'import sys; assert sys.version_info[:2] == (3, 10), "Use Python 3.10 for SpaceFlow."'
+  "$PYTHON" -m venv "$VENV"
+fi
+PIP=("$VENV/bin/python" -m pip)
+"$VENV/bin/python" -c 'import sys; assert sys.version_info[:2] == (3, 10), "Use Python 3.10 for SpaceFlow."'
 
-if command -v conda >/dev/null 2>&1; then
-  conda create -n "$ENV_NAME" python=3.10 -y
-  # shellcheck disable=SC1091
-  eval "$(conda shell.bash hook)"
-  conda activate "$ENV_NAME"
-else
-  echo "conda was not found. Create a Python 3.10 environment first, then rerun this script." >&2
-  exit 1
+if [ "$STAGE" != extensions ]; then
+  "${PIP[@]}" install 'pip==25.3' 'setuptools==80.9.0' 'wheel==0.45.1'
+  "${PIP[@]}" install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt -r requirements/runtime.txt
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt kaolin==0.18.0 -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.8.0_cu128.html
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt torch-scatter==2.1.2 -f https://data.pyg.org/whl/torch-2.8.0+cu128.html
 fi
 
-conda install -y pytorch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 pytorch-cuda=12.4 -c pytorch -c nvidia
-
-pip install \
-  pillow imageio imageio-ffmpeg tqdm easydict opencv-python-headless scipy ninja rembg onnxruntime \
-  trimesh open3d xatlas pyvista pymeshfix igraph transformers omegaconf lightning==2.2 h5py yacs \
-  scikit-image loguru boto3 mesh2sdf tetgen==0.6.4 pymeshlab plyfile einops libigl polyscope \
-  potpourri3d simple_parsing arrgh vtk matplotlib numpy==1.26.4
-
-pip install git+https://github.com/EasternJournalist/utils3d.git@9a4eb15e4021b67b12c460c7057d642626897ec8
-pip install -U 'python-pycg[all]'
-pip install xformers==0.0.28.post2 --no-deps --index-url https://download.pytorch.org/whl/cu124
-pip install flash-attn --no-build-isolation
-pip install kaolin -f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.4.0_cu121.html
-pip install spconv-cu120
-pip install torch-scatter -f https://data.pyg.org/whl/torch-2.5.0+cu124.html
-
-EXT_ROOT="${SPACEFLOW_EXTENSION_BUILD_ROOT:-/tmp/spaceflow_extensions}"
-mkdir -p "$EXT_ROOT"
-
-if [ "${SPACEFLOW_SKIP_SOURCE_EXTENSIONS:-0}" != "1" ]; then
-  if [ ! -d "$EXT_ROOT/nvdiffrast" ]; then
-    git clone https://github.com/NVlabs/nvdiffrast.git "$EXT_ROOT/nvdiffrast"
+if [ "$STAGE" != deps ]; then
+  command -v nvcc >/dev/null || { echo 'Load the CUDA 12.8 toolkit before building extensions.' >&2; exit 1; }
+  "$VENV/bin/python" -c 'import torch; assert torch.cuda.is_available(), "Build and verify CUDA extensions on an allocated GPU node."'
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt flash-attn==2.8.3 --no-build-isolation
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt git+https://github.com/NVlabs/nvdiffrast.git@253ac4fcea7de5f396371124af597e6cc957bfae --no-build-isolation
+  EXT_ROOT="${SPACEFLOW_EXTENSION_BUILD_ROOT:-$REPO_ROOT/.extension-build}"
+  MIP_COMMIT=dda02ab5ecf45d6edb8c540d9bb65c7e451345a9
+  MIP_ROOT="$EXT_ROOT/mip-splatting-$MIP_COMMIT"
+  if [ ! -d "$MIP_ROOT" ]; then
+    mkdir -p "$EXT_ROOT"
+    git clone --no-checkout https://github.com/autonomousvision/mip-splatting.git "$MIP_ROOT"
+    git -C "$MIP_ROOT" checkout --detach "$MIP_COMMIT"
+    git -C "$MIP_ROOT" submodule update --init --recursive
   fi
-  pip install "$EXT_ROOT/nvdiffrast" --no-build-isolation --no-cache-dir
-
-  if [ ! -d "$EXT_ROOT/diffoctreerast" ]; then
-    git clone --recurse-submodules https://github.com/JeffreyXiang/diffoctreerast.git "$EXT_ROOT/diffoctreerast"
-  fi
-  pip install "$EXT_ROOT/diffoctreerast" --no-build-isolation --no-cache-dir
-
-  if [ ! -d "$EXT_ROOT/mip-splatting" ]; then
-    git clone https://github.com/autonomousvision/mip-splatting.git "$EXT_ROOT/mip-splatting"
-  fi
-  pip install "$EXT_ROOT/mip-splatting/submodules/diff-gaussian-rasterization" --no-build-isolation --no-cache-dir
+  test "$(git -C "$MIP_ROOT" rev-parse HEAD)" = "$MIP_COMMIT"
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt "$MIP_ROOT/submodules/diff-gaussian-rasterization" --no-build-isolation
+  "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt third_party/TRELLIS/extensions/vox2seq --no-build-isolation
 fi
 
-pip install third_party/TRELLIS/extensions/vox2seq --no-build-isolation --no-cache-dir
-
-echo "Python environment ready: $ENV_NAME"
-echo "Place PartField checkpoint at third_party/PartField/models/model_objaverse.ckpt before full SpaceFlow runs."
-echo "Install UI dependencies with: cd sq_ui/app && npm install"
+"${PIP[@]}" check
+"${PIP[@]}" freeze > "$VENV/spaceflow-installed-packages.txt"
+echo "Activate the environment with: source $VENV/bin/activate"
+echo 'Place the PartField checkpoint at third_party/PartField/models/model_objaverse.ckpt.'
+echo 'Set SPACEFLOW_BLENDER_PATH to a working Blender executable.'

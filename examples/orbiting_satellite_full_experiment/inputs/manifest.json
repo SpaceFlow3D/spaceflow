@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "orbiting_satellite",
+  "saved_at": "20260707T104207Z",
+  "save_id": "20260707T104207Z_orbiting_satellite_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/orbiting_satellite/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/orbiting_satellite/prompt.txt",
+  "prompt": "a small satellite with solar panels and a dish antenna",
+  "textPrompt": "a small satellite with solar panels and a dish antenna",
+  "texture": {
+    "mode": "text",
+    "global_text": "white thermal blanket foil with dark graphite hardware",
+    "local_text_prompts": [
+      "",
+      "dark blue reflective solar cells with silver grid lines",
+      "dark blue reflective solar cells with silver grid lines",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a small satellite with solar panels and a dish antenna. Overall appearance and texture: white thermal blanket foil with dark graphite hardware. Local texture overrides: part 2 (left solar panel): dark blue reflective solar cells with silver grid lines; part 3 (right solar panel): dark blue reflective solar cells with silver grid lines. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 4,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.17459543757663126,
+      -0.1445802879539027,
+      -0.14461881004857785
+    ],
+    "max": [
+      0.33240139439682315,
+      0.31268720751461976,
+      0.2549811209085772
+    ],
+    "center": [
+      0.07890297841009594,
+      0.08405345978035852,
+      0.055181155429999684
+    ],
+    "halfExtents": [
+      0.2534984159867272,
+      0.22863374773426123,
+      0.19979996547857753
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/orbiting_satellite_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "central satellite bus",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "left solar panel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark blue reflective solar cells with silver grid lines"
+    },
+    {
+      "index": 2,
+      "name": "right solar panel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark blue reflective solar cells with silver grid lines"
+    },
+    {
+      "index": 3,
+      "name": "dish antenna",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "antenna mast",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "side sensor boom",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

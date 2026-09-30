@@ -1,0 +1,6 @@
+Shape prompt: a simple steam iron with a pointed soleplate, solid body, and raised top handle
+Global texture: blue painted metal
+Local texture prompts:
+- pointed soleplate: silver metal
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The broad soleplate uses one simple local material prompt.

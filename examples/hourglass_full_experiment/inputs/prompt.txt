@@ -1,0 +1,5 @@
+Shape prompt: an antique hourglass with wooden caps
+Global texture: clear glass and polished dark mahogany wood
+Local texture prompts:
+- sand pile: fine golden sand inside the lower bulb
+Unspecified superquadrics inherit the global texture.

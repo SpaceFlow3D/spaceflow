@@ -1,0 +1,6 @@
+Shape prompt: a classic stovetop moka pot with a faceted lower boiler, upper coffee chamber, fitted lid, pouring spout, and side handle
+Global texture: softly brushed silver aluminum with dark heat-resistant fittings
+Local texture prompts:
+- side handle: matte black Bakelite
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The handle is a large isolated silhouette and receives the only local prompt; all aluminum chambers, lid, and spout inherit the global finish.

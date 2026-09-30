@@ -1,0 +1,8 @@
+Shape prompt: Sailboat
+Global texture prompt: white
+Local texture prompts:
+SQ 3 (sail): yellow
+SQ 4 (sail): yellow
+SQ 5 (sail): yellow
+SQ 6 (sail): yellow
+Baseline texture prompt: A white sailboat with yellow sails

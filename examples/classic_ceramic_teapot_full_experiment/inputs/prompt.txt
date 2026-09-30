@@ -1,0 +1,6 @@
+Shape prompt: a classic ceramic teapot with a rounded body, fitted lid, long pouring spout, and curved side handle
+Global texture: glossy ivory porcelain with restrained cobalt-blue floral decoration
+Local texture prompts:
+- rounded teapot body: glossy ivory porcelain with broad cobalt-blue floral motifs
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad body receives a local texture prompt; the lid, spout, and handle inherit the global porcelain finish.

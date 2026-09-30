@@ -1,0 +1,70 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "wooden_baseball_bat",
+  "saved_at": "20260802T082344Z",
+  "save_id": "20260802T082344Z_wooden_baseball_bat_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/wooden_baseball_bat/wooden_baseball_bat/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/wooden_baseball_bat/wooden_baseball_bat/prompt.txt",
+  "prompt": "a baseball bat",
+  "textPrompt": "a baseball bat",
+  "texture": {
+    "mode": "text",
+    "global_text": "light wood",
+    "local_text_prompts": [
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a baseball bat. Overall appearance and texture: light wood. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 2,
+    "high": 1,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.04739097961068493,
+      -0.04737244424326803,
+      -0.40661014670039886
+    ],
+    "max": [
+      0.047316822833476685,
+      0.04737244424326803,
+      -0.06338985210750823
+    ],
+    "center": [
+      -3.707838860412399e-05,
+      0.0,
+      -0.23499999940395355
+    ],
+    "halfExtents": [
+      0.04735390122208081,
+      0.04737244424326803,
+      0.1716101472964453
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/wooden_baseball_bat/wooden_baseball_bat_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/wooden_baseball_bat/wooden_baseball_bat_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/wooden_baseball_bat/wooden_baseball_bat_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "bat barrel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "bat grip",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

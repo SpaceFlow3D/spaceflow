@@ -1,0 +1,5 @@
+Shape prompt: a Japanese stone garden lantern
+Global texture: weathered grey stone with moss in cracks and edges
+Local texture prompts:
+- light chamber: warm amber inner glow behind stone openings
+Unspecified superquadrics inherit the global texture.

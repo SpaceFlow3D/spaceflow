@@ -1,0 +1,126 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "antique_gramophone",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_antique_gramophone_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/antique_gramophone/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/antique_gramophone/prompt.txt",
+  "prompt": "an antique gramophone with a large brass horn",
+  "textPrompt": "an antique gramophone with a large brass horn",
+  "texture": {
+    "mode": "text",
+    "global_text": "polished dark walnut wood with aged brass accents",
+    "local_text_prompts": [
+      "",
+      "black felt turntable surface",
+      "",
+      "",
+      "",
+      "aged golden brass horn with soft patina",
+      "polished aged brass rim",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an antique gramophone with a large brass horn. Overall appearance and texture: polished dark walnut wood with aged brass accents. Local texture overrides: part 2 (turntable platter): black felt turntable surface; part 6 (flared horn body): aged golden brass horn with soft patina; part 7 (horn rim): polished aged brass rim. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 9,
+    "high": 6,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.5055439111518985,
+      -0.30457194455565606,
+      -0.349597614412235
+    ],
+    "max": [
+      0.6345976144122351,
+      0.22313194634221872,
+      0.44353459150238794
+    ],
+    "center": [
+      0.0645268516301683,
+      -0.04071999910671867,
+      0.04696848854507646
+    ],
+    "halfExtents": [
+      0.5700707627820667,
+      0.2638519454489374,
+      0.3965661029573115
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/antique_gramophone_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/antique_gramophone_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/antique_gramophone_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "wooden base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "turntable platter",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "black felt turntable surface"
+    },
+    {
+      "index": 2,
+      "name": "center spindle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "tonearm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "horn neck",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "flared horn body",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "aged golden brass horn with soft patina"
+    },
+    {
+      "index": 6,
+      "name": "horn rim",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "polished aged brass rim"
+    },
+    {
+      "index": 7,
+      "name": "crank knob",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 8,
+      "name": "crank handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "suitcase_record_player",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_suitcase_record_player_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/suitcase_record_player/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/suitcase_record_player/prompt.txt",
+  "prompt": "a vintage suitcase record player with an open lid, round platter, and tonearm",
+  "textPrompt": "a vintage suitcase record player with an open lid, round platter, and tonearm",
+  "texture": {
+    "mode": "text",
+    "global_text": "warm cream suitcase casing with dark metal hardware",
+    "local_text_prompts": [
+      "",
+      "matte black vinyl turntable surface",
+      "",
+      "",
+      "",
+      "tan woven speaker cloth"
+    ],
+    "flattened_text_prompt": "a vintage suitcase record player with an open lid, round platter, and tonearm. Overall appearance and texture: warm cream suitcase casing with dark metal hardware. Local texture overrides: part 2 (round platter): matte black vinyl turntable surface; part 6 (lid speaker panel): tan woven speaker cloth. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2292939769062713,
+      -0.2843287798717736,
+      -0.10434482868342251
+    ],
+    "max": [
+      0.30753066041467036,
+      0.22844881010388018,
+      0.35970733876755956
+    ],
+    "center": [
+      0.03911834175419954,
+      -0.027939984883946695,
+      0.1276812550420685
+    ],
+    "halfExtents": [
+      0.26841231866047083,
+      0.25638879498782685,
+      0.23202608372549105
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/suitcase_record_player_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "suitcase base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "round platter",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "matte black vinyl turntable surface"
+    },
+    {
+      "index": 2,
+      "name": "tonearm",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "open lid",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "front control strip",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "lid speaker panel",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "tan woven speaker cloth"
+    }
+  ]
+}

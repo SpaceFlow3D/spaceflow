@@ -1,0 +1,6 @@
+Shape prompt: a classic domestic sewing machine with a broad base, upright pillar, horizontal arm, descending needle head, and large side handwheel
+Global texture: glossy black cast iron with restrained antique-gold floral decals
+Local texture prompts:
+- broad machine base: glossy black cast iron with sparse antique-gold border decoration
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad base receives a local prompt; the pillar, arm, needle head, and handwheel share the global machine finish.

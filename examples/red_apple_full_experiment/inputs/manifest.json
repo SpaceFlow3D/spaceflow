@@ -1,0 +1,70 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "red_apple",
+  "saved_at": "20260802T083156Z",
+  "save_id": "20260802T083156Z_red_apple_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_apple/red_apple/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_apple/red_apple/prompt.txt",
+  "prompt": "an apple",
+  "textPrompt": "an apple",
+  "texture": {
+    "mode": "text",
+    "global_text": "red",
+    "local_text_prompts": [
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an apple. Overall appearance and texture: red. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 2,
+    "high": 1,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.025840713038765794,
+      -0.025828241814459366,
+      0.10214772672114726
+    ],
+    "max": [
+      0.02579081591746837,
+      0.02582824181445937,
+      0.21785226612629538
+    ],
+    "center": [
+      -2.4948560648711815e-05,
+      1.734723475976807e-18,
+      0.1599999964237213
+    ],
+    "halfExtents": [
+      0.025815764478117082,
+      0.02582824181445937,
+      0.05785226970257406
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_apple/red_apple_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_apple/red_apple_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_apple/red_apple_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "apple body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "apple stem",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

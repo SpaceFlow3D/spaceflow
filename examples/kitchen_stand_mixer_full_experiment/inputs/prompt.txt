@@ -1,0 +1,6 @@
+Shape prompt: a classic kitchen stand mixer with a tilting motor head, metal bowl, and beater
+Global texture: cream enamel appliance housing with brushed metal fittings
+Local texture prompts:
+- mixing bowl: reflective brushed stainless steel
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad mixing bowl receives a local texture; the small attachment hub and beater inherit the global metal finish.

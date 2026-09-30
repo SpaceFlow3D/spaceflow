@@ -26,7 +26,6 @@ sys.path.insert(0, str(REPO_ROOT))
 from sq_ui.scripts import render_spaceflow_experiment_comparison as render_utils  # noqa: E402
 
 
-DEFAULT_RUN_DIR = Path("/work/courses/3dv/team3/spaceflow_runtime/sq_ui_runs/20260603T204423Z_Sailboat_experiment")
 LOCAL_VARIANT = "output/01_local_tau3_tau10_polyak0p18"
 
 
@@ -165,7 +164,9 @@ def render_spin(run_dir: Path, output_prefix: Path) -> None:
 
 def main(argv: list[str] | None = None) -> None:
     argv = argv if argv is not None else sys.argv[1:]
-    run_dir = Path(argv[0]).expanduser().resolve() if argv else DEFAULT_RUN_DIR
+    if len(argv) != 1:
+        raise SystemExit("Usage: python docs/render_readme_media.py /path/to/completed/sailboat/run")
+    run_dir = Path(argv[0]).expanduser().resolve()
     media_dir = REPO_ROOT / "docs" / "media"
     render_case_study(run_dir, media_dir / "sailboat_case_study.png")
     render_spin(run_dir, media_dir / "sailboat_spin")

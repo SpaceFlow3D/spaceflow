@@ -1,0 +1,6 @@
+Shape prompt: a simple closed umbrella with a folded canopy, straight shaft, pointed tip, and hooked handle
+Global texture: black metal
+Local texture prompts:
+- folded canopy: dark blue fabric
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The folded canopy uses one simple local material prompt.

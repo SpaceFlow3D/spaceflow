@@ -1,0 +1,6 @@
+Shape prompt: a compact retro laboratory microscope with a heavy base, angled support, specimen stage, eyepiece, and objective housing
+Global texture: black enamel laboratory metal with brushed silver optical parts
+Local texture prompts:
+- heavy microscope base: deep bottle-green enamel over cast metal
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad cast base receives a local finish; the optical assembly shares the global black-and-silver material prompt.

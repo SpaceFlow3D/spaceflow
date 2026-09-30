@@ -1,0 +1,5 @@
+Shape prompt: classic chair with a slat back
+Global texture prompt: dark wood
+Local texture prompts:
+SQ 1 (seat): red leather
+Baseline texture prompt: A dark wood classic slat-back chair with a red leather seat

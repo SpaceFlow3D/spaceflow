@@ -1,0 +1,6 @@
+Shape prompt: stool with a pillow
+Global texture prompt: light wood
+Local texture prompts:
+SQ 1 (top cushion): yellow fabric
+SQ 2 (top cushion): yellow fabric
+Baseline texture prompt: A light wood stool with yellow fabric cushions on top

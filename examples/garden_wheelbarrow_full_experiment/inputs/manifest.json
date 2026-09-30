@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "garden_wheelbarrow",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_garden_wheelbarrow_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/garden_wheelbarrow/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/garden_wheelbarrow/prompt.txt",
+  "prompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles",
+  "textPrompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles",
+  "texture": {
+    "mode": "text",
+    "global_text": "practical weathered garden materials in muted green, natural wood, and black rubber",
+    "local_text_prompts": [
+      "worn green painted steel",
+      "black rubber tire with a dark metal hub",
+      "",
+      "",
+      "",
+      "",
+      "loose dark brown garden soil"
+    ],
+    "flattened_text_prompt": "a sturdy garden wheelbarrow with a single front wheel and two wooden handles. Overall appearance and texture: practical weathered garden materials in muted green, natural wood, and black rubber. Local texture overrides: part 1 (open metal tray): worn green painted steel; part 2 (front wheel): black rubber tire with a dark metal hub; part 7 (visible soil load): loose dark brown garden soil. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 3,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.31486851798232807,
+      -0.2466630875977646,
+      -0.34954205674090194
+    ],
+    "max": [
+      0.3542743361908226,
+      0.24666308759776462,
+      0.2995420567409019
+    ],
+    "center": [
+      0.019702909104247268,
+      1.3877787807814457e-17,
+      -0.025000000000000022
+    ],
+    "halfExtents": [
+      0.33457142708657533,
+      0.24666308759776462,
+      0.3245420567409019
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/garden_wheelbarrow_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "open metal tray",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "worn green painted steel"
+    },
+    {
+      "index": 1,
+      "name": "front wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "black rubber tire with a dark metal hub"
+    },
+    {
+      "index": 2,
+      "name": "left wooden handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "right wooden handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "left support leg",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "right support leg",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "visible soil load",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "loose dark brown garden soil"
+    }
+  ]
+}

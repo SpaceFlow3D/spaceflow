@@ -1,0 +1,7 @@
+Shape prompt: a retro arcade cabinet with joystick controls
+Global texture: black laminate cabinet with neon magenta and cyan trim
+Local texture prompts:
+- screen: glowing pixel art arcade screen
+- marquee sign: bright neon marquee sign with retro lettering
+- button cluster: red yellow and blue glossy plastic arcade buttons
+Unspecified superquadrics inherit the global texture.

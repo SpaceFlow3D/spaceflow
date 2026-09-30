@@ -1,0 +1,10 @@
+Shape prompt: an upright piano
+Global texture: glossy black upright piano with ivory keys and polished dark wood details
+Local texture prompts:
+- tall piano cabinet: glossy black lacquer piano cabinet
+- keyboard slab: ivory and black piano keys
+Unspecified superquadrics inherit the global texture.
+Control assignment note: The tall cabinet, protruding keyboard slab, and top lid are high-control anchors for an upright piano; the front panel, music stand, and legs are low control so SpaceFlow can refine decorative piano details.
+Coordinate convention note: X is object width, Y is front-back length, and Z is height.
+All primitives are exposed or visibly protruding; partial contact overlap is used only for attached parts, and no primitive is intended to be fully contained inside another.
+Texture segmentation note: Local texture prompts target the broad lacquer cabinet and keyboard; smaller legs and decorative front panels inherit the global piano material.

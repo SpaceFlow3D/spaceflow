@@ -1,0 +1,6 @@
+Shape prompt: Clock with button on top
+Global texture prompt: red metal
+Local texture prompts:
+SQ 4 (top piece): silver metal
+SQ 5 (top piece): silver metal
+Baseline texture prompt: A red metal clock with silver metal pieces on top

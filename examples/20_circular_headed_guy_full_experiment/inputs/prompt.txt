@@ -1,0 +1,5 @@
+Shape prompt: Circular headed guy
+Global texture prompt: blue fabric
+Local texture prompts:
+SQ 2 (head): peach skin
+Baseline texture prompt: A blue fabric circular-headed guy with a peach skin head

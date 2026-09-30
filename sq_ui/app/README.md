@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# SpaceFlow superquadric editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, TypeScript, and Three.js editor for SpaceFlow's geometric scaffold and
+appearance prompts. It includes primitive editing, high/low control labels,
+global and local prompts, NPZ import/export, saved asset history, and run results.
 
-Currently, two official plugins are available:
+## Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Use Node.js 22.12 or later. From this directory:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm ci --include=optional
+npm run dev -- --host 127.0.0.1
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the URL printed by Vite, usually `http://127.0.0.1:5173`. Load a built-in
+preset or import an NPZ, then edit its primitives and prompts. Editing and NPZ
+downloads do not require a GPU.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To save and reopen assets, also start the Python service from the repository
+root. The [UI instructions](../README.md) describe the service and Slurm options.
+The development server proxies `/spaceflow` to `http://127.0.0.1:11438` by
+default; set `VITE_DEV_PROXY_SPACEFLOW` for another backend address.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+`bash run.sh` from the repository root starts both services using the active
+Python environment. Keep runtime data outside the source tree or in the ignored
+`spaceflow_runtime/` directory.
+
+## Build
+
+```bash
+npm run build
+npm test
 ```
+
+The build type-checks the UI and writes the production bundle to `dist/`.
+The tests check NPZ geometry and metadata round trips with Node's test runner.
+Saved and downloaded NPZs retain primitive names, control labels, global/local
+text prompts, and run settings. Uploaded image files need to be supplied again;
+NPZ metadata stores image paths, not the image bytes. The
+[controlled demo helper](../scripts/run_public_demo.sh) serves this bundle through
+an authenticated gateway. Generation additionally requires the GPU runtime and
+model checkpoints described in the [project README](../../README.md).
+
+## Open a recovered example
+
+With Vite running, append an NPZ path to the editor URL:
+
+```text
+http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
+```
+
+The paths are resolved from the repository root. `SQ_UI_NPZ_ROOTS` configures
+additional directories. For reproducible generation using the original
+settings, use `tools/replay_example.py` rather than re-entering the parameters.

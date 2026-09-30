@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "silver_trophy_cup",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_silver_trophy_cup_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/silver_trophy_cup/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/silver_trophy_cup/prompt.txt",
+  "prompt": "a classic silver trophy cup with two side handles on a dark pedestal base",
+  "textPrompt": "a classic silver trophy cup with two side handles on a dark pedestal base",
+  "texture": {
+    "mode": "text",
+    "global_text": "polished silver metal with subtle reflections",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "dark charcoal stone with a satin finish",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a classic silver trophy cup with two side handles on a dark pedestal base. Overall appearance and texture: polished silver metal with subtle reflections. Local texture overrides: part 4 (pedestal base): dark charcoal stone with a satin finish. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.3035065066442686,
+      -0.21830168357787827,
+      -0.03853732075834153
+    ],
+    "max": [
+      0.30335764811534455,
+      0.21830168357787827,
+      0.3835373207583415
+    ],
+    "center": [
+      -7.442926446202258e-05,
+      0.0,
+      0.1725
+    ],
+    "halfExtents": [
+      0.3034320773798066,
+      0.21830168357787827,
+      0.21103732075834153
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/silver_trophy_cup_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "cup bowl",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "wide cup rim",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "slender stem",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "pedestal base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark charcoal stone with a satin finish"
+    },
+    {
+      "index": 4,
+      "name": "left side handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "right side handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

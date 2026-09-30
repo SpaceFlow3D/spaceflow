@@ -1,0 +1,118 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "space_shuttle",
+  "saved_at": "20260707T133059Z",
+  "save_id": "20260707T133059Z_space_shuttle_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/space_shuttle/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/space_shuttle/prompt.txt",
+  "prompt": "a compact space shuttle with delta wings",
+  "textPrompt": "a compact space shuttle with delta wings",
+  "texture": {
+    "mode": "text",
+    "global_text": "white ceramic heat shield tiles with black leading edges",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "glossy black cockpit windows",
+      "dark scorched metal rocket engine bell",
+      "dark scorched metal rocket engine bell"
+    ],
+    "flattened_text_prompt": "a compact space shuttle with delta wings. Overall appearance and texture: white ceramic heat shield tiles with black leading edges. Local texture overrides: part 6 (cockpit windows): glossy black cockpit windows; part 7 (left engine bell): dark scorched metal rocket engine bell; part 8 (right engine bell): dark scorched metal rocket engine bell. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 8,
+    "high": 5,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.5509523375437488,
+      -0.1520286648082424,
+      -0.10003390367855829
+    ],
+    "max": [
+      0.4777223651420614,
+      0.1415942267253384,
+      0.20003390367855828
+    ],
+    "center": [
+      -0.03661498620084372,
+      -0.005217219041452004,
+      0.049999999999999996
+    ],
+    "halfExtents": [
+      0.5143373513429051,
+      0.1468114457667904,
+      0.1500339036785583
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/space_shuttle_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/space_shuttle_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/space_shuttle_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "fuselage",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "nose cone",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "left delta wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "right delta wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "vertical tail",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "cockpit windows",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "glossy black cockpit windows"
+    },
+    {
+      "index": 6,
+      "name": "left engine bell",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark scorched metal rocket engine bell"
+    },
+    {
+      "index": 7,
+      "name": "right engine bell",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark scorched metal rocket engine bell"
+    }
+  ]
+}

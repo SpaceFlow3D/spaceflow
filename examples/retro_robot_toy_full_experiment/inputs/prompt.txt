@@ -1,0 +1,6 @@
+Shape prompt: a retro tin robot toy
+Global texture: brushed silver tin with small scratches and worn edges
+Local texture prompts:
+- face screen: glowing cyan glass display
+- chest buttons: red and yellow glossy plastic buttons
+Unspecified superquadrics inherit the global texture.

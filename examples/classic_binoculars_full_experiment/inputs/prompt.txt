@@ -1,0 +1,7 @@
+Shape prompt: classic field binoculars with two parallel barrels, eyepieces, and a central hinge
+Global texture: matte black rubber armor with dark metal fittings
+Local texture prompts:
+- left objective lens: deep blue reflective optical glass
+- right objective lens: deep blue reflective optical glass
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the two broad front lens faces use local texture prompts; barrels, hinge, and eyepieces inherit the global finish.

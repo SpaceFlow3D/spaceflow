@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "floor_tom_drum",
+  "saved_at": "20260720T172903Z",
+  "save_id": "20260720T172903Z_floor_tom_drum_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/floor_tom_drum/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/floor_tom_drum/prompt.txt",
+  "prompt": "floor tom drum",
+  "textPrompt": "floor tom drum",
+  "texture": {
+    "mode": "text",
+    "global_text": "burgundy lacquer",
+    "local_text_prompts": [
+      "burgundy shell",
+      "white drumhead",
+      "",
+      "",
+      "",
+      "",
+      "chrome lugs"
+    ],
+    "flattened_text_prompt": "floor tom drum. Overall appearance and texture: burgundy lacquer. Local texture overrides: part 1 (drum shell): burgundy shell; part 2 (top drumhead): white drumhead; part 7 (lug group): chrome lugs. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 3,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.19356670027810488,
+      -0.2015802365041391,
+      -0.4085853216818542
+    ],
+    "max": [
+      0.19347723581021495,
+      0.20056745729682818,
+      0.2405853216818542
+    ],
+    "center": [
+      -4.473223394496628e-05,
+      -0.0005063896036554549,
+      -0.08399999999999999
+    ],
+    "halfExtents": [
+      0.19352196804415991,
+      0.20107384690048363,
+      0.32458532168185417
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/floor_tom_drum_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "drum shell",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "burgundy shell"
+    },
+    {
+      "index": 1,
+      "name": "top drumhead",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "white drumhead"
+    },
+    {
+      "index": 2,
+      "name": "bottom rim",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "left chrome leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right chrome leg",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "rear chrome leg",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "lug group",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "chrome lugs"
+    }
+  ]
+}

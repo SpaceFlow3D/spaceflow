@@ -1,0 +1,6 @@
+Shape prompt: a classic twin-bell alarm clock with a round body, front clock face, two top bells, and a small top handle
+Global texture: red painted metal
+Local texture prompts:
+- front clock face: white enamel
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The clock face uses one simple local material prompt.

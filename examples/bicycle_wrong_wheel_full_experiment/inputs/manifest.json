@@ -1,0 +1,118 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "bicycle_wrong_wheel",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_bicycle_wrong_wheel_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bicycle_wrong_wheel/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/bicycle_wrong_wheel/prompt.txt",
+  "prompt": "a classic bicycle with two round spoked wheels",
+  "textPrompt": "a classic bicycle with two round spoked wheels",
+  "texture": {
+    "mode": "text",
+    "global_text": "dark green painted metal frame with black rubber tires",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "black leather bicycle saddle",
+      "chrome metal handlebar with black rubber grips",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a classic bicycle with two round spoked wheels. Overall appearance and texture: dark green painted metal frame with black rubber tires. Local texture overrides: part 5 (seat): black leather bicycle saddle; part 6 (handlebar): chrome metal handlebar with black rubber grips. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 8,
+    "high": 6,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.5410380893537112,
+      -0.20112955289737083,
+      -0.33602691301431625
+    ],
+    "max": [
+      0.4910065616492864,
+      0.20112955289737083,
+      -0.10397308698568371
+    ],
+    "center": [
+      -0.025015763852212408,
+      0.0,
+      -0.21999999999999997
+    ],
+    "halfExtents": [
+      0.5160223255014988,
+      0.20112955289737083,
+      0.11602691301431628
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/bicycle_wrong_wheel_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "top frame tube",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "down frame tube",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "seat tube",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "front fork",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "seat",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "black leather bicycle saddle"
+    },
+    {
+      "index": 5,
+      "name": "handlebar",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "chrome metal handlebar with black rubber grips"
+    },
+    {
+      "index": 6,
+      "name": "wrong rear wheel block",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "wrong front wheel blob",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

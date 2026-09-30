@@ -1,0 +1,9 @@
+Shape prompt: a healthy potted rubber plant with a tapered ceramic pot, central trunk, and three broad clusters of leaves
+Global texture: natural indoor plant materials with deep green foliage and warm earthy details
+Local texture prompts:
+- tapered plant pot: matte cream ceramic with a subtle speckled glaze
+- left foliage cluster: dense glossy deep-green rubber plant leaves
+- right foliage cluster: dense glossy deep-green rubber plant leaves
+- top foliage cluster: dense glossy deep-green rubber plant leaves
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The pot and three broad visible foliage clusters use local prompts; the narrow trunk inherits the global natural-material prompt.

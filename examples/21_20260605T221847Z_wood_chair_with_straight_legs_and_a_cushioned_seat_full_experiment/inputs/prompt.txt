@@ -1,0 +1,5 @@
+Shape prompt: wood chair with straight legs and a cushioned seat
+Global texture prompt: light wood
+Local texture prompts:
+SQ 9 (seat cushion): blue fabric
+Baseline texture prompt: A light wood chair with a blue fabric seat cushion

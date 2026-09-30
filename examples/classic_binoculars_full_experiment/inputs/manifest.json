@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "classic_binoculars",
+  "saved_at": "20260723T112215Z",
+  "save_id": "20260723T112215Z_classic_binoculars_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/classic_binoculars/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra/classic_binoculars/prompt.txt",
+  "prompt": "classic field binoculars with two parallel barrels, eyepieces, and a central hinge",
+  "textPrompt": "classic field binoculars with two parallel barrels, eyepieces, and a central hinge",
+  "texture": {
+    "mode": "text",
+    "global_text": "matte black rubber armor with dark metal fittings",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "deep blue reflective optical glass",
+      "deep blue reflective optical glass"
+    ],
+    "flattened_text_prompt": "classic field binoculars with two parallel barrels, eyepieces, and a central hinge. Overall appearance and texture: matte black rubber armor with dark metal fittings. Local texture overrides: part 6 (left objective lens): deep blue reflective optical glass; part 7 (right objective lens): deep blue reflective optical glass. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 3,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2541363086892829,
+      -0.31417778201405394,
+      -0.13404361265186315
+    ],
+    "max": [
+      0.25376565531872686,
+      0.3291777820140539,
+      0.13404361265186318
+    ],
+    "center": [
+      -0.00018532668527801444,
+      0.007499999999999979,
+      1.3877787807814457e-17
+    ],
+    "halfExtents": [
+      0.2539509820040049,
+      0.32167778201405395,
+      0.13404361265186315
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/classic_binoculars_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/classic_binoculars_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_full/classic_binoculars_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "left main barrel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "right main barrel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "central hinge",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "left eyepiece",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right eyepiece",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "left objective lens",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "deep blue reflective optical glass"
+    },
+    {
+      "index": 6,
+      "name": "right objective lens",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "deep blue reflective optical glass"
+    }
+  ]
+}

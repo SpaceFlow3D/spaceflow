@@ -1,0 +1,78 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "blue_teacup",
+  "saved_at": "20260809T192354Z",
+  "save_id": "20260809T192354Z_blue_teacup_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/blue_teacup/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_proposals10_rough/blue_teacup/prompt.txt",
+  "prompt": "a teacup",
+  "textPrompt": "a teacup",
+  "texture": {
+    "mode": "text",
+    "global_text": "white ceramic",
+    "local_text_prompts": [
+      "blue ceramic",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a teacup. Overall appearance and texture: white ceramic. Local texture overrides: part 1 (cup body): blue ceramic. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 3,
+    "high": 1,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      0.07333588721969436,
+      -0.0435361904601669,
+      -0.12275949515794315
+    ],
+    "max": [
+      0.2666641163565843,
+      0.04353619046016691,
+      0.12279607078209714
+    ],
+    "center": [
+      0.17000000178813934,
+      3.469446951953614e-18,
+      1.8287812076994703e-05
+    ],
+    "halfExtents": [
+      0.09666411456844498,
+      0.04353619046016691,
+      0.12277778297002015
+    ]
+  },
+  "paths": {
+    "all": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/all.npz",
+    "high_control": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/home/nedela/spaceflow_outputs/outputs_examples_spaceflow_neil_proposals10_rough_full/blue_teacup_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "cup body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "blue ceramic"
+    },
+    {
+      "index": 1,
+      "name": "upper handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "lower handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

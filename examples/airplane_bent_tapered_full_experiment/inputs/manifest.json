@@ -1,0 +1,198 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "airplane_bent_tapered",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_airplane_bent_tapered_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/airplane_bent_tapered/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/airplane_bent_tapered/prompt.txt",
+  "prompt": "a small vintage propeller airplane with tapered wings",
+  "textPrompt": "a small vintage propeller airplane with tapered wings",
+  "texture": {
+    "mode": "text",
+    "global_text": "white painted aluminum with subtle red trim and black rubber details",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "bold red painted wing with a thin white stripe",
+      "bold red painted wing with a thin white stripe",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a small vintage propeller airplane with tapered wings. Overall appearance and texture: white painted aluminum with subtle red trim and black rubber details. Local texture overrides: part 5 (left main wing): bold red painted wing with a thin white stripe; part 6 (right main wing): bold red painted wing with a thin white stripe. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 18,
+    "high": 10,
+    "low": 8
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.933091831869964,
+      -0.4664675546676076,
+      -0.3864675546676075
+    ],
+    "max": [
+      0.9514633415362408,
+      0.4664675546676076,
+      0.5464675546676075
+    ],
+    "center": [
+      0.009185754833138382,
+      0.0,
+      0.08000000000000002
+    ],
+    "halfExtents": [
+      0.9422775867031024,
+      0.4664675546676076,
+      0.46646755466760753
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/airplane_bent_tapered_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/airplane_bent_tapered_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/airplane_bent_tapered_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "main fuselage",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "rounded nose",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "tail fuselage",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "cockpit canopy",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "left main wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "bold red painted wing with a thin white stripe"
+    },
+    {
+      "index": 5,
+      "name": "right main wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "bold red painted wing with a thin white stripe"
+    },
+    {
+      "index": 6,
+      "name": "left tail wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "right tail wing",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 8,
+      "name": "vertical tail fin",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 9,
+      "name": "propeller hub",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 10,
+      "name": "upper propeller blade",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 11,
+      "name": "lower propeller blade",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 12,
+      "name": "left propeller blade",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 13,
+      "name": "right propeller blade",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 14,
+      "name": "left landing wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 15,
+      "name": "right landing wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 16,
+      "name": "left landing strut",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 17,
+      "name": "right landing strut",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

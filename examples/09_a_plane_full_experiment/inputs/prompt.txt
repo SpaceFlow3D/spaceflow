@@ -1,0 +1,5 @@
+Shape prompt: A plane
+Global texture prompt: white metal
+Local texture prompts:
+SQ 2 (wings): red metal
+Baseline texture prompt: A white metal plane with red metal wings

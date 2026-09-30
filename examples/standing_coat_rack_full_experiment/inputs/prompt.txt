@@ -1,0 +1,5 @@
+Shape prompt: standing coat rack
+Global texture: dark wood
+Local texture prompts:
+- lower umbrella ring: dark drip ring
+Unspecified superquadrics inherit the global texture.

@@ -1,0 +1,7 @@
+Shape prompt: an open umbrella with a curved fabric canopy
+Global texture: black metal ribs with deep red waterproof fabric
+Local texture prompts:
+- wrong flat canopy disk: deep red waterproof umbrella fabric
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- The canopy is a flat pancake-like low-control disk instead of a curved umbrella canopy.

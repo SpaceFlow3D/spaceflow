@@ -1,0 +1,7 @@
+Shape prompt: a classic tabletop world globe on a tilted axis with a compact pedestal and broad round base
+Global texture: warm antique brass and dark polished wood
+Local texture prompts:
+- world globe: muted blue oceans with softly colored vintage map continents
+- round base: dark walnut wood with a satin finish
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The globe and broad base use local materials; the narrow axle and support inherit the global antique-brass appearance.

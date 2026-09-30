@@ -1,0 +1,5 @@
+Shape prompt: Pool Table
+Global texture prompt: dark wood
+Local texture prompts:
+SQ 1 (tabletop): green felt
+Baseline texture prompt: A dark wood pool table with a green felt tabletop

@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "lantern_wrong_handle",
+  "saved_at": "20260720T172903Z",
+  "save_id": "20260720T172903Z_lantern_wrong_handle_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/lantern_wrong_handle/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/lantern_wrong_handle/prompt.txt",
+  "prompt": "camping lantern",
+  "textPrompt": "camping lantern",
+  "texture": {
+    "mode": "text",
+    "global_text": "green metal",
+    "local_text_prompts": [
+      "",
+      "amber glass",
+      "",
+      "",
+      "",
+      "black wire handle"
+    ],
+    "flattened_text_prompt": "camping lantern. Overall appearance and texture: green metal. Local texture overrides: part 2 (glass globe): amber glass; part 6 (wrong blocky handle): black wire handle. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.16653928687710026,
+      -0.12138149412754484,
+      -0.18155598192873756
+    ],
+    "max": [
+      0.16645907735416446,
+      0.12138149412754484,
+      0.3115559819287375
+    ],
+    "center": [
+      -4.010476146790176e-05,
+      0.0,
+      0.06499999999999997
+    ],
+    "halfExtents": [
+      0.16649918211563236,
+      0.12138149412754484,
+      0.24655598192873754
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/lantern_wrong_handle_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/lantern_wrong_handle_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/lantern_wrong_handle_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "bottom fuel tank",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "glass globe",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "amber glass"
+    },
+    {
+      "index": 2,
+      "name": "top vent cap",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "left side post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right side post",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "wrong blocky handle",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "black wire handle"
+    }
+  ]
+}

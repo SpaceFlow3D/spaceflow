@@ -1,0 +1,6 @@
+Shape prompt: a potted cactus
+Global texture: green plant
+Local texture prompts:
+- plant pot: terracotta clay
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The broad exposed pot uses one simple material prompt.

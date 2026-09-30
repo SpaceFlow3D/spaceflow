@@ -1,0 +1,83 @@
+{
+  "spaceflow_schema": "spatial_control_texture_study_v1",
+  "project_name": "11_pickup_truck_full_experiment",
+  "saved_at": "20260810T093902Z",
+  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/11_pickup_truck_experiment",
+  "prompt": "pickup truck",
+  "textPrompt": "pickup truck",
+  "texture": {
+    "mode": "text",
+    "global_text": "red metal",
+    "local_text_prompts": [
+      "white metal",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "A red metal pickup truck with a white metal cabin",
+    "baseline_text_prompt": "A red metal pickup truck with a white metal cabin",
+    "baseline_prompt_style": "single_natural_object_sentence"
+  },
+  "counts": {
+    "all": 6,
+    "high": 2,
+    "low": 4
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/11_pickup_truck_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/11_pickup_truck_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/11_pickup_truck_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "sq_index": 1,
+      "name": "cabin",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "white metal"
+    },
+    {
+      "index": 1,
+      "sq_index": 2,
+      "name": "SQ 2",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "sq_index": 3,
+      "name": "SQ 3",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "sq_index": 4,
+      "name": "SQ 4",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "sq_index": 5,
+      "name": "SQ 5",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "sq_index": 6,
+      "name": "SQ 6",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

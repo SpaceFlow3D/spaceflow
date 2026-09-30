@@ -1,0 +1,70 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "silver_spoon",
+  "saved_at": "20260802T090031Z",
+  "save_id": "20260802T090031Z_silver_spoon_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/silver_spoon/silver_spoon/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/silver_spoon/silver_spoon/prompt.txt",
+  "prompt": "a spoon",
+  "textPrompt": "a spoon",
+  "texture": {
+    "mode": "text",
+    "global_text": "silver metal",
+    "local_text_prompts": [
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a spoon. Overall appearance and texture: silver metal. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 2,
+    "high": 1,
+    "low": 1
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2633304390494082,
+      -0.06331046460211025,
+      -0.03141053953569005
+    ],
+    "max": [
+      -0.07698957905251773,
+      0.06331046460211025,
+      0.03141053953569005
+    ],
+    "center": [
+      -0.17016000905096298,
+      0.0,
+      0.0
+    ],
+    "halfExtents": [
+      0.09317042999844524,
+      0.06331046460211025,
+      0.03141053953569005
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/silver_spoon/silver_spoon_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/silver_spoon/silver_spoon_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/silver_spoon/silver_spoon_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "spoon handle",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "spoon bowl",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

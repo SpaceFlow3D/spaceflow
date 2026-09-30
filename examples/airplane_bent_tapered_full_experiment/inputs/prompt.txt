@@ -1,0 +1,6 @@
+Shape prompt: a small vintage propeller airplane with tapered wings
+Global texture: white painted aluminum with subtle red trim and black rubber details
+Local texture prompts:
+- left main wing: bold red painted wing with a thin white stripe
+- right main wing: bold red painted wing with a thin white stripe
+Unspecified superquadrics inherit the global texture.

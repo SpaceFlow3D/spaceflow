@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "classic_steam_iron",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_classic_steam_iron_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/classic_steam_iron/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/classic_steam_iron/prompt.txt",
+  "prompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle",
+  "textPrompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle",
+  "texture": {
+    "mode": "text",
+    "global_text": "blue painted metal",
+    "local_text_prompts": [
+      "silver metal",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a simple steam iron with a pointed soleplate, solid body, and raised top handle. Overall appearance and texture: blue painted metal. Local texture overrides: part 1 (pointed metal soleplate): silver metal. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.14594829534450038,
+      -0.05592224070008152,
+      -0.01596177249371632
+    ],
+    "max": [
+      0.13588924455870538,
+      0.05592224070008152,
+      0.19096177137612924
+    ],
+    "center": [
+      -0.005029525392897499,
+      0.0,
+      0.08749999944120646
+    ],
+    "halfExtents": [
+      0.14091876995160288,
+      0.05592224070008152,
+      0.10346177193492279
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/classic_steam_iron_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "pointed metal soleplate",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "silver metal"
+    },
+    {
+      "index": 1,
+      "name": "solid iron body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "front handle support",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "rear handle support",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "top handle grip",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

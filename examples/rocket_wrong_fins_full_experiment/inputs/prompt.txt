@@ -1,0 +1,8 @@
+Shape prompt: a small retro rocket with three tail fins and a round window
+Global texture: white painted rocket body with red accents and scorched dark engine metal
+Local texture prompts:
+- wrong single fin slab: bright red painted rocket fins
+- round window: glossy blue circular porthole window
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- The fins are intentionally collapsed into one low-control slab, so SpaceFlow can infer proper multiple tail fins.

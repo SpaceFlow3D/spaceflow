@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "standing_coat_rack",
+  "saved_at": "20260720T172903Z",
+  "save_id": "20260720T172903Z_standing_coat_rack_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/standing_coat_rack/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/standing_coat_rack/prompt.txt",
+  "prompt": "standing coat rack",
+  "textPrompt": "standing coat rack",
+  "texture": {
+    "mode": "text",
+    "global_text": "dark wood",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "dark drip ring"
+    ],
+    "flattened_text_prompt": "standing coat rack. Overall appearance and texture: dark wood. Local texture overrides: part 6 (lower umbrella ring): dark drip ring. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2096283919441542,
+      -0.07791778776057863,
+      0.10873121868288396
+    ],
+    "max": [
+      0.21000886113739176,
+      0.07791778776057863,
+      0.35426878131711603
+    ],
+    "center": [
+      0.00019023459661877962,
+      0.0,
+      0.23149999999999998
+    ],
+    "halfExtents": [
+      0.209818626540773,
+      0.07791778776057863,
+      0.12276878131711604
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/standing_coat_rack_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/standing_coat_rack_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_ali/_runs/standing_coat_rack_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "weighted base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "center pole",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "top cap",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "left hook pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right hook pair",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "lower umbrella ring",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark drip ring"
+    }
+  ]
+}

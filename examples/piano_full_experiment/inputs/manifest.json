@@ -1,0 +1,110 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "piano",
+  "saved_at": "20260708T125223Z",
+  "save_id": "20260708T125223Z_piano_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/piano/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/piano/prompt.txt",
+  "prompt": "an upright piano",
+  "textPrompt": "an upright piano",
+  "texture": {
+    "mode": "text",
+    "global_text": "glossy black upright piano with ivory keys and polished dark wood details",
+    "local_text_prompts": [
+      "glossy black lacquer piano cabinet",
+      "ivory and black piano keys",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an upright piano. Overall appearance and texture: glossy black upright piano with ivory keys and polished dark wood details. Local texture overrides: part 1 (tall piano cabinet): glossy black lacquer piano cabinet; part 2 (keyboard slab): ivory and black piano keys. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 7,
+    "high": 3,
+    "low": 4
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.7464152541039606,
+      0.09844733058057142,
+      -0.18661429131664306
+    ],
+    "max": [
+      0.7456505620393744,
+      0.6215859810311173,
+      1.356614291316643
+    ],
+    "center": [
+      -0.0003823460322930905,
+      0.36001665580584435,
+      0.585
+    ],
+    "halfExtents": [
+      0.7460329080716674,
+      0.26156932522527293,
+      0.771614291316643
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/piano_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "tall piano cabinet",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "glossy black lacquer piano cabinet"
+    },
+    {
+      "index": 1,
+      "name": "keyboard slab",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "ivory and black piano keys"
+    },
+    {
+      "index": 2,
+      "name": "top lid slab",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "lower front panel",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "raised music stand",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "left front leg",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "right front leg",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

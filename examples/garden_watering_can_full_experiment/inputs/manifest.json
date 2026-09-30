@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "garden_watering_can",
+  "saved_at": "20260723T160033Z",
+  "save_id": "20260723T160033Z_garden_watering_can_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/garden_watering_can/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/garden_watering_can/prompt.txt",
+  "prompt": "a traditional garden watering can with a round body, long rising spout, top handle, and sprinkler rose",
+  "textPrompt": "a traditional garden watering can with a round body, long rising spout, top handle, and sprinkler rose",
+  "texture": {
+    "mode": "text",
+    "global_text": "weathered galvanized steel with soft gray reflections",
+    "local_text_prompts": [
+      "pale sage-green painted galvanized steel with light wear",
+      "",
+      "",
+      "",
+      "dull perforated brass"
+    ],
+    "flattened_text_prompt": "a traditional garden watering can with a round body, long rising spout, top handle, and sprinkler rose. Overall appearance and texture: weathered galvanized steel with soft gray reflections. Local texture overrides: part 1 (can body): pale sage-green painted galvanized steel with light wear; part 5 (sprinkler rose): dull perforated brass. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 2,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.24610908721228064,
+      -0.10109575393549275,
+      -0.08607414537434821
+    ],
+    "max": [
+      0.41741447770304074,
+      0.10109575393549275,
+      0.31613953715949494
+    ],
+    "center": [
+      0.08565269524538005,
+      0.0,
+      0.11503269589257337
+    ],
+    "halfExtents": [
+      0.3317617824576607,
+      0.10109575393549275,
+      0.20110684126692158
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/garden_watering_can_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/garden_watering_can_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/garden_watering_can_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "can body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "pale sage-green painted galvanized steel with light wear"
+    },
+    {
+      "index": 1,
+      "name": "long rising spout",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "rear handle support",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "top handle grip",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "sprinkler rose",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "dull perforated brass"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+Shape prompt: a table lamp with a conical fabric lampshade
+Global texture: brushed brass metal with warm cream fabric
+Local texture prompts:
+- wrong flat shade slab: warm cream woven fabric lampshade material
+- bulb placeholder: soft warm glowing frosted bulb
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- The lampshade is intentionally represented as a flat tilted slab and marked low control.
+- The bulb placeholder is low control so the model can complete the shade interior naturally.

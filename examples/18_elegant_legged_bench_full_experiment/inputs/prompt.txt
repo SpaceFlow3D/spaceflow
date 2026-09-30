@@ -1,0 +1,5 @@
+Shape prompt: Elegant legged bench
+Global texture prompt: dark wood
+Local texture prompts:
+SQ 1 (seat): green velvet
+Baseline texture prompt: A dark wood elegant bench with a green velvet seat

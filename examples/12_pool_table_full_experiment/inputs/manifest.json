@@ -1,0 +1,74 @@
+{
+  "spaceflow_schema": "spatial_control_texture_study_v1",
+  "project_name": "12_pool_table_full_experiment",
+  "saved_at": "20260810T093902Z",
+  "source_study_dir": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study/12_pool_table_experiment",
+  "prompt": "Pool Table",
+  "textPrompt": "Pool Table",
+  "texture": {
+    "mode": "text",
+    "global_text": "dark wood",
+    "local_text_prompts": [
+      "green felt",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "A dark wood pool table with a green felt tabletop",
+    "baseline_text_prompt": "A dark wood pool table with a green felt tabletop",
+    "baseline_prompt_style": "single_natural_object_sentence"
+  },
+  "counts": {
+    "all": 5,
+    "high": 4,
+    "low": 1
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/12_pool_table_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/12_pool_table_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/spatial_control_user_study_with_texture/12_pool_table_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "sq_index": 1,
+      "name": "tabletop",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "green felt"
+    },
+    {
+      "index": 1,
+      "sq_index": 2,
+      "name": "SQ 2",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "sq_index": 3,
+      "name": "SQ 3",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "sq_index": 4,
+      "name": "SQ 4",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "sq_index": 5,
+      "name": "SQ 5",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

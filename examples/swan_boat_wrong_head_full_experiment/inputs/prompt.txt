@@ -1,0 +1,10 @@
+Shape prompt: a white swan paddle boat with a graceful curved neck
+Global texture: glossy white fiberglass boat with soft grey shadows
+Local texture prompts:
+- wrong stiff neck column: white swan neck feathers
+- wrong square swan head: white swan head with orange beak and black eye markings
+- rear paddle wheel: red plastic paddle wheel
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- wrong stiff neck column is a vertical low-control column rather than a graceful curved swan neck.
+- wrong square swan head is a blocky low-control placeholder, letting the model imagine the correct head and beak.

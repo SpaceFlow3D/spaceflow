@@ -1,0 +1,118 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "hot_air_balloon",
+  "saved_at": "20260707T065838Z",
+  "save_id": "20260707T065838Z_hot_air_balloon_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hot_air_balloon/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hot_air_balloon/prompt.txt",
+  "prompt": "a vintage hot air balloon with a wicker basket",
+  "textPrompt": "a vintage hot air balloon with a wicker basket",
+  "texture": {
+    "mode": "text",
+    "global_text": "warm vintage canvas, leather trim, and soft sunlit shading",
+    "local_text_prompts": [
+      "red and cream vertical striped balloon fabric",
+      "",
+      "woven brown wicker basket",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a vintage hot air balloon with a wicker basket. Overall appearance and texture: warm vintage canvas, leather trim, and soft sunlit shading. Local texture overrides: part 1 (envelope): red and cream vertical striped balloon fabric; part 3 (basket): woven brown wicker basket. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 8,
+    "high": 6,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.15308282253066985,
+      -0.1529750132907352,
+      -0.5231105605761107
+    ],
+    "max": [
+      0.15265161297286603,
+      0.1529750132907352,
+      -0.12688943942388925
+    ],
+    "center": [
+      -0.00021560477890190943,
+      0.0,
+      -0.32499999999999996
+    ],
+    "halfExtents": [
+      0.15286721775176793,
+      0.1529750132907352,
+      0.19811056057611073
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hot_air_balloon_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hot_air_balloon_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hot_air_balloon_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "envelope",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "red and cream vertical striped balloon fabric"
+    },
+    {
+      "index": 1,
+      "name": "lower throat",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "basket",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "woven brown wicker basket"
+    },
+    {
+      "index": 3,
+      "name": "burner",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "front left rope",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "front right rope",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "rear left rope",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "rear right rope",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Shape prompt: A bar chair
+Global texture prompt: black metal
+Local texture prompts:
+SQ 1 (seat): brown leather
+Baseline texture prompt: A black metal bar chair with a brown leather seat

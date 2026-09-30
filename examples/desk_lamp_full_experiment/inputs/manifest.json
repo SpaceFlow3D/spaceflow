@@ -1,0 +1,102 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "desk_lamp",
+  "saved_at": "20260708T125223Z",
+  "save_id": "20260708T125223Z_desk_lamp_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/desk_lamp/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/v3_examples_spaceflow_previews/desk_lamp/prompt.txt",
+  "prompt": "an adjustable desk lamp",
+  "textPrompt": "an adjustable desk lamp",
+  "texture": {
+    "mode": "text",
+    "global_text": "brushed black metal desk lamp with a warm matte white shade interior",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "matte white lamp shade with warm glowing interior",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "an adjustable desk lamp. Overall appearance and texture: brushed black metal desk lamp with a warm matte white shade interior. Local texture overrides: part 4 (shade head): matte white lamp shade with warm glowing interior. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 6,
+    "high": 3,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.3819517937302361,
+      -0.6935823718891296,
+      0.4878864259382838
+    ],
+    "max": [
+      0.38142785882521035,
+      0.2119865001134088,
+      1.3358368438143569
+    ],
+    "center": [
+      -0.00026196745251286235,
+      -0.24079793588786041,
+      0.9118616348763203
+    ],
+    "halfExtents": [
+      0.3816898262777232,
+      0.4527844360012692,
+      0.42397520893803653
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_v3_examples_spaceflow/desk_lamp_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "round weighted base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "lower angled arm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "upper angled arm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "shade head",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "matte white lamp shade with warm glowing interior"
+    },
+    {
+      "index": 4,
+      "name": "elbow hinge joint",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "short neck connector",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

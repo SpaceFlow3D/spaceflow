@@ -1,0 +1,8 @@
+Shape prompt: a traditional wooden snow sled with two runners, a raised back, and a pull rope
+Global texture: varnished honey-colored wood with simple metal fittings
+Local texture prompts:
+- left runner: smooth dark steel runner
+- right runner: smooth dark steel runner
+- seat platform: warm varnished ash wood
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures target the broad seat and two long separated runners; the thin rope and braces inherit the global materials.

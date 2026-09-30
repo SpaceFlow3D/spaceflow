@@ -1,0 +1,6 @@
+Shape prompt: a simple claw hammer with a long handle and a steel hammer head
+Global texture: brown wood
+Local texture prompts:
+- steel hammer head: dark steel
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The hammer head uses one simple local material prompt.

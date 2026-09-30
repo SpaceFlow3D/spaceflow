@@ -1,0 +1,78 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "green_glass_bottle",
+  "saved_at": "20260724T183756Z",
+  "save_id": "20260724T183756Z_green_glass_bottle_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/green_glass_bottle/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_simple_texture10/green_glass_bottle/prompt.txt",
+  "prompt": "a simple glass bottle with a rounded body, narrow neck, and small stopper",
+  "textPrompt": "a simple glass bottle with a rounded body, narrow neck, and small stopper",
+  "texture": {
+    "mode": "text",
+    "global_text": "green glass",
+    "local_text_prompts": [
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a simple glass bottle with a rounded body, narrow neck, and small stopper. Overall appearance and texture: green glass. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 3,
+    "high": 1,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.07442499053980364,
+      -0.07440229751292617,
+      0.04755497934066298
+    ],
+    "max": [
+      0.07433416115606886,
+      0.07440229751292617,
+      0.3774450344429111
+    ],
+    "center": [
+      -4.541469186739033e-05,
+      0.0,
+      0.21250000689178705
+    ],
+    "halfExtents": [
+      0.07437957584793625,
+      0.07440229751292617,
+      0.16494502755112406
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/green_glass_bottle_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/green_glass_bottle_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_simple_texture10_full/green_glass_bottle_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "rounded bottle body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "narrow bottle neck",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "small top stopper",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

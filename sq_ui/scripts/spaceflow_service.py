@@ -55,11 +55,11 @@ RUN_TIMEOUT = int(os.environ.get("SQ_SPACEFLOW_TIMEOUT_SEC", "7200"))
 STOP_GRACE_SEC = float(os.environ.get("SQ_SPACEFLOW_STOP_GRACE_SEC", "8"))
 FORCE_LOCAL = os.environ.get("SQ_SPACEFLOW_FORCE_LOCAL", "").strip() == "1"
 FULL_PIPELINE = os.environ.get("SQ_SPACEFLOW_FULL_PIPELINE", "1").strip().lower() not in {"0", "false", "no", "off"}
-PARTITION = "interactive" # os.environ.get("SQ_SPACEFLOW_SLURM_PARTITION", "interactive")
-ACCOUNT = os.environ.get("SQ_SPACEFLOW_SLURM_ACCOUNT", "3dv")
+PARTITION = os.environ.get("SQ_SPACEFLOW_SLURM_PARTITION", "").strip()
+ACCOUNT = os.environ.get("SQ_SPACEFLOW_SLURM_ACCOUNT", "").strip()
 GPUS = os.environ.get("SQ_SPACEFLOW_SLURM_GPUS", "1").strip()
-CONSTRAINT = os.environ.get("SQ_SPACEFLOW_SLURM_CONSTRAINT", "5060ti").strip()
-EXCLUDE_NODES = "" # os.environ.get("SQ_SPACEFLOW_SLURM_EXCLUDE", "studgpu-node09").strip()
+CONSTRAINT = os.environ.get("SQ_SPACEFLOW_SLURM_CONSTRAINT", "").strip()
+EXCLUDE_NODES = os.environ.get("SQ_SPACEFLOW_SLURM_EXCLUDE", "").strip()
 TIME_LIMIT = os.environ.get("SQ_SPACEFLOW_SLURM_TIME", "02:00:00")
 EXTRA_ARGS = os.environ.get("SQ_SPACEFLOW_SLURM_EXTRA_ARGS", "").strip()
 GPU_PREFLIGHT_MODE = os.environ.get("SQ_SPACEFLOW_GPU_PREFLIGHT", "fast").strip().lower() or "fast"
@@ -291,9 +291,10 @@ def _srun_bash_wrapper(safe_cmd: str, python_bin: str) -> str:
 
 
 def _wrap_with_srun(cmd: list[str]) -> list[str]:
+    if not ACCOUNT:
+        raise ValueError("Set SQ_SPACEFLOW_SLURM_ACCOUNT for jobs launched outside an allocation.")
     srun_cmd = [
         "srun",
-        f"--partition={PARTITION}",
         f"--account={ACCOUNT}",
         f"--time={TIME_LIMIT}",
         "--job-name=sq_spaceflow",
@@ -301,6 +302,8 @@ def _wrap_with_srun(cmd: list[str]) -> list[str]:
         "--export=ALL",
         f"--gpus={GPUS or '1'}",
     ]
+    if PARTITION:
+        srun_cmd.append(f"--partition={PARTITION}")
     if CONSTRAINT:
         srun_cmd.append(f"--constraint={CONSTRAINT}")
     if EXCLUDE_NODES:
@@ -315,9 +318,10 @@ def _wrap_with_srun(cmd: list[str]) -> list[str]:
 
 
 def _wrap_shell_with_srun(script_path: Path, job_name: str = "sq_spaceflow_exp") -> list[str]:
+    if not ACCOUNT:
+        raise ValueError("Set SQ_SPACEFLOW_SLURM_ACCOUNT for jobs launched outside an allocation.")
     srun_cmd = [
         "srun",
-        f"--partition={PARTITION}",
         f"--account={ACCOUNT}",
         f"--time={TIME_LIMIT}",
         f"--job-name={job_name}",
@@ -325,6 +329,8 @@ def _wrap_shell_with_srun(script_path: Path, job_name: str = "sq_spaceflow_exp")
         "--export=ALL",
         f"--gpus={GPUS or '1'}",
     ]
+    if PARTITION:
+        srun_cmd.append(f"--partition={PARTITION}")
     if CONSTRAINT:
         srun_cmd.append(f"--constraint={CONSTRAINT}")
     if EXCLUDE_NODES:

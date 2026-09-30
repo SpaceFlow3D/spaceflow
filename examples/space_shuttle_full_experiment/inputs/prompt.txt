@@ -1,0 +1,7 @@
+Shape prompt: a compact space shuttle with delta wings
+Global texture: white ceramic heat shield tiles with black leading edges
+Local texture prompts:
+- cockpit windows: glossy black cockpit windows
+- left engine bell: dark scorched metal rocket engine bell
+- right engine bell: dark scorched metal rocket engine bell
+Unspecified superquadrics inherit the global texture.

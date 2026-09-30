@@ -1,0 +1,7 @@
+Shape prompt: a small medieval wooden catapult with a stone projectile
+Global texture: rough weathered oak wood with tan rope lashings
+Local texture prompts:
+- left wheel: dark iron-rimmed wooden wheel
+- right wheel: dark iron-rimmed wooden wheel
+- stone projectile: rough grey stone projectile
+Unspecified superquadrics inherit the global texture.

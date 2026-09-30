@@ -1,0 +1,5 @@
+Shape prompt: pickup truck
+Global texture prompt: red metal
+Local texture prompts:
+SQ 1 (cabin): white metal
+Baseline texture prompt: A red metal pickup truck with a white metal cabin

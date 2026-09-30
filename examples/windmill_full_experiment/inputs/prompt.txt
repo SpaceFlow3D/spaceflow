@@ -1,0 +1,9 @@
+Shape prompt: a rustic windmill with four wooden blades
+Global texture: weathered white plaster walls with dark wooden beams
+Local texture prompts:
+- roof: red clay tile roof
+- upper right blade: aged pale wooden windmill blade
+- upper left blade: aged pale wooden windmill blade
+- lower left blade: aged pale wooden windmill blade
+- lower right blade: aged pale wooden windmill blade
+Unspecified superquadrics inherit the global texture.

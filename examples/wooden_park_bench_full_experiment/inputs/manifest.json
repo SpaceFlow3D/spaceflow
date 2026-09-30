@@ -1,0 +1,86 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "wooden_park_bench",
+  "saved_at": "20260723T160033Z",
+  "save_id": "20260723T160033Z_wooden_park_bench_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/wooden_park_bench/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_sparse10/wooden_park_bench/prompt.txt",
+  "prompt": "a classic wooden park bench with a broad seat, tall backrest, and two sturdy side support frames",
+  "textPrompt": "a classic wooden park bench with a broad seat, tall backrest, and two sturdy side support frames",
+  "texture": {
+    "mode": "text",
+    "global_text": "warm outdoor oak paired with black painted metal supports",
+    "local_text_prompts": [
+      "honey-brown weathered oak slats",
+      "honey-brown weathered oak slats",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a classic wooden park bench with a broad seat, tall backrest, and two sturdy side support frames. Overall appearance and texture: warm outdoor oak paired with black painted metal supports. Local texture overrides: part 1 (broad bench seat): honey-brown weathered oak slats; part 2 (tall backrest): honey-brown weathered oak slats. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 4,
+    "high": 2,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.3254064857609709,
+      -0.14533613470933548,
+      -0.3104208628366944
+    ],
+    "max": [
+      0.32534535217016,
+      0.14533613470933548,
+      0.04042085210785834
+    ],
+    "center": [
+      -3.056679540547336e-05,
+      0.0,
+      -0.13500000536441803
+    ],
+    "halfExtents": [
+      0.32537591896556545,
+      0.14533613470933548,
+      0.17542085747227637
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/wooden_park_bench_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/wooden_park_bench_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_sparse10_full/wooden_park_bench_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "broad bench seat",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "honey-brown weathered oak slats"
+    },
+    {
+      "index": 1,
+      "name": "tall backrest",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "honey-brown weathered oak slats"
+    },
+    {
+      "index": 2,
+      "name": "left grouped support frame",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "right grouped support frame",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

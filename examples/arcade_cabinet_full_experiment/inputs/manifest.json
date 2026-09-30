@@ -1,0 +1,118 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "arcade_cabinet",
+  "saved_at": "20260706T124000Z",
+  "save_id": "20260706T124000Z_arcade_cabinet_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/arcade_cabinet/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/arcade_cabinet/prompt.txt",
+  "prompt": "a retro arcade cabinet with joystick controls",
+  "textPrompt": "a retro arcade cabinet with joystick controls",
+  "texture": {
+    "mode": "text",
+    "global_text": "black laminate cabinet with neon magenta and cyan trim",
+    "local_text_prompts": [
+      "",
+      "glowing pixel art arcade screen",
+      "bright neon marquee sign with retro lettering",
+      "",
+      "",
+      "red yellow and blue glossy plastic arcade buttons",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a retro arcade cabinet with joystick controls. Overall appearance and texture: black laminate cabinet with neon magenta and cyan trim. Local texture overrides: part 2 (screen): glowing pixel art arcade screen; part 3 (marquee sign): bright neon marquee sign with retro lettering; part 6 (button cluster): red yellow and blue glossy plastic arcade buttons. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 8,
+    "high": 5,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.21057220403123997,
+      -0.2875881809642279,
+      -0.10559403602184261
+    ],
+    "max": [
+      0.21044983938615744,
+      -0.11041027861898922,
+      0.43559403602184266
+    ],
+    "center": [
+      -6.118232254126443e-05,
+      -0.19899922979160856,
+      0.16500000000000004
+    ],
+    "halfExtents": [
+      0.2105110217086987,
+      0.08858895117261933,
+      0.2705940360218426
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/arcade_cabinet_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/arcade_cabinet_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/arcade_cabinet_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "slanted cabinet body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "screen",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "glowing pixel art arcade screen"
+    },
+    {
+      "index": 2,
+      "name": "marquee sign",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "bright neon marquee sign with retro lettering"
+    },
+    {
+      "index": 3,
+      "name": "control panel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "joystick",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "button cluster",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "red yellow and blue glossy plastic arcade buttons"
+    },
+    {
+      "index": 6,
+      "name": "left side panel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "right side panel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

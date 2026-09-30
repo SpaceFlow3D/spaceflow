@@ -1,0 +1,6 @@
+Shape prompt: a teacup
+Global texture: white ceramic
+Local texture prompts:
+- cup body: blue ceramic
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: The large cup body uses one simple color prompt.

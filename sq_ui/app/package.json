@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --config vite.config.spaceflow.ts",
     "build": "tsc -b && vite build --config vite.config.spaceflow.ts",
+    "test": "node scripts/test.mjs",
     "lint": "eslint .",
     "preview": "vite preview --config vite.config.spaceflow.ts"
   },

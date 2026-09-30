@@ -1,0 +1,121 @@
+{
+  "asset_entry": {
+    "id": "20260809T194715Z_red_toy_rocket_full_experiment",
+    "project_name": "red_toy_rocket",
+    "counts": {
+      "all": 5,
+      "high": 2,
+      "low": 3
+    },
+    "paths": {
+      "all": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/all.npz",
+      "high_control": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/high_control.npz",
+      "low_control_bbox": "/spaceflow-example/red_toy_rocket_full_experiment/inputs/low_control_bbox.npz"
+    }
+  },
+  "experiment_type": "full",
+  "experiment_variants": [
+    {
+      "name": "01_local_tau3_tau10_polyak0p18",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_local_tau3_tau10_polyak0p18",
+      "mode": "local_tau",
+      "low_tau": 3.0,
+      "high_tau": 10.0,
+      "polyak_tau": 0.18,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "red_toy_rocket",
+      "prompt": "a toy rocket"
+    },
+    {
+      "name": "02_global_tau3_polyak0",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/02_global_tau3_polyak0",
+      "mode": "global_tau",
+      "low_tau": 3.0,
+      "high_tau": null,
+      "polyak_tau": 0.0,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "red_toy_rocket",
+      "prompt": "a toy rocket"
+    },
+    {
+      "name": "03_global_tau10_polyak0",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/03_global_tau10_polyak0",
+      "mode": "global_tau",
+      "low_tau": 10.0,
+      "high_tau": null,
+      "polyak_tau": 0.0,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "red_toy_rocket",
+      "prompt": "a toy rocket"
+    },
+    {
+      "name": "01_spaceflow_local_texture_routing",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing",
+      "runner": "copy_variant",
+      "mode": "spaceflow_local_texture_routing",
+      "source_variant": "01_local_tau3_tau10_polyak0p18",
+      "source_output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_local_tau3_tau10_polyak0p18",
+      "low_tau": 3.0,
+      "high_tau": 10.0,
+      "polyak_tau": 0.18,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "example_name": "red_toy_rocket"
+    },
+    {
+      "name": "02_trellis_raw_flat_prompt",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/02_trellis_raw_flat_prompt",
+      "runner": "trellis_raw_text",
+      "mode": "trellis_raw_text",
+      "prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "red_toy_rocket"
+    },
+    {
+      "name": "03_fixed_structure_appearance_fm",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/03_fixed_structure_appearance_fm",
+      "runner": "fixed_structure_appearance_fm",
+      "mode": "fixed_structure_appearance_fm",
+      "prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "structure_voxels_path": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing/voxels/struct_voxels.ply",
+      "source_variant": "01_spaceflow_local_texture_routing",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "red_toy_rocket"
+    },
+    {
+      "name": "04_fixed_structure_guideflow_appearance_fm",
+      "output_dir": "/spaceflow-example/red_toy_rocket_full_experiment/output/04_fixed_structure_guideflow_appearance_fm",
+      "runner": "fixed_structure_guideflow_appearance_fm",
+      "mode": "fixed_structure_guideflow_appearance_fm",
+      "prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "flattened_prompt": "a toy rocket. Overall appearance and texture: white metal. Local texture overrides: part 2 (nose cone): red metal; part 3 (left fin): red metal; part 4 (right fin): red metal. All unspecified parts should use the overall appearance and texture.",
+      "structure_voxels_path": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing/voxels/struct_voxels.ply",
+      "source_variant": "01_spaceflow_local_texture_routing",
+      "seed": 1,
+      "low_tau": null,
+      "high_tau": null,
+      "polyak_tau": null,
+      "n_repaint_steps": 10,
+      "texture_optim_steps": 300,
+      "input_superquadrics_glb_path": "/spaceflow-example/red_toy_rocket_full_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "example_name": "red_toy_rocket"
+    }
+  ]
+}

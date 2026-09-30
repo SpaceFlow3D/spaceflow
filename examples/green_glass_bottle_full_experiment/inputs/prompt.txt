@@ -1,0 +1,5 @@
+Shape prompt: a simple glass bottle with a rounded body, narrow neck, and small stopper
+Global texture: green glass
+Local texture prompts:
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: No local texture prompts are used.

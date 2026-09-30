@@ -1,0 +1,118 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "medieval_catapult",
+  "saved_at": "20260707T092200Z",
+  "save_id": "20260707T092200Z_medieval_catapult_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/medieval_catapult/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/medieval_catapult/prompt.txt",
+  "prompt": "a small medieval wooden catapult with a stone projectile",
+  "textPrompt": "a small medieval wooden catapult with a stone projectile",
+  "texture": {
+    "mode": "text",
+    "global_text": "rough weathered oak wood with tan rope lashings",
+    "local_text_prompts": [
+      "",
+      "dark iron-rimmed wooden wheel",
+      "dark iron-rimmed wooden wheel",
+      "",
+      "",
+      "",
+      "",
+      "rough grey stone projectile"
+    ],
+    "flattened_text_prompt": "a small medieval wooden catapult with a stone projectile. Overall appearance and texture: rough weathered oak wood with tan rope lashings. Local texture overrides: part 2 (left wheel): dark iron-rimmed wooden wheel; part 3 (right wheel): dark iron-rimmed wooden wheel; part 8 (stone projectile): rough grey stone projectile. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 8,
+    "high": 6,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      0.3110614281898939,
+      -0.058861733958375406,
+      0.2610458901468755
+    ],
+    "max": [
+      0.44883966907943884,
+      0.058861733958375406,
+      0.4289541098531245
+    ],
+    "center": [
+      0.3799505486346664,
+      0.0,
+      0.345
+    ],
+    "halfExtents": [
+      0.06888912044477247,
+      0.058861733958375406,
+      0.08395410985312449
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/medieval_catapult_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "wooden base frame",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "left wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark iron-rimmed wooden wheel"
+    },
+    {
+      "index": 2,
+      "name": "right wheel",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": "dark iron-rimmed wooden wheel"
+    },
+    {
+      "index": 3,
+      "name": "left support strut",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "right support strut",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "throwing arm",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "throwing cup",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "stone projectile",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "rough grey stone projectile"
+    }
+  ]
+}

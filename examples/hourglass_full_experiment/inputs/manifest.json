@@ -1,0 +1,126 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "hourglass",
+  "saved_at": "20260707T080941Z",
+  "save_id": "20260707T080941Z_hourglass_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hourglass/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/hourglass/prompt.txt",
+  "prompt": "an antique hourglass with wooden caps",
+  "textPrompt": "an antique hourglass with wooden caps",
+  "texture": {
+    "mode": "text",
+    "global_text": "clear glass and polished dark mahogany wood",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "fine golden sand inside the lower bulb"
+    ],
+    "flattened_text_prompt": "an antique hourglass with wooden caps. Overall appearance and texture: clear glass and polished dark mahogany wood. Local texture overrides: part 9 (sand pile): fine golden sand inside the lower bulb. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 9,
+    "high": 6,
+    "low": 3
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2061194048075505,
+      -0.20595453782026274,
+      -0.3850141717550293
+    ],
+    "max": [
+      0.20546016945906492,
+      0.20595453782026277,
+      0.3850141717550293
+    ],
+    "center": [
+      -0.00032961767424279087,
+      1.3877787807814457e-17,
+      0.0
+    ],
+    "halfExtents": [
+      0.2057897871333077,
+      0.20595453782026274,
+      0.3850141717550293
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/hourglass_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "top wooden cap",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "bottom wooden cap",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "upper glass bulb",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "lower glass bulb",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 4,
+      "name": "front left column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 5,
+      "name": "front right column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 6,
+      "name": "rear left column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 7,
+      "name": "rear right column",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 8,
+      "name": "sand pile",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "fine golden sand inside the lower bulb"
+    }
+  ]
+}

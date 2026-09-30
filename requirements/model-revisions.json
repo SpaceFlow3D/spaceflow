@@ -1,0 +1,10 @@
+{
+  "huggingface": {
+    "openai/clip-vit-large-patch14": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+    "microsoft/TRELLIS-text-xlarge": "e0b00432b8e3a8ecee0df806ab1df9f7281f2be4",
+    "microsoft/TRELLIS-image-large": "25e0d31ffbebe4b5a97464dd851910efc3002d96",
+    "mikaelaangel/partfield-ckpt": "90b9b1e08b6a12fdcb6ee26b4854a26235e1765f"
+  },
+  "partfield_sha256": "463efc8a3afd3913142aa025e0125c00f16ef452b8de6a132ebe32bbe7877ee4",
+  "source": "TRELLIS/CLIP revisions recovered from original cache refs; PartField pinned from its official linked model repository."
+}

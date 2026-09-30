@@ -1,0 +1,7 @@
+Shape prompt: a vintage suitcase record player with an open lid, round platter, and tonearm
+Global texture: warm cream suitcase casing with dark metal hardware
+Local texture prompts:
+- round platter: matte black vinyl turntable surface
+- lid speaker panel: tan woven speaker cloth
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Local textures are limited to the broad platter and speaker panel; the tonearm and small controls inherit the global material.

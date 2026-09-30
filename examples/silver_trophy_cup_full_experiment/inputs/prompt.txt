@@ -1,0 +1,6 @@
+Shape prompt: a classic silver trophy cup with two side handles on a dark pedestal base
+Global texture: polished silver metal with subtle reflections
+Local texture prompts:
+- pedestal base: dark charcoal stone with a satin finish
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: Only the broad pedestal base uses a local texture; the cup, rim, stem, and handles share the global silver finish.

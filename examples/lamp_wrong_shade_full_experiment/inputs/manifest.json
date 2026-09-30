@@ -1,0 +1,94 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "lamp_wrong_shade",
+  "saved_at": "20260707T080941Z",
+  "save_id": "20260707T080941Z_lamp_wrong_shade_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/lamp_wrong_shade/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow/lamp_wrong_shade/prompt.txt",
+  "prompt": "a table lamp with a conical fabric lampshade",
+  "textPrompt": "a table lamp with a conical fabric lampshade",
+  "texture": {
+    "mode": "text",
+    "global_text": "brushed brass metal with warm cream fabric",
+    "local_text_prompts": [
+      "",
+      "",
+      "",
+      "warm cream woven fabric lampshade material",
+      "soft warm glowing frosted bulb"
+    ],
+    "flattened_text_prompt": "a table lamp with a conical fabric lampshade. Overall appearance and texture: brushed brass metal with warm cream fabric. Local texture overrides: part 4 (wrong flat shade slab): warm cream woven fabric lampshade material; part 5 (bulb placeholder): soft warm glowing frosted bulb. All unspecified parts should use the overall appearance and texture."
+  },
+  "counts": {
+    "all": 5,
+    "high": 3,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.2841417969314388,
+      -0.16299165404753324,
+      0.1300857017279341
+    ],
+    "max": [
+      0.2840849224464004,
+      0.12298762509236963,
+      0.41991922434291135
+    ],
+    "center": [
+      -2.8437242519219197e-05,
+      -0.020002014477581806,
+      0.27500246303542275
+    ],
+    "halfExtents": [
+      0.2841133596889196,
+      0.14298963956995142,
+      0.14491676130748862
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow/lamp_wrong_shade_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "round base",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "straight stem",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "neck joint",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 3,
+      "name": "wrong flat shade slab",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "warm cream woven fabric lampshade material"
+    },
+    {
+      "index": 4,
+      "name": "bulb placeholder",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": "soft warm glowing frosted bulb"
+    }
+  ]
+}

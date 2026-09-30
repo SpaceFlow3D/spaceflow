@@ -1,0 +1,8 @@
+Shape prompt: camping lantern
+Global texture: green metal
+Local texture prompts:
+- glass globe: amber glass
+- wrong blocky handle: black wire handle
+Unspecified superquadrics inherit the global texture.
+Intentional low-control scaffold errors:
+- blocky handle is low control

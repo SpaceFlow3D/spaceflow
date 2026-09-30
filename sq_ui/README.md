@@ -9,9 +9,10 @@ Default service port:
 ## SpaceFlow Service
 
 ```bash
-export SQ_SPACEFLOW_PYTHON="$(pwd)/envs/guideflow3d/bin/python"
+source .venv/bin/activate
+export SQ_SPACEFLOW_PYTHON="$(pwd)/.venv/bin/python"
 export SQ_SPACEFLOW_STORAGE_ROOT="$(pwd)/spaceflow_runtime"
-python sq_ui/scripts/spaceflow_service.py
+"$SQ_SPACEFLOW_PYTHON" sq_ui/scripts/spaceflow_service.py
 ```
 
 Health check:
@@ -20,7 +21,11 @@ Health check:
 curl -s http://127.0.0.1:11438/spaceflow/health | head
 ```
 
-Set `SQ_SPACEFLOW_FORCE_LOCAL=1` when already running on a GPU node and you do not want the service to wrap requests in `srun`.
+The editor and asset saving work without a GPU. Generation needs the environment,
+checkpoints, and Blender described in the [project README](../README.md).
+Set `SQ_SPACEFLOW_FORCE_LOCAL=1` when already running on an allocated GPU node.
+When launching from a login node, set `SQ_SPACEFLOW_SLURM_ACCOUNT` and
+`SQ_SPACEFLOW_SLURM_PARTITION` for your allocation.
 
 ## Public Controlled Demo
 
@@ -70,7 +75,7 @@ Create `~/.cloudflared/spaceflow-demo.yml`, replacing the UUID and hostname:
 
 ```yaml
 tunnel: <TUNNEL-UUID>
-credentials-file: /home/nedela/.cloudflared/<TUNNEL-UUID>.json
+credentials-file: /absolute/path/to/your/.cloudflared/<TUNNEL-UUID>.json
 
 ingress:
   - hostname: spaceflow.example.com
@@ -95,11 +100,14 @@ cloudflared tunnel --config ~/.cloudflared/spaceflow-demo.yml run spaceflow-demo
 
 ```bash
 cd sq_ui/app
-npm install
-npm run dev -- --host 0.0.0.0
+npm ci --include=optional
+npm run dev -- --host 127.0.0.1
 ```
 
 Open the printed Vite URL, usually `http://<host>:5173`.
+The development server proxies `/spaceflow` requests to the backend on port
+11438. Override `VITE_DEV_PROXY_SPACEFLOW` when the backend uses another port.
+For remote use, forward the editor port over SSH.
 
 ## Open NPZ Files Directly
 

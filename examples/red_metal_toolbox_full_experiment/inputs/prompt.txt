@@ -1,0 +1,5 @@
+Shape prompt: a simple metal toolbox with a rectangular box, fitted lid, top carrying handle, and front latches
+Global texture: red painted steel
+Local texture prompts:
+Unspecified superquadrics inherit the global texture.
+Texture segmentation note: No local texture prompts are used.

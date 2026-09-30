@@ -277,6 +277,7 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
   const undoStack = useStore(s => s.undoStack);
   const redoStack = useStore(s => s.redoStack);
   const lowControlBBoxMargin = useStore(s => s.lowControlBBoxMargin);
+  const setLowControlBBoxMargin = useStore(s => s.setLowControlBBoxMargin);
   const spaceflowLocalTextureImageFiles = useTextureUploadStore(s => s.localTextureImageFiles);
 
   const [toast, setToast] = useState<string | null>(null);
@@ -323,15 +324,15 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
     if (!metadata) return;
     if (metadata.projectName) setProjectName(metadata.projectName);
     if (metadata.textPrompt) setSpaceflowTextPrompt(metadata.textPrompt);
-    if (metadata.outputName) setSpaceflowOutputName(metadata.outputName);
+    if (metadata.outputName !== undefined) setSpaceflowOutputName(metadata.outputName);
     if (metadata.textureMode) setSpaceflowTextureMode(metadata.textureMode);
-    if (metadata.globalTextureText) {
+    if (metadata.globalTextureText !== undefined) {
       setSpaceflowGlobalTextureText(metadata.globalTextureText);
-      setSpaceflowTextureMode('text');
+      if (!metadata.textureMode && metadata.globalTextureText) setSpaceflowTextureMode('text');
     }
-    if (!PUBLIC_DEMO && metadata.globalTextureImagePath) {
+    if (!PUBLIC_DEMO && metadata.globalTextureImagePath !== undefined) {
       setSpaceflowGlobalTextureImagePath(metadata.globalTextureImagePath);
-      setSpaceflowTextureMode('image');
+      if (!metadata.textureMode && metadata.globalTextureImagePath) setSpaceflowTextureMode('image');
     }
     if (metadata.textureExperimentPrompt) {
       setSpaceflowTextureExperimentPrompt(metadata.textureExperimentPrompt);
@@ -341,7 +342,14 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
       setSpaceflowTextureExperimentPromptEdited(false);
     }
     setSpaceflowGlobalTextureImageFile(null);
-  }, [setSpaceflowTextureMode]);
+    if (metadata.lowTau !== undefined) setSpaceflowLowTau(String(metadata.lowTau));
+    if (metadata.highTau !== undefined) setSpaceflowHighTau(String(metadata.highTau));
+    if (metadata.polyakTau !== undefined) setSpaceflowPolyakTau(String(metadata.polyakTau));
+    if (metadata.repaintSteps !== undefined) setSpaceflowRepaintSteps(String(metadata.repaintSteps));
+    if (metadata.textureOptimSteps !== undefined) setSpaceflowTextureOptimSteps(String(metadata.textureOptimSteps));
+    if (metadata.convertYupToZup !== undefined) setSpaceflowConvertYupToZup(metadata.convertYupToZup);
+    if (metadata.lowControlBBoxMargin !== undefined) setLowControlBBoxMargin(metadata.lowControlBBoxMargin);
+  }, [setLowControlBBoxMargin, setSpaceflowTextureMode]);
 
   const inspectSpaceflowRunMesh = useCallback((run: SpaceflowRunStatus, automatic = false) => {
     const meshFile = pickSpaceflowInspectionMesh(run.output_files ?? []);
@@ -378,6 +386,30 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
   const textureExperimentPromptValue = spaceflowTextureExperimentPromptEdited
     ? spaceflowTextureExperimentPrompt
     : generatedTextureExperimentPrompt;
+
+  const spaceflowMetadata = useMemo<NpzSpaceflowMetadata>(() => ({
+    projectName,
+    textPrompt: spaceflowTextPrompt,
+    outputName: spaceflowOutputName,
+    textureMode: spaceflowTextureMode,
+    globalTextureText: spaceflowGlobalTextureText,
+    globalTextureImagePath: PUBLIC_DEMO ? '' : spaceflowGlobalTextureImagePath,
+    textureExperimentPrompt: textureExperimentPromptValue,
+    primitiveNames: visiblePrimitives.map(p => p.name),
+    localTextureTexts: visiblePrimitives.map(p => p.localTextureText ?? ''),
+    localTextureImagePaths: visiblePrimitives.map(p => PUBLIC_DEMO ? '' : p.localTextureImagePath ?? ''),
+    lowTau: Number(spaceflowLowTau),
+    highTau: Number(spaceflowHighTau),
+    polyakTau: Number(spaceflowPolyakTau),
+    repaintSteps: Number(spaceflowRepaintSteps),
+    textureOptimSteps: Number(spaceflowTextureOptimSteps),
+    convertYupToZup: spaceflowConvertYupToZup,
+    lowControlBBoxMargin,
+  }), [projectName, spaceflowTextPrompt, spaceflowOutputName, spaceflowTextureMode,
+    spaceflowGlobalTextureText, spaceflowGlobalTextureImagePath, textureExperimentPromptValue,
+    visiblePrimitives, spaceflowLowTau, spaceflowHighTau, spaceflowPolyakTau,
+    spaceflowRepaintSteps, spaceflowTextureOptimSteps, spaceflowConvertYupToZup,
+    lowControlBBoxMargin]);
 
   useEffect(() => {
     if (importedNpzMetadata) applySpaceflowMetadata(importedNpzMetadata.metadata);
@@ -433,14 +465,18 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
     if (PUBLIC_DEMO || spaceflowSaving || visiblePrimitives.length === 0) return;
     setSpaceflowSaving(true);
     try {
-      const lowTau = Number.parseFloat(spaceflowLowTau) || 3;
-      const highTau = Number.parseFloat(spaceflowHighTau) || 10;
+      const lowTau = Number(spaceflowLowTau);
+      const highTau = Number(spaceflowHighTau);
+      if (!Number.isFinite(lowTau) || !Number.isFinite(highTau)) {
+        throw new Error('Enter finite low and high tau values before saving.');
+      }
       const { entry, bundle } = await saveSpaceflowAsset({
         projectName,
         primitives: visiblePrimitives,
         lowTau,
         highTau,
         lowControlBBoxMargin,
+        metadata: spaceflowMetadata,
       });
       showToast(
         `Saved SpaceFlow inputs (${bundle.counts.high} high, ${bundle.counts.low} low)\n${entry.asset_dir}`,
@@ -461,20 +497,22 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
     spaceflowHighTau,
     spaceflowLowTau,
     spaceflowSaving,
+    spaceflowMetadata,
     visiblePrimitives,
   ]);
 
   const handleOpenSpaceflowHistory = useCallback(async (entry: SpaceflowHistoryEntry) => {
     try {
-      const prims = await openSpaceflowAsset(entry);
+      const { primitives: prims, metadata } = await openSpaceflowAsset(entry);
       loadPreset(prims);
+      applySpaceflowMetadata(metadata);
       setProjectName(entry.project_name || projectName);
       showToast(`Loaded ${prims.length} primitives from ${entry.project_name}`);
       setShowSpaceflow(false);
     } catch (err) {
       showToast(`Open saved asset failed: ${err instanceof Error ? err.message : err}`, 8000);
     }
-  }, [loadPreset, projectName, showToast]);
+  }, [applySpaceflowMetadata, loadPreset, projectName, showToast]);
 
   const handleStartSpaceflowRun = useCallback(async (experimentType?: SpaceflowExperimentType) => {
     if (spaceflowRunning || visiblePrimitives.length === 0) return;
@@ -631,7 +669,7 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
   const handleDownloadNpz = useCallback(async () => {
     try {
       const exports: PrimitiveExport[] = visiblePrimitives.map(primitiveToExport);
-      const blob = await exportNpz(exports);
+      const blob = await exportNpz(exports, { metadata: spaceflowMetadata });
       const filename = `${safeName(projectName, 'spaceflow')}.npz`;
       downloadBlob(blob, filename);
       showToast(`Downloaded ${filename}`);
@@ -639,7 +677,7 @@ export default function TopBar({ themeMode, onThemeModeChange }: TopBarProps) {
       showToast(`Export failed: ${err instanceof Error ? err.message : err}`, 8000);
     }
     setShowExport(false);
-  }, [projectName, showToast, visiblePrimitives]);
+  }, [projectName, showToast, spaceflowMetadata, visiblePrimitives]);
 
   const handleDownloadRendering = useCallback(async () => {
     if (visiblePrimitives.length === 0) return;

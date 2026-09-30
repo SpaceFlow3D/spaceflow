@@ -1,0 +1,78 @@
+{
+  "spaceflow_schema": "examples_spaceflow_full_batch_v1",
+  "project_name": "red_bucket",
+  "saved_at": "20260802T082250Z",
+  "save_id": "20260802T082250Z_red_bucket_full_experiment",
+  "source_npz": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_bucket/red_bucket/input_superquadrics_all.npz",
+  "source_prompt": "/work/courses/3dv/team3/spaceflow-minimal/examples_spaceflow_neil_extra_ultrasimple10_singletons/red_bucket/red_bucket/prompt.txt",
+  "prompt": "a bucket",
+  "textPrompt": "a bucket",
+  "texture": {
+    "mode": "text",
+    "global_text": "red plastic",
+    "local_text_prompts": [
+      "",
+      "",
+      ""
+    ],
+    "flattened_text_prompt": "a bucket. Overall appearance and texture: red plastic. Apply the overall appearance and texture consistently to every part."
+  },
+  "counts": {
+    "all": 3,
+    "high": 1,
+    "low": 2
+  },
+  "low_tau": 3.0,
+  "high_tau": 10.0,
+  "bbox_margin_fraction": 0.07,
+  "bbox": {
+    "min": [
+      -0.15204848419287378,
+      -0.04654601715836783,
+      0.05023219058984747
+    ],
+    "max": [
+      0.15202010874604782,
+      0.04654601715836783,
+      0.2497678213310815
+    ],
+    "center": [
+      -1.4187723412981135e-05,
+      0.0,
+      0.15000000596046448
+    ],
+    "halfExtents": [
+      0.15203429646946082,
+      0.04654601715836783,
+      0.09976781537061702
+    ]
+  },
+  "paths": {
+    "all": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/all.npz",
+    "high_control": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/high_control.npz",
+    "low_control_bbox": "/work/courses/3dv/team3/spaceflow-minimal/outputs_examples_spaceflow_neil_extra_ultrasimple10_full/batches/red_bucket/red_bucket_full_experiment/inputs/low_control_bbox.npz"
+  },
+  "primitives": [
+    {
+      "index": 0,
+      "name": "bucket body",
+      "controlLevel": "high",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 1,
+      "name": "left handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    },
+    {
+      "index": 2,
+      "name": "right handle segment",
+      "controlLevel": "low",
+      "visible": true,
+      "localTextureText": ""
+    }
+  ]
+}

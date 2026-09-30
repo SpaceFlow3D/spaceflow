@@ -1,0 +1,6 @@
+Shape prompt: a vintage tabletop radio with dials and antenna
+Global texture: warm walnut veneer with cream bakelite trim
+Local texture prompts:
+- speaker grille: woven tan speaker cloth grille
+- tuning dial: cream glass tuning dial with golden station marks
+Unspecified superquadrics inherit the global texture.
