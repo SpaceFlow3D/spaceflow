@@ -47,6 +47,12 @@ def _copy_if_exists(src: Path, dst: Path) -> None:
     if not src.is_file():
         log.info("Skipping missing comparison asset: %s", src)
         return
+    try:
+        if src.resolve() == dst.resolve():
+            log.info("Source and destination are identical, skipping copy: %s", src)
+            return
+    except Exception:
+        pass
     start = time.perf_counter()
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(src, dst)
@@ -57,6 +63,12 @@ def _copy_dir_if_exists(src: Path, dst: Path) -> None:
     if not src.is_dir():
         log.info("Skipping missing comparison asset directory: %s", src)
         return
+    try:
+        if src.resolve() == dst.resolve():
+            log.info("Source and destination directory are identical, skipping copy: %s", src)
+            return
+    except Exception:
+        pass
     start = time.perf_counter()
     dst.parent.mkdir(parents=True, exist_ok=True)
     shutil.copytree(src, dst, dirs_exist_ok=True)
@@ -75,6 +87,7 @@ def _copy_fixed_structure_assets(
     _copy_if_exists(source_dir / "struct_mesh.glb", output_dir / "struct_mesh.glb")
     _copy_if_exists(source_dir / "struct_mesh_zup.glb", output_dir / "struct_mesh_zup.glb")
     _copy_if_exists(source_dir / "spatial_control_mesh.ply", output_dir / "spatial_control_mesh.ply")
+    _copy_if_exists(source_dir / "struct_renders" / "mesh.ply", output_dir / "struct_renders" / "mesh.ply")
     if include_partfield:
         _copy_dir_if_exists(source_dir / "partfield", output_dir / "partfield")
 
@@ -245,10 +258,11 @@ def run_fixed_structure_guideflow_appearance_fm_variant(
     structure_voxels_path: Path,
     *,
     seed: int = 1,
+    steps: int = 300,
 ) -> None:
     """Run GuideFlow appearance optimization on a fixed SpaceFlow structure."""
     variant_start = time.perf_counter()
-    log.info("Starting fixed-structure GuideFlow appearance variant: %s", output_dir)
+    log.info("Starting fixed-structure GuideFlow appearance variant (%d steps): %s", steps, output_dir)
     if not structure_voxels_path.is_file():
         raise FileNotFoundError(f"Missing source structure voxels: {structure_voxels_path}")
 
@@ -259,6 +273,7 @@ def run_fixed_structure_guideflow_appearance_fm_variant(
             "runner": "fixed_structure_guideflow_appearance_fm",
             "prompt": prompt,
             "seed": seed,
+            "steps": steps,
             "structure_voxels_path": str(structure_voxels_path),
             "guidance": "global_flat_prompt",
         },
@@ -275,6 +290,7 @@ def run_fixed_structure_guideflow_appearance_fm_variant(
     if not partfield_path.is_file():
         raise FileNotFoundError(f"Missing copied PartField features for GuideFlow variant: {partfield_path}")
 
+    cfg.sim_guidance.steps = int(steps)
     torch.manual_seed(seed)
     self_similarity.optimize_self_similarity(
         cfg,
@@ -288,3 +304,72 @@ def run_fixed_structure_guideflow_appearance_fm_variant(
         decode_texture=True,
     )
     log.info("Completed fixed-structure GuideFlow appearance variant in %s", _elapsed(variant_start))
+
+
+def run_fixed_structure_spaceflow_routing_variant(
+    pipeline,
+    cfg,
+    output_dir: Path,
+    global_prompt: str,
+    local_prompts: list[str],
+    shape_path: Path,
+    structure_voxels_path: Path,
+    *,
+    seed: int = 1,
+    steps: int = 25,
+    routing_mode: str = "legacy",
+    routing_margin: float = 2.0,
+) -> None:
+    """Run SpaceFlow appearance optimization with PartField routing on a fixed SpaceFlow structure."""
+    variant_start = time.perf_counter()
+    log.info("Starting fixed-structure SpaceFlow routing variant: %s", output_dir)
+    if not structure_voxels_path.is_file():
+        raise FileNotFoundError(f"Missing source structure voxels: {structure_voxels_path}")
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    _write_metadata(
+        output_dir,
+        {
+            "runner": "fixed_structure_spaceflow_routing",
+            "global_prompt": global_prompt,
+            "local_prompts": local_prompts,
+            "shape_path": str(shape_path),
+            "structure_voxels_path": str(structure_voxels_path),
+            "routing_mode": routing_mode,
+            "routing_margin": routing_margin,
+            "steps": steps,
+            "seed": seed,
+        },
+    )
+
+    source_dir = structure_voxels_path.parent.parent
+    _copy_fixed_structure_assets(
+        source_dir,
+        output_dir,
+        structure_voxels_path,
+        include_partfield=True,
+    )
+    partfield_path = output_dir / "partfield" / "part_feat_mesh_batch_part_plane.npy"
+    if not partfield_path.is_file():
+        raise FileNotFoundError(f"Missing copied PartField features for SpaceFlow routing variant: {partfield_path}")
+
+    cfg.sim_guidance.steps = int(steps)
+    cfg.sim_guidance.local_routing_mode = routing_mode
+    cfg.sim_guidance.local_routing_margin = float(routing_margin)
+
+    individual_sq_meshes = run_local_tau.build_individual_sq_meshes_normalized(str(shape_path))
+    torch.manual_seed(seed)
+
+    self_similarity.optimize_self_similarity(
+        cfg,
+        global_prompt,
+        "text",
+        str(output_dir),
+        local_prompts=local_prompts if any(local_prompts) else None,
+        local_prompt_type="text" if any(local_prompts) else None,
+        individual_sq_meshes=individual_sq_meshes,
+        generation_pipeline=pipeline,
+        decode_texture=True,
+    )
+    log.info("Completed fixed-structure SpaceFlow routing variant in %s", _elapsed(variant_start))
+

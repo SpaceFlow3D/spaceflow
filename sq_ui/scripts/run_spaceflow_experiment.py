@@ -33,6 +33,7 @@ import run_local_tau  # noqa: E402
 from trellis_texture_variants import (  # noqa: E402
     run_fixed_structure_appearance_fm_variant,
     run_fixed_structure_guideflow_appearance_fm_variant,
+    run_fixed_structure_spaceflow_routing_variant,
     run_trellis_raw_text_variant,
 )
 
@@ -135,6 +136,34 @@ def _copy_input_superquadrics_glb(variant: dict[str, object], output_dir: Path) 
     _experiment_log(f"copied input superquadrics GLB: {source} -> {target}")
 
 
+def _copy_variant_output(source_dir: Path, output_dir: Path) -> None:
+    if not source_dir.is_dir():
+        raise FileNotFoundError(f"Missing source variant output directory: {source_dir}")
+    source_status_path = source_dir / "status.txt"
+    if source_status_path.is_file():
+        source_status = source_status_path.read_text(encoding="utf-8").strip()
+        if source_status != "succeeded":
+            raise RuntimeError(f"Source variant did not succeed: {source_dir} ({source_status})")
+    skip_names = {"spaceflow.log", "status.txt", "run_config.json"}
+    output_dir.mkdir(parents=True, exist_ok=True)
+    copied = 0
+    for child in source_dir.iterdir():
+        if child.name in skip_names:
+            continue
+        target = output_dir / child.name
+        if child.is_dir():
+            shutil.copytree(
+                child,
+                target,
+                dirs_exist_ok=True,
+                ignore=shutil.ignore_patterns(*skip_names),
+            )
+        else:
+            shutil.copy2(child, target)
+        copied += 1
+    _experiment_log(f"copied variant assets: {source_dir} -> {output_dir} ({copied} top-level items)")
+
+
 def _load_pipeline_for_experiment(pipeline, cfg, variant_args=None):
     if pipeline is not None:
         _experiment_log("reusing shared TRELLIS pipeline")
@@ -164,8 +193,15 @@ def run_variant(
         run_local_tau.run(variant_args, cfg=cfg, generation_pipeline=pipeline)
         return pipeline
 
-    pipeline = _load_pipeline_for_experiment(pipeline, cfg)
     output_dir = _variant_output_dir(variant, variant_args)
+    if runner == "copy_variant":
+        source_raw = str(variant.get("source_output_dir") or "").strip()
+        if not source_raw:
+            raise ValueError("copy_variant is missing source_output_dir")
+        _copy_variant_output(Path(source_raw), output_dir)
+        return pipeline
+
+    pipeline = _load_pipeline_for_experiment(pipeline, cfg)
     _copy_input_superquadrics_glb(variant, output_dir)
     prompt = str(variant.get("prompt") or variant.get("flattened_prompt") or "").strip()
     if not prompt:
@@ -195,6 +231,7 @@ def run_variant(
         if not structure_voxels_raw:
             raise ValueError("fixed_structure_guideflow_appearance_fm variant is missing structure_voxels_path")
         structure_voxels_path = Path(structure_voxels_raw)
+        steps = int(variant.get("texture_optim_steps") or variant.get("steps") or 300)
         run_fixed_structure_guideflow_appearance_fm_variant(
             pipeline,
             cfg,
@@ -202,6 +239,32 @@ def run_variant(
             prompt,
             structure_voxels_path,
             seed=seed,
+            steps=steps,
+        )
+        return pipeline
+
+    if runner in ("fixed_structure_spaceflow_routing", "spaceflow_texture_routing"):
+        structure_voxels_raw = str(variant.get("structure_voxels_path") or "").strip()
+        if not structure_voxels_raw:
+            raise ValueError(f"{runner} variant is missing structure_voxels_path")
+        structure_voxels_path = Path(structure_voxels_raw)
+        shape_path_raw = str(variant.get("shape_path") or variant.get("shape_superquadric_path") or "").strip()
+        if not shape_path_raw:
+            raise ValueError(f"{runner} variant is missing shape_path")
+        shape_path = Path(shape_path_raw)
+        global_prompt = str(variant.get("global_prompt") or variant.get("prompt") or "").strip()
+        local_prompts = variant.get("local_prompts") or []
+        steps = int(variant.get("texture_optim_steps") or variant.get("steps") or 25)
+        run_fixed_structure_spaceflow_routing_variant(
+            pipeline,
+            cfg,
+            output_dir,
+            global_prompt=global_prompt,
+            local_prompts=local_prompts,
+            shape_path=shape_path,
+            structure_voxels_path=structure_voxels_path,
+            seed=seed,
+            steps=steps,
         )
         return pipeline
 
@@ -224,8 +287,44 @@ def render_experiment_comparison(config: dict[str, object], config_path: Path) -
         elev = float(comparison.get("elev", elev))
 
     render_start = time.perf_counter()
+    experiment_type = str(config.get("experiment_type") or "").strip().lower()
     _experiment_log("rendering variant comparison")
     from render_spaceflow_experiment_comparison import render_comparison
+
+    if experiment_type == "full":
+        rendered_paths: list[Path] = []
+        first_error: Exception | None = None
+        for comparison_type, comparison_output_name in [
+            ("geometry", "output/structure_variant_comparison_lower_camera.png"),
+            ("texture", "output/texture_variant_comparison_lower_camera.png"),
+        ]:
+            try:
+                rendered_paths.append(
+                    render_comparison(
+                        run_dir,
+                        comparison_output_name,
+                        azim,
+                        elev,
+                        experiment_type=comparison_type,
+                    )
+                )
+            except Exception as exc:  # noqa: BLE001
+                if first_error is None:
+                    first_error = exc
+                _experiment_log(f"{comparison_type} comparison render failed: {exc}")
+        texture_output_path = run_dir / "output/texture_variant_comparison_lower_camera.png"
+        compatibility_output_path = run_dir / output_name
+        if texture_output_path.is_file() and texture_output_path.resolve() != compatibility_output_path.resolve():
+            compatibility_output_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(texture_output_path, compatibility_output_path)
+            rendered_paths.append(compatibility_output_path)
+        if first_error is not None:
+            raise first_error
+        _experiment_log(
+            f"rendered full experiment comparisons in {_elapsed(render_start)}: "
+            + ", ".join(str(path) for path in rendered_paths)
+        )
+        return
 
     output_path = render_comparison(run_dir, output_name, azim, elev)
     _experiment_log(f"rendered variant comparison in {_elapsed(render_start)}: {output_path}")
@@ -262,6 +361,16 @@ def main(argv=None):
             log_path = output_dir / "spaceflow.log"
             status_path = output_dir / "status.txt"
             output_dir.mkdir(parents=True, exist_ok=True)
+
+            if (
+                status_path.is_file()
+                and status_path.read_text(encoding="utf-8").strip() == "succeeded"
+                and (output_dir / "struct_mesh.glb").is_file()
+            ):
+                _experiment_log(
+                    f"variant {index}/{len(parsed_variants)} already succeeded, skipping: {name}"
+                )
+                continue
 
             code = 0
             variant_start = time.perf_counter()

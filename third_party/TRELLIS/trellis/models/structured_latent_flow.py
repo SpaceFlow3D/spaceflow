@@ -244,6 +244,8 @@ class SLatFlowModel(nn.Module):
         cond: torch.Tensor,
         cond_list: Optional[List[torch.Tensor]] = None,
         coords_dense_indices: Optional[torch.Tensor] = None,
+        self_attn_region: Optional[torch.Tensor] = None,
+        self_attn_region_boost: Optional[float] = None,
     ) -> sp.SparseTensor:
         h = self.input_layer(x).type(self.dtype)
         t_emb = self.t_embedder(t)
@@ -269,6 +271,8 @@ class SLatFlowModel(nn.Module):
                 cond,
                 context_list=cond_list,
                 coords_dense_indices=coords_dense_indices,
+                self_attn_region=self_attn_region,
+                self_attn_region_boost=self_attn_region_boost,
             )
 
         # unpack with output blocks

@@ -68,6 +68,266 @@ def _voxelize_mesh(mesh):
     return coords_dense
 
 
+def _dense_cell_groups(struct_coords, device='cuda'):
+    """Return occupied 32^3 cells and the 64^3 source-voxel group for each point."""
+    dense_coords = (struct_coords[:, 1:].to(device).long() // 2).clamp(0, 31)
+    linear = (
+        dense_coords[:, 0] * 32 * 32
+        + dense_coords[:, 1] * 32
+        + dense_coords[:, 2]
+    )
+    unique_linear, inverse = torch.unique(linear, sorted=True, return_inverse=True)
+    unique_coords = torch.stack(
+        [
+            unique_linear // (32 * 32),
+            (unique_linear // 32) % 32,
+            unique_linear % 32,
+        ],
+        dim=1,
+    )
+    return unique_coords, inverse
+
+
+def _surface_distance_matrix(generated_coords, sq_coords_list):
+    """Distance from each generated 64^3 voxel to each SQ surface."""
+    n_sq = len(sq_coords_list)
+    distances = torch.full(
+        (n_sq, generated_coords.shape[0]),
+        float('inf'),
+        dtype=generated_coords.dtype,
+        device=generated_coords.device,
+    )
+    for idx, sq_coords in enumerate(sq_coords_list):
+        if sq_coords.shape[0] > 0:
+            distances[idx] = torch.cdist(sq_coords, generated_coords).min(0).values
+    return distances
+
+
+def _aggregate_dense_min_distances(point_distances, inverse, n_cells):
+    """Pool point-to-SQ distances into occupied 32^3 cells without last-write bias."""
+    n_sq = point_distances.shape[0]
+    cell_distances = torch.full(
+        (n_sq, n_cells),
+        float('inf'),
+        dtype=point_distances.dtype,
+        device=point_distances.device,
+    )
+    for sq_idx in range(n_sq):
+        cell_distances[sq_idx].scatter_reduce_(
+            0,
+            inverse,
+            point_distances[sq_idx],
+            reduce='amin',
+            include_self=True,
+        )
+    return cell_distances
+
+
+def _aggregate_dense_votes(point_labels, inverse, n_cells, n_labels):
+    """Pool per-point labels into 32^3 cells by majority vote."""
+    votes = torch.zeros(
+        (n_cells, n_labels),
+        dtype=torch.int32,
+        device=point_labels.device,
+    )
+    votes.index_put_(
+        (inverse, point_labels.long()),
+        torch.ones_like(point_labels, dtype=torch.int32),
+        accumulate=True,
+    )
+    return votes.argmax(dim=1)
+
+
+def compute_active_margin_indices(
+    struct_coords,
+    individual_sq_meshes,
+    active_indices,
+    device='cuda',
+    margin=2.0,
+):
+    """Route active local conditions to nearby occupied cells with a distance margin.
+
+    The legacy router assigns a cell only to the single nearest SQ.  This is brittle
+    when the generated structure shifts a thin part by a few 64^3 voxels.  Here an
+    active SQ may claim a cell when it is within ``margin`` voxels of the best SQ;
+    competing active SQs are resolved by their distance to the cell.  The routing is
+    still restricted to occupied generated cells, so the margin cannot create texture
+    in empty space.
+    """
+    coords_dense_indices = torch.zeros(
+        1, 1, 32, 32, 32, dtype=torch.int32, device=device
+    )
+    n_sq = len(individual_sq_meshes)
+    active_indices = [idx for idx in active_indices if 0 <= idx < n_sq]
+    if n_sq == 0 or not active_indices or struct_coords.shape[0] == 0:
+        return coords_dense_indices
+
+    generated_coords = struct_coords[:, 1:].float().to(device)
+    sq_coords_list = []
+    for mesh in individual_sq_meshes:
+        sq_vox = _voxelize_mesh(mesh)
+        sq_coords = torch.argwhere(sq_vox)[:, 2:].float().to(device)
+        sq_coords_list.append(sq_coords)
+
+    dense_coords, inverse = _dense_cell_groups(struct_coords, device=device)
+    point_distances = _surface_distance_matrix(generated_coords, sq_coords_list)
+    cell_distances = _aggregate_dense_min_distances(
+        point_distances,
+        inverse,
+        dense_coords.shape[0],
+    )
+
+    active = torch.as_tensor(active_indices, dtype=torch.long, device=device)
+    active_distances = cell_distances.index_select(0, active)
+    best_active_distances, best_active_pos = active_distances.min(dim=0)
+    best_all_distances = cell_distances.min(dim=0).values
+    selected = best_active_distances <= (best_all_distances + float(margin))
+    if selected.any():
+        selected_coords = dense_coords[selected]
+        selected_sq = active[best_active_pos[selected]] + 1
+        coords_dense_indices[
+            0,
+            0,
+            selected_coords[:, 0],
+            selected_coords[:, 1],
+            selected_coords[:, 2],
+        ] = selected_sq.to(torch.int32)
+    return coords_dense_indices
+
+
+def compute_surface_coverage_indices(
+    struct_coords,
+    individual_sq_meshes,
+    active_indices,
+    device='cuda',
+    min_cells=64,
+    max_cells=512,
+    candidate_margin=3.0,
+):
+    """Route local conditions from exact SQ surface coverage.
+
+    PartField and nearest-SQ routing can lose thin or small parts after the
+    structure is pooled into the 32^3 SLAT grid.  This router first reserves
+    cells touched by the exact 64^3 SQ surface voxelization, then fills only a
+    compact nearest-cell budget for each active SQ.  Small details therefore
+    receive a guaranteed local condition without a broad, unconstrained
+    dilation into neighboring parts.
+
+    Values are SQ indices (1-indexed; zero means global/unassigned), matching
+    ``compute_coords_dense_indices`` and the later condition remapping.
+    """
+    coords_dense_indices = torch.zeros(
+        1, 1, 32, 32, 32, dtype=torch.int32, device=device
+    )
+    n_sq = len(individual_sq_meshes)
+    active_indices = [idx for idx in active_indices if 0 <= idx < n_sq]
+    min_cells = max(1, int(min_cells))
+    max_cells = max(min_cells, int(max_cells))
+    if n_sq == 0 or not active_indices or struct_coords.shape[0] == 0:
+        return coords_dense_indices, {
+            'routing_source': 'surface_coverage',
+            'exact_surface_cells': {},
+            'reserved_cells': {},
+        }
+
+    generated_coords = struct_coords[:, 1:].float().to(device)
+    dense_coords, inverse = _dense_cell_groups(struct_coords, device=device)
+    n_cells = int(dense_coords.shape[0])
+    if n_cells == 0:
+        return coords_dense_indices, {
+            'routing_source': 'surface_coverage',
+            'exact_surface_cells': {},
+            'reserved_cells': {},
+        }
+
+    sq_coords_list = []
+    for mesh in individual_sq_meshes:
+        sq_vox = _voxelize_mesh(mesh)
+        sq_coords_list.append(torch.argwhere(sq_vox)[:, 2:].float().to(device))
+    point_distances = _surface_distance_matrix(generated_coords, sq_coords_list)
+    cell_distances = _aggregate_dense_min_distances(
+        point_distances,
+        inverse,
+        n_cells,
+    )
+
+    dense_linear = (
+        dense_coords[:, 0] * 32 * 32
+        + dense_coords[:, 1] * 32
+        + dense_coords[:, 2]
+    ).long()
+    assigned = torch.zeros(n_cells, dtype=torch.int32, device=device)
+    exact_counts = {}
+    targets = {}
+    candidate_orders = {}
+
+    # Build a compact candidate list for each active SQ. Exact surface cells
+    # are always preferred; the nearest cells fill the minimum budget only
+    # when the detail is too small or shifted relative to the structure grid.
+    for sq_idx in active_indices:
+        surface = sq_coords_list[sq_idx]
+        if surface.shape[0] > 0:
+            surface_dense = (surface.long() // 2).clamp(0, 31)
+            surface_linear = (
+                surface_dense[:, 0] * 32 * 32
+                + surface_dense[:, 1] * 32
+                + surface_dense[:, 2]
+            ).long()
+            positions = torch.searchsorted(dense_linear, surface_linear)
+            valid = positions < n_cells
+            safe_positions = positions.clamp(max=n_cells - 1)
+            valid = valid & (dense_linear[safe_positions] == surface_linear)
+            exact = torch.unique(safe_positions[valid])
+        else:
+            exact = torch.empty(0, dtype=torch.long, device=device)
+
+        exact_counts[sq_idx] = int(exact.numel())
+        target = min(max_cells, max(min_cells, int(exact.numel())))
+        targets[sq_idx] = target
+        order = torch.argsort(cell_distances[sq_idx], stable=True)
+        if candidate_margin > 0 and order.numel() > 0:
+            best = cell_distances[sq_idx, order[0]]
+            near = order[cell_distances[sq_idx, order] <= best + float(candidate_margin)]
+            if near.numel() >= min_cells:
+                order = near
+        if exact.numel() > 0:
+            order = torch.cat([exact, order])
+            order = torch.unique(order, sorted=False)
+        candidate_orders[sq_idx] = order[: min(max_cells, int(order.numel()))]
+
+    # Reserve compact regions for the smallest details first. This prevents a
+    # large neighboring part from consuming all cells needed by a tiny part.
+    priority = sorted(active_indices, key=lambda idx: (exact_counts[idx], idx))
+    for sq_idx in priority:
+        order = candidate_orders[sq_idx]
+        available = order[assigned[order] == 0]
+        selected = available[: targets[sq_idx]]
+        if selected.numel() < targets[sq_idx]:
+            # Overlapping SQs may have no fully disjoint candidate budget. A
+            # detail still gets its nearest cells, with later assignments
+            # intentionally unable to overwrite this reservation.
+            selected = order[: targets[sq_idx]]
+        assigned[selected] = int(sq_idx + 1)
+
+    coords_dense_indices[
+        0,
+        0,
+        dense_coords[:, 0],
+        dense_coords[:, 1],
+        dense_coords[:, 2],
+    ] = assigned
+    reserved_counts = {
+        sq_idx: int((assigned == sq_idx + 1).sum().item())
+        for sq_idx in active_indices
+    }
+    return coords_dense_indices, {
+        'routing_source': 'surface_coverage',
+        'exact_surface_cells': exact_counts,
+        'reserved_cells': reserved_counts,
+        'target_cells': targets,
+    }
+
+
 def compute_coords_dense_indices(struct_coords, individual_sq_meshes, device='cuda', vox_cluster_labels=None):
     """Map each 64^3 voxel to its nearest superquadric (1-indexed; 0=unassigned).
 
@@ -112,22 +372,32 @@ def compute_coords_dense_indices(struct_coords, individual_sq_meshes, device='cu
                 for sq_c in sq_coords_list
             ]
             cluster_to_sq[c] = int(np.argmin(min_dists))
-        min_distances_idx = cluster_to_sq[labels] + 1  # (M,), 1-indexed
+        point_labels = cluster_to_sq[labels]
+        dense_coords, inverse = _dense_cell_groups(struct_coords, device=device)
+        dense_labels = _aggregate_dense_votes(
+            point_labels,
+            inverse,
+            dense_coords.shape[0],
+            n_sq,
+        )
     else:
         # Fallback: per-voxel geometric nearest neighbor
-        min_distances = torch.zeros(n_sq, struct_coords.shape[0], device=device)
-        for idx, sq_c in enumerate(sq_coords_list):
-            if sq_c.shape[0] == 0:
-                min_distances[idx] = float('inf')
-            else:
-                min_distances[idx] = torch.cdist(sq_c, generated_coords).min(0).values
-        min_distances_idx = min_distances.argmin(0) + 1  # 1-indexed, shape (M,)
+        min_distances = _surface_distance_matrix(generated_coords, sq_coords_list)
+        dense_coords, inverse = _dense_cell_groups(struct_coords, device=device)
+        cell_distances = _aggregate_dense_min_distances(
+            min_distances,
+            inverse,
+            dense_coords.shape[0],
+        )
+        dense_labels = cell_distances.argmin(dim=0)
 
-    for i in range(struct_coords.shape[0]):
-        x = struct_coords[i, 1] // 2
-        y = struct_coords[i, 2] // 2
-        z = struct_coords[i, 3] // 2
-        coords_dense_indices[0, 0, x, y, z] = int(min_distances_idx[i].item())
+    coords_dense_indices[
+        0,
+        0,
+        dense_coords[:, 0],
+        dense_coords[:, 1],
+        dense_coords[:, 2],
+    ] = (dense_labels + 1).to(torch.int32)
 
     return coords_dense_indices
 
@@ -171,7 +441,55 @@ def _write_routing_warning(output_dir, warning):
     except Exception as exc:  # noqa: BLE001
         log.warning("Could not write routing warning metadata: %s", exc)
 
-def _choose_local_routing(struct_coords, individual_sq_meshes, struct_labels, active_indices, device='cuda'):
+def _choose_local_routing(
+    struct_coords,
+    individual_sq_meshes,
+    struct_labels,
+    active_indices,
+    device='cuda',
+    routing_mode='legacy',
+    routing_margin=2.0,
+    surface_min_cells=64,
+    surface_max_cells=512,
+    surface_candidate_margin=3.0,
+):
+    if routing_mode in {'surface_coverage', 'surface_topk'} and active_indices:
+        surface_routed, surface_stats = compute_surface_coverage_indices(
+            struct_coords,
+            individual_sq_meshes,
+            active_indices,
+            device=device,
+            min_cells=surface_min_cells,
+            max_cells=surface_max_cells,
+            candidate_margin=surface_candidate_margin,
+        )
+        surface_counts = _dense_sq_counts(surface_routed, len(individual_sq_meshes))
+        log.info(
+            "Surface-coverage local routing (min=%d, max=%d, margin=%.2f) SQ counts: %s; exact cells: %s",
+            int(surface_min_cells),
+            int(surface_max_cells),
+            float(surface_candidate_margin),
+            _format_nonzero_counts(surface_counts),
+            surface_stats.get('exact_surface_cells', {}),
+        )
+        return surface_routed, 'surface_coverage', surface_counts
+
+    if routing_mode == 'active_margin' and active_indices:
+        margin_routed = compute_active_margin_indices(
+            struct_coords,
+            individual_sq_meshes,
+            active_indices,
+            device=device,
+            margin=routing_margin,
+        )
+        margin_counts = _dense_sq_counts(margin_routed, len(individual_sq_meshes))
+        log.info(
+            "Active-margin local routing (margin=%.2f) SQ counts: %s",
+            routing_margin,
+            _format_nonzero_counts(margin_counts),
+        )
+        return margin_routed, 'active_margin', margin_counts
+
     clustered = compute_coords_dense_indices(
         struct_coords, individual_sq_meshes, device, vox_cluster_labels=struct_labels)
     n_sq = len(individual_sq_meshes)
@@ -477,8 +795,33 @@ def optimize_self_similarity(cfg, app, app_type, output_dir,
         log.info(f"Built cond_list with {len(cond_list)} entries "
                  f"(1 global + {len(conditioned_embs)} real local out of {n_sq} SQs)")
 
+        local_routing_mode = str(
+            getattr(cfg.sim_guidance, 'local_routing_mode', 'legacy')
+        ).strip().lower()
+        local_routing_margin = float(
+            getattr(cfg.sim_guidance, 'local_routing_margin', 2.0)
+        )
+        surface_min_cells = _nonnegative_int(
+            getattr(cfg.sim_guidance, 'surface_min_cells', 64), 64
+        )
+        surface_max_cells = _nonnegative_int(
+            getattr(cfg.sim_guidance, 'surface_max_cells', 512), 512
+        )
+        surface_candidate_margin = float(
+            getattr(cfg.sim_guidance, 'surface_candidate_margin', 3.0)
+        )
         coords_dense_indices, routing_source, sq_route_counts = _choose_local_routing(
-            struct_coords, individual_sq_meshes, struct_labels, active_indices, 'cuda')
+            struct_coords,
+            individual_sq_meshes,
+            struct_labels,
+            active_indices,
+            device='cuda',
+            routing_mode=local_routing_mode,
+            routing_margin=local_routing_margin,
+            surface_min_cells=surface_min_cells,
+            surface_max_cells=surface_max_cells,
+            surface_candidate_margin=surface_candidate_margin,
+        )
         coords_dense_indices = remap[coords_dense_indices.long()]
         condition_counts_before_dilation = _dense_condition_counts(coords_dense_indices, len(cond_list))
         local_condition_dilation = _nonnegative_int(
@@ -575,18 +918,27 @@ def optimize_self_similarity(cfg, app, app_type, output_dir,
 
         # condition routing visualization for routing
         log.info("Visualizing condition routing on structure mesh...")
-        import trimesh
-        from lib.util.visualization import visualize_and_save, map_voxel_labels_to_vertices
-        _sv_norm = ((struct_coords[:, 1:].float() + 0.5) / 64 - 0.5).cpu().numpy()
-        _sq_labels = coords_dense_indices[0, 0,
-            struct_coords[:, 1] // 2,
-            struct_coords[:, 2] // 2,
-            struct_coords[:, 3] // 2].cpu().numpy()
-        _mesh_vis = trimesh.load(osp.join(output_dir, 'struct_renders', 'mesh.ply'), force='mesh')
-        _vtx_labels = map_voxel_labels_to_vertices(_mesh_vis.vertices, _sv_norm, _sq_labels)
-        visualize_and_save(_mesh_vis, _vtx_labels, output_dir, output_name='condition_routing.mp4')
-        del _sv_norm, _sq_labels, _mesh_vis, _vtx_labels
-        torch.cuda.empty_cache()
+        try:
+            import trimesh
+            from lib.util.visualization import visualize_and_save, map_voxel_labels_to_vertices
+            _mesh_path = osp.join(output_dir, 'struct_renders', 'mesh.ply')
+            if not osp.isfile(_mesh_path):
+                _mesh_path = osp.join(output_dir, 'spatial_control_mesh.ply')
+            if osp.isfile(_mesh_path):
+                _sv_norm = ((struct_coords[:, 1:].float() + 0.5) / 64 - 0.5).cpu().numpy()
+                _sq_labels = coords_dense_indices[0, 0,
+                    struct_coords[:, 1] // 2,
+                    struct_coords[:, 2] // 2,
+                    struct_coords[:, 3] // 2].cpu().numpy()
+                _mesh_vis = trimesh.load(_mesh_path, force='mesh')
+                _vtx_labels = map_voxel_labels_to_vertices(_mesh_vis.vertices, _sv_norm, _sq_labels)
+                visualize_and_save(_mesh_vis, _vtx_labels, output_dir, output_name='condition_routing.mp4')
+                del _sv_norm, _sq_labels, _mesh_vis, _vtx_labels
+                torch.cuda.empty_cache()
+            else:
+                log.info("No structure mesh found for routing visualization; continuing.")
+        except Exception as _vis_err:
+            log.warning("Could not render condition routing video: %s; continuing texture optimization.", _vis_err)
 
     else:
         log.info("No local SQ texture overrides provided; all voxels use the global condition.")
@@ -624,6 +976,24 @@ def optimize_self_similarity(cfg, app, app_type, output_dir,
 
     loop_start = time.perf_counter()
     log.info(f"Beginning self-similarity guidance + flow sampling loop for {len(t_pairs)} steps...")
+
+    self_attn_region = None
+    mixed_self_attn_boost = 1.0
+    if coords_dense_indices is not None:
+        mixed_self_attn_boost = float(
+            getattr(cfg.sim_guidance, 'mixed_self_attn_boost', 1.0) or 1.0)
+        if mixed_self_attn_boost > 1.0:
+            self_attn_region = coords_dense_indices
+            log.info(
+                "Region-boosted self-attention ON: in-region weights x%.2f before softmax "
+                "over %d condition regions, all %d steps.",
+                mixed_self_attn_boost, int(coords_dense_indices.max().item()) + 1,
+                len(t_pairs),
+            )
+        else:
+            log.info("Region-boosted self-attention off (mixed_self_attn_boost=%.2f); "
+                     "self-attention is stock.", mixed_self_attn_boost)
+
     for iteration, (t, t_prev) in enumerate(t_pairs):
         optimizer.zero_grad()
         
@@ -638,6 +1008,9 @@ def optimize_self_similarity(cfg, app, app_type, output_dir,
         if cond_list is not None:
             local_kwargs['cond_list'] = cond_list
             local_kwargs['coords_dense_indices'] = coords_dense_indices
+        if self_attn_region is not None:
+            local_kwargs['self_attn_region'] = self_attn_region
+            local_kwargs['self_attn_region_boost'] = mixed_self_attn_boost
 
         with torch.no_grad():
             out = generation_pipeline.slat_sampler.sample_once(flow_model, noise, t, t_prev, **cond, **sampler_params, **local_kwargs)

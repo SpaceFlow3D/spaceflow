@@ -49,6 +49,7 @@ export SQ_PUBLIC_USER="${SQ_PUBLIC_USER:-spaceflow}"
 export SQ_PUBLIC_BACKEND="${SQ_PUBLIC_BACKEND:-http://127.0.0.1:$SQ_SPACEFLOW_PORT}"
 export SQ_PUBLIC_STATIC_ROOT="${SQ_PUBLIC_STATIC_ROOT:-$PWD/sq_ui/app/dist}"
 export SQ_PUBLIC_MAX_UPLOAD_MB="${SQ_PUBLIC_MAX_UPLOAD_MB:-64}"
+export SQ_PUBLIC_SKIP_QUICK_TUNNEL="${SQ_PUBLIC_SKIP_QUICK_TUNNEL:-0}"
 
 port_in_use() {
     ss -ltn 2>/dev/null | awk '{print $4}' | grep -Eq "(^|:)${1}$"
@@ -93,13 +94,23 @@ if ! kill -0 "$GATEWAY_PID" 2>/dev/null; then
     exit 1
 fi
 
-if command -v cloudflared >/dev/null 2>&1; then
-    echo "[sq-public-demo] Starting Cloudflare quick tunnel..."
-    cloudflared tunnel --url "http://127.0.0.1:$SQ_PUBLIC_PORT"
-else
-    echo "[sq-public-demo] cloudflared is not installed or not on PATH." >&2
-    echo "[sq-public-demo] In another terminal, install/use cloudflared and run:" >&2
-    echo "  cloudflared tunnel --url http://127.0.0.1:$SQ_PUBLIC_PORT" >&2
-    echo "[sq-public-demo] Local authenticated gateway is running at http://127.0.0.1:$SQ_PUBLIC_PORT" >&2
-    wait
-fi
+case "$SQ_PUBLIC_SKIP_QUICK_TUNNEL" in
+    1|true|TRUE|yes|YES|on|ON)
+        echo "[sq-public-demo] Skipping Cloudflare quick tunnel."
+        echo "[sq-public-demo] Local authenticated gateway is running at http://127.0.0.1:$SQ_PUBLIC_PORT"
+        echo "[sq-public-demo] Point a named Cloudflare Tunnel at http://127.0.0.1:$SQ_PUBLIC_PORT."
+        wait
+        ;;
+    *)
+        if command -v cloudflared >/dev/null 2>&1; then
+            echo "[sq-public-demo] Starting Cloudflare quick tunnel..."
+            cloudflared tunnel --url "http://127.0.0.1:$SQ_PUBLIC_PORT"
+        else
+            echo "[sq-public-demo] cloudflared is not installed or not on PATH." >&2
+            echo "[sq-public-demo] In another terminal, install/use cloudflared and run:" >&2
+            echo "  cloudflared tunnel --url http://127.0.0.1:$SQ_PUBLIC_PORT" >&2
+            echo "[sq-public-demo] Local authenticated gateway is running at http://127.0.0.1:$SQ_PUBLIC_PORT" >&2
+            wait
+        fi
+        ;;
+esac

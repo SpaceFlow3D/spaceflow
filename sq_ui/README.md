@@ -53,6 +53,44 @@ Public mode defaults:
 
 Use the printed `https://...trycloudflare.com` URL plus the shared user/password for selected users. Quick tunnel URLs change when the tunnel restarts.
 
+### Long-Lived Cloudflare Tunnel
+
+For a stable public URL, use a named Cloudflare Tunnel instead of the generated `trycloudflare.com` quick tunnel. This requires a Cloudflare account and a domain using Cloudflare DNS.
+
+Authenticate and create the tunnel once:
+
+```bash
+cloudflared tunnel login
+cloudflared tunnel create spaceflow-demo
+cloudflared tunnel route dns spaceflow-demo spaceflow.example.com
+cloudflared tunnel list
+```
+
+Create `~/.cloudflared/spaceflow-demo.yml`, replacing the UUID and hostname:
+
+```yaml
+tunnel: <TUNNEL-UUID>
+credentials-file: /home/nedela/.cloudflared/<TUNNEL-UUID>.json
+
+ingress:
+  - hostname: spaceflow.example.com
+    service: http://127.0.0.1:11481
+  - service: http_status:404
+```
+
+Run the local demo gateway without starting a quick tunnel:
+
+```bash
+tmux new -s spaceflow-public
+SQ_PUBLIC_SKIP_QUICK_TUNNEL=1 bash sq_ui/scripts/run_public_demo.sh
+```
+
+In another tmux window, run the named tunnel:
+
+```bash
+cloudflared tunnel --config ~/.cloudflared/spaceflow-demo.yml run spaceflow-demo
+```
+
 ## Frontend
 
 ```bash

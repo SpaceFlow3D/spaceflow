@@ -126,8 +126,14 @@ def init_args(argv=None):
                         help='Continue past structure generation into PartField and similarity optimization. Default keeps the legacy structure-only behavior.')
     parser.add_argument('--n_repaint_steps', type=int, default=10,
                         help='Number of repaint resampling steps to perform during structure generation to improve blending (default: 10). Set to 0 to disable.')                        
+    parser.add_argument('--structure_seed', type=int, default=1,
+                        help='Random seed for TRELLIS sparse-structure generation (default: 1).')
     parser.add_argument('--texture_optim_steps', type=int, default=None,
                         help='Override config/default.yaml sim_guidance.steps for texture similarity optimization. Minimum: 2.')
+    parser.add_argument('--mixed_self_attn_boost', type=float, default=None,
+                        help='Override config/default.yaml sim_guidance.mixed_self_attn_boost. '
+                             'Multiply self-attention weights by this factor before the softmax '
+                             'between voxels sharing a routed condition. 1.0 = stock attention.')
     parser.add_argument('--trellis_pipeline_path', type=str, default=None,
                         help='TRELLIS pipeline config/model path. Defaults to SPACEFLOW_TRELLIS_PIPELINE_PATH or config/default.yaml trellis_text_model_name.')
     parser.add_argument('--geometry_only_decode', action='store_true',
@@ -526,6 +532,13 @@ def run(args, cfg=None, generation_pipeline=None):
         cfg = copy.deepcopy(cfg)
         cfg.sim_guidance.steps = int(args.texture_optim_steps)
         log.info("Overriding texture optimization steps: %d", int(cfg.sim_guidance.steps))
+    if args.mixed_self_attn_boost is not None:
+        if args.mixed_self_attn_boost < 1.0:
+            raise ValueError("--mixed_self_attn_boost must be at least 1.0 (1.0 = stock attention)")
+        cfg = copy.deepcopy(cfg)
+        cfg.sim_guidance.mixed_self_attn_boost = float(args.mixed_self_attn_boost)
+        log.info("Overriding mixed self-attention boost: %.2f",
+                 float(cfg.sim_guidance.mixed_self_attn_boost))
 
     common.ensure_dir(args.output_dir)
 
@@ -585,7 +598,8 @@ def run(args, cfg=None, generation_pipeline=None):
 
     # Sparse voxels
     structure_start = time.perf_counter()
-    coords = pipeline.gen_structure_v2(text_prompt, seed=1, vis_output_dir=None, sparse_structure_sampler_params={
+    log.info("Generating TRELLIS sparse structure with seed %d", int(args.structure_seed))
+    coords = pipeline.gen_structure_v2(text_prompt, seed=int(args.structure_seed), vis_output_dir=None, sparse_structure_sampler_params={
         "steps": STEPS_SHAPE_GEN,
         "cfg_strength": CFG_SHAPE_GEN,
         "t0_idx_value": args.shape_tau,

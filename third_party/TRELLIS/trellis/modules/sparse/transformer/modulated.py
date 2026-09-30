@@ -139,14 +139,14 @@ class ModulatedSparseTransformerCrossBlock(nn.Module):
                 nn.Linear(channels, 6 * channels, bias=True)
             )
 
-    def _forward(self, x: SparseTensor, mod: torch.Tensor, context: torch.Tensor, context_list=None, coords_dense_indices=None) -> SparseTensor:
+    def _forward(self, x: SparseTensor, mod: torch.Tensor, context: torch.Tensor, context_list=None, coords_dense_indices=None, self_attn_region=None, self_attn_region_boost=None) -> SparseTensor:
         if self.share_mod:
             shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp = mod.chunk(6, dim=1)
         else:
             shift_msa, scale_msa, gate_msa, shift_mlp, scale_mlp, gate_mlp = self.adaLN_modulation(mod).chunk(6, dim=1)
         h = x.replace(self.norm1(x.feats))
         h = h * (1 + scale_msa) + shift_msa
-        h = self.self_attn(h)
+        h = self.self_attn(h, self_attn_region=self_attn_region, self_attn_region_boost=self_attn_region_boost)
         h = h * gate_msa
         x = x + h
         h = x.replace(self.norm2(x.feats))
@@ -159,8 +159,8 @@ class ModulatedSparseTransformerCrossBlock(nn.Module):
         x = x + h
         return x
 
-    def forward(self, x: SparseTensor, mod: torch.Tensor, context: torch.Tensor, context_list=None, coords_dense_indices=None) -> SparseTensor:
+    def forward(self, x: SparseTensor, mod: torch.Tensor, context: torch.Tensor, context_list=None, coords_dense_indices=None, self_attn_region=None, self_attn_region_boost=None) -> SparseTensor:
         if self.use_checkpoint:
-            return torch.utils.checkpoint.checkpoint(self._forward, x, mod, context, context_list, coords_dense_indices, use_reentrant=False)
+            return torch.utils.checkpoint.checkpoint(self._forward, x, mod, context, context_list, coords_dense_indices, self_attn_region, self_attn_region_boost, use_reentrant=False)
         else:
-            return self._forward(x, mod, context, context_list, coords_dense_indices)
+            return self._forward(x, mod, context, context_list, coords_dense_indices, self_attn_region, self_attn_region_boost)

@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from .. import SparseTensor
-from .full_attn import sparse_scaled_dot_product_attention
+from .full_attn import sparse_scaled_dot_product_attention, sparse_block_diagonal_self_attention, sparse_region_boost_self_attention
 from .serialized_attn import SerializeMode, sparse_serialized_scaled_dot_product_self_attention
 from .windowed_attn import sparse_windowed_scaled_dot_product_self_attention
 from ...attention import RotaryPositionEmbedder
@@ -102,7 +102,7 @@ class SparseMultiHeadAttention(nn.Module):
         qkv = qkv.replace(torch.stack([q, k, v], dim=1)) 
         return qkv
     
-    def forward(self, x: Union[SparseTensor, torch.Tensor], context: Optional[Union[SparseTensor, torch.Tensor]] = None, context_list=None, coords_dense_indices=None) -> Union[SparseTensor, torch.Tensor]:
+    def forward(self, x: Union[SparseTensor, torch.Tensor], context: Optional[Union[SparseTensor, torch.Tensor]] = None, context_list=None, coords_dense_indices=None, self_attn_region=None, self_attn_region_boost=None) -> Union[SparseTensor, torch.Tensor]:
         if self._type == "self":
             qkv = self._linear(self.to_qkv, x)
             qkv = self._fused_pre(qkv, num_fused=3)
@@ -114,7 +114,22 @@ class SparseMultiHeadAttention(nn.Module):
                 k = self.k_rms_norm(k)
                 qkv = qkv.replace(torch.stack([q.feats, k.feats, v.feats], dim=1))
             if self.attn_mode == "full":
-                h = sparse_scaled_dot_product_attention(qkv)
+                if self_attn_region is not None and isinstance(qkv, SparseTensor):
+                    # Mixed conditioning: keep cross-region self-attention from letting a strongly
+                    # conditioned region bleed into a cfg=0 region. self_attn_region is a
+                    # (1,1,R,R,R) grid giving each voxel's region id, looked up by its coords
+                    # (same mechanism as coords_dense_indices in cross-attention).
+                    group_ids = self_attn_region[
+                        0, 0, qkv.coords[:, 1], qkv.coords[:, 2], qkv.coords[:, 3]]
+                    if self_attn_region_boost is None:
+                        # Hard: a voxel cannot see other regions at all.
+                        h = sparse_block_diagonal_self_attention(qkv, group_ids)
+                    else:
+                        # Soft: still full attention, but in-region weights are upweighted
+                        # before the softmax, so parts stay globally coherent.
+                        h = sparse_region_boost_self_attention(qkv, group_ids, self_attn_region_boost)
+                else:
+                    h = sparse_scaled_dot_product_attention(qkv)
             elif self.attn_mode == "serialized":
                 h = sparse_serialized_scaled_dot_product_self_attention(
                     qkv, self.window_size, serialize_mode=self.serialize_mode, shift_sequence=self.shift_sequence, shift_window=self.shift_window

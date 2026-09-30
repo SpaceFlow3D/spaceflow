@@ -126,12 +126,12 @@ def run_meta(run_dir: Path) -> dict[str, object]:
 
 def experiment_type_from_meta(meta: dict[str, object]) -> str:
     raw = str(meta.get("experiment_type") or "").strip().lower()
-    if raw in {"geometry", "texture"}:
+    if raw in {"geometry", "texture", "full"}:
         return raw
     run_config = meta.get("run_config")
     if isinstance(run_config, dict):
         raw = str(run_config.get("experimentType") or "").strip().lower()
-        if raw in {"geometry", "texture"}:
+        if raw in {"geometry", "texture", "full"}:
             return raw
     return "geometry"
 
@@ -143,7 +143,7 @@ def experiment_type_for_run(run_dir: Path, meta: dict[str, object] | None = None
         return kind
     runner_config = read_json(run_dir / "experiment_runner_config.json")
     raw = str(runner_config.get("experiment_type") or "").strip().lower()
-    return raw if raw in {"geometry", "texture"} else kind
+    return raw if raw in {"geometry", "texture", "full"} else kind
 
 
 def asset_manifest(meta: dict[str, object]) -> dict[str, object]:
@@ -431,7 +431,11 @@ def prompt_footer(run_dir: Path, meta: dict[str, object], manifest: dict[str, ob
     run_config = meta.get("run_config")
     if not flat_prompt and isinstance(run_config, dict):
         flat_prompt = str(run_config.get("flattenedTextPrompt") or "").strip()
-    flat_line = f"\nFlattened TRELLIS prompt: {flat_prompt}" if experiment_type_from_meta(meta) == "texture" and flat_prompt else ""
+    flat_line = (
+        f"\nFlattened TRELLIS prompt: {flat_prompt}"
+        if experiment_type_from_meta(meta) in {"texture", "full"} and flat_prompt
+        else ""
+    )
     if not primitives:
         footer = global_line + flat_line
         warning_lines = [f"Warning: {message}" for message in routing_warning_messages(run_dir)]
@@ -555,9 +559,13 @@ def _complete_geometry_paths_from_meta(run_dir: Path, meta: dict[str, object]) -
     return paths
 
 
-def complete_experiment_paths(run_dir: Path) -> list[tuple[str, Path, float]] | None:
+def complete_experiment_paths(
+    run_dir: Path,
+    experiment_type: str | None = None,
+) -> list[tuple[str, Path, float]] | None:
     meta = run_meta(run_dir)
-    if experiment_type_for_run(run_dir, meta) == "texture":
+    kind = (experiment_type or experiment_type_for_run(run_dir, meta)).strip().lower()
+    if kind in {"texture", "full"}:
         specs = TEXTURE_VARIANTS
         return _complete_paths_for_specs(run_dir, specs)
 
@@ -578,9 +586,20 @@ def discover_experiments(root: Path) -> list[Path]:
     return [path for path in candidates if complete_experiment_paths(path) is not None]
 
 
-def title_for(run_dir: Path) -> str:
+def title_for(run_dir: Path, experiment_type: str | None = None) -> str:
     meta = run_meta(run_dir)
-    prefix = "Texture experiment" if experiment_type_for_run(run_dir, meta) == "texture" else "Textured comparison"
+    kind = (experiment_type or experiment_type_for_run(run_dir, meta)).strip().lower()
+    run_kind = experiment_type_for_run(run_dir, meta)
+    if run_kind == "full" and kind == "geometry":
+        prefix = "Full structure comparison"
+    elif run_kind == "full" and kind == "texture":
+        prefix = "Full texture comparison"
+    elif kind == "texture":
+        prefix = "Texture experiment"
+    elif kind == "full":
+        prefix = "Full experiment"
+    else:
+        prefix = "Textured comparison"
     meta_path = run_dir / "run_meta.json"
     if meta_path.is_file():
         try:
@@ -989,8 +1008,15 @@ def _render_labeled_meshes(
     return output_path
 
 
-def render_comparison(run_dir: Path, output_name: str, azim: float, elev: float) -> Path:
-    variant_paths = complete_experiment_paths(run_dir)
+def render_comparison(
+    run_dir: Path,
+    output_name: str,
+    azim: float,
+    elev: float,
+    *,
+    experiment_type: str | None = None,
+) -> Path:
+    variant_paths = complete_experiment_paths(run_dir, experiment_type=experiment_type)
     if variant_paths is None:
         raise RuntimeError(f"Missing one or more variants: {run_dir}")
 
@@ -1021,7 +1047,7 @@ def render_comparison(run_dir: Path, output_name: str, azim: float, elev: float)
         azim,
         elev,
         meshes,
-        title_for(run_dir),
+        title_for(run_dir, experiment_type=experiment_type),
         prompt_footer(run_dir, meta, manifest),
         condition_image_tiles(run_dir, meta),
     )

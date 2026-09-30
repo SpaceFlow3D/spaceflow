@@ -22,12 +22,20 @@ text_model:
 
 # self-similarity guidance
 sim_guidance:
-  num_part_clusters: 10
+  num_part_clusters: 30
   steps: 300
   learning_rate: 5e-4
   loss_weight: 1.0
   local_condition_dilation: 0
   local_condition_min_cells: 192
   local_condition_max_dilation: 1
+  # Multiply self-attention weights by this factor before the softmax when both
+  # voxels share a routed condition. 1.0 disables and keeps stock self-attention.
+  mixed_self_attn_boost: 2.5
+  # "legacy" preserves the original PartField/geometric router.  "active_margin"
+  # lets active local SQs claim nearby occupied cells when the generated structure
+  # is slightly shifted relative to the input superquadric.
+  local_routing_mode: legacy
+  local_routing_margin: 2.0
 
 log_every: 100
