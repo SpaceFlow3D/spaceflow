@@ -3,7 +3,7 @@
 These 83 small example bundles contain the superquadric primitives, global and
 local prompts, scene metadata, and saved experiment parameters. Each example
 has three NPZ inputs (`all`, `high_control`, and `low_control_bbox`), a manifest,
-scene JSON, runner configuration, and run metadata.
+shape prompt, runner configuration, and run metadata.
 
 Paths in the published metadata use a portable example-root placeholder. The
 replay tool resolves them into a new output directory without changing prompts,
