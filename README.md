@@ -12,7 +12,7 @@ No training or fine-tuning is required.
 [Interactive examples](https://spaceflow3d.github.io/#explore) ·
 [Downloads](https://github.com/joanlafuente/spaceflow/releases)
 
-https://github.com/user-attachments/assets/dc72c902-e415-4aea-abb6-e576b5b5705e 
+[![SpaceFlow teaser](https://github.com/user-attachments/assets/8d00f941-5a49-488e-b9fe-d062a54f292e)](https://spaceflow3d.github.io/) 
 
 
 [Installation](#installation) · [Generate an example](#generate-an-example) ·
