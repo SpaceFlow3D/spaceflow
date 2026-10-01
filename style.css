@@ -113,7 +113,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .logo-filters{position:absolute;pointer-events:none}
 .institution-logos>a:nth-child(2) img{filter:url(#logo-transparent)}
 html[data-theme="dark"] .institution-logos>a:nth-child(2) img{filter:url(#logo-transparent) invert(1) hue-rotate(180deg)}
-html[data-theme="dark"] .institution-logos>a:nth-child(3) img,html[data-theme="dark"] .institution-logos>a:nth-child(4) img{filter:brightness(0) invert(1)}
+html[data-theme="dark"] .institution-logos>a:nth-child(3) img{filter:brightness(0) invert(1)}
 
 .demonstration-section{padding-top:0;padding-bottom:64px}
 .demonstration-section h2{font-size:32px;margin-bottom:12px}
@@ -128,3 +128,7 @@ html[data-theme="dark"] .institution-logos>a:nth-child(3) img,html[data-theme="d
 html[data-theme="dark"] .institution-logos .microsoft-logo-light{display:none}
 html[data-theme="dark"] .institution-logos .microsoft-logo-dark{display:block}
 @media(max-width:650px){.institution-logos>a.microsoft-institution{grid-column:1/-1;width:180px;justify-self:center}}
+
+/* Keep Stanford's supplied red S, tree, and transparent clear space in both themes. */
+.institution-logos>a.stanford-institution img{width:96px;height:96px;max-width:none;flex-shrink:0}
+@media(max-width:650px){.institution-logos>a.stanford-institution img{width:78px;height:78px}}
