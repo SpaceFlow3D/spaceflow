@@ -21,10 +21,14 @@ They use the SIL Open Font License: [Caveat](https://github.com/googlefonts/cave
 [DM Sans](https://github.com/googlefonts/dm-fonts).
 The generated assets contain outlined lettering, not distributed font files.
 
-## Institution logos
+## Research group and institution logos
 
 The logos use the same source artwork as the project website:
 
+- [Computer Vision and Geometry Group (CVG)](https://cvg.ethz.ch/assets/images/logo/cvg-logo.svg),
+  copied unchanged from the website's `assets/logos/cvg.svg`. The transparent gold artwork is used in both themes.
+- [Gradient Spaces Lab](https://gradientspaces.stanford.edu/sites/g/files/sbiybj27761/files/media/image/logo.001_0.png),
+  also available as the website's `assets/logos/gradient-spaces.png`. The SVG wrappers embed the original PNG unchanged, trim its surrounding whitespace with a viewBox, and use the website's white-matte removal filter. The dark variant applies the website's inversion and hue rotation so the wordmark remains readable without a white background.
 - [ETH Zürich](https://ethz.ch/etc/designs/ethz/img/header/ethz_logo_black.svg),
   also available as the website's `assets/logos/ethz.svg`.
 - [Stanford University red block S with tree](https://identity.stanford.edu/wp-content/uploads/sites/3/2020/07/block-s-right.png),

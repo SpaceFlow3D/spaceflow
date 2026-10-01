@@ -26,25 +26,15 @@
 </p>
 
 <p align="center">
-  <a href="https://ethz.ch/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/ethz-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/ethz-light.svg">
-      <img src="docs/media/readme/ethz-light.svg" width="160" align="middle" alt="ETH Zürich">
-    </picture>
-  </a>
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <a href="https://www.stanford.edu/">
-    <img src="docs/media/readme/stanford-s.png" width="96" height="96" align="middle" alt="Stanford University">
-  </a>
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <a href="https://www.microsoft.com/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/microsoft-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/microsoft-light.png">
-      <img src="docs/media/readme/microsoft-light.png" width="230" align="middle" alt="Microsoft">
-    </picture>
-  </a>
+  <a href="https://cvg.ethz.ch/"><img src="docs/media/readme/cvg.svg" width="100" align="middle" alt="Computer Vision and Geometry Group (CVG)"></a>
+  &nbsp; &nbsp;
+  <a href="https://gradientspaces.stanford.edu/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/gradient-spaces-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/gradient-spaces-light.svg"><img src="docs/media/readme/gradient-spaces-light.svg" width="170" align="middle" alt="Gradient Spaces Lab"></picture></a>
+  &nbsp; &nbsp;
+  <a href="https://ethz.ch/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/ethz-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/ethz-light.svg"><img src="docs/media/readme/ethz-light.svg" width="160" align="middle" alt="ETH Zürich"></picture></a>
+  &nbsp; &nbsp;
+  <a href="https://www.stanford.edu/"><img src="docs/media/readme/stanford-s.png" width="96" height="96" align="middle" alt="Stanford University"></a>
+  &nbsp; &nbsp;
+  <a href="https://www.microsoft.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/microsoft-dark.png"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/microsoft-light.png"><img src="docs/media/readme/microsoft-light.png" width="200" align="middle" alt="Microsoft"></picture></a>
 </p>
 
 <p align="center">
