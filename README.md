@@ -7,7 +7,7 @@ of individual parts of a generated 3D asset. An editable superquadric scaffold
 expresses the intended shape; high/low control labels adjust geometric adherence,
 and global or per-part text/image conditions guide appearance.
 
-[Project page](https://neilus03.github.io/spaceflow/) ·
+[Project page](https://spaceflow3d.github.io/) ·
 [Paper and supplement](https://neilus03.github.io/spaceflow/assets/SpaceFlow-paper.pdf) ·
 [Examples](examples/README.md) · [Verification](docs/verification.md)
 
