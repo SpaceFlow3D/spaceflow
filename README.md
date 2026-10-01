@@ -15,7 +15,7 @@ No training or fine-tuning is required.
 [![SpaceFlow teaser: local geometry control, text and image appearance control, and generated 3D assets](https://spaceflow3d.github.io/assets/figures/teaser.webp)](https://spaceflow3d.github.io/#video)
 
 
-[![](https://github.com/user-attachments/assets/dc72c902-e415-4aea-abb6-e576b5b5705e)](https://spaceflow3d.github.io/)
+https://github.com/user-attachments/assets/dc72c902-e415-4aea-abb6-e576b5b5705e 
 
 
 [Installation](#installation) · [Generate an example](#generate-an-example) ·
