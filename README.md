@@ -14,14 +14,14 @@
   <a href="https://www.linkedin.com/in/mukali/">Mukhammadali Sayfiddinov</a><sup>1*</sup> &nbsp;
   <a href="https://ch.linkedin.com/in/felicia-scharitzer/de">Felicia Scharitzer</a><sup>1*</sup>
   <br>
-  <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a><sup>1</sup> &nbsp;
+  <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a><sup>1,3</sup> &nbsp;
   <a href="https://github.com/atcelen">Ata Çelen</a><sup>1</sup> &nbsp;
   <a href="https://sayands.github.io/">Sayan Deb Sarkar</a><sup>2†</sup> &nbsp;
   <a href="https://elisabettafedele.github.io/">Elisabetta Fedele</a><sup>1†</sup>
 </p>
 
 <p align="center">
-  <sup>1</sup> ETH Zürich &nbsp; · &nbsp; <sup>2</sup> Stanford University<br>
+  <sup>1</sup> ETH Zürich &nbsp; · &nbsp; <sup>2</sup> Stanford University &nbsp; · &nbsp; <sup>3</sup> Microsoft<br>
   <sub>* Equal contribution (ordered alphabetically) &nbsp; · &nbsp; † Equal supervision</sub>
 </p>
 
@@ -30,7 +30,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/ethz-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/ethz-light.svg">
-      <img src="docs/media/readme/ethz-light.svg" width="160" alt="ETH Zürich">
+      <img src="docs/media/readme/ethz-light.svg" width="160" align="middle" alt="ETH Zürich">
     </picture>
   </a>
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -38,7 +38,15 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/stanford-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/stanford-light.png">
-      <img src="docs/media/readme/stanford-light.png" width="210" alt="Stanford University">
+      <img src="docs/media/readme/stanford-light.png" width="210" align="middle" alt="Stanford University">
+    </picture>
+  </a>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://www.microsoft.com/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/microsoft-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/microsoft-light.png">
+      <img src="docs/media/readme/microsoft-light.png" width="230" align="middle" alt="Microsoft">
     </picture>
   </a>
 </p>

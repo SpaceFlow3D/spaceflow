@@ -29,8 +29,10 @@ The logos use the same source artwork as the project website:
   also available as the website's `assets/logos/ethz.svg`.
 - [Stanford University](https://identity.stanford.edu/wp-content/uploads/sites/3/2020/06/wordmark-full-nospace-red.png),
   also available as the website's `assets/logos/stanford.png`.
+- Microsoft supplies [gray-text artwork](https://news.microsoft.com/microsoft-logo_rgb_c-gray-2/) and [white-text artwork](https://news.microsoft.com/microsoft-logo_rgb_c-wht/),
+  stored as `microsoft-light.png` and `microsoft-dark.png` with their original transparency and colors.
 
-The dark variants change the ink color while retaining the source logo geometry.
+The ETH Zürich and Stanford dark variants change the ink color while retaining the source logo geometry. Microsoft uses its supplied gray- and white-text variants.
 Institution logos remain the respective institutions' trademarks.
 Author names, affiliations, contribution marks, and profile links are taken from
 the project website. The simple resource icons were drawn for this README.
