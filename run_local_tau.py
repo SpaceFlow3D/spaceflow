@@ -26,6 +26,7 @@ sys.path.append('.')
 from third_party.PartField.partfield.model_trainer_pvcnn_only_demo import Model
 from lib.opt import self_similarity
 from lib.util import common, render, pointcloud
+from lib.util.checkpoint_compat import partfield_checkpoint_scope
 from third_party.TRELLIS.trellis.pipelines import TrellisTextTo3DPipeline
 from utils import merge_meshes
 
@@ -511,7 +512,8 @@ def predict_part(obj_path, output_dir):
                      )
 
     partfield_model = Model(partfield_cfg, obj_path)
-    output = trainer.predict(partfield_model, ckpt_path=partfield_ckpt)
+    with partfield_checkpoint_scope():
+        output = trainer.predict(partfield_model, ckpt_path=partfield_ckpt)
     part_planes, uid = output[0]
     np.save(f'{output_dir}/part_feat_{uid}_batch_part_plane.npy', part_planes)
 

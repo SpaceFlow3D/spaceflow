@@ -18,6 +18,7 @@ from validate_examples import validate_npz
 from verify_release import prepare_matrix
 from lib.util.pipeline_compat import can_reuse_appearance_pipeline
 from lib.util.model_revisions import dinov2_hub_repository
+from lib.util.checkpoint_compat import partfield_checkpoint_scope
 
 
 def load_module(name, path):
@@ -75,6 +76,34 @@ class AppearanceCompatibilityTests(unittest.TestCase):
     def test_text_reuse_is_preserved(self):
         self.assertTrue(can_reuse_appearance_pipeline(object(), "text"))
         self.assertFalse(can_reuse_appearance_pipeline(None, "text"))
+
+
+class PartFieldCheckpointTests(unittest.TestCase):
+    def scoped_modules(self):
+        self.config_class = type("CfgNode", (), {})
+        self.scope = mock.MagicMock()
+        self.allow = mock.Mock(return_value=self.scope)
+        return {
+            "torch": SimpleNamespace(serialization=SimpleNamespace(safe_globals=self.allow)),
+            "yacs": SimpleNamespace(),
+            "yacs.config": SimpleNamespace(CfgNode=self.config_class),
+        }
+
+    def test_only_the_yacs_config_class_is_allowed_during_loading(self):
+        with mock.patch.dict(sys.modules, self.scoped_modules()):
+            with partfield_checkpoint_scope():
+                self.allow.assert_called_once_with([self.config_class])
+                self.scope.__enter__.assert_called_once()
+                self.scope.__exit__.assert_not_called()
+        self.scope.__exit__.assert_called_once_with(None, None, None)
+
+    def test_the_scope_closes_when_checkpoint_loading_fails(self):
+        with mock.patch.dict(sys.modules, self.scoped_modules()):
+            with self.assertRaisesRegex(ValueError, "checkpoint"):
+                with partfield_checkpoint_scope():
+                    raise ValueError("checkpoint")
+        self.scope.__exit__.assert_called_once()
+        self.assertIs(self.scope.__exit__.call_args.args[0], ValueError)
 
 
 class ModelRevisionTests(unittest.TestCase):

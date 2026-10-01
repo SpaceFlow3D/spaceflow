@@ -8,7 +8,7 @@ Fresh GPU acceptance is pending; no stable `v0.1.0` is claimed.
 
 | Check | Result and scope |
 | --- | --- |
-| CPU tests | **19 passed** under Python 3.12.14, including real HTTP save/history/reopen, replay preservation, invalid geometry rejection, Blender diagnostics, appearance pipeline selection, immutable DINOv2 revision checks, runtime dependency diagnostics, clean preflight JSON, and verification-matrix preparation. |
+| CPU tests | **21 passed** under Python 3.12.14, including real HTTP save/history/reopen, replay preservation, invalid geometry rejection, Blender diagnostics, appearance pipeline selection, immutable DINOv2 revision checks, runtime dependency diagnostics, clean preflight JSON, scoped PartField checkpoint compatibility, and verification-matrix preparation. |
 | Fresh published clone | Independently cloned `RELEASE` from GitHub at `d94e400a3d48ccb8d2f294acebcb93e689dc182e`, created new Python and Node dependency environments, then repeated the 15 CPU tests, 5 UI tests, all 83 input/replay checks, GPU-matrix preparation, and production build successfully. |
 | Input validation | All **249 NPZ files in 83 cases** have finite numeric arrays with the expected primitive shapes. All 83 replay configurations prepare in new directories. Original input files are unchanged. |
 | UI regression tests | **5 passed**: NPZ round trips, primitive names, global/local prompts, run settings, empty values, geometry-only/legacy inputs, and delayed download URL cleanup. |
@@ -50,8 +50,19 @@ both were running the user's Delimit3D training and each held about 21 GB. A
 separate fresh checkout, environment, and caches have been prepared on its work
 storage. The user chose to wait. The one-off verification queue checks every
 30 seconds and starts after a GPU has no compute processes, at least 22 GiB free,
-and 120 seconds of sustained idle time. It does not stop existing jobs. No fresh
-generation has started while both GPUs remain occupied.
+and 120 seconds of sustained idle time. It does not stop existing jobs.
+
+The GPUs became available on 2026-10-01. The first actual matrix at commit
+`3db81d04556279cf88e4c6358a3997be7ceca318` ran from 07:36 to 07:42 UTC. The
+raw TRELLIS comparison produced a valid textured GLB, but SpaceFlow stopped at
+PartField checkpoint loading. This attempt is preserved as failed evidence.
+The recorded checkpoint contains `yacs.config.CfgNode`, which PyTorch 2.8's
+weights-only loader does not allow by default. A scoped compatibility helper now
+allows that single configuration class while Lightning loads PartField; it keeps
+weights-only loading enabled and does not change model weights or generation
+arithmetic. Direct loading of the recorded checkpoint passed with this scope;
+full generation is being repeated. See the
+[PyTorch serialization documentation](https://docs.pytorch.org/docs/2.8/notes/serialization.html#torch-load-with-weights-only-true).
 
 ### Debian 13 / CUDA 12.8 compatibility
 
