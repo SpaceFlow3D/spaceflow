@@ -36,6 +36,17 @@ const video=document.getElementById('demo-video');
 new IntersectionObserver(entries=>{if(!entries[0].isIntersecting)video.pause();else if(!matchMedia('(prefers-reduced-motion: reduce)').matches)video.play().catch(()=>{});},{threshold:.15}).observe(video);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();});
 
+// Hover previews stay muted by default; native controls also work on touch screens.
+const workflowVideo=document.getElementById('workflow-video');
+workflowVideo.addEventListener('pointerenter',event=>{
+ if(event.pointerType!=='mouse'||!matchMedia('(hover: hover)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ workflowVideo.play().catch(()=>{});
+});
+workflowVideo.addEventListener('pointerleave',event=>{
+ if(event.pointerType==='mouse')workflowVideo.pause();
+});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)workflowVideo.pause();});
+
 let viewerVisible = true;
 const sendViewerVisibility = () => viewer.contentWindow?.postMessage({type:'spaceflow-visibility',visible:viewerVisible && !document.hidden},location.origin);
 new IntersectionObserver(entries=>{viewerVisible=entries[0].isIntersecting;sendViewerVisibility();},{rootMargin:'100px'}).observe(viewer);
