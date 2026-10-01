@@ -169,9 +169,10 @@ Use the full runtime for generation; the CPU editor environment only handles
 editing and saved inputs. For a service on a cluster login node, configure your
 valid Slurm account/partition as described in [Research workflows](docs/research.md).
 
-Text-conditioned examples use the pinned cache above. **Image appearance
-conditioning needs additional TRELLIS image/DINOv2 downloads and a network-enabled
-first run**; its fresh verification is pending. See [Installation](docs/installation.md).
+Text-conditioned examples use the pinned cache above. For **image appearance
+conditioning**, stage the additional models with `tools/cache_models.py --include-image`
+and use the recorded DINOv2 source/weight and U2Net caches. Its fresh GPU verification
+is pending. See [Installation](docs/installation.md) for the cache variables and commands.
 
 ## Optional research workflows
 
@@ -205,7 +206,7 @@ distinguishes input/configuration checks from completed generation.
 | Missing models | Run `tools/cache_models.py` and use the same directory for `HF_HOME`. |
 | Missing Blender or renderer failure | Set `SPACEFLOW_BLENDER_PATH`; the error includes Blender's stderr. |
 | Output directory already exists | Choose a new replay output directory so previous results are preserved. |
-| Images unavailable offline | Allow the first image-conditioned run to download the additional models. |
+| Images unavailable offline | Stage with `tools/cache_models.py --include-image`; use the same `HF_HOME`, `TORCH_HOME`, and `U2NET_HOME`. |
 
 ## Citation and attribution
 

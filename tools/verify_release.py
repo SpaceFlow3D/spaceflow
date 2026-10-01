@@ -130,7 +130,7 @@ def main(argv: list[str] | None = None) -> int:
         "cases": cases, "generation_executed": False, "status": "prepared",
         "stable_release_ready": False,
         "remaining_acceptance": ["Browser editor-to-backend generation and GLB download",
-                                 "Visual quality review", "Pin and record the additional image/DINOv2 cache"],
+                                 "Visual quality review"],
     }
     report_path = destination / "release-verification.json"
     write_json(report_path, report)
@@ -139,11 +139,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     environment = os.environ.copy()
-    preflight = [sys.executable, str(REPO_ROOT / "tools/doctor.py"), "--gpu", "--json"]
+    preflight = [sys.executable, str(REPO_ROOT / "tools/doctor.py"), "--gpu", "--image", "--json"]
     report["preflight_command"] = preflight
     preflight_status = run_recorded(preflight, destination / "environment-check.json", environment)
     report["gpu_hardware"] = command_output(["nvidia-smi", "--query-gpu=name,driver_version,memory.total", "--format=csv"])
     report["installed_packages"] = command_output([sys.executable, "-m", "pip", "freeze"])
+    cache_marker = Path(environment.get("HF_HOME", str(REPO_ROOT / "spaceflow_runtime/huggingface"))) / "spaceflow-models.json"
+    if cache_marker.is_file():
+        report["staged_models"] = json.loads(cache_marker.read_text())
     if preflight_status:
         report["status"] = "preflight_failed"
         write_json(report_path, report)
@@ -152,13 +155,10 @@ def main(argv: list[str] | None = None) -> int:
 
     for case in cases:
         run_dir = Path(case["config"]).parent
-        # Text uses the explicitly staged revisions. The image pipeline also
-        # downloads DINOv2 and image components that the text stager does not cover.
+        # Both HF pipelines use explicitly staged revisions. DINOv2 source and
+        # its checkpoint are pinned and staged in the selected Torch cache.
         case_environment = environment.copy()
-        if case["name"].startswith("image-"):
-            case_environment.update(HF_HUB_OFFLINE="0", TRANSFORMERS_OFFLINE="0")
-        else:
-            case_environment.update(HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1")
+        case_environment.update(HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1")
         command = [sys.executable, str(REPO_ROOT / "sq_ui/scripts/run_spaceflow_experiment.py"), "--config", case["config"]]
         case["command"] = command
         case["status"] = "running"
@@ -169,8 +169,6 @@ def main(argv: list[str] | None = None) -> int:
         validation_code = run_recorded(check, run_dir / "verification-outputs.log", case_environment)
         case.update(exit_code=exit_code, validation_exit_code=validation_code,
                     validation_command=check, status="passed" if exit_code == validation_code == 0 else "failed")
-        if case["name"].startswith("image-"):
-            case["additional_downloads"] = "Image/DINOv2 cache is not fully pinned; record its cache refs before stable publication."
         write_json(report_path, report)
     report["status"] = "passed" if all(case["status"] == "passed" for case in cases) else "failed"
     report["finished_at"] = datetime.now(timezone.utc).isoformat()

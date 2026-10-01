@@ -14,6 +14,7 @@ sys.path.insert(0, str(REPO_ROOT / "tools"))
 from validate_examples import validate_npz
 from verify_release import prepare_matrix
 from lib.util.pipeline_compat import can_reuse_appearance_pipeline
+from lib.util.model_revisions import dinov2_hub_repository
 
 
 def load_module(name, path):
@@ -71,6 +72,19 @@ class AppearanceCompatibilityTests(unittest.TestCase):
     def test_text_reuse_is_preserved(self):
         self.assertTrue(can_reuse_appearance_pipeline(object(), "text"))
         self.assertFalse(can_reuse_appearance_pipeline(None, "text"))
+
+
+class ModelRevisionTests(unittest.TestCase):
+    def test_dinov2_uses_an_immutable_upstream_commit(self):
+        self.assertRegex(dinov2_hub_repository(), r"^facebookresearch/dinov2:[0-9a-f]{40}$")
+
+    def test_moving_dinov2_revision_is_rejected(self):
+        import json
+        with tempfile.TemporaryDirectory() as temporary:
+            pins = Path(temporary) / "pins.json"
+            pins.write_text(json.dumps({"dinov2": {"repository": "facebookresearch/dinov2", "revision": "main"}}))
+            with self.assertRaisesRegex(ValueError, "full commit SHA"):
+                dinov2_hub_repository(pins)
 
 
 class ReleaseMatrixTests(unittest.TestCase):

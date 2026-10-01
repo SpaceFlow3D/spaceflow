@@ -6,5 +6,18 @@
     "mikaelaangel/partfield-ckpt": "90b9b1e08b6a12fdcb6ee26b4854a26235e1765f"
   },
   "partfield_sha256": "463efc8a3afd3913142aa025e0125c00f16ef452b8de6a132ebe32bbe7877ee4",
+  "dinov2": {
+    "repository": "facebookresearch/dinov2",
+    "revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+    "model": "dinov2_vitl14_reg",
+    "checkpoint": "dinov2_vitl14_reg4_pretrain.pth",
+    "sha256": "36e4deffbaef061a2576705b0c36f93621e2ae20bf6274694821b0b492551b51",
+    "source": "Upstream source pinned for fresh release verification; official Meta checkpoint downloaded and hashed on pf-pc69."
+  },
+  "u2net": {
+    "url": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx",
+    "md5": "60024c5c889badc19c04ad937298a77b",
+    "source": "Official download URL and checksum in the pinned rembg 2.0.69 U2netSession."
+  },
   "source": "TRELLIS/CLIP revisions recovered from original cache refs; PartField pinned from its official linked model repository."
 }

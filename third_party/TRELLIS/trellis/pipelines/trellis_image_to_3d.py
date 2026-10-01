@@ -11,6 +11,7 @@ import rembg
 from .base import Pipeline
 from . import samplers
 from ..modules import sparse as sp
+from lib.util.model_revisions import dinov2_hub_repository
 
 
 class TrellisImageTo3DPipeline(Pipeline):
@@ -73,7 +74,8 @@ class TrellisImageTo3DPipeline(Pipeline):
         """
         Initialize the image conditioning model.
         """
-        dinov2_model = torch.hub.load('facebookresearch/dinov2', name, pretrained=True)
+        dinov2_model = torch.hub.load(dinov2_hub_repository(), name, pretrained=True,
+                                     trust_repo=True, skip_validation=True)
         dinov2_model.eval()
         self.models['image_cond_model'] = dinov2_model
         transform = transforms.Compose([

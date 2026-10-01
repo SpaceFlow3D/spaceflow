@@ -30,7 +30,7 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def inspect_environment(gpu: bool = False, cache_dir: Path | None = None) -> dict:
+def inspect_environment(gpu: bool = False, cache_dir: Path | None = None, image: bool = False) -> dict:
     checks = []
 
     def record(name: str, passed: bool, detail: str, action: str = "") -> None:
@@ -104,6 +104,18 @@ def inspect_environment(gpu: bool = False, cache_dir: Path | None = None) -> dic
             staged = json.loads(marker.read_text())
             recorded = staged.get("revisions", {})
             record("model_cache", all(recorded.get(key) == value for key, value in pins["huggingface"].items()), str(marker), "Stage the pinned models with tools/cache_models.py.")
+            if image:
+                image_cache = staged.get("image", {})
+                record("image_cache", image_cache.get("dinov2") == pins["dinov2"] and image_cache.get("trellis_image_revision") == pins["huggingface"]["microsoft/TRELLIS-image-large"],
+                       str(marker), "Stage the additional models with tools/cache_models.py --include-image.")
+                torch_cache = Path(os.environ.get("TORCH_HOME", str(REPO_ROOT / "spaceflow_runtime/torch")))
+                checkpoint = torch_cache / "hub/checkpoints" / pins["dinov2"]["checkpoint"]
+                record("dinov2_checkpoint", checkpoint.is_file() and sha256(checkpoint) == pins["dinov2"]["sha256"],
+                       str(checkpoint), "Use the same TORCH_HOME as the image staging command.")
+                u2net_cache = Path(os.environ.get("U2NET_HOME", str(REPO_ROOT / "spaceflow_runtime/u2net")))
+                background = u2net_cache / "u2net.onnx"
+                record("u2net_checkpoint", background.is_file() and hashlib.md5(background.read_bytes()).hexdigest() == pins["u2net"]["md5"],
+                       str(background), "Use the same U2NET_HOME as the image staging command.")
         except (OSError, ValueError) as exc:
             record("model_cache", False, str(exc), "Run tools/cache_models.py and set HF_HOME to the same cache directory.")
 
@@ -120,8 +132,11 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--gpu", action="store_true", help="Check the Linux generation environment on an allocated GPU.")
     parser.add_argument("--cache-dir", type=Path, help="The same cache directory used by tools/cache_models.py.")
     parser.add_argument("--json", action="store_true", help="Print a machine-readable report.")
+    parser.add_argument("--image", action="store_true", help="Also check the pinned image-conditioning cache (requires --gpu).")
     args = parser.parse_args(argv)
-    report = inspect_environment(args.gpu, args.cache_dir)
+    if args.image and not args.gpu:
+        parser.error("--image requires --gpu")
+    report = inspect_environment(args.gpu, args.cache_dir, args.image)
     if args.json:
         print(json.dumps(report, indent=2))
     else:

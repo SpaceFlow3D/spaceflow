@@ -21,6 +21,7 @@ from ..utils import render_utils
 # from gui import utils (Directly copied the functions here because of coliding dependencies)
 from pathlib import Path
 from sklearn.decomposition import PCA
+from lib.util.model_revisions import dinov2_hub_repository
 
 log = logging.getLogger(__name__)
 
@@ -202,7 +203,8 @@ class TrellisTextTo3DPipeline(Pipeline):
             and getattr(self, 'image_cond_model_transform', None) is not None
         ):
             return
-        dinov2_model = torch.hub.load('facebookresearch/dinov2', name, pretrained=True)
+        dinov2_model = torch.hub.load(dinov2_hub_repository(), name, pretrained=True,
+                                     trust_repo=True, skip_validation=True)
         target_device = self.device
         dinov2_model.eval().to(target_device)
         self.models['image_cond_model'] = dinov2_model
