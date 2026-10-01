@@ -9,6 +9,7 @@ Fresh GPU acceptance is pending; no stable `v0.1.0` is claimed.
 | Check | Result and scope |
 | --- | --- |
 | CPU tests | **15 passed** under Python 3.12.14, including real HTTP save/history/reopen, replay preservation, invalid geometry rejection, Blender diagnostics, appearance pipeline selection, and verification-matrix preparation. |
+| Fresh published clone | Independently cloned `RELEASE` from GitHub at `d94e400a3d48ccb8d2f294acebcb93e689dc182e`, created new Python and Node dependency environments, then repeated the 15 CPU tests, 5 UI tests, all 83 input/replay checks, GPU-matrix preparation, and production build successfully. |
 | Input validation | All **249 NPZ files in 83 cases** have finite numeric arrays with the expected primitive shapes. All 83 replay configurations prepare in new directories. Original input files are unchanged. |
 | UI regression tests | **5 passed**: NPZ round trips, primitive names, global/local prompts, run settings, empty values, geometry-only/legacy inputs, and delayed download URL cleanup. |
 | Editor installation/build | Fresh `npm ci --include=optional`, TypeScript check, and Vite production build passed with Node.js **24.19.0** and npm **11.6.4**. The production build has a large JavaScript chunk warning. |

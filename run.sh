@@ -32,6 +32,23 @@ export SQ_SPACEFLOW_PORT="${SQ_SPACEFLOW_PORT:-11438}"
 export VITE_DEV_PROXY_SPACEFLOW="${VITE_DEV_PROXY_SPACEFLOW:-http://127.0.0.1:$SQ_SPACEFLOW_PORT}"
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
+# An existing service can otherwise answer our readiness request before the new
+# process reports its bind failure, connecting this editor to the wrong storage.
+"$SQ_SPACEFLOW_PYTHON" - "$SQ_SPACEFLOW_HOST" "$SQ_SPACEFLOW_PORT" <<'PY'
+import socket
+import sys
+
+host, port = sys.argv[1], int(sys.argv[2])
+try:
+    with socket.socket() as sock:
+        sock.bind((host, port))
+except OSError as exc:
+    raise SystemExit(
+        f"The editor service cannot use {host}:{port}: {exc}. "
+        "Stop the existing service or choose another SQ_SPACEFLOW_PORT."
+    ) from exc
+PY
+
 "$SQ_SPACEFLOW_PYTHON" sq_ui/scripts/spaceflow_service.py &
 SPACEFLOW_PID=$!
 

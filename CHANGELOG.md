@@ -7,6 +7,7 @@
 - Provide a researcher-oriented README and separate installation/research guides.
 - Add a small CPU-only editor environment and an actionable environment checker.
 - Use the active Python interpreter for the service instead of old environment paths.
+- Reject an occupied asset-service port before the editor can use another process's storage.
 - Report Blender executable/process failures explicitly while keeping the original
   mesh normalization and generation calculations.
 - Add numeric input/replay validation, regression tests, and a prepared CPU/editor
