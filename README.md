@@ -6,7 +6,7 @@ Project page for **SpaceFlow: Locally Controllable 3D Generation**. This reposit
 
 ## Features
 
-- Author links and official CVG, Gradient Spaces, ETH Zürich, and Stanford logos; the latest supplied 4K teaser with a TL;DR, a visible abstract, and an overview before the examples.
+- Author links and official CVG, Gradient Spaces, ETH Zürich, Stanford, and Microsoft logos; Marc Pollefeys lists both ETH Zürich and Microsoft affiliations. The latest supplied 4K teaser includes a TL;DR, a visible abstract, and an overview before the examples.
 - Caveat Bold branding with the paper's pink-to-orange gradient.
 - All 36 interactive input/result comparisons in a horizontally scrolling main-page carousel, with synchronized cameras and GLB downloads. The first six examples include part-tracked local appearance labels. Models rotate slowly by default, yield to dragging, and respect reduced-motion preferences. The standalone gallery remains available.
 - An animated paper teaser with all six input geometries and six matching outputs. Drag either model to rotate its pair. Annotation arrows follow the relevant input parts and hide when occluded.
@@ -40,4 +40,4 @@ Research content, figures, video, and model outputs belong to their respective a
 
 Official logo source URLs are recorded in `assets/logos/sources.json`.
 
-The publication identifier, final citation metadata, and method-code link will be added when available.
+Method code is available in [joanlafuente/spaceflow](https://github.com/joanlafuente/spaceflow). The publication identifier and final citation metadata will be added when available.
