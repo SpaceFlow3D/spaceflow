@@ -18,6 +18,7 @@ Fresh GPU acceptance is pending; no stable `v0.1.0` is claimed.
 | Browser downloads/import | Chrome downloaded NPZ and primitive PNG files. The downloaded NPZ's geometry and edited metadata were checked with NumPy and imported again through the browser file chooser. Download-event capture in the in-app browser timed out, so download support there is not claimed. |
 | UI-to-service submission | A preparation-only UI submission produced the expected command and input bundle. **No GPU generation or final GLB download occurred in this check.** |
 | GPU matrix preparation | Prepared three 300-step text cases, a seven-variant teacup comparison, and one 300-step image-conditioned sailboat case. Preparation creates configurations, not generated results. |
+| GitHub CI | All three jobs passed independently at commit `fd165b83a2183816b979349b8b6df9640fd0d287`: Linux/Python 3.10 and macOS/Python 3.12 CPU/example checks, plus editor tests/production build. [Recorded run](https://github.com/joanlafuente/spaceflow/actions/runs/36816550588). |
 
 No browser console errors were observed in the checked workflows. Three.js emits
 a deprecation warning for its Clock helper. Visual inspection confirmed the
