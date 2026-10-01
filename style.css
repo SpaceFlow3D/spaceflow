@@ -114,3 +114,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,su
 .institution-logos>a:nth-child(2) img{filter:url(#logo-transparent)}
 html[data-theme="dark"] .institution-logos>a:nth-child(2) img{filter:url(#logo-transparent) invert(1) hue-rotate(180deg)}
 html[data-theme="dark"] .institution-logos>a:nth-child(3) img,html[data-theme="dark"] .institution-logos>a:nth-child(4) img{filter:brightness(0) invert(1)}
+
+.demonstration-section{padding-top:0;padding-bottom:64px}
+.demonstration-section h2{font-size:32px;margin-bottom:12px}
+.demonstration-section>p{margin:0 0 24px;color:var(--muted);font-size:16px}
+.demonstration-section video{display:block;width:100%;height:auto;aspect-ratio:1864/1112;object-fit:contain;background:#17131d;border:1px solid var(--line);border-radius:16px}
+@media(max-width:650px){.demonstration-section{padding-bottom:40px}.demonstration-section h2{font-size:28px}.demonstration-section video{border-radius:10px}}

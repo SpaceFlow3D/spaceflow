@@ -15,7 +15,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/Caveat-Bold.ttf" as="font" type="font/ttf" crossorigin>
   <script src="assets/theme.js?v=20260909-1"></script>
-  <link rel="stylesheet" href="style.css?v=20260909-5">
+  <link rel="stylesheet" href="style.css?v=20261001-1">
   <script src="assets/featured-data.js?v=20260909-1"></script>
   <script src="site.js?v=20260909-1" defer></script>
 </head>
@@ -80,7 +80,16 @@
 
   <section class="section results-compact" id="results" aria-labelledby="results-title"><h2 id="results-title">Experimental results</h2><div class="chart-panel"><div class="chart-top"><h3>SpaceFlow win rate</h3><label for="metric-select">Evaluation criterion<select id="metric-select"><option value="overall">Overall preference</option><option value="pgf">Prompt & geometric fidelity</option><option value="realism">Realism</option></select></label></div><div class="bar-chart" role="img" aria-label="Overall preference: SpaceFlow wins 75.9 percent against low uniform guidance and 68.7 percent against high uniform guidance."><div class="chart-row"><div class="bar-label"><span>vs. SpaceControl · τ = 3</span><strong id="value-low">75.9%</strong></div><div class="track"><span id="bar-low" style="width:75.9%"></span><i aria-hidden="true"></i></div><p class="confidence" id="ci-low">95% CI [65.7, 83.8]</p></div><div class="chart-row"><div class="bar-label"><span>vs. SpaceControl · τ = 10</span><strong id="value-high">68.7%</strong></div><div class="track"><span id="bar-high" style="width:68.7%"></span><i aria-hidden="true"></i></div><p class="confidence" id="ci-high">95% CI [58.1, 77.6]</p></div><div class="chart-axis"><span>0%</span><span>50% · equal preference</span><span>100%</span></div></div><p class="chart-note" id="metric-note" aria-live="polite">Overall preference balances fidelity to the input and realism. These are VLM-judge results over 83 assets, aggregated by majority vote across three passes; intervals are 95% Wilson confidence intervals.</p></div></section>
 
-  <section class="section resources" id="paper" aria-labelledby="paper-title"><div class="resource-heading"><p class="eyebrow">05 / RESOURCES</p><h2 id="paper-title">Paper and resources</h2><p>The paper, the workflow, and the generated assets.</p></div><div class="resource-links"><a href="assets/SpaceFlow-paper.pdf?v=20260909-1" target="_blank" rel="noopener"><span class="resource-icon">↗</span><span><strong>Paper & supplementary material</strong><small>Method, experiments, and supplementary material</small></span><span aria-hidden="true">↗</span></a><a href="#explore"><span class="resource-icon">◈</span><span><strong>Interactive 3D gallery</strong><small>Paired inputs and results · rotate, compare, download GLBs</small></span><span aria-hidden="true">↗</span></a><a href="assets/SpaceFlow-demo.mp4"><span class="resource-icon">▷</span><span><strong>Video demonstration</strong><small>Geometric and appearance-control workflow</small></span><span aria-hidden="true">↗</span></a></div></section>
+  <section class="section resources" id="paper" aria-labelledby="paper-title"><div class="resource-heading"><p class="eyebrow">05 / RESOURCES</p><h2 id="paper-title">Paper and resources</h2><p>The paper, the workflow, and the generated assets.</p></div><div class="resource-links"><a href="assets/SpaceFlow-paper.pdf?v=20260909-1" target="_blank" rel="noopener"><span class="resource-icon">↗</span><span><strong>Paper & supplementary material</strong><small>Method, experiments, and supplementary material</small></span><span aria-hidden="true">↗</span></a><a href="#explore"><span class="resource-icon">◈</span><span><strong>Interactive 3D gallery</strong><small>Paired inputs and results · rotate, compare, download GLBs</small></span><span aria-hidden="true">↗</span></a><a href="#demonstration"><span class="resource-icon">▷</span><span><strong>Video demonstration</strong><small>Geometric and appearance-control workflow</small></span><span aria-hidden="true">↓</span></a></div></section>
+
+  <section class="section demonstration-section" id="demonstration" aria-labelledby="demonstration-title">
+    <h2 id="demonstration-title">Video demonstration</h2>
+    <p>Geometric and appearance-control workflow.</p>
+    <video id="workflow-video" controls playsinline preload="metadata" width="1864" height="1112" poster="assets/figures/video-poster.webp" aria-label="SpaceFlow geometric and appearance-control workflow demonstration">
+      <source src="assets/SpaceFlow-demo.mp4" type="video/mp4">
+      <p><a href="assets/SpaceFlow-demo.mp4">Download the video demonstration.</a></p>
+    </video>
+  </section>
 
   <section class="section citation" aria-labelledby="citation-title"><div class="citation-heading"><h2 id="citation-title">Citation</h2><button class="button" id="copy-citation">Copy BibTeX <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@misc{delafuente2026spaceflow,
   title  = {SpaceFlow: Locally Controllable 3D Generation},
