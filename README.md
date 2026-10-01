@@ -35,11 +35,7 @@
   </a>
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <a href="https://www.stanford.edu/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/stanford-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/stanford-light.png">
-      <img src="docs/media/readme/stanford-light.png" width="210" align="middle" alt="Stanford University">
-    </picture>
+    <img src="docs/media/readme/stanford-s.png" width="96" height="96" align="middle" alt="Stanford University">
   </a>
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <a href="https://www.microsoft.com/">
