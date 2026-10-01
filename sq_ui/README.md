@@ -21,7 +21,7 @@ same origin. `VITE_DEV_PROXY_SPACEFLOW` selects another backend address.
 Import an NPZ or append a repository-relative path to the printed URL:
 
 ```text
-http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
+http://127.0.0.1:5173/?npz=examples/25_20260606T002730Z_toy_elephant_full_experiment/inputs/all.npz
 ```
 
 Opening the all-primitives file restores part names, geometry-control labels,

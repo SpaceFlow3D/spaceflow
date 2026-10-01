@@ -88,21 +88,23 @@ python tools/doctor.py --gpu
 
 ## Generate an example
 
-Start with the supplied **blue teacup**. This command uses its saved primitives,
-prompts, and generation settings:
+Start with the supplied **toy elephant**. Its saved configuration uses **blue
+painted wood** globally and **pink painted wood** on the ears, illustrating local
+appearance control. This command uses its saved primitives, prompts, and
+generation settings:
 
 ```bash
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 python tools/replay_example.py \
-  --example-dir examples/blue_teacup_full_experiment \
-  --output-dir runs/blue_teacup \
-  --only 01_local_tau3_tau10_polyak0p18
+  --example-dir examples/25_20260606T002730Z_toy_elephant_full_experiment \
+  --output-dir runs/toy_elephant \
+  --only 01_spaceflow_local_texture_routing
 ```
 
 The final textured mesh is saved at:
 
 ```text
-runs/blue_teacup/output/01_local_tau3_tau10_polyak0p18/out_sim.glb
+runs/toy_elephant/output/01_spaceflow_local_texture_routing/out_sim.glb
 ```
 
 Open the GLB in Blender or another glTF viewer. Inputs, configuration, and logs
@@ -137,10 +139,10 @@ If you use another Blender installation, set its path instead. Open the URL
 printed by the launcher, normally **http://127.0.0.1:5173**. Keep this terminal
 running; `Ctrl+C` stops the editor and its service.
 
-Load the teacup directly by opening:
+Load the toy elephant directly by opening:
 
 ```text
-http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
+http://127.0.0.1:5173/?npz=examples/25_20260606T002730Z_toy_elephant_full_experiment/inputs/all.npz
 ```
 
 If the launcher prints another port, use that port in the URL.
@@ -153,10 +155,10 @@ If the launcher prints another port, use that port in the URL.
    primitive; **Low** gives the generator more freedom. Keep at least one visible
    high-control and one low-control primitive.
 3. **Set appearance.** Open **SpaceFlow**. Enter the **Shape prompt** (for example,
-   `a teacup`) and choose the global text under **Texture guidance** (for example,
-   `white ceramic`). Select a primitive and use **Local texture → Text override**
-   for its appearance (for example, `blue ceramic`). An empty override uses the
-   global condition.
+   `toy elephant`) and choose the global text under **Texture guidance** (for
+   example, `blue painted wood`). Select an ear primitive and use **Local texture
+   → Text override** for its appearance (for example, `pink painted wood`). An
+   empty override uses the global condition.
 4. **Generate.** Leave **Dry run** unchecked and click **Run**. Follow progress
    and the run log in the SpaceFlow panel.
 5. **Inspect and download.** When the run succeeds, click **Inspect mesh**, then
@@ -225,7 +227,7 @@ Good starting points in [`examples/`](examples/README.md):
 
 | Asset | Example directory |
 | --- | --- |
-| Blue teacup | `examples/blue_teacup_full_experiment` |
+| Toy elephant (quickstart) | `examples/25_20260606T002730Z_toy_elephant_full_experiment` |
 | Chair | `examples/01_a_chair_full_experiment` |
 | Sailboat | `examples/13_sailboat_full_experiment` |
 

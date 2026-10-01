@@ -17,10 +17,10 @@ To run the SpaceFlow variant after installing the GPU runtime and model cache:
 
 ```bash
 python tools/replay_example.py \
-  --example-dir examples/blue_teacup_full_experiment \
-  --output-dir runs/blue_teacup \
-  --only 01_local_tau3_tau10_polyak0p18
-python tools/check_replay_outputs.py runs/blue_teacup
+  --example-dir examples/25_20260606T002730Z_toy_elephant_full_experiment \
+  --output-dir runs/toy_elephant \
+  --only 01_spaceflow_local_texture_routing
+python tools/check_replay_outputs.py runs/toy_elephant
 ```
 
 Use a new output directory for each replay. Add `--prepare-only` to inspect the
