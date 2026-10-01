@@ -1,24 +1,69 @@
-# SpaceFlow
+<h1 align="center">
+  <a href="https://spaceflow3d.github.io/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/spaceflow-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/spaceflow-light.svg">
+      <img src="docs/media/readme/spaceflow-light.svg" width="680" alt="SpaceFlow: Locally Controllable 3D Generation">
+    </picture>
+  </a>
+</h1>
 
-**Locally Controllable 3D Generation**
+<p align="center">
+  <a href="https://neilus03.github.io/">Neil De La Fuente</a><sup>1*</sup> &nbsp;
+  <a href="https://github.com/joanlafuente">Joan Lafuente Baeza</a><sup>1*</sup> &nbsp;
+  <a href="https://www.linkedin.com/in/mukali/">Mukhammadali Sayfiddinov</a><sup>1*</sup> &nbsp;
+  <a href="https://ch.linkedin.com/in/felicia-scharitzer/de">Felicia Scharitzer</a><sup>1*</sup>
+  <br>
+  <a href="https://people.inf.ethz.ch/pomarc/">Marc Pollefeys</a><sup>1</sup> &nbsp;
+  <a href="https://github.com/atcelen">Ata Çelen</a><sup>1</sup> &nbsp;
+  <a href="https://sayands.github.io/">Sayan Deb Sarkar</a><sup>2†</sup> &nbsp;
+  <a href="https://elisabettafedele.github.io/">Elisabetta Fedele</a><sup>1†</sup>
+</p>
 
-SpaceFlow generates textured 3D assets from editable geometric primitives. Choose
-which parts should follow your input closely, allow other parts to be completed
-by the generator, and guide their appearance with text or reference images.
-No training or fine-tuning is required.
+<p align="center">
+  <sup>1</sup> ETH Zürich &nbsp; · &nbsp; <sup>2</sup> Stanford University<br>
+  <sub>* Equal contribution &nbsp; · &nbsp; † Equal supervision</sub>
+</p>
 
-[Project page](https://spaceflow3d.github.io/) ·
-[Paper & supplement](https://spaceflow3d.github.io/assets/SpaceFlow-paper.pdf) ·
-[Interactive examples](https://spaceflow3d.github.io/#explore) ·
-[Downloads](https://github.com/joanlafuente/spaceflow/releases)
+<p align="center">
+  <a href="https://ethz.ch/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/ethz-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/ethz-light.svg">
+      <img src="docs/media/readme/ethz-light.svg" width="160" alt="ETH Zürich">
+    </picture>
+  </a>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="https://www.stanford.edu/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/stanford-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/stanford-light.png">
+      <img src="docs/media/readme/stanford-light.png" width="210" alt="Stanford University">
+    </picture>
+  </a>
+</p>
+
+<p align="center">
+  <strong>TL;DR</strong> · Training-free 3D generation with local geometry and appearance control.<br>
+  Edit primitives, choose which parts to preserve or complete,<br>
+  and guide their appearance with text or reference images.
+</p>
+
+<p align="center">
+  <a href="https://spaceflow3d.github.io/"><img src="docs/media/readme/link-project.svg" width="144" height="36" alt="Project Page"></a>
+  <a href="https://spaceflow3d.github.io/assets/SpaceFlow-paper.pdf"><img src="docs/media/readme/link-paper.svg" width="194" height="36" alt="Paper &amp; Supplement"></a>
+  <a href="https://spaceflow3d.github.io/#explore"><img src="docs/media/readme/link-examples.svg" width="197" height="36" alt="Interactive Examples"></a>
+  <a href="https://github.com/joanlafuente/spaceflow/releases"><img src="docs/media/readme/link-downloads.svg" width="134" height="36" alt="Downloads"></a>
+</p>
 
 https://github.com/user-attachments/assets/dc72c902-e415-4aea-abb6-e576b5b5705e
 
- 
-
-
-[Installation](#installation) · [Generate an example](#generate-an-example) ·
-[Interactive editor](#interactive-editor) · [More documentation](docs/README.md)
+<p align="center">
+  <a href="#installation"><strong>Installation</strong></a> &nbsp; · &nbsp;
+  <a href="#generate-an-example">Generate an example</a> &nbsp; · &nbsp;
+  <a href="#interactive-editor">Interactive editor</a> &nbsp; · &nbsp;
+  <a href="docs/README.md">More documentation</a>
+</p>
 
 ## Installation
 
