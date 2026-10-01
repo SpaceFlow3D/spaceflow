@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SpaceFlow is a training-free framework for locally controllable 3D generation. Explore real 3D results, local shape guidance, and part-specific text and image cues.">
+  <meta name="theme-color" content="#fafbf9">
+  <meta property="og:title" content="SpaceFlow: Locally Controllable 3D Generation">
+  <meta property="og:description" content="Training-free 3D generation with local geometric constraints and part-specific text or image appearance cues.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spaceflow3d.github.io/">
+  <meta property="og:image" content="https://spaceflow3d.github.io/assets/figures/teaser.webp">
+  <link rel="canonical" href="https://spaceflow3d.github.io/">
+  <title>SpaceFlow · Locally Controllable 3D Generation</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Caveat-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="assets/theme.js?v=20260909-1"></script>
+  <link rel="stylesheet" href="style.css?v=20260909-5">
+  <script src="assets/featured-data.js?v=20260909-1"></script>
+  <script src="site.js?v=20260909-1" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="nav">
+  <a class="brand wordmark" href="#" aria-label="SpaceFlow home">SpaceFlow</a>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#explore">Examples</a><a href="#results">Results</a><a href="assets/SpaceFlow-paper.pdf?v=20260909-1" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a></nav>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg><svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><span class="theme-label">Dark mode</span></button>
+</header>
+<main id="content">
+  <section class="hero" aria-labelledby="project-title">
+    <h1 id="project-title" class="wordmark">SpaceFlow</h1>
+    <h2>Locally Controllable 3D Generation</h2>
+    <p class="intro">Training-free 3D generation with local geometric control<br>and part-specific text or image appearance conditioning.</p>
+    <div class="authors" aria-label="Authors">
+      <div><a href="https://neilus03.github.io/" target="_blank" rel="noopener">Neil De La Fuente<sup>1 *</sup></a><a href="https://github.com/joanlafuente" target="_blank" rel="noopener">Joan Lafuente Baeza<sup>1 *</sup></a><a href="https://www.linkedin.com/in/mukali/" target="_blank" rel="noopener">Mukhammadali Sayfiddinov<sup>1 *</sup></a><a href="https://ch.linkedin.com/in/felicia-scharitzer/de" target="_blank" rel="noopener">Felicia Scharitzer<sup>1 *</sup></a></div>
+      <div><a href="https://people.inf.ethz.ch/pomarc/" target="_blank" rel="noopener">Marc Pollefeys<sup>1</sup></a><a href="https://github.com/atcelen" target="_blank" rel="noopener">Ata Çelen<sup>1</sup></a><a href="https://sayands.github.io/" target="_blank" rel="noopener">Sayan Deb Sarkar<sup>2 †</sup></a><a href="https://elisabettafedele.github.io/" target="_blank" rel="noopener">Elisabetta Fedele<sup>1 †</sup></a></div>
+    </div>
+    <p class="affiliations"><span><sup>1</sup> ETH Zürich</span><span><sup>2</sup> Stanford University</span><span>* Equal contribution</span><span>† Equal supervision</span></p>
+    <div class="actions"><a class="button primary" href="assets/SpaceFlow-paper.pdf?v=20260909-1" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> Paper & supplement</a><a class="button" href="#video"><span aria-hidden="true">▷</span> Watch the teaser</a><a class="button" href="#explore">Interactive examples <span aria-hidden="true">↗</span></a></div>
+    <svg class="logo-filters" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0"><defs>
+      <filter id="logo-transparent" color-interpolation-filters="sRGB">
+        <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -10 -10 -10 0 30" result="ink"/>
+        <feComposite in="SourceGraphic" in2="ink" operator="in"/>
+      </filter>
+    </defs></svg>
+    <div class="institution-logos" aria-label="Research groups and institutions">
+      <a href="https://cvg.ethz.ch/" target="_blank" rel="noopener"><img src="assets/logos/cvg.svg" alt="Computer Vision and Geometry Group (CVG)" width="309" height="148"></a>
+      <a href="https://gradientspaces.stanford.edu/" target="_blank" rel="noopener"><img src="assets/logos/gradient-spaces.png" alt="Gradient Spaces Lab" width="320" height="120"></a>
+      <a href="https://ethz.ch/" target="_blank" rel="noopener"><img src="assets/logos/ethz.svg" alt="ETH Zürich" width="200" height="60"></a>
+      <a href="https://www.stanford.edu/" target="_blank" rel="noopener"><img src="assets/logos/stanford.png" alt="Stanford University" width="230" height="60"></a>
+    </div>
+  </section>
+
+  <section class="section teaser-video-section" id="video" aria-label="SpaceFlow teaser video">
+    <video id="demo-video" controls muted loop playsinline preload="metadata" poster="assets/figures/teaser.webp" data-autoplay><source src="assets/SpaceFlow-teaser.mp4?v=20260909-1" type="video/mp4"><p><a href="assets/SpaceFlow-teaser.mp4?v=20260909-1">Download the teaser video.</a></p></video>
+    <p class="tldr"><strong>TL;DR</strong> SpaceFlow generates 3D assets from geometric primitives, with local shape control and part-specific text or image appearance cues, without retraining.</p>
+  </section>
+
+  <section class="section abstract-section" id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p>Current 3D generation methods lack explicit local control: geometric adherence is often defined by a global control strength, and appearance cannot be specified locally. We present SpaceFlow, a training-free pipeline for locally controllable 3D generation from text descriptions and a collection of geometric primitives. Each primitive serves as a proxy for an object part and is assigned a local control level, enabling users to specify whether regions should strictly follow the input shape or allow generative completion. During structure generation, we enforce these spatial constraints within the generative flow process. For appearance synthesis, the generated structure is segmented and matched to the primitives. Each generated part is conditioned only on its assigned text or image cue, thereby limiting cross-part leakage. Regional geometry metrics demonstrate that SpaceFlow preserves the specified geometry in high-control regions and enables plausible shape variation in low-control areas. A user study further indicates that the resulting balance between geometric fidelity and generative freedom remains competitive in overall quality. When evaluating appearance on fixed geometry, text-conditioned routing achieves state-of-the-art prompt faithfulness and color/material accuracy. Qualitative results additionally show localized routing of image cues.</p></section>
+
+  <section class="section idea" id="overview" aria-labelledby="idea-title">
+    <div class="section-heading"><p class="eyebrow">01 / OVERVIEW</p><h2 id="idea-title">Local geometric and<br><span class="soft">appearance control</span></h2></div>
+    <div class="idea-copy"><p class="large-copy">SpaceFlow assigns geometric control strengths and appearance conditions to individual parts of a generated 3D asset.</p><p>Each input primitive represents an object part. Strong geometric guidance encourages adherence to the input shape, while weak guidance allows prompt-conditioned completion. During appearance generation, text or image cues are routed to the corresponding regions of the generated structure.</p><p class="inline-note"><span class="small-dot"></span>The pretrained generator remains frozen throughout both stages.</p></div>
+  </section>
+
+  <section class="capabilities section" aria-labelledby="capability-title">
+    <div class="section-title-row"><h2 id="capability-title">Geometric and appearance control</h2><span class="micro">LOCAL GEOMETRY + LOCAL APPEARANCE</span></div>
+    <figure class="paper-figure animated-teaser" id="animated-teaser"><div class="teaser-stage"><img id="teaser-image" src="assets/figures/teaser.webp" width="2400" height="1279" alt="Paper overview: high-control chair legs and seat with a generated slat back; a gold trophy on black marble; a figurine with separate image references; and combined controls on a balloon, elephant, and lamp." loading="lazy"></div><div class="teaser-controls"><span id="teaser-status" role="status">Input geometry and SpaceFlow results · 3D</span><div><button id="teaser-play" class="text-button" type="button" aria-pressed="true" disabled>Pause rotation</button><button id="teaser-static" class="text-button" type="button" aria-pressed="false" disabled>Original figure</button></div></div><figcaption>Selected examples from the paper. Orange primitives specify strong geometric control; gray primitives allow generative completion. Text and image references specify appearance locally. All six input/output pairs rotate in 3D; annotation arrows follow the corresponding input parts. The cactus is an image-conditioned example from the supplementary material.</figcaption></figure>
+    </section>
+
+  <section class="section examples-section" id="explore" aria-labelledby="examples-title">
+    <div class="section-title-row"><div><p class="eyebrow">INTERACTIVE EXAMPLES</p><h2 id="examples-title">Explore the generated assets</h2></div><div class="carousel-nav"><button class="button" id="carousel-prev" aria-label="Previous example">←</button><span id="carousel-position" hidden aria-hidden="true"></span><button class="button" id="carousel-next" aria-label="Next example">→</button></div></div>
+    <div class="examples-toolbar"><button class="text-button" id="hero-rotate" aria-pressed="true">Pause rotation</button><button class="text-button" id="reset-view">Reset cameras ↻</button></div>
+    <div class="featured-key carousel-key" aria-label="Input geometry color legend"><span><i class="swatch high"></i><strong>High control</strong> Preserve the input shape</span><span><i class="swatch low"></i><strong>Low control</strong> Allow generative completion</span></div>
+    <iframe id="hero-viewer" class="carousel-viewer" src="gallery.html?v=20260909-1&amp;carousel=1" title="All SpaceFlow interactive input and result comparisons, in a horizontally scrolling carousel" loading="lazy"></iframe>
+    <div class="carousel-footer"><p class="carousel-hint">Scroll sideways or use the arrows to browse. Drag a model to rotate its pair; scroll over it to zoom. Inspect an example to download its GLBs.</p><a class="button" href="gallery.html" target="_blank" rel="noopener">View full gallery <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="section method" id="method" aria-labelledby="method-title"><div class="section-title-row"><div><p class="eyebrow">03 / METHOD</p><h2 id="method-title">Structure generation and<br>appearance conditioning</h2></div><p class="section-description">SpaceFlow applies local guidance during sampling. Input primitives specify geometric constraints and associate text or image cues with object parts.</p></div><div class="method-steps"><button class="method-step active" data-step="0" aria-pressed="true"><span>01</span><strong>Part specification</strong><small>Editable primitives + local cues</small></button><span class="step-arrow" aria-hidden="true">→</span><button class="method-step" data-step="1" aria-pressed="false"><span>02</span><strong>Structure generation</strong><small>Local geometric constraints</small></button><span class="step-arrow" aria-hidden="true">→</span><button class="method-step" data-step="2" aria-pressed="false"><span>03</span><strong>Appearance routing</strong><small>Part-specific text or images</small></button></div><div class="method-explainer" aria-live="polite"><span id="method-label">THE INPUT</span><p id="method-description">The input consists of editable geometric parts, each with a local control level and an optional text or image appearance cue. Deformable superquadrics provide a compact representation for specifying these parts.</p></div><figure class="paper-figure method-figure"><a href="assets/figures/method.webp" target="_blank" rel="noopener" aria-label="Open the method diagram at full resolution"><img src="assets/figures/method.webp" alt="SpaceFlow pipeline from geometric inputs and local control through guided structure generation, part assignment, condition routing, and appearance generation." loading="lazy" width="2400" height="766"></a><figcaption>The SpaceFlow pipeline from the paper. Select a stage above for a short explanation, or open the diagram to inspect the details.</figcaption></figure><div class="routing-section"><h3>Primitive-to-part appearance routing</h3><p>Input primitives are matched to regions of the generated structure. Corresponding colors identify the same appearance condition; gray regions receive the global condition. These colors indicate cue assignments, not the final materials.</p><div class="routing-grid"><figure><div class="routing-pair"><div><span>Input primitives</span><img src="assets/figures/01_pickup_truck_input_sq.png" width="900" height="900" loading="lazy" alt="Pickup truck: input primitives colored by appearance-condition assignment."></div><div><span>Routing volume</span><img src="assets/figures/01_pickup_truck_routing.png" width="900" height="900" loading="lazy" alt="Pickup truck: routing volume colored by appearance-condition assignment."></div></div><figcaption><strong>Pickup truck</strong><br>“red metal truck with a white cabin and blue glass”</figcaption></figure><figure><div class="routing-pair"><div><span>Input primitives</span><img src="assets/figures/06_toy_elephant_input_sq.png" width="900" height="900" loading="lazy" alt="Toy elephant: input primitives colored by appearance-condition assignment."></div><div><span>Routing volume</span><img src="assets/figures/06_toy_elephant_routing.png" width="900" height="900" loading="lazy" alt="Toy elephant: routing volume colored by appearance-condition assignment."></div></div><figcaption><strong>Toy elephant</strong><br>“blue wooden toy elephant with pink wooden ears”</figcaption></figure><figure><div class="routing-pair"><div><span>Input primitives</span><img src="assets/figures/08_enamel_coffee_mug_input_sq.png" width="900" height="900" loading="lazy" alt="Enamel mug: input primitives colored by appearance-condition assignment."></div><div><span>Routing volume</span><img src="assets/figures/08_enamel_coffee_mug_routing.png" width="900" height="900" loading="lazy" alt="Enamel mug: routing volume colored by appearance-condition assignment."></div></div><figcaption><strong>Enamel mug</strong><br>“white enamel mug with a blue handle”</figcaption></figure></div><p class="routing-caption">Selected examples from supplementary Figure S9. Routing is represented on a 32³ voxel grid using 30 PartField clusters.</p></div></section>
+
+  <section class="section results-compact" id="results" aria-labelledby="results-title"><h2 id="results-title">Experimental results</h2><div class="chart-panel"><div class="chart-top"><h3>SpaceFlow win rate</h3><label for="metric-select">Evaluation criterion<select id="metric-select"><option value="overall">Overall preference</option><option value="pgf">Prompt & geometric fidelity</option><option value="realism">Realism</option></select></label></div><div class="bar-chart" role="img" aria-label="Overall preference: SpaceFlow wins 75.9 percent against low uniform guidance and 68.7 percent against high uniform guidance."><div class="chart-row"><div class="bar-label"><span>vs. SpaceControl · τ = 3</span><strong id="value-low">75.9%</strong></div><div class="track"><span id="bar-low" style="width:75.9%"></span><i aria-hidden="true"></i></div><p class="confidence" id="ci-low">95% CI [65.7, 83.8]</p></div><div class="chart-row"><div class="bar-label"><span>vs. SpaceControl · τ = 10</span><strong id="value-high">68.7%</strong></div><div class="track"><span id="bar-high" style="width:68.7%"></span><i aria-hidden="true"></i></div><p class="confidence" id="ci-high">95% CI [58.1, 77.6]</p></div><div class="chart-axis"><span>0%</span><span>50% · equal preference</span><span>100%</span></div></div><p class="chart-note" id="metric-note" aria-live="polite">Overall preference balances fidelity to the input and realism. These are VLM-judge results over 83 assets, aggregated by majority vote across three passes; intervals are 95% Wilson confidence intervals.</p></div></section>
+
+  <section class="section resources" id="paper" aria-labelledby="paper-title"><div class="resource-heading"><p class="eyebrow">05 / RESOURCES</p><h2 id="paper-title">Paper and resources</h2><p>The paper, the workflow, and the generated assets.</p></div><div class="resource-links"><a href="assets/SpaceFlow-paper.pdf?v=20260909-1" target="_blank" rel="noopener"><span class="resource-icon">↗</span><span><strong>Paper & supplementary material</strong><small>Method, experiments, and supplementary material</small></span><span aria-hidden="true">↗</span></a><a href="#explore"><span class="resource-icon">◈</span><span><strong>Interactive 3D gallery</strong><small>Paired inputs and results · rotate, compare, download GLBs</small></span><span aria-hidden="true">↗</span></a><a href="assets/SpaceFlow-demo.mp4"><span class="resource-icon">▷</span><span><strong>Video demonstration</strong><small>Geometric and appearance-control workflow</small></span><span aria-hidden="true">↗</span></a></div></section>
+
+  <section class="section citation" aria-labelledby="citation-title"><div class="citation-heading"><h2 id="citation-title">Citation</h2><button class="button" id="copy-citation">Copy BibTeX <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@misc{delafuente2026spaceflow,
+  title  = {SpaceFlow: Locally Controllable 3D Generation},
+  author = {De La Fuente, Neil and Lafuente Baeza, Joan and
+            Sayfiddinov, Mukhammadali and Scharitzer, Felicia and
+            Pollefeys, Marc and Çelen, Ata and
+            Deb Sarkar, Sayan and Fedele, Elisabetta},
+  year   = {2026},
+  note   = {Preprint}
+}</code></pre><p id="copy-status" class="micro" role="status" aria-live="polite">Preprint citation. Publication metadata will be updated with the release.</p></section>
+</main>
+<footer class="footer"><a class="wordmark" href="#">SpaceFlow</a><p>Locally Controllable 3D Generation<br><span>ETH Zürich · Stanford University</span></p><a class="back-top" href="#">Back to top ↑</a></footer>
+</body>
+</html>

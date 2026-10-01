@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+dist/
+# Preserve the original supplementary package locally; deploy optimized assets.
+SPACEFLOW-SUPP/
+
+# Local video-production project and research preparation notes.
+video/
+RESEARCH.md
+scripts/prepare_assets.py
+scripts/prepare_teaser.py
+
+# Optional local Actions workflow; live Pages serves the main branch directly.
+.github/

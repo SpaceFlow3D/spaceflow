@@ -1,0 +1,102 @@
+{
+  "sourceHost": "student-cluster.ethz.ch",
+  "models": {
+    "elephant-input.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260608T120843Z_white_elephant_toy/output/input_superquadrics_colored.glb",
+      "sha256": "34a557a66a1f4757639b4caac2cfa0b8963eb8d442d09cf0c398dd741ad1a734"
+    },
+    "elephant-output.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260608T120843Z_white_elephant_toy/output/out_sim.glb",
+      "sha256": "b76a73cd10feea74becb93d32d695c99ba05c41d822042efd9332da192b8828d"
+    },
+    "chair-input.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260606T004034Z_classic_chair_with_a_slat_back_experiment/output/01_local_tau3_tau10_polyak0p18/input_superquadrics_colored.glb",
+      "sha256": "d259fae1485a4dc4f8a1b94252b86652c08478718e4625b817798ee68c6097b3"
+    },
+    "chair-output.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260606T004034Z_classic_chair_with_a_slat_back_experiment/output/01_local_tau3_tau10_polyak0p18/out_sim.glb",
+      "sha256": "3880f5e72d85a44bbd09583703290d9cc196d55b72d6bf55ba8f15651808e187"
+    },
+    "trophy-input.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260608T234518Z_A_trophy_texture_experiment/output/01_spaceflow_local_texture_routing/input_superquadrics_colored.glb",
+      "sha256": "db8b08d5da7aa36e9ee28f8b06ea5f8d33a762f791501d8895431a7b7928a69c"
+    },
+    "trophy-output.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260608T234518Z_A_trophy_texture_experiment/output/01_spaceflow_local_texture_routing/out_sim.glb",
+      "sha256": "892c3c4522ec8a167e76c0fe8d5b0993cb3ae050d104a1235ceb6083c8e8da06"
+    },
+    "balloon-input.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260610T001928Z_A_hot_air_balloon/output/input_superquadrics_colored.glb",
+      "sha256": "618e780b9014f63da1242d6d03be4302199a712f9e9467f1a0e47f074b88e27b"
+    },
+    "balloon-output.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260610T001928Z_A_hot_air_balloon/output/out_sim.glb",
+      "sha256": "bbe66dd8883f768b5bf459e4ee0f327f71296348fabbdc7ac34d05b89823373b"
+    },
+    "figurine-input.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260611T004619Z_Ironman/output/input_superquadrics_colored.glb",
+      "sha256": "20814171a345d5b83dc9e16628d62b224f9c83c2fa66782f37b7d0ee6395dcf4"
+    },
+    "figurine-output.glb": {
+      "source": "/work/courses/3dv/team3/spaceflow-minimal/spaceflow_runtime/sq_ui_runs/20260611T004619Z_Ironman/output/out_sim.glb",
+      "sha256": "2c429e1d39c191bc5844f58cfca3e68911cc4fb61a495cf12ebe00317bed5519"
+    },
+    "cactus-input.glb": {
+      "source": "/work/courses/3dv/team3/correct_inputs_eval83/potted_cactus/output/01_local_tau3_tau10_polyak0p18/input_superquadrics_colored.glb",
+      "sha256": "fdb571884e64bdc34bd5325439f393256a7cf5441f9e99998a485b8166b0e1be"
+    },
+    "cactus-output.glb": {
+      "source": "/work/courses/3dv/team3/image_conditioning_showcase/runs/cactus_green_copper_pot/out_sim.glb",
+      "sha256": "aaefa48e9eb1349ca381d63d6a5b317b1d7b6e2f8010e1e9e3d708cf28ee47dc"
+    }
+  },
+  "figureSource": "SpaceFlow_arXiv/figs/teaser_final_v2.pdf",
+  "platePreparation": "Remove eleven asset image draws and ten dashed annotation forms plus their separate arrowheads. Retain the lamp output image /X168, all labels and reference images, panel backgrounds, and input-to-output arrows. In the animated view, an opaque native SVG panel replaces the complete lamp panel with the cactus references and caption; cactus input and output are live GLBs. The original paper figure is available through the static toggle.",
+  "viewer": "Original GLB bytes retained. Z-up to Y-up and centering for display; input sRGB swatches converted to linear RGB in memory. Shared camera angle within each pair. Annotation endpoints project actual input primitive centers; raycasting hides arrows behind occluding geometry.",
+  "threeVersion": "0.180.0",
+  "examples": {
+    "chair": {
+      "prompt": "classic chair with a slat back",
+      "status": "input and output verified"
+    },
+    "trophy": {
+      "prompt": "A trophy",
+      "cues": [
+        "A gold trophy",
+        "black marble base"
+      ],
+      "status": "input and output verified; run referenced by original teaser rendering scripts"
+    },
+    "figurine": {
+      "prompt": "Ironman",
+      "cues": [
+        "Iron Man body reference",
+        "Spider-Man head reference"
+      ],
+      "status": "input and output visually matched to teaser; 20260611T004619Z_Ironman"
+    },
+    "balloon": {
+      "prompt": "A hot air balloon",
+      "status": "input and output verified; run referenced by original teaser rendering scripts"
+    },
+    "elephant": {
+      "prompt": "white elephant toy",
+      "cues": [
+        "cyan head",
+        "orange legs"
+      ],
+      "status": "input and output verified"
+    },
+    "cactus": {
+      "prompt": "a potted cactus",
+      "status": "Input and output matched to image-conditioned supplementary example cactus_green_copper_pot. Both assets rotate; tree reference controls the cactus and copper-cauldron reference controls primitive 0."
+    }
+  },
+  "cactusReferences": {
+    "global": "tree.png",
+    "local": {
+      "0": "copper_cauldron.jpg"
+    },
+    "source": "/work/courses/3dv/team3/image_conditioning_showcase/runs/cactus_green_copper_pot/meta.json"
+  }
+}
