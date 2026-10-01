@@ -23,9 +23,12 @@ a deprecation warning for its Clock helper. Visual inspection confirmed the
 primitive scaffold rendered; fresh generated asset quality remains unchecked.
 
 The CPU/editor requirements are separate from the GPU runtime. See the root
-[README](../README.md) for the exact clone/install/check commands. GitHub's
-[Release checks workflow](../.github/workflows/ci.yml) runs CPU checks on Linux
-(Python 3.10) and macOS (Python 3.12), plus the editor tests/build on Linux.
+[README](../README.md) for the exact clone/install/check commands. The prepared
+[Release checks workflow](../ci/release-checks.yml) targets Linux (Python 3.10),
+macOS (Python 3.12), and the editor tests/build on Linux. **GitHub Actions has not
+run yet:** the Git push was rejected for missing OAuth `workflow` scope, and the
+connected integration also rejected a workflow write (HTTP 403). The workflow is
+preserved as a template until publication permission is available.
 
 ## GPU blocker and remaining acceptance
 

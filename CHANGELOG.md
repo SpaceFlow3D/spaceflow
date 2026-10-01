@@ -9,7 +9,8 @@
 - Use the active Python interpreter for the service instead of old environment paths.
 - Report Blender executable/process failures explicitly while keeping the original
   mesh normalization and generation calculations.
-- Add numeric input/replay validation, regression tests, and CPU/editor GitHub CI.
+- Add numeric input/replay validation, regression tests, and a prepared CPU/editor
+  GitHub CI workflow. Upload permission is pending.
 - Repair the editor dependency lock for clean installation across platforms.
 - Update compatible editor dependencies to resolve the reported npm advisories.
 - Select an image-capable pipeline for image appearance guidance; text-guided

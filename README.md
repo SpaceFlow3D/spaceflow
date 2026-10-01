@@ -190,8 +190,10 @@ python tools/validate_examples.py
 (cd sq_ui/app && npm test && npm run build)
 ```
 
-GitHub CI repeats the CPU workflows and editor build. GPU tests require an
-allocated GPU and are recorded separately. The [verification record](docs/verification.md)
+The [prepared CI workflow](ci/release-checks.yml) repeats the CPU workflows and
+editor build. Publishing it to GitHub Actions currently awaits workflow upload
+permission; local checks have passed. GPU tests require an allocated GPU and are
+recorded separately. The [verification record](docs/verification.md)
 distinguishes input/configuration checks from completed generation.
 
 | Symptom | Action |
