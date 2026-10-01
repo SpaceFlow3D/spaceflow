@@ -8,7 +8,7 @@ Fresh GPU acceptance is pending; no stable `v0.1.0` is claimed.
 
 | Check | Result and scope |
 | --- | --- |
-| CPU tests | **17 passed** under Python 3.12.14, including real HTTP save/history/reopen, replay preservation, invalid geometry rejection, Blender diagnostics, appearance pipeline selection, immutable DINOv2 revision checks, and verification-matrix preparation. |
+| CPU tests | **19 passed** under Python 3.12.14, including real HTTP save/history/reopen, replay preservation, invalid geometry rejection, Blender diagnostics, appearance pipeline selection, immutable DINOv2 revision checks, runtime dependency diagnostics, clean preflight JSON, and verification-matrix preparation. |
 | Fresh published clone | Independently cloned `RELEASE` from GitHub at `d94e400a3d48ccb8d2f294acebcb93e689dc182e`, created new Python and Node dependency environments, then repeated the 15 CPU tests, 5 UI tests, all 83 input/replay checks, GPU-matrix preparation, and production build successfully. |
 | Input validation | All **249 NPZ files in 83 cases** have finite numeric arrays with the expected primitive shapes. All 83 replay configurations prepare in new directories. Original input files are unchanged. |
 | UI regression tests | **5 passed**: NPZ round trips, primitive names, global/local prompts, run settings, empty values, geometry-only/legacy inputs, and delayed download URL cleanup. |
@@ -18,7 +18,10 @@ Fresh GPU acceptance is pending; no stable `v0.1.0` is claimed.
 | Browser downloads/import | Chrome downloaded NPZ and primitive PNG files. The downloaded NPZ's geometry and edited metadata were checked with NumPy and imported again through the browser file chooser. Download-event capture in the in-app browser timed out, so download support there is not claimed. |
 | UI-to-service submission | A preparation-only UI submission produced the expected command and input bundle. **No GPU generation or final GLB download occurred in this check.** |
 | GPU matrix preparation | Prepared three 300-step text cases, a seven-variant teacup comparison, and one 300-step image-conditioned sailboat case. Preparation creates configurations, not generated results. |
-| GitHub CI | All three jobs passed independently at commit `fd165b83a2183816b979349b8b6df9640fd0d287`: Linux/Python 3.10 and macOS/Python 3.12 CPU/example checks, plus editor tests/production build. [Recorded run](https://github.com/joanlafuente/spaceflow/actions/runs/36816550588). |
+| Fresh pf-pc69 runtime | New Python **3.10.19** environment, PyTorch **2.8.0/cu128**, CUDA **12.8.1**, Blender **3.0.1**, and pinned dependencies; `pip check` passed. |
+| Native extensions | Installed FlashAttention 2.8.3 and built nvdiffrast, mip-splatting's Gaussian rasterizer, and vox2seq in the fresh environment. All seven native/runtime extension imports passed. The Debian/CUDA compatibility adjustment below was required. |
+| Image staging and CPU preprocessing | Pinned TRELLIS image components, DINOv2 source and checkpoint SHA256, and U2Net's upstream checksum passed. DINOv2 loaded on CPU; the original image-model alias resolved offline; the included RGB sailboat reference processed to 518 by 518 pixels. No image-conditioned GPU generation occurred. |
+| GitHub CI | All three jobs passed independently at commit `3d8a38197e173fb440371349aa1a38aaa478acb8`: Linux/Python 3.10 and macOS/Python 3.12 CPU/example checks, plus editor tests/production build. [Recorded run](https://github.com/joanlafuente/spaceflow/actions/runs/36827659676). |
 
 No browser console errors were observed in the checked workflows. Three.js emits
 a deprecation warning for its Clock helper. Visual inspection confirmed the
@@ -44,12 +47,42 @@ by itself prove the scheduler account is ready.
 The user subsequently authorized **pf-pc69.ethz.ch** for verification. SSH works;
 the machine has two RTX 4090 GPUs (24 GB each). On the initial 2026-10-01 check,
 both were running the user's Delimit3D training and each held about 21 GB. A
-separate fresh checkout, environment, and caches are being prepared on its work
-storage. This preparation and the passed UI build do not prove GPU generation.
+separate fresh checkout, environment, and caches have been prepared on its work
+storage. The user chose to wait. The one-off verification queue checks every
+30 seconds and starts after a GPU has no compute processes, at least 22 GiB free,
+and 120 seconds of sustained idle time. It does not stop existing jobs. No fresh
+generation has started while both GPUs remain occupied.
+
+### Debian 13 / CUDA 12.8 compatibility
+
+pf-pc69 runs Debian 13, glibc 2.41, GCC 14.2.0, and NVIDIA driver 595.71.05.
+CUDA 12.8's unmodified pi-math declarations conflict with the newer glibc
+exception specifications. The first nvdiffrast build failed with that exact
+error. The task-owned CUDA toolkit received the four-declaration `noexcept(true)`
+adjustment described in the [NVIDIA compiler issue](https://forums.developer.nvidia.com/t/error-exception-specification-is-incompatible-for-cospi-sinpi-cospif-sinpif-with-glibc-2-41/323591).
+The original header was backed up, and native builds then passed. No kernel
+implementations or arithmetic were changed. This is an explicitly recorded
+compatibility adjustment for this host, not a claim of upstream Debian 13 support.
+
+The changed `crt/math_functions.h` hashes are:
+
+- Original: `2f2189d1752d862e96122f985484c89e16bd03a485a01e1f114514f738a2ed4f`
+- Adjusted: `024ff8406766f26573a1fe842cfb8e66f2ae35652fc0adc5e38b68a758276de9`
+
+The task's private audit keeps the installer checksum, exact patch, before/after
+hashes, compiler commands, installed-package list, cache marker, and environment
+checks. For an unmodified toolkit, use a distribution supported by CUDA 12.8,
+such as Ubuntu 22.04, following NVIDIA's installation guide.
+
+The actual pipeline entrypoint check also exposed the missing `scikit-learn`
+dependency. Its 1.7.2 pin and joblib/threadpoolctl pins were restored from the
+recovered environment inventory. Preflight now imports that dependency and the
+generation entrypoint as well as the native extensions.
 
 The stable release requires:
 
-1. Fresh CUDA 12.8 extension builds/imports on an allocated GPU.
+1. Fresh CUDA 12.8 extension builds/imports: **completed on pf-pc69**, with the
+   recorded host compatibility adjustment above.
 2. Successful full 300-step teacup, chair, and sailboat SpaceFlow generations.
 3. Output validation: successful status, nonempty finite geometry, a baked
    texture, and finite UV coordinates with the correct shape.

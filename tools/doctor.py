@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import importlib
+import io
 import json
 import os
 from pathlib import Path
@@ -15,6 +17,7 @@ import subprocess
 import sys
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
 EDITOR_MODULES = ("numpy", "scipy", "trimesh", "PIL")
 GPU_MODULES = (
     "flash_attn", "kaolin", "nvdiffrast.torch", "torch_scatter",
@@ -88,6 +91,15 @@ def inspect_environment(gpu: bool = False, cache_dir: Path | None = None, image:
                 record(name, True, "imported")
             except Exception as exc:
                 record(name, False, str(exc), "Build the pinned CUDA extensions on the allocated GPU: SPACEFLOW_SETUP_STAGE=extensions bash setup.sh.")
+
+        for name in ("sklearn", "run_local_tau"):
+            try:
+                # TRELLIS prints its backend on import. Keep --json output valid.
+                with contextlib.redirect_stdout(io.StringIO()):
+                    importlib.import_module(name)
+                record(name, True, "imported")
+            except Exception as exc:
+                record(name, False, str(exc), "Install the pinned Python runtime with SPACEFLOW_SETUP_STAGE=deps bash setup.sh, then rebuild native extensions if the error names one.")
 
         blender = os.environ.get("SPACEFLOW_BLENDER_PATH") or str(REPO_ROOT / "blender-3.0.1-linux-x64/blender")
         resolved = shutil.which(blender)

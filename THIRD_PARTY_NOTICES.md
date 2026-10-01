@@ -8,6 +8,8 @@ licenses or notices attached to upstream source, checkpoints, or dependencies.
 | GuideFlow3D | [Upstream project](https://github.com/GradientSpaces/GuideFlow3D); SpaceFlow builds on its generation and similarity-guidance pipeline. |
 | TRELLIS | [Upstream](https://github.com/microsoft/TRELLIS); retained [MIT license](third_party/TRELLIS/LICENSE). |
 | PartField | [Upstream](https://github.com/nv-tlabs/PartField); retained [NVIDIA license](third_party/PartField/LICENSE). |
+| DINOv2 | [Upstream](https://github.com/facebookresearch/dinov2); [Apache-2.0 license](https://github.com/facebookresearch/dinov2/blob/7764ea0f912e53c92e82eb78a2a1631e92725fc8/LICENSE). Image staging records its source commit and checkpoint hash. |
+| rembg / U2Net | [rembg upstream](https://github.com/danielgatis/rembg); background-removal dependency and downloaded U2Net model. Their own upstream notices apply. |
 | Native extensions | Sources/revisions are recorded in `requirements/native-revisions.json`; installed dependencies retain their own notices. |
 | React, Three.js, and editor dependencies | Versions and package integrity records are in `sq_ui/app/package-lock.json`; dependencies retain their own licenses. |
 

@@ -1,11 +1,14 @@
 """CPU regression checks for release validation and actionable Blender errors."""
 
 import importlib.util
+import contextlib
+import io
 from pathlib import Path
 import sys
 import tempfile
 import unittest
 from unittest import mock
+from types import SimpleNamespace
 
 import numpy as np
 
@@ -85,6 +88,41 @@ class ModelRevisionTests(unittest.TestCase):
             pins.write_text(json.dumps({"dinov2": {"repository": "facebookresearch/dinov2", "revision": "main"}}))
             with self.assertRaisesRegex(ValueError, "full commit SHA"):
                 dinov2_hub_repository(pins)
+
+
+class GenerationPreflightTests(unittest.TestCase):
+    def setUp(self):
+        self.doctor = load_module("release_doctor", REPO_ROOT / "tools/doctor.py")
+        self.torch = SimpleNamespace(__version__="2.8.0", version=SimpleNamespace(cuda="12.8"),
+                                     cuda=SimpleNamespace(is_available=lambda: False))
+
+    def fake_import(self, name):
+        if name == "torch":
+            return self.torch
+        if name == "run_local_tau":
+            print("TRELLIS backend announcement")
+        return SimpleNamespace(__version__="test")
+
+    def test_missing_sklearn_is_reported_with_runtime_install_action(self):
+        def importing(name):
+            if name == "sklearn":
+                raise ModuleNotFoundError("No module named 'sklearn'")
+            return self.fake_import(name)
+        with mock.patch.object(self.doctor.importlib, "import_module", side_effect=importing), \
+                mock.patch.object(self.doctor.shutil, "which", return_value=None):
+            report = self.doctor.inspect_environment(gpu=True)
+        check = next(item for item in report["checks"] if item["name"] == "sklearn")
+        self.assertFalse(check["passed"])
+        self.assertIn("SPACEFLOW_SETUP_STAGE=deps", check["action"])
+
+    def test_entrypoint_import_does_not_pollute_json_stdout(self):
+        output = io.StringIO()
+        with mock.patch.object(self.doctor.importlib, "import_module", side_effect=self.fake_import), \
+                mock.patch.object(self.doctor.shutil, "which", return_value=None), \
+                contextlib.redirect_stdout(output):
+            report = self.doctor.inspect_environment(gpu=True)
+        self.assertEqual(output.getvalue(), "")
+        self.assertTrue(next(item for item in report["checks"] if item["name"] == "run_local_tau")["passed"])
 
 
 class ReleaseMatrixTests(unittest.TestCase):

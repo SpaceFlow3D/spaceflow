@@ -35,6 +35,11 @@ nvdiffrast, mip-splatting's Gaussian rasterizer, and TRELLIS vox2seq.
 `requirements/runtime-resolved-constraints.txt` records the resolved Python
 packages. Both stages finish with `pip check`.
 
+Use a Linux distribution supported by CUDA 12.8, such as Ubuntu 22.04, for the
+unmodified toolkit. Newer glibc versions can conflict with CUDA 12.8's compiler
+headers. The Debian 13 verification host required the explicit, task-local
+adjustment recorded in [Verification](verification.md#debian-13--cuda-128-compatibility).
+
 Override the environment directory with `SPACEFLOW_VENV`; both stages must use
 the same directory. Native build intermediates go into the ignored
 `.extension-build/` directory. Use `MAX_JOBS` to limit compiler parallelism.
@@ -109,7 +114,8 @@ python tools/doctor.py --gpu --image --json
 ```
 
 The GPU check reports Python/PyTorch/CUDA, native imports, Blender, the checkpoint,
-and the model cache. It does **not** perform generation or prove output quality.
+the actual generation entrypoint import, and the model cache. It does **not**
+perform generation or prove output quality.
 The [verification record](verification.md) documents those separate checks.
 
 ## Useful service settings
