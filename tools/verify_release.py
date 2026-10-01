@@ -85,6 +85,12 @@ def prepare_matrix(destination: Path, image_path: Path) -> list[dict]:
             del argv[index:index + 2]
     argv.extend(["--appearance_image", str(target_image)])
     write_json(config_path, config)
+    metadata_path = config_path.parent / "run_meta.json"
+    metadata = json.loads(metadata_path.read_text())
+    metadata["texture_guidance"] = {
+        "mode": "image", "global_image_path": str(target_image), "local_image_paths": [],
+    }
+    write_json(metadata_path, metadata)
     provenance_path = config_path.parent / "replay_provenance.json"
     provenance = json.loads(provenance_path.read_text())
     provenance["parameters_changed"].extend(["global appearance image", "local text overrides removed"])

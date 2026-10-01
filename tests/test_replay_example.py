@@ -43,6 +43,25 @@ class ReplayTests(unittest.TestCase):
         destination=self.root/'unknown'
         with self.assertRaises(ValueError): replay.prepare(self.example,destination,['unknown'])
         self.assertFalse(destination.exists())
+    def test_comparison_metadata_uses_the_relocated_manifest_and_prompts(self):
+        manifest_path = self.example/'inputs/manifest.json'
+        manifest = json.loads(manifest_path.read_text())
+        manifest['texture'] = {'mode':'text','global_text':'white ceramic',
+                               'local_text_prompts':['blue ceramic']}
+        manifest_path.write_text(json.dumps(manifest))
+        (self.example/'run_meta.json').write_text(json.dumps({'asset_entry':{}, 'status':'succeeded'}))
+        destination=self.root/'replay'
+        replay.prepare(self.example,destination,[])
+        metadata=json.loads((destination/'run_meta.json').read_text())
+        self.assertEqual(metadata['asset_entry']['manifest_path'],str(destination/'inputs/manifest.json'))
+        self.assertEqual(metadata['texture_guidance'],manifest['texture'])
+        self.assertEqual(metadata['status'],'prepared')
+    def test_explicit_run_appearance_metadata_is_preserved(self):
+        texture={'mode':'text','global_text':'actual run override'}
+        (self.example/'run_meta.json').write_text(json.dumps({'texture_guidance':texture}))
+        destination=self.root/'replay'
+        replay.prepare(self.example,destination,[])
+        self.assertEqual(json.loads((destination/'run_meta.json').read_text())['texture_guidance'],texture)
     def test_existing_output_is_preserved(self):
         destination=self.root/'existing';destination.mkdir()
         (destination/'keep').write_text('preserve')

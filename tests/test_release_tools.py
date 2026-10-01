@@ -175,6 +175,9 @@ class ReleaseMatrixTests(unittest.TestCase):
                     self.assertNotIn("--appearance_text", argv)
                     self.assertNotIn("--local_text_prompts", argv)
                     self.assertTrue(Path(argv[argv.index("--appearance_image") + 1]).is_file())
+                    metadata = json.loads((Path(case["config"]).parent / "run_meta.json").read_text())
+                    self.assertEqual(metadata["texture_guidance"]["mode"], "image")
+                    self.assertEqual(metadata["texture_guidance"]["global_image_path"], argv[argv.index("--appearance_image") + 1])
                     self.assertTrue(json.loads((Path(case["config"]).parent / "replay_provenance.json").read_text())["parameters_changed"])
 
     def test_missing_image_does_not_create_a_run(self):

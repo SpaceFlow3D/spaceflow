@@ -59,6 +59,15 @@ def prepare(example: Path, destination: Path, only: list[str]) -> Path:
         metadata.update(status='prepared', run_id=destination.name, run_dir=str(destination),
                         output_dir=str(destination/'output'))
         metadata.pop('finished_at', None)
+        manifest_path = destination / 'inputs/manifest.json'
+        if manifest_path.is_file():
+            manifest = json.loads(manifest_path.read_text())
+            asset_entry = metadata.setdefault('asset_entry', {})
+            asset_entry['manifest_path'] = str(manifest_path)
+            # The compact example metadata omits these UI fields. Comparison
+            # rendering needs the saved controls and actual appearance labels.
+            if isinstance(manifest.get('texture'), dict):
+                metadata.setdefault('texture_guidance', manifest['texture'])
         (destination/'run_meta.json').write_text(json.dumps(metadata, indent=2)+'\n')
     (destination/'replay_provenance.json').write_text(json.dumps({
         'source_example': str(example), 'source_config_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
