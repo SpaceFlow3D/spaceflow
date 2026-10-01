@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://neilus03.github.io/">Neil De La Fuente</a><sup>1*</sup> &nbsp;
-  <a href="https://github.com/joanlafuente">Joan Lafuente Baeza</a><sup>1*</sup> &nbsp;
+  <a href="https://github.com/joanlafuente">Joan Lafuente</a><sup>1*</sup> &nbsp;
   <a href="https://www.linkedin.com/in/mukali/">Mukhammadali Sayfiddinov</a><sup>1*</sup> &nbsp;
   <a href="https://ch.linkedin.com/in/felicia-scharitzer/de">Felicia Scharitzer</a><sup>1*</sup>
   <br>
@@ -22,7 +22,7 @@
 
 <p align="center">
   <sup>1</sup> ETH Zürich &nbsp; · &nbsp; <sup>2</sup> Stanford University<br>
-  <sub>* Equal contribution &nbsp; · &nbsp; † Equal supervision</sub>
+  <sub>* Equal contribution (ordered alphabetically) &nbsp; · &nbsp; † Equal supervision</sub>
 </p>
 
 <p align="center">
@@ -295,7 +295,7 @@ If you use SpaceFlow in your research, please cite:
 ```bibtex
 @misc{delafuente2026spaceflow,
   title  = {SpaceFlow: Locally Controllable 3D Generation},
-  author = {De La Fuente, Neil and Lafuente Baeza, Joan and
+  author = {De La Fuente, Neil and Lafuente, Joan and
             Sayfiddinov, Mukhammadali and Scharitzer, Felicia and
             Pollefeys, Marc and Çelen, Ata and
             Deb Sarkar, Sayan and Fedele, Elisabetta},
