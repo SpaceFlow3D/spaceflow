@@ -21,6 +21,7 @@ import { useStore, type Primitive } from '../state/store';
 import { useTextureUploadStore } from '../state/textureUploads';
 import { useSpaceflowUiStore } from '../state/spaceflowUi';
 import { captureSuperquadricRenderBlob } from '../state/viewportCapture';
+import { downloadBlob } from '../state/download';
 import {
   AlertTriangleIcon,
   ChairIcon,
@@ -59,17 +60,6 @@ interface DemoPreset {
 interface TopBarProps {
   themeMode: ThemeMode;
   onThemeModeChange: (mode: ThemeMode) => void;
-}
-
-function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
 }
 
 async function writeClipboardText(text: string) {

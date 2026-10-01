@@ -14,11 +14,13 @@ const compile = spawnSync(process.execPath, [
   '--moduleResolution', 'node', '--target', 'ES2023', '--esModuleInterop',
   '--skipLibCheck', '--strict', '--outDir', output,
   'tests/npz_metadata.test.ts',
+  'tests/download.test.ts',
 ], { cwd: app, stdio: 'inherit' });
 if (compile.error) throw compile.error;
 if (compile.status !== 0) process.exit(compile.status ?? 1);
 const result = spawnSync(process.execPath, [
   '--test', path.join(output, 'tests/npz_metadata.test.js'),
+  path.join(output, 'tests/download.test.js'),
 ], { cwd: app, stdio: 'inherit' });
 if (result.error) throw result.error;
 process.exit(result.status ?? 1);
