@@ -11,13 +11,16 @@ and global or per-part text/image conditions guide appearance.
 [Paper and supplement](https://neilus03.github.io/spaceflow/assets/SpaceFlow-paper.pdf) ·
 [Examples](examples/README.md) · [Verification](docs/verification.md)
 
-[![Recorded sailboat example](docs/media/sailboat_spin_poster.png)](docs/media/sailboat_spin.mp4)
+![Freshly verified sailboat result, viewed from four angles](docs/media/verified_sailboat.png)
 
-*Recorded result from the original experiments. Click the image for the rotating preview.*
+*Fresh 300-step sailboat generation on an RTX 4090, verified on 2026-10-01.
+The primitive scaffold controls geometry; global and per-part prompts guide appearance.*
 
-> **Release candidate.** The fresh GPU build and end-to-end generation checks are
-> pending. See the [verification record](docs/verification.md) for completed checks
-> and limits. `v0.1.0` will be tagged after the GPU release checks pass.
+> **v0.1.0:** fresh 300-step teacup, chair, and sailboat generation, image
+> conditioning, retained comparisons, and browser generation/download passed.
+> See the [verification record](docs/verification.md) for the exact scope and
+> observed quality limits. [Release downloads](https://github.com/joanlafuente/spaceflow/releases/tag/v0.1.0)
+> include the thin source archive and separate generated sample GLBs.
 
 ## What is included
 
@@ -44,9 +47,14 @@ contains no SuperDec runs or large checkpoints.
 | Blender | Not required | Blender **3.x**; original experiments used **3.0.1** |
 | Models | Not required | Pinned TRELLIS/CLIP models and the PartField checkpoint |
 
-GPU memory requirements and runtime on the fresh release are not yet measured.
-Build CUDA extensions inside a GPU allocation on Slurm. Detailed installation
-and model-cache notes are in [Installation](docs/installation.md).
+Full generation was tested on a **24 GB RTX 4090**. The five-case verification
+suite took about **18 minutes**, with a sampled whole-device peak of **19.1 GiB**;
+these are observations for the recorded cases. Smaller GPUs were not verified.
+Reserve about **60 GiB of work storage** for a fresh installation, model/tool
+caches, and verification outputs. The model caches and installed PartField copy
+used about 12 GiB; larger datasets need additional storage.
+Build CUDA extensions on the GPU machine or inside a Slurm GPU allocation.
+Detailed installation and model-cache notes are in [Installation](docs/installation.md).
 
 ## 1. Clone the release
 
@@ -171,8 +179,9 @@ valid Slurm account/partition as described in [Research workflows](docs/research
 
 Text-conditioned examples use the pinned cache above. For **image appearance
 conditioning**, stage the additional models with `tools/cache_models.py --include-image`
-and use the recorded DINOv2 source/weight and U2Net caches. Its fresh GPU verification
-is pending. See [Installation](docs/installation.md) for the cache variables and commands.
+and use the recorded DINOv2 source/weight and U2Net caches. A fresh image-conditioned
+sailboat passed the release checks. See [Installation](docs/installation.md) for
+the cache variables and commands.
 
 ## Optional research workflows
 
@@ -196,6 +205,14 @@ editor build on every `RELEASE` push and pull request. GPU tests require an
 allocated GPU and are recorded separately. The [verification record](docs/verification.md)
 distinguishes input/configuration checks from completed generation.
 
+The release passed **23 CPU tests**, **5 UI tests**, the production UI build,
+all **83 example preparation checks**, and the recorded GPU/browser workflows.
+Generated meshes remain research outputs: the checked teacup has a filled top,
+faceting, and visible seams. Inspect assets before using them; all 83 examples
+were validated as inputs, and the cases in the verification record were generated
+freshly. Saved parameters and output hashes support reproducibility; byte-identical
+or perceptually identical results are not claimed.
+
 | Symptom | Action |
 | --- | --- |
 | `cgi` missing / Python 3.13+ | Use Python 3.10–3.12 for the editor service, or 3.10 for generation. |
@@ -210,7 +227,7 @@ distinguishes input/configuration checks from completed generation.
 
 ## Citation and attribution
 
-The preprint citation follows the [project page](https://neilus03.github.io/spaceflow/):
+The preprint citation follows the [project page](https://spaceflow3d.github.io/):
 
 ```bibtex
 @misc{delafuente2026spaceflow,

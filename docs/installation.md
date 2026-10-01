@@ -6,7 +6,8 @@ The [main README](../README.md) contains the editor and generation quickstarts.
 ## Two separate environments
 
 - `.venv-editor`: Python 3.10–3.12; install `requirements/editor.txt`. Handles editing,
-  NPZ downloads, save/history/reopen, and CPU comparison rendering. No PyTorch/CUDA.
+  NPZ downloads and save/history/reopen. Add `requirements/visualization.txt` for
+  optional CPU comparison rendering. No PyTorch/CUDA.
 - `.venv`: Python 3.10; created by `setup.sh`. Handles GPU generation and can also
   run the editor service. Activate this environment when launching generation.
 
@@ -88,10 +89,10 @@ The original `JeffreyXiang/TRELLIS-image-large` name redirects upstream to
 same pinned snapshot offline. Model architectures, conditioning defaults, and
 weights are preserved. DINOv2 now requests its full recorded source commit.
 
-Staging loads DINOv2 on the CPU to confirm its source and weights are usable. It
-does not run image-conditioned 3D generation. That fresh GPU run remains a release
-acceptance check. Input-image paths and bytes must be available on the generation
-machine.
+Staging loads DINOv2 on the CPU to confirm its source and weights are usable.
+The separate full 300-step image-conditioned sailboat passed GPU acceptance on
+2026-10-01; see [Verification](verification.md). Input-image paths and bytes must
+be available on the generation machine.
 
 ## Blender
 

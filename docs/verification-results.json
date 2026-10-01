@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "verification_date": "2026-10-01",
+  "generation_commit": "c5bf333746853331e12aca30a10f1a0061d2fec5",
+  "generation_source_dirty": false,
+  "matrix_started_utc": "2026-10-01T07:51:29.382797+00:00",
+  "matrix_finished_utc": "2026-10-01T08:09:37.446606+00:00",
+  "matrix_status": "passed",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "vram_gb": 24,
+    "driver": "595.71.05",
+    "matrix_peak_device_memory_mib": 19566,
+    "memory_sampling_seconds": 2,
+    "memory_samples": 539
+  },
+  "runtime": {
+    "os": "Linux-6.12.90+deb13-amd64-x86_64-with-glibc2.41",
+    "python": "3.10.19",
+    "pytorch": "2.8.0+cu128",
+    "cuda_toolkit": "12.8.1",
+    "blender": "3.0.1",
+    "host_cuda_header_adjustment": "See verification.md; four declaration exception specifications for glibc 2.41."
+  },
+  "model_revisions": {
+    "huggingface": {
+      "openai/clip-vit-large-patch14": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+      "microsoft/TRELLIS-text-xlarge": "e0b00432b8e3a8ecee0df806ab1df9f7281f2be4",
+      "microsoft/TRELLIS-image-large": "25e0d31ffbebe4b5a97464dd851910efc3002d96",
+      "mikaelaangel/partfield-ckpt": "90b9b1e08b6a12fdcb6ee26b4854a26235e1765f"
+    },
+    "partfield_sha256": "463efc8a3afd3913142aa025e0125c00f16ef452b8de6a132ebe32bbe7877ee4",
+    "dinov2": {
+      "repository": "facebookresearch/dinov2",
+      "revision": "7764ea0f912e53c92e82eb78a2a1631e92725fc8",
+      "model": "dinov2_vitl14_reg",
+      "checkpoint": "dinov2_vitl14_reg4_pretrain.pth",
+      "sha256": "36e4deffbaef061a2576705b0c36f93621e2ae20bf6274694821b0b492551b51",
+      "source": "Upstream source pinned for fresh release verification; official Meta checkpoint downloaded and hashed on pf-pc69."
+    },
+    "u2net": {
+      "url": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx",
+      "md5": "60024c5c889badc19c04ad937298a77b",
+      "source": "Official download URL and checksum in the pinned rembg 2.0.69 U2netSession."
+    },
+    "source": "TRELLIS/CLIP revisions recovered from original cache refs; PartField pinned from its official linked model repository."
+  },
+  "cases": [
+    {
+      "name": "text-teacup",
+      "status": "passed",
+      "variants": [
+        {
+          "variant": "01_local_tau3_tau10_polyak0p18",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 6753,
+          "triangles": 11106,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "5f852f9d19f19882d3e9269dbee3230dc47b6b5318b693f64dd6f9ecd86c5aed"
+        }
+      ]
+    },
+    {
+      "name": "text-chair",
+      "status": "passed",
+      "variants": [
+        {
+          "variant": "01_local_tau3_tau10_polyak0p18",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 5795,
+          "triangles": 9138,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "bf16e8ff911b2336131b209b910f878631e6c3a67df527878ab2acef1aa9ca72"
+        }
+      ]
+    },
+    {
+      "name": "text-sailboat",
+      "status": "passed",
+      "variants": [
+        {
+          "variant": "01_local_tau3_tau10_polyak0p18",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 6227,
+          "triangles": 8112,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "e26a56314f89816fe4eaad0934d7490c979aff12b1c56e57dbe68fa2452bbe16"
+        }
+      ]
+    },
+    {
+      "name": "comparisons-teacup",
+      "status": "passed",
+      "variants": [
+        {
+          "variant": "01_local_tau3_tau10_polyak0p18",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 6246,
+          "triangles": 10762,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "513c4a988e3ba7cd45865be63d6d3fae9fa1427c30bbf4fbd607795e7ff6b09c"
+        },
+        {
+          "variant": "02_global_tau3_polyak0",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 6069,
+          "triangles": 9670,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "d6ef9930d51789f27b22a5a87713095e8983ba66d296f9069f24e31b3f82f81d"
+        },
+        {
+          "variant": "03_global_tau10_polyak0",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 6441,
+          "triangles": 11692,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "161ed21259f5ed6cd8e07708fee2372450eef172e7521f1f8386d1202fd9db49"
+        },
+        {
+          "variant": "01_spaceflow_local_texture_routing",
+          "runner": "copy_variant",
+          "status": "succeeded",
+          "vertices": 6246,
+          "triangles": 10762,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "513c4a988e3ba7cd45865be63d6d3fae9fa1427c30bbf4fbd607795e7ff6b09c"
+        },
+        {
+          "variant": "02_trellis_raw_flat_prompt",
+          "runner": "trellis_raw_text",
+          "status": "succeeded",
+          "vertices": 19910,
+          "triangles": 32869,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "27cd880005bea6239363fdc6c1f1354466506f3009c3edffb6ad5ecd93f33e4d"
+        },
+        {
+          "variant": "03_fixed_structure_appearance_fm",
+          "runner": "fixed_structure_appearance_fm",
+          "status": "succeeded",
+          "vertices": 6917,
+          "triangles": 12126,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "9fb774b464092e43dd4dc8ffc0b209e576a3abc6790465b0076cd08fd6134fb6"
+        },
+        {
+          "variant": "04_fixed_structure_guideflow_appearance_fm",
+          "runner": "fixed_structure_guideflow_appearance_fm",
+          "status": "succeeded",
+          "vertices": 6220,
+          "triangles": 10934,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "ee30effc6e04abf4af3d24c91d037b14afbdcf0f53a936bd1b6a41aeb1239562"
+        }
+      ]
+    },
+    {
+      "name": "image-sailboat",
+      "status": "passed",
+      "variants": [
+        {
+          "variant": "01_local_tau3_tau10_polyak0p18",
+          "runner": "spaceflow",
+          "status": "succeeded",
+          "vertices": 5312,
+          "triangles": 7932,
+          "texture_size": [
+            1024,
+            1024
+          ],
+          "uv_in_unit_square": true,
+          "glb_sha256": "bdf1b6c86b4e9460e9c86487c8fdea4bf0b88f4a12ffe139aba4dd37f129ad97"
+        }
+      ]
+    }
+  ],
+  "browser_generation": {
+    "status": "passed",
+    "browser": "Chrome",
+    "generation_commit": "c5bf333746853331e12aca30a10f1a0061d2fec5",
+    "texture_optim_steps": 300,
+    "dry_run": false,
+    "vertices": 6003,
+    "triangles": 10554,
+    "texture_size": [
+      1024,
+      1024
+    ],
+    "glb_sha256": "860a60e69cf639de1bdb8885e36c58b3ae1ee4d73ee865d3127c4adfc7dc826a",
+    "download_hash_matches_server": true,
+    "save_reopen_and_geometry_prompt_edits_verified": true
+  },
+  "coverage": {
+    "cpu_tests": 23,
+    "ui_tests": 5,
+    "example_cases_validated": 83,
+    "numeric_npz_bundles_validated": 249,
+    "fresh_text_cases": 3,
+    "image_conditioned_cases": 1,
+    "comparison_variants": 7,
+    "all_example_inputs_preserved": true
+  },
+  "limits": [
+    "Only the recorded cases were generated freshly; all 83 inputs were validated and prepared.",
+    "Byte-identical or perceptually identical research reproduction is not claimed.",
+    "Visible faceting, seams, and a filled teacup top remain in generated meshes.",
+    "Smaller GPUs and operating systems beyond the recorded checks were not verified.",
+    "Hugging Face deployment is deferred."
+  ],
+  "post_generation_changes": [
+    "Replay helpers now retain manifest/control/appearance metadata for comparison labels; generation configurations and input bytes were checked unchanged.",
+    "Release documentation, evidence, and private editor version metadata updated after generation."
+  ]
+}

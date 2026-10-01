@@ -47,12 +47,17 @@ These comparisons take more GPU time than one SpaceFlow run.
 
 The retained in-process runner is `sq_ui/scripts/run_spaceflow_experiment.py`;
 `trellis_texture_variants.py` contains the associated baseline implementations.
-Configurations and source code remain available even when a baseline has not yet
-been checked in the fresh release environment. See [verification](verification.md).
+All seven variants in the retained teacup comparison passed in the fresh release
+environment. See [verification](verification.md) for the checked configurations
+and output hashes. Other baseline cases have not all been generated freshly.
 
 ## Render comparison figures on CPU
 
+With the CPU editor environment activated, install the optional plotting dependency.
+The full GPU environment already includes it. Run from the repository root:
+
 ```bash
+python -m pip install -r requirements/visualization.txt
 python sq_ui/scripts/render_spaceflow_experiment_comparison.py \
   runs/teacup-comparisons --output-name variant_comparison.png
 ```
@@ -80,12 +85,14 @@ hours. It replays the teacup with 300 refinement steps and validates the result.
 The resource request is a verification allocation, not a measured minimum.
 
 For the complete release matrix, use `tools/verify_release.sbatch` instead.
-It requests 12 hours with the same GPU/CPU/memory allocation; the runtime has not
-yet been measured. It prepares teacup/chair/sailboat at 300 refinement steps, a
+It requests 12 hours with the same GPU/CPU/memory allocation. The recorded RTX 4090
+suite completed in about 18 minutes; Slurm hardware/runtime may differ. It prepares
+teacup/chair/sailboat at 300 refinement steps, a
 full teacup comparison, and sailboat image conditioning. The default image is the
 included historical sailboat preview; set `SPACEFLOW_VERIFY_IMAGE` to another
-reference if desired. Text runs use the pinned offline cache; the image case
-needs network access for its additional downloads. Changes to the saved example
+reference if desired. Stage the additional image models with `cache_models.py --include-image`
+while network access is available. Both text and image generation then use the
+pinned offline caches. Changes to the saved example
 step counts are recorded only in the new verification directory's provenance.
 Its preparation-only mode is described in the [verification record](verification.md).
 

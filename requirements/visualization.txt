@@ -1,0 +1,3 @@
+# Optional CPU comparison rendering; the generation runtime already includes it.
+-r editor.txt
+matplotlib==3.10.8
