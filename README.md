@@ -119,9 +119,11 @@ To try another asset, replace `--example-dir` with one of the
 The editor lets you build or import a primitive scaffold, adjust local controls,
 set appearance prompts, and generate/download the result.
 
-[![SpaceFlow workflow demonstration: editing primitives and assigning appearance to individual parts](https://spaceflow3d.github.io/assets/figures/video-poster.webp)](https://spaceflow3d.github.io/#demonstration)
 
-**[▶ Watch the editor workflow](https://spaceflow3d.github.io/#demonstration)**
+
+https://github.com/user-attachments/assets/7ffc4252-549d-4472-96b6-7dff11152a75
+
+
 
 ### Start the editor on your GPU machine
 
