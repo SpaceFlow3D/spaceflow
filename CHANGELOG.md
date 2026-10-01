@@ -10,8 +10,8 @@
 - Reject an occupied asset-service port before the editor can use another process's storage.
 - Report Blender executable/process failures explicitly while keeping the original
   mesh normalization and generation calculations.
-- Add numeric input/replay validation, regression tests, and a prepared CPU/editor
-  GitHub CI workflow. Upload permission is pending.
+- Add numeric input/replay validation, regression tests, and published CPU/editor
+  GitHub CI checks for Linux and macOS.
 - Repair the editor dependency lock for clean installation across platforms.
 - Update compatible editor dependencies to resolve the reported npm advisories.
 - Select an image-capable pipeline for image appearance guidance; text-guided
