@@ -1,0 +1,125 @@
+"""CPU regression checks for release validation and actionable Blender errors."""
+
+import importlib.util
+from pathlib import Path
+import sys
+import tempfile
+import unittest
+from unittest import mock
+
+import numpy as np
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT / "tools"))
+from validate_examples import validate_npz
+from verify_release import prepare_matrix
+from lib.util.pipeline_compat import can_reuse_appearance_pipeline
+
+
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+class PrimitiveValidationTests(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.path = Path(self.temporary.name) / "all.npz"
+        self.arrays = {
+            "scales": np.ones((1, 3)), "shapes": np.ones((1, 2)),
+            "translations": np.zeros((1, 3)), "rotations": np.eye(3)[None],
+        }
+
+    def tearDown(self):
+        self.temporary.cleanup()
+
+    def test_valid_numeric_bundle(self):
+        np.savez(self.path, **self.arrays)
+        self.assertEqual(validate_npz(self.path), 1)
+
+    def test_nonfinite_geometry_is_rejected(self):
+        self.arrays["translations"][0, 0] = np.nan
+        np.savez(self.path, **self.arrays)
+        with self.assertRaisesRegex(ValueError, "finite"):
+            validate_npz(self.path)
+
+    def test_wrong_shape_is_rejected(self):
+        self.arrays["rotations"] = np.ones((1, 3))
+        np.savez(self.path, **self.arrays)
+        with self.assertRaisesRegex(ValueError, "rotations"):
+            validate_npz(self.path)
+
+    def test_pickled_geometry_is_rejected(self):
+        self.arrays["scales"] = np.array([[1, 1, 1]], dtype=object)
+        np.savez(self.path, **self.arrays)
+        with self.assertRaisesRegex(ValueError, "Object arrays"):
+            validate_npz(self.path)
+
+
+class AppearanceCompatibilityTests(unittest.TestCase):
+    def test_text_pipeline_cannot_be_reused_for_images(self):
+        self.assertFalse(can_reuse_appearance_pipeline(object(), "image"))
+
+    def test_image_pipeline_can_be_reused_for_images(self):
+        class ImagePipeline:
+            def preprocess_image(self, image):
+                return image
+        self.assertTrue(can_reuse_appearance_pipeline(ImagePipeline(), "image"))
+
+    def test_text_reuse_is_preserved(self):
+        self.assertTrue(can_reuse_appearance_pipeline(object(), "text"))
+        self.assertFalse(can_reuse_appearance_pipeline(None, "text"))
+
+
+class ReleaseMatrixTests(unittest.TestCase):
+    def test_prepared_matrix_keeps_full_steps_and_baselines(self):
+        import json
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "matrix"
+            cases = prepare_matrix(output, REPO_ROOT / "docs/media/sailboat_spin_poster.png")
+            self.assertEqual(len(cases), 5)
+            self.assertTrue(all(case["status"] == "prepared" for case in cases))
+            for case in cases:
+                config = json.loads(Path(case["config"]).read_text())
+                for variant in config["variants"]:
+                    if "argv" in variant:
+                        argv = variant["argv"]
+                        self.assertEqual(argv[argv.index("--texture_optim_steps") + 1], "300")
+                if case["name"] == "comparisons-teacup":
+                    self.assertEqual(len(config["variants"]), 7)
+                if case["name"] == "image-sailboat":
+                    argv = config["variants"][0]["argv"]
+                    self.assertNotIn("--appearance_text", argv)
+                    self.assertNotIn("--local_text_prompts", argv)
+                    self.assertTrue(Path(argv[argv.index("--appearance_image") + 1]).is_file())
+                    self.assertTrue(json.loads((Path(case["config"]).parent / "replay_provenance.json").read_text())["parameters_changed"])
+
+    def test_missing_image_does_not_create_a_run(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "matrix"
+            with self.assertRaises(FileNotFoundError):
+                prepare_matrix(output, Path(temporary) / "missing.png")
+            self.assertFalse(output.exists())
+
+
+class BlenderErrorTests(unittest.TestCase):
+    def setUp(self):
+        self.render = load_module("release_render", REPO_ROOT / "lib/util/render.py")
+
+    def test_missing_explicit_blender_has_an_actionable_error(self):
+        with mock.patch.dict("os.environ", {"SPACEFLOW_BLENDER_PATH": "/missing/blender"}), \
+                mock.patch.object(self.render.shutil, "which", return_value=None):
+            with self.assertRaisesRegex(FileNotFoundError, "SPACEFLOW_BLENDER_PATH"):
+                self.render._install_blender()
+
+    def test_failed_blender_process_exposes_stderr(self):
+        result = mock.Mock(returncode=7, stderr="renderer initialization failed")
+        with mock.patch.object(self.render.subprocess, "run", return_value=result):
+            with self.assertRaisesRegex(RuntimeError, "renderer initialization failed"):
+                self.render._run_blender(["blender"])
+
+
+if __name__ == "__main__":
+    unittest.main()

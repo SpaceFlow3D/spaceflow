@@ -13,6 +13,7 @@ import time
 import third_party.TRELLIS.trellis.modules.sparse as sp
 from third_party.TRELLIS.trellis.pipelines import TrellisImageTo3DPipeline, TrellisTextTo3DPipeline
 from lib.util import generation, partfield
+from lib.util.pipeline_compat import can_reuse_appearance_pipeline
 
 # Global logger
 log = logging.getLogger(__name__)
@@ -679,7 +680,9 @@ def optimize_self_similarity(cfg, app, app_type, output_dir,
     log.info("Starting self-similarity optimization...")
 
     pipeline_start = time.perf_counter()
-    if generation_pipeline is None:
+    if not can_reuse_appearance_pipeline(generation_pipeline, app_type):
+        if generation_pipeline is not None:
+            log.info("Loading the image appearance pipeline; the structure/text pipeline has no image preprocessing interface.")
         if app_type == 'image':
             generation_pipeline = TrellisImageTo3DPipeline.from_pretrained(cfg.trellis_img_model_name)
         else:

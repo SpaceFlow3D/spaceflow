@@ -22,7 +22,14 @@ from urllib.parse import parse_qs, quote, urlparse
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", message="'cgi' is deprecated.*", category=DeprecationWarning)
-    import cgi
+    try:
+        import cgi
+    except ModuleNotFoundError as exc:
+        raise SystemExit(
+            "The editor service needs Python 3.10–3.12 because it uses cgi for "
+            "multipart uploads. Activate .venv-editor, or use the Python 3.10 "
+            "generation environment."
+        ) from exc
 
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -81,17 +88,8 @@ XDG_CACHE_ROOT = Path(
 
 
 def _default_python_bin() -> str:
-    env_override = os.environ.get("SQ_SPACEFLOW_PYTHON", "").strip()
-    if env_override:
-        return env_override
-    candidates = [
-        REPO_ROOT / "envs" / "guideflow3d" / "bin" / "python",
-        REPO_ROOT.parent / "guideflow3d" / "envs" / "guideflow3d" / "bin" / "python",
-    ]
-    for candidate in candidates:
-        if candidate.is_file():
-            return str(candidate)
-    return sys.executable
+    """Use the service's active environment unless explicitly overridden."""
+    return os.environ.get("SQ_SPACEFLOW_PYTHON", "").strip() or sys.executable
 
 
 PYTHON_BIN = _default_python_bin()

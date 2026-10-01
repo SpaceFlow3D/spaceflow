@@ -74,6 +74,10 @@ def main():
     parser.add_argument('--only', nargs='*', default=[])
     parser.add_argument('--prepare-only', action='store_true')
     args=parser.parse_args()
+    if not args.prepare_only:
+        preflight = subprocess.call([sys.executable, str(REPO / 'tools/doctor.py'), '--gpu'])
+        if preflight:
+            return preflight
     config=prepare(args.example_dir.expanduser().resolve(),args.output_dir.expanduser().resolve(),args.only)
     print(f'Relocated config: {config}', flush=True)
     if not args.prepare_only:

@@ -1,4 +1,3 @@
-from html import parser
 import copy
 import json
 import os
@@ -17,7 +16,6 @@ from skimage import measure
 
 import torch
 from lightning.pytorch import seed_everything, Trainer
-from lightning.pytorch.callbacks import ModelCheckpoint
 import open3d_pycg as o3d
 
 import utils3d
@@ -29,7 +27,6 @@ from third_party.PartField.partfield.model_trainer_pvcnn_only_demo import Model
 from lib.opt import self_similarity
 from lib.util import common, render, pointcloud
 from third_party.TRELLIS.trellis.pipelines import TrellisTextTo3DPipeline
-from third_party.TRELLIS.trellis.utils import postprocessing_utils
 from utils import merge_meshes
 
 log.getLogger().setLevel(log.INFO)
@@ -87,7 +84,7 @@ def offload_trellis_pipeline(pipeline):
 
 
 def init_args(argv=None):
-    parser = argparse.ArgumentParser(description='GuideFlow3D - 3D Shape Generation')
+    parser = argparse.ArgumentParser(description='SpaceFlow - controllable 3D generation')
 
     # Guidance mode selection
     parser.add_argument('--guidance_mode', type=str, required=True, choices=['similarity'],
@@ -102,7 +99,7 @@ def init_args(argv=None):
     parser.add_argument('--appearance_text', type=str, default='',
                         help='Global text prompt for similarity guidance')
 
-    # SapceControl parameters
+    # Spatial control parameters
     parser.add_argument('--shape_superquadric_path', type=str, required=True,
                         help='Path to shape superquadrics file')
     parser.add_argument('--shape_superquadric_high_control_path', type=str, default=None,
@@ -166,7 +163,7 @@ def add_superquadric_compact_rot_mat(
     bending=None,
     resolution: int=10,
     visible: bool=True):
-    """Adds a superqiadroc mesh to the scene."""
+    """Build a superquadric mesh in scene coordinates."""
 
     def apply_taper(x, y, z, c, kx, ky):
         c = float(c) if abs(float(c)) > 1e-8 else 1e-8
@@ -237,7 +234,7 @@ def add_superquadric_compact_rot_mat(
         vertices =  np.concatenate([np.expand_dims(x, 1),
                                     np.expand_dims(y, 1),
                                     np.expand_dims(z, 1)], axis=1)
-        vertices =  (rotation @ vertices.T).T +translation  # TODO verify left or right apply rotation
+        vertices = (rotation @ vertices.T).T + translation
 
         triangles = []
         for i in range(N-1):

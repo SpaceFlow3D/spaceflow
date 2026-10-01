@@ -1,7 +1,9 @@
 import os
 import json
 from pathlib import Path
-from subprocess import call, DEVNULL
+import shutil
+import subprocess
+from urllib.request import urlretrieve
 import numpy as np
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -17,10 +19,35 @@ BLENDER_RENDER_SCRIPT = os.environ.get(
 )
 
 def _install_blender():
-    if not os.path.exists(BLENDER_PATH):
-        os.makedirs(BLENDER_INSTALLATION_PATH, exist_ok=True)
-        os.system(f'wget {BLENDER_LINK} -P {BLENDER_INSTALLATION_PATH}')
-        os.system(f'tar -xvf {BLENDER_INSTALLATION_PATH}/blender-3.0.1-linux-x64.tar.xz -C {BLENDER_INSTALLATION_PATH}')
+    if shutil.which(BLENDER_PATH):
+        return
+    if os.environ.get('SPACEFLOW_BLENDER_PATH'):
+        raise FileNotFoundError(
+            f'Blender is not executable at SPACEFLOW_BLENDER_PATH={BLENDER_PATH}. '
+            'Set it to an installed Blender 3.x executable.'
+        )
+    installation = Path(BLENDER_INSTALLATION_PATH)
+    installation.mkdir(parents=True, exist_ok=True)
+    archive = installation / 'blender-3.0.1-linux-x64.tar.xz'
+    try:
+        urlretrieve(BLENDER_LINK, archive)
+        subprocess.run(['tar', '-xf', str(archive), '-C', str(installation)], check=True)
+    except (OSError, subprocess.CalledProcessError) as exc:
+        raise RuntimeError(
+            'Blender installation failed. Install Blender 3.x separately and set '
+            'SPACEFLOW_BLENDER_PATH to its executable.'
+        ) from exc
+    if not shutil.which(BLENDER_PATH):
+        raise FileNotFoundError(f'Blender installation did not produce an executable: {BLENDER_PATH}')
+
+
+def _run_blender(args):
+    result = subprocess.run(args, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+    if result.returncode:
+        raise RuntimeError(
+            f'Blender failed with exit code {result.returncode}. '
+            f'Executable: {BLENDER_PATH}. Error output:\n{result.stderr[-3000:]}'
+        )
 
 def render_all_views(file_path, output_folder, num_views=150):
     _install_blender()
@@ -49,7 +76,7 @@ def render_all_views(file_path, output_folder, num_views=150):
     if file_path.endswith('.blend'):
         args.insert(1, file_path)
     
-    call(args, stdout=DEVNULL, stderr=DEVNULL)
+    _run_blender(args)
     
     if os.path.exists(os.path.join(output_folder, 'transforms.json')):
         return True
@@ -70,7 +97,7 @@ def export_normalized_mesh(file_path, output_folder):
     if file_path.endswith('.blend'):
         args.insert(1, file_path)
 
-    call(args, stdout=DEVNULL, stderr=DEVNULL)
+    _run_blender(args)
 
     if os.path.exists(os.path.join(output_folder, 'mesh.ply')):
         return True

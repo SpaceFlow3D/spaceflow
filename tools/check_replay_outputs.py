@@ -36,7 +36,8 @@ def main():
                     errors.append('empty baked texture')
                 else:
                     geometry['texture_size']=list(texture.size)
-                if uv is None or not np.isfinite(uv).all():errors.append('missing or nonfinite texture coordinates')
+                if uv is None or np.shape(uv) != (len(mesh.vertices), 2) or not np.isfinite(uv).all():
+                    errors.append('missing, malformed, or nonfinite texture coordinates')
             except Exception as error:errors.append(repr(error))
         results.append({'name':variant['name'],'runner':variant.get('runner','spaceflow'),
             'status':status,'output':str(mesh_path),'errors':errors,

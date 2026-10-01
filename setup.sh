@@ -9,6 +9,15 @@ PYTHON="${SPACEFLOW_SETUP_PYTHON:-python3}"
 export MAX_JOBS="${MAX_JOBS:-4}"
 
 case "$STAGE" in deps|extensions|all) ;; *) echo 'SPACEFLOW_SETUP_STAGE must be deps, extensions, or all.' >&2; exit 2;; esac
+if [ "$(uname -s)" != Linux ]; then
+  echo 'Generation requires Linux and an NVIDIA GPU. For the CPU-only editor, install requirements/editor.txt instead.' >&2
+  exit 1
+fi
+command -v "$PYTHON" >/dev/null || { echo "Python executable not found: $PYTHON. Set SPACEFLOW_SETUP_PYTHON to Python 3.10." >&2; exit 1; }
+if [ "$STAGE" = extensions ] && [ ! -x "$VENV/bin/python" ]; then
+  echo 'No generation environment exists. Run SPACEFLOW_SETUP_STAGE=deps bash setup.sh before building extensions.' >&2
+  exit 1
+fi
 if [ ! -x "$VENV/bin/python" ]; then
   "$PYTHON" -c 'import sys; assert sys.version_info[:2] == (3, 10), "Use Python 3.10 for SpaceFlow."'
   "$PYTHON" -m venv "$VENV"
@@ -27,7 +36,8 @@ fi
 
 if [ "$STAGE" != deps ]; then
   command -v nvcc >/dev/null || { echo 'Load the CUDA 12.8 toolkit before building extensions.' >&2; exit 1; }
-  "$VENV/bin/python" -c 'import torch; assert torch.cuda.is_available(), "Build and verify CUDA extensions on an allocated GPU node."'
+  "$VENV/bin/python" -c 'import importlib.util, sys; sys.exit(0 if importlib.util.find_spec("torch") else "PyTorch is missing. Run SPACEFLOW_SETUP_STAGE=deps bash setup.sh first.")'
+  "$VENV/bin/python" -c 'import torch; assert torch.cuda.is_available(), "No CUDA GPU is available. On Slurm, build extensions inside an allocated GPU job; do not build on a login node."'
   "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt flash-attn==2.8.3 --no-build-isolation
   "${PIP[@]}" install -c requirements/constraints.txt -c requirements/runtime-resolved-constraints.txt git+https://github.com/NVlabs/nvdiffrast.git@253ac4fcea7de5f396371124af597e6cc957bfae --no-build-isolation
   EXT_ROOT="${SPACEFLOW_EXTENSION_BUILD_ROOT:-$REPO_ROOT/.extension-build}"
@@ -49,3 +59,4 @@ fi
 echo "Activate the environment with: source $VENV/bin/activate"
 echo 'Place the PartField checkpoint at third_party/PartField/models/model_objaverse.ckpt.'
 echo 'Set SPACEFLOW_BLENDER_PATH to a working Blender executable.'
+echo 'Then run: python tools/doctor.py --gpu'
