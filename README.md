@@ -116,7 +116,7 @@ To try another asset, replace `--example-dir` with one of the
 
 ## Interactive editor
 
-The editor lets you build or import a primitive scaffold, adjust local controls,
+The editor lets you build or import a set of primitives, adjust local controls,
 set appearance prompts, and generate/download the result.
 
 
