@@ -1,171 +1,123 @@
 # SpaceFlow
 
-SpaceFlow: Part-Wise Spatial and Semantic Guidance for Controllable 3D
-Generation
+**Locally Controllable 3D Generation**
 
-SpaceFlow explores a practical question for text-to-3D systems: how can a user keep coarse geometric intent while still benefiting from a generative model's learned shape and appearance priors? The system uses a superquadric scene as an explicit control signal, applies local diffusion-time control over selected parts, and then refines the generated mesh with part-aware similarity guidance.
+SpaceFlow is a training-free pipeline for controlling the geometry and appearance
+of individual parts of a generated 3D asset. An editable superquadric scaffold
+expresses the intended shape; high/low control labels adjust geometric adherence,
+and global or per-part text/image conditions guide appearance.
 
-<video src="docs/media/sailboat_spin.mp4" controls muted loop playsinline poster="docs/media/sailboat_spin_poster.png" width="520"></video>
+[Project page](https://neilus03.github.io/spaceflow/) ·
+[Paper and supplement](https://neilus03.github.io/spaceflow/assets/SpaceFlow-paper.pdf) ·
+[Examples](examples/README.md) · [Verification](docs/verification.md)
 
+[![Recorded sailboat example](docs/media/sailboat_spin_poster.png)](docs/media/sailboat_spin.mp4)
 
-https://github.com/user-attachments/assets/c4c95db5-bb5f-4100-bb1a-42addd9a8e40
+*Recorded result from the original experiments. Click the image for the rotating preview.*
 
+> **Release candidate.** The fresh GPU build and end-to-end generation checks are
+> pending. See the [verification record](docs/verification.md) for completed checks
+> and limits. `v0.1.0` will be tagged after the GPU release checks pass.
 
+## What is included
 
-## Overview
+- The SpaceFlow generation pipeline, using TRELLIS and PartField.
+- A React/Three.js editor with primitive editing, high/low control labels,
+  global/local prompts, NPZ import/export, saved inputs, and generation results.
+- **83 small example bundles:** primitives, prompts, metadata, and recorded parameters.
+- Optional baseline runners, experiment replay, comparison rendering, and metrics.
+- Pinned Python dependencies, model revisions, native extension revisions, and tests.
 
-Given a text prompt and an editable set of superquadrics, SpaceFlow produces a textured 3D asset through three stages:
+Model weights and generated experiment results are separate artifacts. Running an
+example writes new results into the ignored `runs/` directory. The source package
+contains no SuperDec runs or large checkpoints.
 
-1. **Spatial scaffold.** The UI exports all superquadrics, a high-control subset, and a low-control mask or bounding box.
-2. **Structure generation.** TRELLIS generates sparse structure under SpaceControl constraints. Local-tau mode can apply different diffusion-time strengths to different spatial regions.
-3. **Part-aware refinement.** PartField features and similarity guidance refine the generated structure toward global and local text or image appearance conditions.
+## Requirements
 
-The repository is a minimal delivery version of the project. It keeps the runtime pipeline, the superquadric editor, experiment launchers, local TRELLIS pipeline configuration, and the vendored code needed to reproduce the course experiments.
+| Component | Editor and save/reopen service | Full generation |
+| --- | --- | --- |
+| Operating system | macOS or Linux | Linux x86-64 with an NVIDIA GPU |
+| Python | 3.10–3.12 | **3.10** |
+| Node.js | **24 recommended**, or 22.12+; npm included | Required only when running the editor |
+| GPU/toolkit | Not required | CUDA **12.8** toolkit and a compatible NVIDIA driver |
+| PyTorch | Not required | **2.8.0/cu128**, installed by `setup.sh` |
+| Blender | Not required | Blender **3.x**; original experiments used **3.0.1** |
+| Models | Not required | Pinned TRELLIS/CLIP models and the PartField checkpoint |
 
-## Method
+GPU memory requirements and runtime on the fresh release are not yet measured.
+Build CUDA extensions inside a GPU allocation on Slurm. Detailed installation
+and model-cache notes are in [Installation](docs/installation.md).
 
-Superquadrics are used as a compact, editable proxy for user intent. They are expressive enough to block out object parts, but simple enough to manipulate interactively. Each primitive can be tagged as high-control or low-control. In local-tau experiments, high-control regions preserve the scaffold more strongly while low-control regions allow the generative prior to move more freely.
-
-The local control variant passes the following signals into structure generation:
-
-- `spatial_control_mesh.ply`: full superquadric control mesh.
-- `high_control_spatial_control_mesh.ply`: subset of primitives that should be preserved more strongly.
-- `low_control_superquadric_mask.ply`: low-control region used for local-tau masking.
-- `shape_tau`, `shape_tau_high_control`, and `polyak_update_tau`: diffusion-time and model-averaging parameters for the local control schedule.
-
-After structure generation, the mesh is normalized through Blender/TRELLIS tooling, voxelized, embedded with PartField, and optimized with similarity losses. The current pipeline supports global appearance prompts plus per-superquadric local text or image prompts.
-
-## Qualitative Example
-
-The sailboat case study was generated from:
-
-- Prompt: `Sailboat`
-- Global appearance: `white`
-- Local appearance: `yellow` on four low-control primitives
-- Local-tau settings: low tau `3`, high tau `10`, Polyak tau `0.18`
-
-The figure above shows the intended control layout, the intermediate TRELLIS structure, and the final similarity-refined asset. The rotating preview is rendered from the resulting `out_sim.glb`.
-
-Regenerate the README media with:
-
-```bash
-python docs/render_readme_media.py /path/to/completed/sailboat/run
-```
-
-## Repository Layout
-
-- `run_local_tau.py`: main SpaceFlow pipeline entrypoint.
-- `config/default.yaml`: runtime configuration and local TRELLIS pipeline path.
-- `config/trellis_pipeline/pipeline.json`: mixed TRELLIS image/text model configuration used by spatial-control runs.
-- `sq_ui/app`: React/Vite superquadric editor.
-- `sq_ui/scripts/spaceflow_service.py`: HTTP service that saves SQ assets and launches local or Slurm runs.
-- `sq_ui/scripts/run_spaceflow_experiment.py`: multi-variant experiment runner.
-- `sq_ui/scripts/render_spaceflow_experiment_comparison.py`: CPU rasterizer for shared-view experiment figures.
-- `docs/render_readme_media.py`: headless renderer for README figures and rotating previews.
-- `lib`, `third_party`, `utils.py`: optimization, rendering, geometry, PartField, and TRELLIS runtime code.
-
-## Running
-
-Clone the `MINIMAL` branch for this runtime and UI. A shallow clone avoids
-downloading the older research history:
+## 1. Clone the release
 
 ```bash
-git clone --depth 1 --branch MINIMAL https://github.com/joanlafuente/spaceflow.git
+git clone --depth 1 --branch RELEASE https://github.com/joanlafuente/spaceflow.git
 cd spaceflow
 ```
 
-The generation pipeline requires Linux, Python 3.10, an NVIDIA GPU, and the CUDA
-12.8 toolkit. The editor and asset save/reopen service can also run without a GPU.
-The installer creates a separate `.venv` and pins PyTorch 2.8.0 with CUDA 12.8,
-Kaolin 0.18.0 from the matching wheel index, and the native renderer revisions.
-On a cluster, build the CUDA extensions inside a GPU allocation.
+The shallow clone retrieves the current source without downloading the large
+older research history. Existing research branches remain available.
+
+## 2. Open the editor without a GPU
+
+From the repository root, with Python 3.10–3.12 and Node.js available:
 
 ```bash
-bash setup.sh
-source .venv/bin/activate
-```
+python3 -m venv .venv-editor
+source .venv-editor/bin/activate
+python -m pip install -r requirements/editor.txt
 
-Installation can be split into dependency downloads and GPU extension builds:
-
-```bash
-SPACEFLOW_SETUP_STAGE=deps bash setup.sh
-# Run this second stage on an allocated GPU node with the CUDA 12.8 toolkit loaded:
-SPACEFLOW_SETUP_STAGE=extensions bash setup.sh
-```
-
-Build the editor with Node.js 22.12 or later:
-
-```bash
-cd sq_ui/app
-npm ci --include=optional
-npm run build
-npm test
-```
-
-From the repository root, start both the backend and editor:
-
-```bash
+(cd sq_ui/app && npm ci --include=optional)
+python tools/doctor.py --editor
 bash run.sh
 ```
 
-Then open the local URL printed by Vite. For SSH use, forward the editor port
-and backend port 11438 to your workstation. Keep the service on an allocated
-GPU node when it is expected to launch generation locally.
+Open the URL printed by Vite, normally **http://127.0.0.1:5173**. The launcher
+starts the asset service on **127.0.0.1:11438** and the editor on the printed port.
 
-For service-managed Slurm jobs launched from a login node, explicitly configure
-your valid allocation and partition. These values vary by institution:
-
-```bash
-export SQ_SPACEFLOW_SLURM_ACCOUNT=your_account
-export SQ_SPACEFLOW_SLURM_PARTITION=your_gpu_partition
-# Optional: SQ_SPACEFLOW_SLURM_GPUS, SQ_SPACEFLOW_SLURM_CONSTRAINT,
-# SQ_SPACEFLOW_SLURM_TIME, SQ_SPACEFLOW_SLURM_EXCLUDE, SQ_SPACEFLOW_SLURM_EXTRA_ARGS.
-bash run.sh
-```
-
-The service writes assets and runs under `spaceflow_runtime/` by default. Override paths with `SQ_SPACEFLOW_STORAGE_ROOT`, `SQ_SPACEFLOW_ASSET_ROOT`, or `SQ_SPACEFLOW_RUN_ROOT`.
-
-## Runtime Notes
-
-The pipeline expects TRELLIS and PartField checkpoints to be available through the configured Hugging Face cache or online download. The PartField checkpoint is expected at:
+To open the supplied teacup directly, append this query to the printed editor URL:
 
 ```text
-third_party/PartField/models/model_objaverse.ckpt
+http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
 ```
 
-For online Hugging Face access, keep `SQ_SPACEFLOW_OFFLINE_CACHE=0` or unset it. Offline cache mode can be enabled explicitly with:
+The example restores primitive names, control labels, global/local text prompts,
+and saved run settings. You can edit primitives, download NPZs, or save and reopen
+inputs using the service. **Generation needs the full GPU environment below.**
+Stop the editor and service with `Ctrl+C`.
+
+NPZs preserve image-path metadata, **not uploaded image bytes**. Supply the image
+files again after reopening an image-conditioned scene. See [UI guide](sq_ui/README.md).
+
+## 3. Generate a textured teacup
+
+Run these steps from the repository root on a Linux GPU machine, with Python
+3.10 and the CUDA 12.8 toolkit available. On Slurm, obtain a GPU allocation first.
 
 ```bash
-SQ_SPACEFLOW_OFFLINE_CACHE=1 python sq_ui/scripts/spaceflow_service.py
-```
-
-The renderer uses Blender for pipeline mesh normalization. Set `SPACEFLOW_BLENDER_PATH=/path/to/blender` to use a specific Blender install.
-
-Stage the recorded TRELLIS/CLIP revisions and the official PartField checkpoint
-before running the pipeline:
-
-```bash
+SPACEFLOW_SETUP_PYTHON=python3.10 bash setup.sh
+source .venv/bin/activate
 python tools/cache_models.py --cache-dir spaceflow_runtime/huggingface
 export HF_HOME="$PWD/spaceflow_runtime/huggingface"
-export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 ```
 
-The cache tool downloads the revisions in `requirements/model-revisions.json`
-and checks that PartField matches the SHA256 of the recovered checkpoint.
-This stages the mixed text/structure pipeline used by the bundled examples.
-Image appearance conditioning requires additional image-model downloads and has
-not been checked in the fresh verification environment.
-
-## Replay an Example End to End
-
-The `examples/` directory contains 83 recovered primitive bundles and their
-saved prompts, conditions, and experiment parameters. Model checkpoints and
-previously generated results are separate data artifacts.
-
-After installing the runtime and supplying the PartField checkpoint and Blender,
-run the SpaceFlow local control variant for the teacup example:
+Install Blender if it is not already available:
 
 ```bash
+mkdir -p spaceflow_runtime/tools
+curl --fail --location \
+  https://download.blender.org/release/Blender3.0/blender-3.0.1-linux-x64.tar.xz \
+  --output spaceflow_runtime/tools/blender-3.0.1-linux-x64.tar.xz
+tar -xf spaceflow_runtime/tools/blender-3.0.1-linux-x64.tar.xz -C spaceflow_runtime/tools
+export SPACEFLOW_BLENDER_PATH="$PWD/spaceflow_runtime/tools/blender-3.0.1-linux-x64/blender"
+```
+
+If you already have Blender 3.x, set `SPACEFLOW_BLENDER_PATH` to that executable
+instead. Then check the environment and replay the supplied SpaceFlow variant:
+
+```bash
+python tools/doctor.py --gpu
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 python tools/replay_example.py \
   --example-dir examples/blue_teacup_full_experiment \
   --output-dir runs/blue_teacup \
@@ -173,55 +125,108 @@ python tools/replay_example.py \
 python tools/check_replay_outputs.py runs/blue_teacup
 ```
 
-Choose a new output directory for each replay. The tool copies the inputs,
-relocates paths, and preserves the saved prompts, seeds, and optimization settings
-(including the 300-step refinement). Omitting `--only` runs all saved experiment
-variants; selecting a dependent variant also includes its required source variant.
-Use `--prepare-only` to inspect the relocated configuration before generation.
+The expected textured asset is:
 
-The expected final asset is `output/01_local_tau3_tau10_polyak0p18/out_sim.glb`.
-The output checker requires a successful run marker and finite, nonempty mesh
-geometry with a baked texture and valid UV coordinates. It does not establish
-visual quality or reproduction of all 83 cases.
-
-For Slurm verification, submit from the repository root after loading your
-cluster's compiler, CUDA 12.8, Python, and Blender modules:
-
-```bash
-sbatch --account=your_account --partition=your_gpu_partition tools/verify_spaceflow.sbatch
+```text
+runs/blue_teacup/output/01_local_tau3_tau10_polyak0p18/out_sim.glb
 ```
 
-Set `SPACEFLOW_BUILD_EXTENSIONS=1` to build the native extensions at the beginning
-of this job. `SPACEFLOW_VENV`, `SPACEFLOW_VERIFY_EXAMPLE`, and
-`SPACEFLOW_VERIFY_VARIANT` select a separate environment or another saved case.
-The default job requests one GPU, four CPUs, 64 GB RAM, and at most four hours.
+Use a **new output directory** for each run. This replay preserves the saved
+prompts and settings, including 300 refinement steps. The checker requires
+successful completion, nonempty finite geometry, a baked texture, and valid UVs.
+Visual quality must also be inspected; this check does not guarantee perceptual
+reproduction of every research example.
 
-## Verification
+To prepare the configuration without generation, add `--prepare-only` to the
+replay command. Three useful starting examples are the teacup,
+`01_a_chair_full_experiment`, and `13_sailboat_full_experiment`.
 
-CPU workflow checks cover asset save/history/reopen and path-safe example replay:
+## 4. Generate through the UI
+
+On the allocated GPU machine, with the generation environment activated and the
+model/Blender variables configured:
+
+```bash
+source .venv/bin/activate
+python tools/doctor.py --gpu
+bash run.sh
+```
+
+1. Open the editor and import a supplied NPZ or select a preset.
+2. Edit primitives and choose high/low geometry control for each part.
+3. Open the **SpaceFlow** panel, set the shape prompt and global appearance,
+   and optionally set per-part appearance conditions.
+4. Start a SpaceFlow run, follow its status/log, and inspect the final result.
+5. Download the final GLB or download the edited input bundle for reuse.
+
+For SSH access, forward the **editor's printed port** and the service port:
+
+```bash
+ssh -L 5173:127.0.0.1:5173 -L 11438:127.0.0.1:11438 user@gpu-host
+```
+
+Use the full runtime for generation; the CPU editor environment only handles
+editing and saved inputs. For a service on a cluster login node, configure your
+valid Slurm account/partition as described in [Research workflows](docs/research.md).
+
+Text-conditioned examples use the pinned cache above. **Image appearance
+conditioning needs additional TRELLIS image/DINOv2 downloads and a network-enabled
+first run**; its fresh verification is pending. See [Installation](docs/installation.md).
+
+## Optional research workflows
+
+The example replay command runs only SpaceFlow when `--only` selects the variant
+above. Omitting `--only` runs the recorded comparisons as well and uses more GPU
+time. See [Research workflows](docs/research.md) for baselines, Slurm jobs, metrics,
+and CPU comparison rendering.
+
+## Checks and troubleshooting
+
+With the CPU editor environment activated, from the repository root:
 
 ```bash
 python -m unittest discover -s tests -v
+python tools/validate_examples.py
+(cd sq_ui/app && npm test && npm run build)
 ```
 
-The recovered release has passed these checks, Python/shell syntax checks, and a
-clean editor build. The pinned Python dependencies install in a fresh Linux
-environment and pass `pip check`. CUDA extension installation and a fresh GPU
-pipeline run have not yet been completed. Treat this as a release candidate
-until both pass. See [the verification record](docs/verification.md) for scope.
+GitHub CI repeats the CPU workflows and editor build. GPU tests require an
+allocated GPU and are recorded separately. The [verification record](docs/verification.md)
+distinguishes input/configuration checks from completed generation.
 
-## Attribution
+| Symptom | Action |
+| --- | --- |
+| `cgi` missing / Python 3.13+ | Use Python 3.10–3.12 for the editor service, or 3.10 for generation. |
+| Editor dependencies or native binding missing | Run `npm ci --include=optional` in `sq_ui/app` with a supported Node.js version. |
+| `nvcc` missing | Load/install the CUDA 12.8 toolkit before extension compilation. |
+| CUDA unavailable | Check the driver and GPU allocation; run `python tools/doctor.py --gpu` on the GPU node. |
+| Missing CUDA extension | Run `SPACEFLOW_SETUP_STAGE=extensions bash setup.sh` inside the GPU allocation. |
+| Missing models | Run `tools/cache_models.py` and use the same directory for `HF_HOME`. |
+| Missing Blender or renderer failure | Set `SPACEFLOW_BLENDER_PATH`; the error includes Blender's stderr. |
+| Output directory already exists | Choose a new replay output directory so previous results are preserved. |
+| Images unavailable offline | Allow the first image-conditioned run to download the additional models. |
 
-SpaceFlow uses [GuideFlow3D](https://github.com/GradientSpaces/GuideFlow3D),
+## Citation and attribution
+
+The preprint citation follows the [project page](https://neilus03.github.io/spaceflow/):
+
+```bibtex
+@misc{delafuente2026spaceflow,
+  title  = {SpaceFlow: Locally Controllable 3D Generation},
+  author = {De La Fuente, Neil and Lafuente Baeza, Joan and
+            Sayfiddinov, Mukhammadali and Scharitzer, Felicia and
+            Pollefeys, Marc and Çelen, Ata and
+            Deb Sarkar, Sayan and Fedele, Elisabetta},
+  year   = {2026},
+  note   = {Preprint}
+}
+```
+
+Please also record the software commit used in your experiments.
+
+SpaceFlow builds on [GuideFlow3D](https://github.com/GradientSpaces/GuideFlow3D),
 [TRELLIS](https://github.com/microsoft/TRELLIS), and
-[PartField](https://github.com/nv-tlabs/PartField), with project-specific runtime
-changes. Vendored components retain their own license files and source notices;
-the root license does not replace their terms. The native dependencies and their
-selected revisions are listed in `requirements/native-revisions.json`.
-
-## Status
-
-This is a research release candidate. Generated experiment outputs, Slurm logs,
-downloaded model weights, and large checkpoints are excluded from version control.
-The bundled examples contain inputs and saved configurations. The media in
-`docs/media/` is a qualitative snapshot from the original experiments.
+[PartField](https://github.com/nv-tlabs/PartField).
+The repository's [Apache-2.0 license](LICENSE) does not replace upstream terms.
+**PartField is restricted to non-commercial research and educational use.**
+See [third-party notices](THIRD_PARTY_NOTICES.md) and the component license files.

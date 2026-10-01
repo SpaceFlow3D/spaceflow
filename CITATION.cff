@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Please cite the SpaceFlow preprint and record the software commit used."
+type: software
+title: "SpaceFlow: Locally Controllable 3D Generation"
+url: "https://github.com/joanlafuente/spaceflow"
+repository-code: "https://github.com/joanlafuente/spaceflow"
+license: Apache-2.0
+authors:
+  - family-names: "De La Fuente"
+    given-names: "Neil"
+  - family-names: "Lafuente Baeza"
+    given-names: "Joan"
+  - family-names: "Sayfiddinov"
+    given-names: "Mukhammadali"
+  - family-names: "Scharitzer"
+    given-names: "Felicia"
+  - family-names: "Pollefeys"
+    given-names: "Marc"
+  - family-names: "Çelen"
+    given-names: "Ata"
+  - family-names: "Deb Sarkar"
+    given-names: "Sayan"
+  - family-names: "Fedele"
+    given-names: "Elisabetta"
