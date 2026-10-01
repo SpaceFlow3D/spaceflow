@@ -60,7 +60,7 @@
   <a href="https://github.com/joanlafuente/spaceflow/releases"><img src="docs/media/readme/link-downloads.svg" width="134" height="36" alt="Downloads"></a>
 </p>
 
-https://github.com/user-attachments/assets/dc72c902-e415-4aea-abb6-e576b5b5705e
+https://github.com/user-attachments/assets/8bda9548-ae1d-402b-9ba9-2d610e6743f1
 
 <p align="center">
   <a href="#installation"><strong>Installation</strong></a> &nbsp; · &nbsp;
