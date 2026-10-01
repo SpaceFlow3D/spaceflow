@@ -5,7 +5,7 @@ per-part appearance prompts, NPZ import/export, saved inputs, and run results.
 
 ## Start locally
 
-From the repository root, follow the [CPU editor quickstart](../README.md#2-open-the-editor-without-a-gpu).
+From the repository root, follow the [CPU editor quickstart](../README.md#editor-without-a-gpu).
 It installs `requirements/editor.txt` and the frontend dependencies, then starts
 both services with `bash run.sh`.
 
@@ -38,7 +38,7 @@ Generation inputs and result storage are controlled by the variables in
 
 ## Generate a result
 
-Use the [full GPU environment](../README.md#3-generate-a-textured-teacup), activate
+Use the [full GPU environment](../README.md#installation), activate
 `.venv`, and set the model-cache and Blender variables before `bash run.sh`. The
 CPU editor environment does not include generation dependencies.
 

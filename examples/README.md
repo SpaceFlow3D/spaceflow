@@ -1,4 +1,4 @@
-# Recovered SpaceFlow inputs
+# SpaceFlow example inputs
 
 These 83 small example bundles contain the superquadric primitives, global and
 local prompts, scene metadata, and saved experiment parameters. Each example
@@ -28,5 +28,5 @@ relocated configuration without running the GPU pipeline. Omitting `--only`
 runs all saved variants, including baselines, and needs more GPU time.
 
 The bundles contain inputs and configurations, not generated meshes or model
-weights. A fresh end-to-end GPU verification remains pending; valid historical
-outputs alone do not establish a fresh installation's reproducibility.
+weights. See the [main README](../README.md) for installation and the
+[verification record](../docs/verification.md) for the cases generated freshly.

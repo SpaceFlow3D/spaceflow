@@ -2,114 +2,74 @@
 
 **Locally Controllable 3D Generation**
 
-SpaceFlow is a training-free pipeline for controlling the geometry and appearance
-of individual parts of a generated 3D asset. An editable superquadric scaffold
-expresses the intended shape; high/low control labels adjust geometric adherence,
-and global or per-part text/image conditions guide appearance.
+SpaceFlow generates textured 3D assets from editable geometric primitives. Choose
+which parts should follow your input closely, allow other parts to be completed
+by the generator, and guide their appearance with text or reference images.
+No training or fine-tuning is required.
 
 [Project page](https://spaceflow3d.github.io/) ·
-[Paper and supplement](https://neilus03.github.io/spaceflow/assets/SpaceFlow-paper.pdf) ·
-[Examples](examples/README.md) · [Verification](docs/verification.md)
+[Paper & supplement](https://spaceflow3d.github.io/assets/SpaceFlow-paper.pdf) ·
+[Interactive examples](https://spaceflow3d.github.io/#explore) ·
+[Downloads](https://github.com/joanlafuente/spaceflow/releases)
 
-![Freshly verified sailboat result, viewed from four angles](docs/media/verified_sailboat.png)
+[![SpaceFlow teaser: local geometry control, text and image appearance control, and generated 3D assets](https://spaceflow3d.github.io/assets/figures/teaser.webp)](https://spaceflow3d.github.io/#video)
 
-*Fresh 300-step sailboat generation on an RTX 4090, verified on 2026-10-01.
-The primitive scaffold controls geometry; global and per-part prompts guide appearance.*
+**[▶ Watch the teaser](https://spaceflow3d.github.io/#video)**
 
-> **v0.1.0:** fresh 300-step teacup, chair, and sailboat generation, image
-> conditioning, retained comparisons, and browser generation/download passed.
-> See the [verification record](docs/verification.md) for the exact scope and
-> observed quality limits. [Release downloads](https://github.com/joanlafuente/spaceflow/releases/tag/v0.1.0)
-> include the thin source archive and separate generated sample GLBs.
+[Installation](#installation) · [Generate an example](#generate-an-example) ·
+[Interactive editor](#interactive-editor) · [More documentation](docs/README.md)
 
-## What is included
+## Installation
 
-- The SpaceFlow generation pipeline, using TRELLIS and PartField.
-- A React/Three.js editor with primitive editing, high/low control labels,
-  global/local prompts, NPZ import/export, saved inputs, and generation results.
-- **83 small example bundles:** primitives, prompts, metadata, and recorded parameters.
-- Optional baseline runners, experiment replay, comparison rendering, and metrics.
-- Pinned Python dependencies, model revisions, native extension revisions, and tests.
+The generation steps below run on a **Linux GPU machine**. To author primitives
+on your laptop, use the [editor without a GPU](#editor-without-a-gpu).
 
-Model weights and generated experiment results are separate artifacts. Running an
-example writes new results into the ignored `runs/` directory. The source package
-contains no SuperDec runs or large checkpoints.
+### Requirements
 
-## Requirements
+| Component | Generation |
+| --- | --- |
+| System | Linux x86-64; use a distribution supported by CUDA 12.8 |
+| Python | **3.10**, with `venv` support |
+| GPU | NVIDIA GPU; **24 GB VRAM recommended** |
+| CUDA | **12.8 toolkit**, including `nvcc`, and a compatible NVIDIA driver |
+| Blender | **3.0.1** in the instructions below, or an installed Blender 3.x |
+| Storage | About **60 GB free** for dependencies, models, tools, and initial outputs |
+| Node.js | **24 with npm** for the interactive editor; not needed for command-line generation |
 
-| Component | Editor and save/reopen service | Full generation |
-| --- | --- | --- |
-| Operating system | macOS or Linux | Linux x86-64 with an NVIDIA GPU |
-| Python | 3.10–3.12 | **3.10** |
-| Node.js | **24 recommended**, or 22.12+; npm included | Required only when running the editor |
-| GPU/toolkit | Not required | CUDA **12.8** toolkit and a compatible NVIDIA driver |
-| PyTorch | Not required | **2.8.0/cu128**, installed by `setup.sh` |
-| Blender | Not required | Blender **3.x**; original experiments used **3.0.1** |
-| Models | Not required | Pinned TRELLIS/CLIP models and the PartField checkpoint |
+Install Python and the CUDA toolkit before running the setup script. On Slurm,
+obtain a GPU allocation before compiling extensions. See the
+[installation guide](docs/installation.md) for cluster setup, compiler/platform
+notes, and alternative tool locations.
 
-Full generation was tested on a **24 GB RTX 4090**. The five-case verification
-suite took about **18 minutes**, with a sampled whole-device peak of **19.1 GiB**;
-these are observations for the recorded cases. Smaller GPUs were not verified.
-Reserve about **60 GiB of work storage** for a fresh installation, model/tool
-caches, and verification outputs. The model caches and installed PartField copy
-used about 12 GiB; larger datasets need additional storage.
-Build CUDA extensions on the GPU machine or inside a Slurm GPU allocation.
-Detailed installation and model-cache notes are in [Installation](docs/installation.md).
-
-## 1. Clone the release
+### 1. Clone and install
 
 ```bash
 git clone --depth 1 --branch RELEASE https://github.com/joanlafuente/spaceflow.git
 cd spaceflow
-```
 
-The shallow clone retrieves the current source without downloading the large
-older research history. Existing research branches remain available.
-
-## 2. Open the editor without a GPU
-
-From the repository root, with Python 3.10–3.12 and Node.js available:
-
-```bash
-python3 -m venv .venv-editor
-source .venv-editor/bin/activate
-python -m pip install -r requirements/editor.txt
-
-(cd sq_ui/app && npm ci --include=optional)
-python tools/doctor.py --editor
-bash run.sh
-```
-
-Open the URL printed by Vite, normally **http://127.0.0.1:5173**. The launcher
-starts the asset service on **127.0.0.1:11438** and the editor on the printed port.
-
-To open the supplied teacup directly, append this query to the printed editor URL:
-
-```text
-http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
-```
-
-The example restores primitive names, control labels, global/local text prompts,
-and saved run settings. You can edit primitives, download NPZs, or save and reopen
-inputs using the service. **Generation needs the full GPU environment below.**
-Stop the editor and service with `Ctrl+C`.
-
-NPZs preserve image-path metadata, **not uploaded image bytes**. Supply the image
-files again after reopening an image-conditioned scene. See [UI guide](sq_ui/README.md).
-
-## 3. Generate a textured teacup
-
-Run these steps from the repository root on a Linux GPU machine, with Python
-3.10 and the CUDA 12.8 toolkit available. On Slurm, obtain a GPU allocation first.
-
-```bash
 SPACEFLOW_SETUP_PYTHON=python3.10 bash setup.sh
 source .venv/bin/activate
-python tools/cache_models.py --cache-dir spaceflow_runtime/huggingface
-export HF_HOME="$PWD/spaceflow_runtime/huggingface"
 ```
 
-Install Blender if it is not already available:
+The setup script creates `.venv`, installs the pinned Python dependencies, and
+builds the CUDA extensions. **Run all following commands from this repository
+root**, with `.venv` activated.
+
+### 2. Download the models
+
+```bash
+export HF_HOME="$PWD/spaceflow_runtime/huggingface"
+python tools/cache_models.py --cache-dir "$HF_HOME"
+```
+
+This downloads the required TRELLIS, CLIP, and PartField weights and places the
+PartField checkpoint in its expected location. The first download needs internet
+access. Image appearance conditioning needs the
+[additional models described below](#use-reference-images).
+
+### 3. Configure Blender
+
+Install Blender 3.0.1 inside the project:
 
 ```bash
 mkdir -p spaceflow_runtime/tools
@@ -120,114 +80,167 @@ tar -xf spaceflow_runtime/tools/blender-3.0.1-linux-x64.tar.xz -C spaceflow_runt
 export SPACEFLOW_BLENDER_PATH="$PWD/spaceflow_runtime/tools/blender-3.0.1-linux-x64/blender"
 ```
 
-If you already have Blender 3.x, set `SPACEFLOW_BLENDER_PATH` to that executable
-instead. Then check the environment and replay the supplied SpaceFlow variant:
+If Blender 3.x is already installed, skip the download and set
+`SPACEFLOW_BLENDER_PATH` to its executable. Check that the environment is ready:
 
 ```bash
 python tools/doctor.py --gpu
+```
+
+## Generate an example
+
+Start with the supplied **blue teacup**. This command uses its saved primitives,
+prompts, and generation settings:
+
+```bash
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 python tools/replay_example.py \
   --example-dir examples/blue_teacup_full_experiment \
   --output-dir runs/blue_teacup \
   --only 01_local_tau3_tau10_polyak0p18
-python tools/check_replay_outputs.py runs/blue_teacup
 ```
 
-The expected textured asset is:
+The final textured mesh is saved at:
 
 ```text
 runs/blue_teacup/output/01_local_tau3_tau10_polyak0p18/out_sim.glb
 ```
 
-Use a **new output directory** for each run. This replay preserves the saved
-prompts and settings, including 300 refinement steps. The checker requires
-successful completion, nonempty finite geometry, a baked texture, and valid UVs.
-Visual quality must also be inspected; this check does not guarantee perceptual
-reproduction of every research example.
+Open the GLB in Blender or another glTF viewer. Inputs, configuration, and logs
+are saved alongside the output. **Choose a new `--output-dir` for each run.**
+To try another asset, replace `--example-dir` with one of the
+[83 supplied examples](examples/README.md).
 
-To prepare the configuration without generation, add `--prepare-only` to the
-replay command. Three useful starting examples are the teacup,
-`01_a_chair_full_experiment`, and `13_sailboat_full_experiment`.
+## Interactive editor
 
-## 4. Generate through the UI
+The editor lets you build or import a primitive scaffold, adjust local controls,
+set appearance prompts, and generate/download the result.
 
-On the allocated GPU machine, with the generation environment activated and the
-model/Blender variables configured:
+[![SpaceFlow workflow demonstration: editing primitives and assigning appearance to individual parts](https://spaceflow3d.github.io/assets/figures/video-poster.webp)](https://spaceflow3d.github.io/#demonstration)
+
+**[▶ Watch the editor workflow](https://spaceflow3d.github.io/#demonstration)**
+
+### Start the editor on your GPU machine
+
+After completing installation, run from the repository root:
 
 ```bash
 source .venv/bin/activate
-python tools/doctor.py --gpu
+export HF_HOME="$PWD/spaceflow_runtime/huggingface"
+export SPACEFLOW_BLENDER_PATH="$PWD/spaceflow_runtime/tools/blender-3.0.1-linux-x64/blender"
+export SQ_SPACEFLOW_OFFLINE_CACHE=1
+
+(cd sq_ui/app && npm ci --include=optional)
 bash run.sh
 ```
 
-1. Open the editor and import a supplied NPZ or select a preset.
-2. Edit primitives and choose high/low geometry control for each part.
-3. Open the **SpaceFlow** panel, set the shape prompt and global appearance,
-   and optionally set per-part appearance conditions.
-4. Start a SpaceFlow run, follow its status/log, and inspect the final result.
-5. Download the final GLB or download the edited input bundle for reuse.
+If you use another Blender installation, set its path instead. Open the URL
+printed by the launcher, normally **http://127.0.0.1:5173**. Keep this terminal
+running; `Ctrl+C` stops the editor and its service.
 
-For SSH access, forward the **editor's printed port** and the service port:
+Load the teacup directly by opening:
 
-```bash
-ssh -L 5173:127.0.0.1:5173 -L 11438:127.0.0.1:11438 user@gpu-host
+```text
+http://127.0.0.1:5173/?npz=examples/blue_teacup_full_experiment/inputs/all.npz
 ```
 
-Use the full runtime for generation; the CPU editor environment only handles
-editing and saved inputs. For a service on a cluster login node, configure your
-valid Slurm account/partition as described in [Research workflows](docs/research.md).
+If the launcher prints another port, use that port in the URL.
 
-Text-conditioned examples use the pinned cache above. For **image appearance
-conditioning**, stage the additional models with `tools/cache_models.py --include-image`
-and use the recorded DINOv2 source/weight and U2Net caches. A fresh image-conditioned
-sailboat passed the release checks. See [Installation](docs/installation.md) for
-the cache variables and commands.
+### Edit, generate, and download
 
-## Optional research workflows
+1. **Edit the shape.** Select a primitive in **Scene** and change its scale,
+   position, rotation, or deformation in **Properties**.
+2. **Choose geometry control.** **High** encourages closer adherence to the
+   primitive; **Low** gives the generator more freedom. Keep at least one visible
+   high-control and one low-control primitive.
+3. **Set appearance.** Open **SpaceFlow**. Enter the **Shape prompt** (for example,
+   `a teacup`) and choose the global text under **Texture guidance** (for example,
+   `white ceramic`). Select a primitive and use **Local texture → Text override**
+   for its appearance (for example, `blue ceramic`). An empty override uses the
+   global condition.
+4. **Generate.** Leave **Dry run** unchecked and click **Run**. Follow progress
+   and the run log in the SpaceFlow panel.
+5. **Inspect and download.** When the run succeeds, click **Inspect mesh**, then
+   **Export → Download GLB mesh**.
 
-The example replay command runs only SpaceFlow when `--only` selects the variant
-above. Omitting `--only` runs the recorded comparisons as well and uses more GPU
-time. See [Research workflows](docs/research.md) for baselines, Slurm jobs, metrics,
-and CPU comparison rendering.
+**Save inputs** stores the scene for reopening through **Show saved**. Use the
+**Export** menu to download primitive NPZ files for later editing or replay.
+Generated UI runs are stored in
+`spaceflow_runtime/sq_ui_runs/<run-id>/output/`; the final asset is `out_sim.glb`.
 
-## Checks and troubleshooting
+### Connect to a remote GPU
 
-With the CPU editor environment activated, from the repository root:
+Run the editor on the GPU machine. In a separate terminal on your laptop,
+replace `user@gpu-host` with your SSH login and forward both ports:
 
 ```bash
-python -m unittest discover -s tests -v
-python tools/validate_examples.py
-(cd sq_ui/app && npm test && npm run build)
+ssh -N -L 5173:127.0.0.1:5173 -L 11438:127.0.0.1:11438 user@gpu-host
 ```
 
-The [GitHub CI workflow](.github/workflows/ci.yml) repeats the CPU workflows and
-editor build on every `RELEASE` push and pull request. GPU tests require an
-allocated GPU and are recorded separately. The [verification record](docs/verification.md)
-distinguishes input/configuration checks from completed generation.
+Keep the SSH terminal open and visit **http://127.0.0.1:5173** on your laptop.
+Use the editor's printed port if it differs from 5173. See the [UI guide](sq_ui/README.md) for custom ports and
+[cluster instructions](docs/research.md) for Slurm.
 
-The release passed **23 CPU tests**, **5 UI tests**, the production UI build,
-all **83 example preparation checks**, and the recorded GPU/browser workflows.
-Generated meshes remain research outputs: the checked teacup has a filled top,
-faceting, and visible seams. Inspect assets before using them; all 83 examples
-were validated as inputs, and the cases in the verification record were generated
-freshly. Saved parameters and output hashes support reproducibility; byte-identical
-or perceptually identical results are not claimed.
+### Use reference images
 
-| Symptom | Action |
+Before your first image-conditioned run, stop the editor with `Ctrl+C` and stage
+the additional models from the repository root, with `.venv` activated:
+
+```bash
+export HF_HOME="$PWD/spaceflow_runtime/huggingface"
+export TORCH_HOME="$PWD/spaceflow_runtime/torch"
+export U2NET_HOME="$PWD/spaceflow_runtime/u2net"
+unset HF_HUB_OFFLINE TRANSFORMERS_OFFLINE
+python tools/cache_models.py --cache-dir "$HF_HOME" --include-image
+python tools/doctor.py --gpu --image
+bash run.sh
+```
+
+Choose **Image** under **Texture guidance**, upload a global reference, and
+optionally assign reference images to selected primitives in **Local texture**.
+Keep the cache variables above set when restarting the editor.
+
+NPZ files store image paths, **not the image bytes**. Reattach image files when
+reopening an image-conditioned scene.
+
+## Editor without a GPU
+
+For primitive editing and input preparation on macOS or Linux, use Python
+**3.10–3.12** and Node.js **24**. From the repository root:
+
+```bash
+python3 -m venv .venv-editor
+source .venv-editor/bin/activate
+python -m pip install -r requirements/editor.txt
+(cd sq_ui/app && npm ci --include=optional)
+bash run.sh
+```
+
+Open the printed URL and import an example NPZ. You can edit, save/reopen, and
+export inputs. To generate an asset, run the editor with the GPU environment
+above or transfer the inputs to your GPU machine.
+
+## Examples and documentation
+
+Good starting points in [`examples/`](examples/README.md):
+
+| Asset | Example directory |
 | --- | --- |
-| `cgi` missing / Python 3.13+ | Use Python 3.10–3.12 for the editor service, or 3.10 for generation. |
-| Editor dependencies or native binding missing | Run `npm ci --include=optional` in `sq_ui/app` with a supported Node.js version. |
-| `nvcc` missing | Load/install the CUDA 12.8 toolkit before extension compilation. |
-| CUDA unavailable | Check the driver and GPU allocation; run `python tools/doctor.py --gpu` on the GPU node. |
-| Missing CUDA extension | Run `SPACEFLOW_SETUP_STAGE=extensions bash setup.sh` inside the GPU allocation. |
-| Missing models | Run `tools/cache_models.py` and use the same directory for `HF_HOME`. |
-| Missing Blender or renderer failure | Set `SPACEFLOW_BLENDER_PATH`; the error includes Blender's stderr. |
-| Output directory already exists | Choose a new replay output directory so previous results are preserved. |
-| Images unavailable offline | Stage with `tools/cache_models.py --include-image`; use the same `HF_HOME`, `TORCH_HOME`, and `U2NET_HOME`. |
+| Blue teacup | `examples/blue_teacup_full_experiment` |
+| Chair | `examples/01_a_chair_full_experiment` |
+| Sailboat | `examples/13_sailboat_full_experiment` |
 
-## Citation and attribution
+Each bundle includes primitives, prompts, metadata, and a replay configuration.
+Use `inputs/all.npz` to open it in the editor, or its directory with
+`tools/replay_example.py`.
 
-The preprint citation follows the [project page](https://spaceflow3d.github.io/):
+The [documentation index](docs/README.md) covers installation troubleshooting,
+UI settings, Slurm, baselines, comparisons, and the release verification record.
+For questions or bugs, [open an issue](https://github.com/joanlafuente/spaceflow/issues).
+
+## Citation
+
+If you use SpaceFlow in your research, please cite:
 
 ```bibtex
 @misc{delafuente2026spaceflow,
@@ -241,11 +254,12 @@ The preprint citation follows the [project page](https://spaceflow3d.github.io/)
 }
 ```
 
-Please also record the software commit used in your experiments.
+## Acknowledgements and license
 
 SpaceFlow builds on [GuideFlow3D](https://github.com/GradientSpaces/GuideFlow3D),
 [TRELLIS](https://github.com/microsoft/TRELLIS), and
 [PartField](https://github.com/nv-tlabs/PartField).
-The repository's [Apache-2.0 license](LICENSE) does not replace upstream terms.
-**PartField is restricted to non-commercial research and educational use.**
-See [third-party notices](THIRD_PARTY_NOTICES.md) and the component license files.
+
+SpaceFlow is released under [Apache-2.0](LICENSE). **PartField is restricted to
+non-commercial research and educational use.** See
+[third-party notices](THIRD_PARTY_NOTICES.md) for component licenses and attribution.

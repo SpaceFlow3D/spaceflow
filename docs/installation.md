@@ -137,3 +137,18 @@ The [verification record](verification.md) documents those separate checks.
 | `SPACEFLOW_BLENDER_PATH` | Blender executable used for mesh normalization. |
 
 Keep model/download environments and runtime data outside version control.
+
+## Troubleshooting
+
+| Symptom | Action |
+| --- | --- |
+| `cgi` missing / Python 3.13+ | Use Python 3.10–3.12 for the editor service, or 3.10 for generation. |
+| Editor dependencies or native binding missing | Run `npm ci --include=optional` in `sq_ui/app` with a supported Node.js version. |
+| `nvcc` missing | Load/install the CUDA 12.8 toolkit before extension compilation. |
+| CUDA unavailable | Check the driver and GPU allocation; run `python tools/doctor.py --gpu` on the GPU node. |
+| Missing CUDA extension | Run `SPACEFLOW_SETUP_STAGE=extensions bash setup.sh` inside the GPU allocation. |
+| Missing models | Run `tools/cache_models.py` and use the same directory for `HF_HOME`. |
+| Missing Blender or renderer failure | Set `SPACEFLOW_BLENDER_PATH`; inspect the reported Blender stderr. |
+| Output directory already exists | Choose a new replay output directory so previous results are preserved. |
+| Images unavailable offline | Stage with `tools/cache_models.py --include-image`; use the same `HF_HOME`, `TORCH_HOME`, and `U2NET_HOME`. |
+| Editor service port is occupied | Stop the existing service or choose `SQ_SPACEFLOW_PORT`; update the SSH forward if applicable. |
