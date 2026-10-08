@@ -28,7 +28,7 @@ the accepted GLBs with the corrected control-color and appearance labels.
 | Comparisons | All **seven** retained teacup variants passed: local/global control, the copied local-routing result, raw TRELLIS, fixed-structure appearance FM, and fixed-structure GuideFlow appearance FM. Geometry and texture figures rendered successfully. |
 | Browser | Chrome imported the teacup; edited a primitive name/scale and global/local prompts; saved and reopened inputs in a new session; started a real 300-step GPU generation; displayed its textured result. |
 | Download | Final GLB downloaded through the UI; SHA256 matched the server file and local geometry/UV/texture checks passed. All **11 matrix GLBs**, including the copied variant, were also downloaded and validated. |
-| GitHub CI | Three jobs passed at the generation commit: Linux/Python 3.10 and macOS/Python 3.12 CPU/example checks, plus UI tests/build. [Recorded run](https://github.com/joanlafuente/spaceflow/actions/runs/36832522991). [Current RELEASE checks](https://github.com/joanlafuente/spaceflow/actions?query=branch%3ARELEASE) record later publication commits. |
+| GitHub CI | Three jobs passed at the generation commit: Linux/Python 3.10 and macOS/Python 3.12 CPU/example checks, plus UI tests/build. [Recorded run](https://github.com/joanlafuente/spaceflow/actions/runs/36832522991). [Current main checks](https://github.com/SpaceFlow3D/spaceflow/actions?query=branch%3Amain) record later publication commits. |
 
 ## Fresh generated assets
 

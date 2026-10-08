@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Please cite the SpaceFlow preprint and record the software commit used."
 type: software
 title: "SpaceFlow: Locally Controllable 3D Generation"
-url: "https://github.com/joanlafuente/spaceflow"
-repository-code: "https://github.com/joanlafuente/spaceflow"
+url: "https://github.com/SpaceFlow3D/spaceflow"
+repository-code: "https://github.com/SpaceFlow3D/spaceflow"
 license: Apache-2.0
 authors:
   - family-names: "De La Fuente"

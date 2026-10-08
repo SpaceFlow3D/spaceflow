@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://spaceflow3d.github.io/">
+  <a href="https://spaceflow3d.github.io/spaceflow/">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/spaceflow-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/spaceflow-light.svg">
@@ -44,10 +44,10 @@
 </p>
 
 <p align="center">
-  <a href="https://spaceflow3d.github.io/"><img src="docs/media/readme/link-project.svg" width="144" height="36" alt="Project Page"></a>
-  <a href="https://spaceflow3d.github.io/assets/SpaceFlow-paper.pdf"><img src="docs/media/readme/link-paper.svg" width="194" height="36" alt="Paper &amp; Supplement"></a>
-  <a href="https://spaceflow3d.github.io/#explore"><img src="docs/media/readme/link-examples.svg" width="197" height="36" alt="Interactive Examples"></a>
-  <a href="https://github.com/joanlafuente/spaceflow/releases"><img src="docs/media/readme/link-downloads.svg" width="134" height="36" alt="Downloads"></a>
+  <a href="https://spaceflow3d.github.io/spaceflow/"><img src="docs/media/readme/link-project.svg" width="144" height="36" alt="Project Page"></a>
+  <a href="https://spaceflow3d.github.io/spaceflow/assets/SpaceFlow-paper.pdf"><img src="docs/media/readme/link-paper.svg" width="194" height="36" alt="Paper &amp; Supplement"></a>
+  <a href="https://spaceflow3d.github.io/spaceflow/#explore"><img src="docs/media/readme/link-examples.svg" width="197" height="36" alt="Interactive Examples"></a>
+  <a href="https://github.com/SpaceFlow3D/spaceflow/releases"><img src="docs/media/readme/link-downloads.svg" width="134" height="36" alt="Downloads"></a>
 </p>
 
 https://github.com/user-attachments/assets/8bda9548-ae1d-402b-9ba9-2d610e6743f1
@@ -84,7 +84,7 @@ notes, and alternative tool locations.
 ### 1. Clone and install
 
 ```bash
-git clone --depth 1 --branch RELEASE https://github.com/joanlafuente/spaceflow.git
+git clone --depth 1 --branch main https://github.com/SpaceFlow3D/spaceflow.git
 cd spaceflow
 
 SPACEFLOW_SETUP_PYTHON=python3.10 bash setup.sh
@@ -280,7 +280,7 @@ Use `inputs/all.npz` to open it in the editor, or its directory with
 
 The [documentation index](docs/README.md) covers installation troubleshooting,
 UI settings, Slurm, baselines, comparisons, and the release verification record.
-For questions or bugs, [open an issue](https://github.com/joanlafuente/spaceflow/issues).
+For questions or bugs, [open an issue](https://github.com/SpaceFlow3D/spaceflow/issues).
 
 ## Citation
 
