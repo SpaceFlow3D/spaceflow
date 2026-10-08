@@ -1,6 +1,6 @@
 # SpaceFlow project website
 
-https://spaceflow3d.github.io/spaceflow/
+https://spaceflow3d.github.io/
 
 Project page for **SpaceFlow: Locally Controllable 3D Generation**. This repository contains the static website, its research assets, and the static build/validation scripts.
 
@@ -30,9 +30,13 @@ python3 scripts/build.py
 python3 scripts/validate.py --dist
 ```
 
-The build creates `dist/` from an explicit website allowlist. Validation checks local resources, anchors, gallery policy, model hashes, embedded glTF dependencies, and GitHub's per-file size limit. All fonts, models, and rendering libraries are hosted with the site; runtime asset paths work under the `/spaceflow/` subdirectory.
+The build creates `dist/` from an explicit website allowlist. Validation checks local resources, anchors, gallery policy, model hashes, embedded glTF dependencies, and GitHub's per-file size limit. All fonts, models, and rendering libraries are hosted with the site; runtime asset paths work both at the root URL and under the `/spaceflow/` subdirectory.
 
-GitHub Pages publishes the root of the `project-webpage` branch. Run the build and validation commands before pushing an update; a push to `project-webpage` updates the public website. The `.nojekyll` file keeps the site as plain static files.
+Edit the website on `SpaceFlow3D/spaceflow`'s `project-webpage` branch. GitHub Pages publishes that branch at https://spaceflow3d.github.io/spaceflow/.
+
+The `SpaceFlow3D/spaceflow3d.github.io` repository provides the short root address, **https://spaceflow3d.github.io/**. Its entry pages load the current published project page and gallery at the root URLs; relative assets use the current project publication, and section links keep the root URL. Pushing updates to `project-webpage` therefore updates the content visitors see through both addresses. A bundled snapshot is available if the project page cannot be fetched. No deployment token or SSH key is needed between repositories.
+
+The code remains on `SpaceFlow3D/spaceflow`'s `main` branch. The `.nojekyll` files keep both sites as plain static files.
 
 ## Assets and attribution
 
