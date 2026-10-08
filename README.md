@@ -1,10 +1,9 @@
 <h1 align="center">
-  <a href="https://spaceflow3d.github.io/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/spaceflow-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="docs/media/readme/spaceflow-light.svg">
-      <img src="docs/media/readme/spaceflow-light.svg" width="680" alt="SpaceFlow: Locally Controllable 3D Generation">
-    </picture>
+  <a href="https://spaceflow3d.github.io/#gh-dark-mode-only">
+    <img src="docs/media/readme/spaceflow-dark.svg#gh-dark-mode-only" width="680" alt="SpaceFlow: Locally Controllable 3D Generation">
+  </a>
+  <a href="https://spaceflow3d.github.io/#gh-light-mode-only">
+    <img src="docs/media/readme/spaceflow-light.svg#gh-light-mode-only" width="680" alt="SpaceFlow: Locally Controllable 3D Generation">
   </a>
 </h1>
 
@@ -28,13 +27,16 @@
 <p align="center">
   <a href="https://cvg.ethz.ch/"><img src="docs/media/readme/cvg.svg" width="100" align="middle" alt="Computer Vision and Geometry Group (CVG)"></a>
   &nbsp; &nbsp;
-  <a href="https://gradientspaces.stanford.edu/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/gradient-spaces-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/gradient-spaces-light.svg"><img src="docs/media/readme/gradient-spaces-light.svg" width="170" align="middle" alt="Gradient Spaces Lab"></picture></a>
+  <a href="https://gradientspaces.stanford.edu/#gh-dark-mode-only"><img src="docs/media/readme/gradient-spaces-dark.svg#gh-dark-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
+  <a href="https://gradientspaces.stanford.edu/#gh-light-mode-only"><img src="docs/media/readme/gradient-spaces-light.svg#gh-light-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
   &nbsp; &nbsp;
-  <a href="https://ethz.ch/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/ethz-dark.svg"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/ethz-light.svg"><img src="docs/media/readme/ethz-light.svg" width="160" align="middle" alt="ETH Zürich"></picture></a>
+  <a href="https://ethz.ch/#gh-dark-mode-only"><img src="docs/media/readme/ethz-dark.svg#gh-dark-mode-only" width="160" align="middle" alt="ETH Zürich"></a>
+  <a href="https://ethz.ch/#gh-light-mode-only"><img src="docs/media/readme/ethz-light.svg#gh-light-mode-only" width="160" align="middle" alt="ETH Zürich"></a>
   &nbsp; &nbsp;
   <a href="https://www.stanford.edu/"><img src="docs/media/readme/stanford-s.png" width="96" height="96" align="middle" alt="Stanford University"></a>
   &nbsp; &nbsp;
-  <a href="https://www.microsoft.com/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/media/readme/microsoft-dark.png"><source media="(prefers-color-scheme: light)" srcset="docs/media/readme/microsoft-light.png"><img src="docs/media/readme/microsoft-light.png" width="200" align="middle" alt="Microsoft"></picture></a>
+  <a href="https://www.microsoft.com/#gh-dark-mode-only"><img src="docs/media/readme/microsoft-dark.png#gh-dark-mode-only" width="200" align="middle" alt="Microsoft"></a>
+  <a href="https://www.microsoft.com/#gh-light-mode-only"><img src="docs/media/readme/microsoft-light.png#gh-light-mode-only" width="200" align="middle" alt="Microsoft"></a>
 </p>
 
 <p align="center">

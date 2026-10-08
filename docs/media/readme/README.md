@@ -2,7 +2,9 @@
 
 These small, static assets reproduce the visual identity of the
 [SpaceFlow project website](https://spaceflow3d.github.io/) in GitHub's README.
-Light and dark variants are selected with GitHub's supported `<picture>` markup.
+Light and dark variants follow GitHub's selected theme through `#gh-dark-mode-only`
+and `#gh-light-mode-only` links and image fragments. This also works when GitHub's
+theme differs from the operating system theme.
 
 ## Lettering
 
@@ -23,12 +25,17 @@ The generated assets contain outlined lettering, not distributed font files.
 
 ## Research group and institution logos
 
-The logos use the same source artwork as the project website:
+The logos use official artwork from the research groups and institutions:
 
 - [Computer Vision and Geometry Group (CVG)](https://cvg.ethz.ch/assets/images/logo/cvg-logo.svg),
   copied unchanged from the website's `assets/logos/cvg.svg`. The transparent gold artwork is used in both themes.
-- [Gradient Spaces Lab](https://gradientspaces.stanford.edu/sites/g/files/sbiybj27761/files/media/image/logo.001_0.png),
-  also available as the website's `assets/logos/gradient-spaces.png`. The SVG wrappers embed the original PNG unchanged, trim its surrounding whitespace with a viewBox, and use the website's white-matte removal filter. The dark variant applies the website's inversion and hue rotation so the wordmark remains readable without a white background.
+- [Gradient Spaces Lab](https://gradientspaces.stanford.edu/assets/images/GradientSpacesLogo.png),
+  fetched from the lab's current website on 2026-10-08. The SVG wrappers embed the
+  official transparent PNG unchanged and trim its surrounding whitespace with a
+  viewBox. The light variant uses the source artwork directly. The dark variant
+  recolors only the black lettering to light ink, preserving the colored tiles and
+  original transparency. No white-background removal or outline filter is used.
+  Source PNG SHA-256: `df91774776d24083a5e394711c17367df8a0b03ea864a6227d124c2e5167c5f8`.
 - [ETH Zürich](https://ethz.ch/etc/designs/ethz/img/header/ethz_logo_black.svg),
   also available as the website's `assets/logos/ethz.svg`.
 - [Stanford University red block S with tree](https://identity.stanford.edu/wp-content/uploads/sites/3/2020/07/block-s-right.png),
