@@ -1,6 +1,6 @@
 # SpaceFlow project website
 
-[Visit the website](https://spaceflow3d.github.io/)
+
 
 Project page for **SpaceFlow: Locally Controllable 3D Generation**. This repository contains the static website, its research assets, and the static build/validation scripts.
 
