@@ -300,7 +300,7 @@ If you use SpaceFlow in your research, please cite:
 
 ## Acknowledgements and license
 
-SpaceFlow builds on [GuideFlow3D](https://github.com/GradientSpaces/GuideFlow3D),
+SpaceFlow builds on [SpaceControl](https://github.com/spacecontrol3d/spacecontrol), [GuideFlow3D](https://github.com/GradientSpaces/GuideFlow3D),
 [TRELLIS](https://github.com/microsoft/TRELLIS), and
 [PartField](https://github.com/nv-tlabs/PartField).
 
