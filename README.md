@@ -1,6 +1,6 @@
 # SpaceFlow project website
 
-https://spaceflow3d.github.io/
+https://spaceflow3d.github.io/spaceflow/
 
 Project page for **SpaceFlow: Locally Controllable 3D Generation**. This repository contains the static website, its research assets, and the static build/validation scripts.
 
@@ -32,7 +32,7 @@ python3 scripts/validate.py --dist
 
 The build creates `dist/` from an explicit website allowlist. Validation checks local resources, anchors, gallery policy, model hashes, embedded glTF dependencies, and GitHub's per-file size limit. All fonts, models, and rendering libraries are hosted with the site; runtime asset paths work under the `/spaceflow/` subdirectory.
 
-GitHub Pages publishes the root of the `main` branch. Run the build and validation commands before pushing an update; a push to `main` updates the public website. The `.nojekyll` file keeps the site as plain static files.
+GitHub Pages publishes the root of the `project-webpage` branch. Run the build and validation commands before pushing an update; a push to `project-webpage` updates the public website. The `.nojekyll` file keeps the site as plain static files.
 
 ## Assets and attribution
 
@@ -40,4 +40,4 @@ Research content, figures, video, and model outputs belong to their respective a
 
 Official logo source URLs are recorded in `assets/logos/sources.json`.
 
-Method code is available in [joanlafuente/spaceflow](https://github.com/joanlafuente/spaceflow). The publication identifier and final citation metadata will be added when available.
+Method code is available in [SpaceFlow3D/spaceflow](https://github.com/SpaceFlow3D/spaceflow). The publication identifier and final citation metadata will be added when available.
