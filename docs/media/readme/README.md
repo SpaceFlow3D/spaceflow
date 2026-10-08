@@ -1,7 +1,7 @@
 # README graphics
 
 These small, static assets reproduce the visual identity of the
-[SpaceFlow project website](https://spaceflow3d.github.io/spaceflow/) in GitHub's README.
+[SpaceFlow project website](https://spaceflow3d.github.io/) in GitHub's README.
 Light and dark variants are selected with GitHub's supported `<picture>` markup.
 
 ## Lettering
@@ -15,7 +15,7 @@ Light and dark variants are selected with GitHub's supported `<picture>` markup.
   request, script, or runtime dependency is required to display the header.
 
 The source fonts are the website's `Caveat-Bold.ttf`, `manrope-2.ttf`, and
-`dm-sans-2.ttf`, available under `https://spaceflow3d.github.io/spaceflow/assets/fonts/`.
+`dm-sans-2.ttf`, available under `https://spaceflow3d.github.io/assets/fonts/`.
 They use the SIL Open Font License: [Caveat](https://github.com/googlefonts/caveat),
 [Manrope](https://github.com/sharanda/manrope), and
 [DM Sans](https://github.com/googlefonts/dm-fonts).
