@@ -27,8 +27,8 @@
 <p align="center">
   <a href="https://cvg.ethz.ch/"><img src="docs/media/readme/cvg.svg" width="100" align="middle" alt="Computer Vision and Geometry Group (CVG)"></a>
   &nbsp; &nbsp;
-  <a href="https://gradientspaces.stanford.edu/#gh-dark-mode-only"><img src="docs/media/readme/gradient-spaces-dark.svg#gh-dark-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
-  <a href="https://gradientspaces.stanford.edu/#gh-light-mode-only"><img src="docs/media/readme/gradient-spaces-light.svg#gh-light-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
+  <a href="https://gradientspaces.stanford.edu/#gh-dark-mode-only"><img src="docs/media/readme/gradient-spaces-dark.png#gh-dark-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
+  <a href="https://gradientspaces.stanford.edu/#gh-light-mode-only"><img src="docs/media/readme/gradient-spaces-light.png#gh-light-mode-only" width="170" align="middle" alt="Gradient Spaces Lab"></a>
   &nbsp; &nbsp;
   <a href="https://ethz.ch/#gh-dark-mode-only"><img src="docs/media/readme/ethz-dark.svg#gh-dark-mode-only" width="160" align="middle" alt="ETH Zürich"></a>
   <a href="https://ethz.ch/#gh-light-mode-only"><img src="docs/media/readme/ethz-light.svg#gh-light-mode-only" width="160" align="middle" alt="ETH Zürich"></a>

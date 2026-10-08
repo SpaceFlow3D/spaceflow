@@ -35,6 +35,9 @@ The logos use official artwork from the research groups and institutions:
   viewBox. The light variant uses the source artwork directly. The dark variant
   recolors only the black lettering to light ink, preserving the colored tiles and
   original transparency. No white-background removal or outline filter is used.
+  The README uses transparent PNG exports of these SVG wrappers so GitHub does
+  not need to apply SVG filters when switching themes. The SVG sources remain
+  available for reproducing the exports.
   Source PNG SHA-256: `df91774776d24083a5e394711c17367df8a0b03ea864a6227d124c2e5167c5f8`.
 - [ETH Zürich](https://ethz.ch/etc/designs/ethz/img/header/ethz_logo_black.svg),
   also available as the website's `assets/logos/ethz.svg`.
