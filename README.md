@@ -47,7 +47,7 @@
 
 <p align="center">
   <a href="https://spaceflow3d.github.io/"><img src="docs/media/readme/link-project.svg" width="144" height="36" alt="Project Page"></a>
-  <a href="https://spaceflow3d.github.io/assets/SpaceFlow-paper.pdf"><img src="docs/media/readme/link-paper.svg" width="194" height="36" alt="Paper &amp; Supplement"></a>
+  <a href="https://arxiv.org/pdf/2610.12399"><img src="docs/media/readme/link-arxiv.svg" width="90" height="36" alt="arXiv"></a>
   <a href="https://spaceflow3d.github.io/#explore"><img src="docs/media/readme/link-examples.svg" width="197" height="36" alt="Interactive Examples"></a>
   <a href="https://github.com/SpaceFlow3D/spaceflow/releases"><img src="docs/media/readme/link-downloads.svg" width="134" height="36" alt="Downloads"></a>
 </p>
