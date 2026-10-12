@@ -290,13 +290,16 @@ If you use SpaceFlow in your research, please cite:
 
 ```bibtex
 @misc{delafuente2026spaceflow,
-  title  = {SpaceFlow: Locally Controllable 3D Generation},
-  author = {De La Fuente, Neil and Lafuente, Joan and
-            Sayfiddinov, Mukhammadali and Scharitzer, Felicia and
-            Pollefeys, Marc and Çelen, Ata and
-            Deb Sarkar, Sayan and Fedele, Elisabetta},
-  year   = {2026},
-  note   = {Preprint}
+  title         = {{SpaceFlow}: Locally Controllable {3D} Generation},
+  author        = {De La Fuente, Neil and Lafuente, Joan and
+                   Sayfiddinov, Mukhammadali and Scharitzer, Felicia and
+                   Pollefeys, Marc and Çelen, Ata and
+                   Deb Sarkar, Sayan and Fedele, Elisabetta},
+  year          = {2026},
+  eprint        = {2610.12399},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2610.12399}
 }
 ```
 
